@@ -1,4 +1,3 @@
 # Problem 1
 
-deneme
-
+hello world
