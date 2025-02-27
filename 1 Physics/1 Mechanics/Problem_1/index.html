@@ -172,8 +172,29 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
-<p>hello world</p>
-<p>again</p>
+<p><strong>Investigating the Range as a Function of the Angle of Projection</strong></p>
+<p>import numpy as np
+import matplotlib.pyplot as plt</p>
+<h1 id="constants">Constants</h1>
+<p>g = 9.81  # Gravity (m/s²)
+v0 = 20   # Initial velocity (m/s)</p>
+<h1 id="angle-values-0-to-90">Angle values (0° to 90°)</h1>
+<p>angles = np.linspace(0, 90, 100)  # Degrees
+radians = np.radians(angles)  # Convert to radians</p>
+<h1 id="compute-range-for-each-angle">Compute range for each angle</h1>
+<p>ranges = (v0**2 * np.sin(2 * radians)) / g</p>
+<h1 id="plotting">Plotting</h1>
+<p>plt.figure(figsize=(8, 5))
+plt.plot(angles, ranges, label=f'Initial Speed v₀ = {v0} m/s', color='b')
+plt.xlabel('Launch Angle (°)')
+plt.ylabel('Range (m)')
+plt.title('Projectile Range as a Function of Launch Angle')
+plt.axvline(45, linestyle='--', color='r', label='Maximum Range at 45°')
+plt.legend()
+plt.grid()</p>
+<h1 id="show-the-graph">Show the graph</h1>
+<p>plt.show()</p>
+<h1 id="_1"></h1>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
