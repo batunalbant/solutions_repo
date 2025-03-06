@@ -95,3 +95,4 @@ projectile_range(50)  # Simulating for v0 = 50 m/s
 - Consider real-world factors such as varying gravity (e.g., Mars vs. Earth).
 
 This study provides a deep understanding of projectile motion and highlights its broad applications across science and engineering.
+
