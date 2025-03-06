@@ -209,6 +209,9 @@
   [ T = \frac{2 v_0 \sin(\theta)}{g} ]</li>
 <li>The range (R) is given by:
   [ R = \frac{v_0^2 \sin(2\theta)}{g} ]</li>
+<li><strong>Example Calculations:</strong></li>
+<li>If <span class="arithmatex">\( v_0 = 50 \)</span> m/s and <span class="arithmatex">\( \theta = 45^\circ \)</span>, the range is <span class="arithmatex">\( R \approx 255.1 \)</span> meters.</li>
+<li>If <span class="arithmatex">\( v_0 = 20 \)</span> m/s and <span class="arithmatex">\( \theta = 60^\circ \)</span>, the range is <span class="arithmatex">\( R \approx 35.3 \)</span> meters.</li>
 </ul>
 <h3 id="2-analysis-of-the-range">2. Analysis of the Range</h3>
 <ul>
@@ -224,6 +227,7 @@
 <ul>
 <li><strong>Sports</strong>: Soccer, basketball, and golf all rely on optimized projectile motion.</li>
 <li><strong>Example:</strong> A soccer player kicking a ball at different angles to achieve maximum distance or precision.</li>
+<li><strong>Example:</strong> A basketball player adjusting shot angles to optimize scoring probability.</li>
 <li><strong>Engineering</strong>: Trajectories of missiles and projectiles must be calculated considering air resistance and terrain.</li>
 <li><strong>Example:</strong> Artillery fire control systems account for wind speed and air drag to optimize impact accuracy.</li>
 <li><strong>Astrophysics</strong>: The escape trajectories of spacecraft depend on projectile motion principles.</li>
@@ -249,14 +253,17 @@ def projectile_range(v0, g=9.81):
 
 # Example usage
 projectile_range(20)  # Simulating for v0 = 20 m/s
+projectile_range(50)  # Simulating for v0 = 50 m/s
 </code></pre>
 <h3 id="additional-considerations">Additional Considerations</h3>
 <ul>
 <li><strong>Impact of Air Resistance:</strong></li>
 <li>Real-world projectiles experience drag force proportional to velocity.</li>
 <li>The range is reduced, and the optimal launch angle shifts slightly below 45°.</li>
+<li><strong>Example:</strong> A golf ball experiencing backspin will have altered aerodynamics.</li>
 <li><strong>Uneven Terrain:</strong></li>
 <li>When launching from a hill or elevated platform, range calculations must include varying initial height.</li>
+<li><strong>Example:</strong> A skier launching off a ramp at different inclines.</li>
 <li><strong>Examples:</strong></li>
 <li>A basketball shot from different heights (e.g., free throw vs. three-point line).</li>
 <li>A drone launching a payload at different altitudes.</li>
