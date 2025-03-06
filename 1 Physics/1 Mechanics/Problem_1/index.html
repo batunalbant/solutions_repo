@@ -60,7 +60,13 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#4-implementation-python-code-example">4. Implementation (Python Code Example)</a>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="#additional-considerations">Additional Considerations</a>
+</li>
 </ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#deliverables">Deliverables</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hints-and-resources">Hints and Resources</a>
 </li>
 </ul>
 </li>
@@ -229,56 +235,26 @@
 </ul>
 <h3 id="4-implementation-python-code-example">4. Implementation (Python Code Example)</h3>
 <p>Below is a Python script that simulates projectile motion and plots the range as a function of launch angle.</p>
-<p>```python
-import numpy as np
-import matplotlib.pyplot as plt</p>
-<h1 id="constants">Constants</h1>
-<p>g = 9.81  # gravitational acceleration (m/s^2)</p>
-<h1 id="function-to-calculate-range-of-projectile">Function to calculate range of projectile</h1>
-<p>def projectile_range(v0, theta):
-    theta_rad = np.radians(theta)
-    return (v0 ** 2 * np.sin(2 * theta_rad)) / g</p>
-<h1 id="generate-angles-and-compute-ranges">Generate angles and compute ranges</h1>
-<p>angles = np.linspace(0, 90, 100)
-v0_values = [10, 20, 30]  # Different initial velocities</p>
-<p>plt.figure(figsize=(10, 6))
-for v0 in v0_values:
-    ranges = [projectile_range(v0, theta) for theta in angles]
-    plt.plot(angles, ranges, label=f'v0 = {v0} m/s')</p>
-<p>plt.xlabel('Angle of Projection (degrees)')
-plt.ylabel('Range (m)')
-plt.title('Projectile Range as a Function of Angle')
-plt.legend()
-plt.grid()
-plt.show()</p>
-<h1 id="markdown-notes">Markdown Notes</h1>
-<p>theory = """</p>
-<h1 id="investigating-the-range-as-a-function-of-the-angle-of-projection_1">Investigating the Range as a Function of the Angle of Projection</h1>
-<h2 id="theoretical-foundation">Theoretical Foundation</h2>
-<p>Projectile motion follows a parabolic trajectory governed by:
-- Horizontal motion: <span class="arithmatex">\( x = v_0 \cos(\theta) t \)</span>
-- Vertical motion: <span class="arithmatex">\( y = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \)</span></p>
-<p>By solving for time when the projectile returns to the ground and using horizontal displacement,
-the range formula is derived as:
-[ R = \frac{v_0^2 \sin(2\theta)}{g} ]</p>
-<h2 id="analysis-of-the-range">Analysis of the Range</h2>
-<ul>
-<li>Maximum range occurs at <span class="arithmatex">\( \theta = 45^\circ \)</span></li>
-<li>Increasing initial velocity increases the range</li>
-<li>Higher gravity decreases the range</li>
-</ul>
-<h2 id="practical-applications">Practical Applications</h2>
-<ul>
-<li>Sports physics (e.g., soccer, basketball)</li>
-<li>Engineering (e.g., ballistic trajectories)</li>
-<li>Space science (e.g., rocket launches)</li>
-</ul>
-<h2 id="implementation">Implementation</h2>
-<p>We use Python to simulate and visualize the relationship between angle and range.
-"""</p>
-<h1 id="save-markdown-notes">Save Markdown notes</h1>
-<p>with open("projectile_motion_notes.md", "w") as file:
-    file.write(theory)</p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+def projectile_range(v0, g=9.81):
+    angles = np.linspace(0, 90, num=100)  # Angles from 0 to 90 degrees
+    ranges = (v0**2 * np.sin(np.radians(2*angles))) / g
+
+    plt.figure(figsize=(8, 5))
+    plt.plot(angles, ranges, label=f'Initial Velocity = {v0} m/s')
+    plt.xlabel('Angle of Projection (degrees)')
+    plt.ylabel('Range (meters)')
+    plt.title('Projectile Range as a Function of Angle')
+    plt.legend()
+    plt.grid()
+    plt.show()
+
+# Example usage
+projectile_range(20)  # Simulating for v0 = 20 m/s
+projectile_range(50)  # Simulating for v0 = 50 m/s
+</code></pre>
 <h3 id="additional-considerations">Additional Considerations</h3>
 <ul>
 <li><strong>Impact of Air Resistance:</strong></li>
