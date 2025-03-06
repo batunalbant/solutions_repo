@@ -54,61 +54,23 @@ Below is a Python script that simulates projectile motion and plots the range as
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Constants
-g = 9.81  # gravitational acceleration (m/s^2)
+def projectile_range(v0, g=9.81):
+    angles = np.linspace(0, 90, num=100)  # Angles from 0 to 90 degrees
+    ranges = (v0**2 * np.sin(np.radians(2*angles))) / g
+    
+    plt.figure(figsize=(8, 5))
+    plt.plot(angles, ranges, label=f'Initial Velocity = {v0} m/s')
+    plt.xlabel('Angle of Projection (degrees)')
+    plt.ylabel('Range (meters)')
+    plt.title('Projectile Range as a Function of Angle')
+    plt.legend()
+    plt.grid()
+    plt.show()
 
-# Function to calculate range of projectile
-def projectile_range(v0, theta):
-    theta_rad = np.radians(theta)
-    return (v0 ** 2 * np.sin(2 * theta_rad)) / g
-
-# Generate angles and compute ranges
-angles = np.linspace(0, 90, 100)
-v0_values = [10, 20, 30]  # Different initial velocities
-
-plt.figure(figsize=(10, 6))
-for v0 in v0_values:
-    ranges = [projectile_range(v0, theta) for theta in angles]
-    plt.plot(angles, ranges, label=f'v0 = {v0} m/s')
-
-plt.xlabel('Angle of Projection (degrees)')
-plt.ylabel('Range (m)')
-plt.title('Projectile Range as a Function of Angle')
-plt.legend()
-plt.grid()
-plt.show()
-
-# Markdown Notes
-theory = """
-# Investigating the Range as a Function of the Angle of Projection
-
-## Theoretical Foundation
-Projectile motion follows a parabolic trajectory governed by:
-- Horizontal motion: \( x = v_0 \cos(\theta) t \)
-- Vertical motion: \( y = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \)
-
-By solving for time when the projectile returns to the ground and using horizontal displacement,
-the range formula is derived as:
-\[ R = \frac{v_0^2 \sin(2\theta)}{g} \]
-
-## Analysis of the Range
-- Maximum range occurs at \( \theta = 45^\circ \)
-- Increasing initial velocity increases the range
-- Higher gravity decreases the range
-
-## Practical Applications
-- Sports physics (e.g., soccer, basketball)
-- Engineering (e.g., ballistic trajectories)
-- Space science (e.g., rocket launches)
-
-## Implementation
-We use Python to simulate and visualize the relationship between angle and range.
-"""
-
-# Save Markdown notes
-with open("projectile_motion_notes.md", "w") as file:
-    file.write(theory)
-
+# Example usage
+projectile_range(20)  # Simulating for v0 = 20 m/s
+projectile_range(50)  # Simulating for v0 = 50 m/s
+```
 
 ### Additional Considerations
 
