@@ -90,4 +90,5 @@ Use Python and Matplotlib for visualization.
 Consider real-world factors such as varying gravity (e.g., Mars vs. Earth).
 
 This study provides a deep understanding of projectile motion and highlights its broad applications across science and engineering.
+.
 
