@@ -20,6 +20,9 @@ What makes this topic particularly compelling is the number of free parameters i
   \[ T = \frac{2 v_0 \sin(\theta)}{g} \]
 - The range (R) is given by:
   \[ R = \frac{v_0^2 \sin(2\theta)}{g} \]
+- **Example Calculations:**
+  - If \( v_0 = 50 \) m/s and \( \theta = 45^\circ \), the range is \( R \approx 255.1 \) meters.
+  - If \( v_0 = 20 \) m/s and \( \theta = 60^\circ \), the range is \( R \approx 35.3 \) meters.
 
 ### 2. Analysis of the Range
 - The range is maximized at \( \theta = 45^\circ \) for a given \( v_0 \).
@@ -33,6 +36,7 @@ What makes this topic particularly compelling is the number of free parameters i
 ### 3. Practical Applications
 - **Sports**: Soccer, basketball, and golf all rely on optimized projectile motion.
   - **Example:** A soccer player kicking a ball at different angles to achieve maximum distance or precision.
+  - **Example:** A basketball player adjusting shot angles to optimize scoring probability.
 - **Engineering**: Trajectories of missiles and projectiles must be calculated considering air resistance and terrain.
   - **Example:** Artillery fire control systems account for wind speed and air drag to optimize impact accuracy.
 - **Astrophysics**: The escape trajectories of spacecraft depend on projectile motion principles.
@@ -60,14 +64,17 @@ def projectile_range(v0, g=9.81):
 
 # Example usage
 projectile_range(20)  # Simulating for v0 = 20 m/s
+projectile_range(50)  # Simulating for v0 = 50 m/s
 ```
 
 ### Additional Considerations
 - **Impact of Air Resistance:**
   - Real-world projectiles experience drag force proportional to velocity.
   - The range is reduced, and the optimal launch angle shifts slightly below 45°.
+  - **Example:** A golf ball experiencing backspin will have altered aerodynamics.
 - **Uneven Terrain:**
   - When launching from a hill or elevated platform, range calculations must include varying initial height.
+  - **Example:** A skier launching off a ramp at different inclines.
 - **Examples:**
   - A basketball shot from different heights (e.g., free throw vs. three-point line).
   - A drone launching a payload at different altitudes.
@@ -88,4 +95,3 @@ projectile_range(20)  # Simulating for v0 = 20 m/s
 - Consider real-world factors such as varying gravity (e.g., Mars vs. Earth).
 
 This study provides a deep understanding of projectile motion and highlights its broad applications across science and engineering.
-
