@@ -54,13 +54,17 @@
 <ul>
 <li class="toctree-l4"><a class="reference internal" href="#governing-equations">Governing Equations:</a>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="#derivation-of-time-of-flight">Derivation of Time of Flight</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#derivation-of-range">Derivation of Range</a>
+</li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#analysis-of-the-range">Analysis of the Range</a>
 <ul>
 <li class="toctree-l4"><a class="reference internal" href="#influence-of-initial-conditions">Influence of Initial Conditions:</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#graphical-representation">Graphical Representation</a>
+<li class="toctree-l4"><a class="reference internal" href="#maximum-range-condition">Maximum Range Condition</a>
 </li>
 </ul>
 </li>
@@ -213,7 +217,29 @@
 <li><strong>Range:</strong>
   [ R = \frac{v_0^2 \sin(2\theta)}{g} ]</li>
 </ul>
-<p>The horizontal range <span class="arithmatex">\( R \)</span> depends on the launch angle <span class="arithmatex">\( \theta \)</span>. The maximum range is achieved at <span class="arithmatex">\( 45^\circ \)</span>, assuming no air resistance.</p>
+<h3 id="derivation-of-time-of-flight">Derivation of Time of Flight</h3>
+<p>The time of flight is determined by solving for the time when the projectile returns to the ground <span class="arithmatex">\( y = 0 \)</span>:</p>
+<div class="arithmatex">\[
+0 = v_0 \sin(\theta) t - \frac{1}{2} g t^2
+\]</div>
+<p>Factorizing:</p>
+<div class="arithmatex">\[
+ t \left( v_0 \sin(\theta) - \frac{1}{2} g t \right) = 0
+\]</div>
+<p>Solving for <span class="arithmatex">\( t \)</span>:</p>
+<div class="arithmatex">\[
+ t = 0 \quad \text{or} \quad t = \frac{2 v_0 \sin(\theta)}{g}
+\]</div>
+<p>The non-trivial solution is taken as the total time of flight.</p>
+<h3 id="derivation-of-range">Derivation of Range</h3>
+<p>Using the time of flight in the horizontal displacement equation:</p>
+<div class="arithmatex">\[
+ R = v_0 \cos(\theta) \times \frac{2 v_0 \sin(\theta)}{g}
+\]</div>
+<p>Using the trigonometric identity <span class="arithmatex">\( 2 \sin(\theta) \cos(\theta) = \sin(2\theta) \)</span>, we get:</p>
+<div class="arithmatex">\[
+ R = \frac{v_0^2 \sin(2\theta)}{g}
+\]</div>
 <hr/>
 <h2 id="analysis-of-the-range">Analysis of the Range</h2>
 <h3 id="influence-of-initial-conditions">Influence of Initial Conditions:</h3>
@@ -222,8 +248,16 @@
 <li><strong>Gravity:</strong> A higher gravitational acceleration reduces the range.</li>
 <li><strong>Launch Angle:</strong> The range follows a symmetric dependence on <span class="arithmatex">\( \theta \)</span>, peaking at <span class="arithmatex">\( 45^\circ \)</span>.</li>
 </ul>
-<h3 id="graphical-representation">Graphical Representation</h3>
-<p>A plot of <span class="arithmatex">\( R \)</span> vs. <span class="arithmatex">\( \theta \)</span> for different initial velocities illustrates the impact of these parameters.</p>
+<h3 id="maximum-range-condition">Maximum Range Condition</h3>
+<p>The maximum range occurs when:</p>
+<div class="arithmatex">\[
+ \sin(2\theta) = 1
+\]</div>
+<p>which happens at <span class="arithmatex">\( 2\theta = 90^\circ \Rightarrow \theta = 45^\circ \)</span>.</p>
+<p>Thus, the maximum range is given by:</p>
+<div class="arithmatex">\[
+ R_{max} = \frac{v_0^2}{g}
+\]</div>
 <hr/>
 <h2 id="practical-applications">Practical Applications</h2>
 <ul>
