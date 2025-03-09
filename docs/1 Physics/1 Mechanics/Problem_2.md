@@ -47,7 +47,7 @@ $$
 $$
 \theta_p(t) = \frac{A}{\sqrt{(\omega_0^2 - \omega^2)^2 + (2\beta\omega)^2}} \cos(\omega t - \delta)
 $$
- ** where \( \delta \) is the phase lag given by:**
+ **where \( \delta \) is the phase lag given by:**
 $$
   \tan(\delta) = \frac{2 \beta \omega}{\omega_0^2 - \omega^2}
 $$  
