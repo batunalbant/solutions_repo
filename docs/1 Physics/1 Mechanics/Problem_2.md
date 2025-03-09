@@ -123,8 +123,9 @@ plt.show()
 ```
 ![alt text](image-3.png)
 
+
 Overview
-This graph shows the angular displacement 𝜃(𝑡)θ(t) of a forced damped pendulum over time. It highlights how the system transitions from an initial transient state to a steady oscillatory motion under external forcing.
+This graph shows the angular displacement \( \theta \)(𝑡) of a forced damped pendulum over time. It highlights how the system transitions from an initial transient state to a steady oscillatory motion under external forcing.
 
 Key Observations
 **Initial Transient Phase (0 - 10 s)**
@@ -143,13 +144,38 @@ Key Observations
 
 - The amplitude remains nearly constant, indicating no resonance.
 
-- If the driving frequency 𝜔ω were close to the natural frequency 𝜔0ω0, oscillations would grow due to resonance.
+- If the driving frequency **ω** were close to the natural frequency **ω₀**
+
+, oscillations would grow due to resonance.
 
 - Different parameter values could lead to chaotic motion.
 
 **Conclusion**
 
 The system reaches a stable oscillatory regime after an initial transient phase. Further analysis of phase space and bifurcations can reveal potential chaotic behavior.
+---
+![alt text](image-4.png)
+
+**Overview**
+
+This graph represents the phase space trajectory of the forced damped pendulum, plotting angular velocity 𝜃˙θ˙
+  against angular displacement 𝜃θ. It visualizes the system’s evolution in state space, revealing patterns of stability and energy dissipation.
+
+Key Observations
+Initial Transient Motion
+
+The trajectory starts spiraling inward, indicating energy dissipation due to damping.
+The system gradually loses excess energy and settles into a stable state.
+Steady-State Behavior
+
+The formation of closed loops suggests the system has reached a limit cycle, meaning it oscillates periodically.
+The size and shape of loops indicate how external forcing influences oscillatory motion.
+Indicators of Stability or Chaos
+
+If the trajectory were more irregular and scattered, it could suggest chaotic motion.
+The smooth and repeating pattern here indicates periodic oscillations rather than chaos.
+Conclusion
+This phase space diagram shows that the forced damped pendulum stabilizes into a periodic oscillatory regime after initial transients. Further analysis with Poincaré sections or Lyapunov exponents could determine if chaotic behavior emerges under different conditions.
 
 Markdown Document
 
