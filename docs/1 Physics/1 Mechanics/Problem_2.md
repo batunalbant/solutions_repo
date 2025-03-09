@@ -344,6 +344,7 @@ This figure illustrates the time evolution of the **forced damped pendulum** und
 ```python
 
 
+
 # Different damping, forcing amplitude, and frequency cases visualization
 
 # Define new parameter sets
