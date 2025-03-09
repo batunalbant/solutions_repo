@@ -209,5 +209,5 @@ The following heatmap represents the projectile range for different initial velo
 - **Apply concepts to real-world systems**, including sports, engineering, and astrophysics.
 - **Experiment with different initial velocities and launch angles** to observe variations in projectile motion.
 
-This structured approach ensures a comprehensive exploration of projectile motion while adhering to the course requirements for proper documentation and presentation.
+
 
