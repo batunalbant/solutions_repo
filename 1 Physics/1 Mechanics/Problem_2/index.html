@@ -600,27 +600,51 @@ plt.show()
 <h3 id="key-observations_1"><strong>Key Observations</strong></h3>
 <p><strong>1. Top Row (<span class="arithmatex">\(\beta = 0.2\)</span>): Low Damping</strong></p>
 <ul>
-<li><strong>At low <span class="arithmatex">\(\omega = 0.8\)</span></strong> → The oscillations are large and take longer to settle, as damping is weak.</li>
-<li><strong>At resonance frequency (<span class="arithmatex">\(\omega = 1.5\)</span>)</strong> → The amplitude increases significantly, showing a resonance effect.</li>
-<li><strong>At high <span class="arithmatex">\(\omega = 2.5\)</span></strong> → The oscillations become rapid but maintain periodicity, with smaller amplitudes.</li>
+<li>
+<p><strong>At low <span class="arithmatex">\(\omega = 0.8\)</span></strong> → The oscillations are large and take longer to settle, as damping is weak.</p>
+</li>
+<li>
+<p><strong>At resonance frequency (<span class="arithmatex">\(\omega = 1.5\)</span>)</strong> → The amplitude increases significantly, showing a resonance effect.</p>
+</li>
+<li>
+<p><strong>At high <span class="arithmatex">\(\omega = 2.5\)</span></strong> → The oscillations become rapid but maintain periodicity, with smaller amplitudes.</p>
+</li>
 </ul>
 <p><strong>2. Middle Row (<span class="arithmatex">\(\beta = 0.5\)</span>): Moderate Damping</strong></p>
 <ul>
-<li><strong>At low <span class="arithmatex">\(\omega = 0.8\)</span></strong> → The system stabilizes faster compared to the top row.</li>
-<li><strong>At resonance frequency (<span class="arithmatex">\(\omega = 1.5\)</span>)</strong> → The amplitude still grows, but damping prevents excessive oscillations.</li>
-<li><strong>At high <span class="arithmatex">\(\omega = 2.5\)</span></strong> → The oscillations are more controlled, with reduced amplitude and higher frequency.</li>
+<li>
+<p><strong>At low <span class="arithmatex">\(\omega = 0.8\)</span></strong> → The system stabilizes faster compared to the top row.</p>
+</li>
+<li>
+<p><strong>At resonance frequency (<span class="arithmatex">\(\omega = 1.5\)</span>)</strong> → The amplitude still grows, but damping prevents excessive oscillations.</p>
+</li>
+<li>
+<p><strong>At high <span class="arithmatex">\(\omega = 2.5\)</span></strong> → The oscillations are more controlled, with reduced amplitude and higher frequency.</p>
+</li>
 </ul>
 <p><strong>3. Bottom Row (<span class="arithmatex">\(\beta = 1.2\)</span>): High Damping</strong></p>
 <ul>
-<li><strong>At low <span class="arithmatex">\(\omega = 0.8\)</span></strong> → The motion is quickly damped out, leading to smaller oscillations.</li>
-<li><strong>At resonance frequency (<span class="arithmatex">\(\omega = 1.5\)</span>)</strong> → The resonance effect is suppressed by damping.</li>
-<li><strong>At high <span class="arithmatex">\(\omega = 2.5\)</span></strong> → The system barely oscillates, showing that strong damping eliminates high-frequency responses.</li>
+<li>
+<p><strong>At low <span class="arithmatex">\(\omega = 0.8\)</span></strong> → The motion is quickly damped out, leading to smaller oscillations.</p>
+</li>
+<li>
+<p><strong>At resonance frequency (<span class="arithmatex">\(\omega = 1.5\)</span>)</strong> → The resonance effect is suppressed by damping.</p>
+</li>
+<li>
+<p><strong>At high <span class="arithmatex">\(\omega = 2.5\)</span></strong> → The system barely oscillates, showing that strong damping eliminates high-frequency responses.</p>
+</li>
 </ul>
 <p><strong>Conclusion</strong></p>
 <ul>
-<li><strong>Resonance effects</strong> are visible at <strong><span class="arithmatex">\(\omega = 1.5\)</span></strong>, especially when damping is low.</li>
-<li><strong>Lower damping (<span class="arithmatex">\(\beta = 0.2\)</span>) leads to larger oscillation amplitudes</strong>, while higher damping (<span class="arithmatex">\(\beta = 1.2\)</span>) suppresses them.</li>
-<li><strong>Higher driving frequencies (<span class="arithmatex">\(\omega = 2.5\)</span>) lead to rapid oscillations</strong>, but their amplitudes decrease due to damping effects.</li>
+<li>
+<p><strong>Resonance effects</strong> are visible at <strong><span class="arithmatex">\(\omega = 1.5\)</span></strong>, especially when damping is low.</p>
+</li>
+<li>
+<p><strong>Lower damping (<span class="arithmatex">\(\beta = 0.2\)</span>) leads to larger oscillation amplitudes</strong>, while higher damping (<span class="arithmatex">\(\beta = 1.2\)</span>) suppresses them.</p>
+</li>
+<li>
+<p><strong>Higher driving frequencies (<span class="arithmatex">\(\omega = 2.5\)</span>) lead to rapid oscillations</strong>, but their amplitudes decrease due to damping effects.</p>
+</li>
 </ul>
 <details>
 <summary>Phyton Code of this two Graphics</summary>
@@ -707,10 +731,95 @@ plt.show()
 </ul>
 <hr/>
 <p><strong>Conclusion</strong>
-- <strong>Resonance effects are clearly visible at <span class="arithmatex">\(\omega = 1.5\)</span></strong>, where oscillation amplitudes increase significantly.<br/>
-- <strong>Nonlinear damping reduces oscillation peaks</strong>, demonstrating its role in stabilizing the system.<br/>
-- <strong>Higher driving frequencies (<span class="arithmatex">\(\omega = 2.5\)</span>) lead to rapid oscillations</strong>, but nonlinear damping helps control amplitude growth.  </p>
+- <strong>Resonance effects are clearly visible at <span class="arithmatex">\(\omega = 1.5\)</span></strong>, where oscillation amplitudes increase significantly.  </p>
+<ul>
+<li>
+<p><strong>Nonlinear damping reduces oscillation peaks</strong>, demonstrating its role in stabilizing the system.  </p>
+</li>
+<li>
+<p><strong>Higher driving frequencies (<span class="arithmatex">\(\omega = 2.5\)</span>) lead to rapid oscillations</strong>, but nonlinear damping helps control amplitude growth.  </p>
+</li>
+</ul>
 <hr/>
+<details>
+<summary>Phyton Code of this two Graphics</summary>
+<pre><code class="language-python">
+#  Phase Portrait, Poincaré Section, and Bifurcation Diagram
+
+# Define parameters for phase portrait visualization
+beta_phase = 0.5  # Moderate damping
+A_phase = 1.2  # Moderate forcing amplitude
+omega_phase = 1.5  # Resonance frequency
+
+# Solve the differential equation for phase portrait
+sol_phase = solve_ivp(
+    forced_damped_pendulum, t_span, [theta_0, omega_0_init],
+    t_eval=t_eval, args=(beta_phase, omega_0, A_phase, omega_phase)
+)
+
+# Extract results
+theta_vals_phase = sol_phase.y[0]  # Angular displacement (θ)
+omega_vals_phase = sol_phase.y[1]  # Angular velocity (dθ/dt)
+
+#  Plot the Phase Portrait (θ vs dθ/dt)
+plt.figure(figsize=(6, 6))
+plt.plot(theta_vals_phase, omega_vals_phase, color='blue', label=r'Phase Space: $\dot{\theta}$ vs $\theta$')
+plt.xlabel('Angle (radians)')
+plt.ylabel('Angular Velocity (rad/s)')
+plt.title('Phase Portrait of Forced Damped Pendulum')
+plt.legend()
+plt.grid()
+
+#  Display the visualization
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-8.png"/></p>
+<h3 id="overview_2"><strong>Overview</strong></h3>
+<p>This <strong>phase portrait</strong> represents the <strong>state space</strong> of the <strong>forced damped pendulum</strong>, plotting <strong>angular velocity (<span class="arithmatex">\(\dot{\theta}\)</span>)</strong> against <strong>angular displacement (<span class="arithmatex">\(\theta\)</span>)</strong>. It provides insight into the system’s stability, periodicity, and long-term behavior.</p>
+<hr/>
+<h3 id="key-observations_3"><strong>Key Observations</strong></h3>
+<p><strong>1. Spiral Inward Pattern</strong> </p>
+<ul>
+<li>
+<p>The trajectory <strong>spirals inward</strong>, indicating <strong>energy dissipation due to damping</strong>.  </p>
+</li>
+<li>
+<p>Over time, the motion settles into a <strong>stable limit cycle</strong>, meaning periodic behavior emerges.</p>
+</li>
+</ul>
+<p><strong>2. Closed Orbit Formation</strong> </p>
+<ul>
+<li>
+<p>After an initial transient phase, the system forms <strong>closed loops</strong>, representing a <strong>stable periodic oscillation</strong>.  </p>
+</li>
+<li>
+<p>This suggests that despite the external forcing, the system reaches a steady oscillatory state.</p>
+</li>
+</ul>
+<p><strong>3. Impact of Forcing and Damping</strong> </p>
+<ul>
+<li>
+<p>If the forcing amplitude were <strong>higher</strong>, chaotic motion might emerge, leading to an irregular phase space trajectory.  </p>
+</li>
+<li>
+<p>If damping were <strong>stronger</strong>, the system would spiral to a fixed point, indicating complete energy dissipation.</p>
+</li>
+</ul>
+<hr/>
+<p><strong>Conclusion</strong></p>
+<ul>
+<li>
+<p>The <strong>phase portrait confirms that the system transitions from transient oscillations to a periodic steady-state motion</strong>.  </p>
+</li>
+<li>
+<p>The structure of the trajectory suggests that <strong>the motion is stable but sensitive to external forcing conditions</strong>.  </p>
+</li>
+<li>
+<p>Further analysis with <strong>Poincaré sections or bifurcation diagrams</strong> can reveal whether the system exhibits chaos under different parameters.  </p>
+</li>
+</ul>
 <p>Markdown Document</p>
 <p>Containing theoretical explanations and equations.</p>
 <hr/>
