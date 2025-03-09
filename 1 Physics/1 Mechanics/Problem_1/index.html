@@ -175,72 +175,80 @@
 <div class="section" itemprop="articleBody">
 <h2 id="investigating-the-range-as-a-function-of-the-angle-of-projection">Investigating the Range as a Function of the Angle of Projection</h2>
 <h3 id="motivation">Motivation</h3>
-<p>Projectile motion, while seemingly simple, offers a rich playground for exploring fundamental principles of physics. The problem is straightforward: analyze how the range of a projectile depends on its angle of projection. Yet, beneath this simplicity lies a complex and versatile framework. The equations governing projectile motion involve both linear and quadratic relationships, making them accessible yet deeply insightful.</p>
-<p>What makes this topic particularly compelling is the number of free parameters involved in these equations, such as initial velocity <span class="arithmatex">\( v_0 \)</span>, gravitational acceleration <span class="arithmatex">\( g \)</span>, and launch height <span class="arithmatex">\( h \)</span>. These parameters give rise to a diverse set of solutions that can describe a wide array of real-world phenomena, from the arc of a soccer ball to the trajectory of a rocket. Additionally, external factors such as air resistance, varying gravitational fields, and launch conditions create additional complexity that can be modeled mathematically.</p>
-<p>The study of projectile motion also provides an excellent opportunity to apply numerical methods and computational simulations, enabling engineers and scientists to develop more efficient launch systems, design sports equipment, and predict celestial motions. Understanding these dynamics also fosters critical thinking and problem-solving skills essential for scientific inquiry and technological innovation.</p>
+<p>Projectile motion, while seemingly simple, offers a rich playground for exploring fundamental principles of physics. The goal of this analysis is clear: to determine mathematically how the range of a projectile depends on its angle of projection. Although this problem appears basic, it encapsulates essential physical concepts involving both linear and quadratic relationships, making it both accessible and deeply insightful.</p>
+<p>This topic is particularly engaging due to numerous influential parameters such as initial velocity <span class="arithmatex">\( v_0 \)</span>, gravitational acceleration <span class="arithmatex">\( g \)</span>, and launch height <span class="arithmatex">\( h \)</span>. These factors generate diverse solutions that effectively illustrate real-world phenomena ranging from the trajectory of sports balls to aerospace applications. Realistic considerations like air resistance, variable gravitational fields, and launch conditions further enrich the problem, showcasing the adaptability of these equations in modeling complex scenarios.</p>
+<p>Furthermore, utilizing computational tools to analyze projectile motion strengthens practical mathematical skills and computational proficiency. This knowledge is essential in various fields such as engineering design, sports equipment development, and astrophysics.</p>
 <hr/>
 <h2 id="task">Task</h2>
 <h3 id="1-theoretical-foundation">1. Theoretical Foundation</h3>
 <ul>
-<li>Derive the governing equations of motion from Newton’s second law.</li>
-<li>Solve the basic differential equations to establish the general form of projectile motion.</li>
-<li>Highlight how variations in initial conditions produce diverse solutions.</li>
-<li>Discuss air resistance and gravitational variations as extensions to the basic model.</li>
+<li>Clearly derive the projectile motion equations from Newton’s second law.</li>
+<li>Solve the differential equations explicitly and highlight the general solution.</li>
+<li>Emphasize how variations in initial conditions lead to a broad spectrum of solutions.</li>
+<li>Introduce realistic extensions including air resistance and varying gravitational conditions.</li>
 </ul>
 <h3 id="governing-equations">Governing Equations</h3>
-<p>Projectile motion in two dimensions can be described by the following equations derived from Newton's laws:</p>
-<div class="arithmatex">\[ x(t) = v_0 \cos(\theta) t \]</div>
-<div class="arithmatex">\[ y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \]</div>
-<p>where:
-- <span class="arithmatex">\( v_0 \)</span> = Initial velocity
-- <span class="arithmatex">\( \theta \)</span> = Launch angle
-- <span class="arithmatex">\( g \)</span> = Gravitational acceleration
-- <span class="arithmatex">\( t \)</span> = Time</p>
-<p>The total flight time <span class="arithmatex">\( T \)</span>, maximum height <span class="arithmatex">\( H \)</span>, and horizontal range <span class="arithmatex">\( R \)</span> are given by:</p>
-<div class="arithmatex">\[ T = \frac{2 v_0 \sin(\theta)}{g} \]</div>
-<div class="arithmatex">\[ H = \frac{v_0^2 \sin^2(\theta)}{2g} \]</div>
-<div class="arithmatex">\[ R = \frac{v_0^2 \sin(2\theta)}{g} \]</div>
+<p>Projectile motion equations derived from Newton's second law are given explicitly in two separate components:</p>
+<p><strong>Horizontal motion:</strong>
+[ x(t) = v_0 \cos(\theta) \cdot t ]</p>
+<p><strong>Vertical motion:</strong>
+[ y(t) = v_0 \sin(\theta) \cdot t - \frac{1}{2} g t^2 ]</p>
+<p><strong>Parameters:</strong>
+- <span class="arithmatex">\( v_0 \)</span>: Initial velocity (m/s)
+- <span class="arithmatex">\( \theta \)</span>: Launch angle (degrees or radians)
+- <span class="arithmatex">\( g \)</span>: Gravitational acceleration (approximately 9.81 m/s² on Earth)
+- <span class="arithmatex">\( t \)</span>: Time elapsed (s)</p>
+<p><strong>Derived Expressions:</strong></p>
+<ul>
+<li>
+<p><strong>Total Flight Time <span class="arithmatex">\( T \)</span></strong>:
+[ T = \frac{2 v_0 \sin(\theta)}{g} ]</p>
+</li>
+<li>
+<p><strong>Maximum Height <span class="arithmatex">\( H \)</span></strong>:
+[ H = \frac{v_0^2 \sin^2(\theta)}{2g} ]</p>
+</li>
+<li>
+<p><strong>Horizontal Range <span class="arithmatex">\( R \)</span></strong>:
+[ R = \frac{v_0^2 \sin(2\theta)}{g} ]</p>
+</li>
+</ul>
 <h3 id="2-analysis-of-the-range">2. Analysis of the Range</h3>
 <ul>
-<li>Examine how the horizontal range <span class="arithmatex">\( R \)</span> varies with the angle of projection <span class="arithmatex">\( \theta \)</span>.</li>
-<li>Discuss the optimal angle for maximum range and explain the physics behind this phenomenon.</li>
-<li>Explore the influence of varying initial velocities and gravitational acceleration on the trajectory.</li>
+<li>Methodically analyze how the horizontal range <span class="arithmatex">\( R \)</span> varies with the launch angle <span class="arithmatex">\( \theta \)</span>.</li>
+<li>Demonstrate mathematically why the optimal launch angle in the absence of air resistance is <span class="arithmatex">\( 45^{\circ} \)</span>.</li>
+<li>Illustrate and mathematically evaluate how varying initial velocity and gravitational acceleration impact the projectile's trajectory.</li>
 </ul>
 <h3 id="3-practical-applications">3. Practical Applications</h3>
 <ul>
-<li>Discuss how projectile motion principles apply to various real-world contexts, including ballistics, sports such as golf or basketball, and aerospace applications.</li>
-<li>Address how the model can be extended to account for uneven terrain, air resistance, and wind effects, thereby increasing its accuracy and utility.</li>
+<li>Explicitly connect projectile motion theory to practical applications in fields like ballistics, various sports, and aerospace technology.</li>
+<li>Propose adaptations of the basic model for real-life situations, including uneven terrain, air resistance, and wind.</li>
 </ul>
 <h3 id="4-implementation">4. Implementation</h3>
 <ul>
-<li>Develop and document a computational algorithm (Python) to simulate projectile trajectories under various initial conditions.</li>
-<li>Visualize the relationship between the projectile’s range and the angle of projection using graphical plots.</li>
-<li>Include animations or interactive elements to clearly illustrate how trajectories change with different parameters.</li>
+<li>Provide a clearly documented Python algorithm or Jupyter Notebook to simulate projectile trajectories.</li>
+<li>Include detailed visualizations of how the projectile's range varies with angle, initial velocity, and gravitational acceleration.</li>
+<li>Incorporate interactive elements or animations to enhance the understanding of trajectory dynamics.</li>
 </ul>
 <hr/>
 <h2 id="deliverables">Deliverables</h2>
 <ul>
-<li>A Markdown document with embedded Python scripts or a Jupyter Notebook clearly demonstrating simulations.</li>
-<li>Detailed explanations of how variations in initial conditions produce a family of projectile trajectories.</li>
-<li>Visual plots depicting range versus launch angle, showing parameter sensitivity.</li>
-<li>A critical discussion on the model’s limitations, considering air resistance, drag, and wind effects.</li>
-<li>Suggestions and preliminary implementations for enhancing realism through additional factors such as drag force or environmental conditions.</li>
+<li>A comprehensive Markdown document with integrated Python code clearly illustrating simulations.</li>
+<li>In-depth explanations of the solutions resulting from varying initial conditions.</li>
+<li>Graphical representations emphasizing the sensitivity of range to parameters.</li>
+<li>A robust discussion on the limitations of the simplified model, covering air resistance, drag, and wind effects.</li>
+<li>Practical suggestions and preliminary implementations for enhancing realism through additional factors.</li>
 </ul>
 <hr/>
 <h2 id="hints-and-resources">Hints and Resources</h2>
 <ul>
-<li>Begin with Newton’s laws of motion to formulate your equations.</li>
-<li>Utilize computational simulations to analyze scenarios beyond simple analytical calculations.</li>
-<li>Explore relevant literature and online resources for enhancing your understanding of projectile dynamics.</li>
-<li>Implement Monte Carlo methods to study variability and uncertainty in real-world launch conditions.</li>
+<li>Start derivations explicitly from Newton’s second law of motion.</li>
+<li>Employ computational methods for more complex scenario analyses.</li>
+<li>Cite authoritative and supplementary sources for a thorough and well-supported analysis.</li>
+<li>Consider Monte Carlo simulations to explore uncertainty effects in projectile motion.</li>
 </ul>
 <hr/>
-<h2 id="markdown-implementation-example">Markdown Implementation Example</h2>
-<h3 id="1-theoretical-background">1. Theoretical Background</h3>
-<p>The general equations derived from Newton’s second law for projectile motion are:</p>
-<div class="arithmatex">\[ x(t) = v_0 \cos(\theta) t \]</div>
-<div class="arithmatex">\[ y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \]</div>
-<h3 id="python-simulation">Python Simulation</h3>
+<h2 id="example-python-implementation">Example Python Implementation</h2>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 
@@ -258,13 +266,14 @@ plt.title("Projectile Range vs. Launch Angle")
 plt.grid(True)
 plt.show()
 </code></pre>
-<h3 id="extended-analysis">Extended Analysis</h3>
+<h3 id="extended-analysis-and-enhancements">Extended Analysis and Enhancements</h3>
 <ul>
-<li>Incorporate air resistance and evaluate its impact on the projectile range.</li>
-<li>Conduct Monte Carlo simulations to assess the effects of uncertainty in initial velocity and angle.</li>
-<li>Present comparative plots to illustrate ideal vs. realistic conditions.</li>
+<li>Implement simulations that account for air resistance to show deviations from ideal conditions.</li>
+<li>Use Monte Carlo methods to demonstrate the impact of uncertainties in initial conditions (velocity, angle).</li>
+<li>Compare ideal theoretical outcomes with realistic simulation results through detailed visualizations.</li>
 </ul>
-<p>This structured approach ensures clarity and aligns with the standards outlined by the course instructors, providing a solid foundation for further exploration and application in practical contexts.</p>
+<hr/>
+<p>This structured and comprehensive approach ensures clarity, accuracy, and consistency across future problems. It aligns fully with the course expectations, promoting both theoretical understanding and practical computational skills.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
