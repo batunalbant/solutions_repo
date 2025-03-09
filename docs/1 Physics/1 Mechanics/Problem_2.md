@@ -511,7 +511,7 @@ This figure compares the **standard forced damped pendulum model** with an **ext
 
 ---
 
-### **Conclusion**
+**Conclusion**
 - **Resonance effects are clearly visible at \(\omega = 1.5\)**, where oscillation amplitudes increase significantly.  
 - **Nonlinear damping reduces oscillation peaks**, demonstrating its role in stabilizing the system.  
 - **Higher driving frequencies (\(\omega = 2.5\)) lead to rapid oscillations**, but nonlinear damping helps control amplitude growth.  
