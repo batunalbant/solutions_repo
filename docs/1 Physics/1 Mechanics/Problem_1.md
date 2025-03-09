@@ -1,8 +1,6 @@
 # Problem 1
 # Investigating the Range as a Function of the Angle of Projection
 
-**Investigating the Range as a Function of the Angle of Projection**
-
 ### Introduction
 Projectile motion is one of the most fundamental topics in classical mechanics, offering insights into the interplay between forces, motion, and trajectory prediction. The study of how the range of a projectile varies with its launch angle is crucial in both theoretical physics and practical applications. Whether analyzing the optimal angle for a long jump, the flight of a basketball shot, or the trajectory of artillery, understanding projectile motion provides a strong foundation for problem-solving in dynamics.
 
