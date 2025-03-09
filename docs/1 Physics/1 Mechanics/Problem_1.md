@@ -3,7 +3,7 @@
 ### Motivation
 Projectile motion, while seemingly simple, offers a rich playground for exploring fundamental principles of physics. The goal of this analysis is clear: to determine mathematically how the range of a projectile depends on its angle of projection. Although this problem appears basic, it encapsulates essential physical concepts involving both linear and quadratic relationships, making it both accessible and deeply insightful.
 
-This topic is particularly engaging due to numerous influential parameters such as initial velocity $ v_0 $, gravitational acceleration $ g $, and launch height $ h $. These factors generate diverse solutions that effectively illustrate real-world phenomena ranging from the trajectory of sports balls to aerospace applications. Realistic considerations like air resistance, variable gravitational fields, and launch conditions further enrich the problem, showcasing the adaptability of these equations in modeling complex scenarios.
+This topic is particularly engaging due to numerous influential parameters such as initial velocity $$ v_0 $$, gravitational acceleration $$ g $$, and launch height $$ h $$. These factors generate diverse solutions that effectively illustrate real-world phenomena ranging from the trajectory of sports balls to aerospace applications. Realistic considerations like air resistance, variable gravitational fields, and launch conditions further enrich the problem, showcasing the adaptability of these equations in modeling complex scenarios.
 
 Furthermore, utilizing computational tools to analyze projectile motion strengthens practical mathematical skills and computational proficiency. This knowledge is essential in various fields such as engineering design, sports equipment development, and astrophysics.
 
@@ -27,10 +27,10 @@ $$ x(t) = v_0 \cos(\theta) \cdot t $$
 $$ y(t) = v_0 \sin(\theta) \cdot t - \frac{1}{2} g t^2 $$
 
 ### Parameters:
-- **$ v_0 $**: Initial velocity (m/s)  
-- **$ \theta $**: Launch angle (degrees or radians)  
-- **$ g $**: Gravitational acceleration (approximately **9.81 m/s²** on Earth)  
-- **$ t $**: Time elapsed (s)  
+- **$$ v_0 $$**: Initial velocity (m/s)  
+- **$$ \theta $$**: Launch angle (degrees or radians)  
+- **$$ g $$**: Gravitational acceleration (approximately **9.81 m/s²** on Earth)  
+- **$$ t $$**: Time elapsed (s)  
 
 ### Derived Expressions:
 
@@ -44,8 +44,8 @@ $$ y(t) = v_0 \sin(\theta) \cdot t - \frac{1}{2} g t^2 $$
   $$ R = \frac{v_0^2 \sin(2\theta)}{g} $$
 
 ### 2. Analysis of the Range
-- Methodically analyze how the horizontal range $ R $ varies with the launch angle $ \theta $.
-- Demonstrate mathematically why the optimal launch angle in the absence of air resistance is $ 45^{\circ} $.
+- Methodically analyze how the horizontal range $ R $ varies with the launch angle $$ \theta $$.
+- Demonstrate mathematically why the optimal launch angle in the absence of air resistance is $$ 45^{\circ} $$.
 - Illustrate and mathematically evaluate how varying initial velocity and gravitational acceleration impact the projectile's trajectory.
 
 ### 3. Practical Applications
