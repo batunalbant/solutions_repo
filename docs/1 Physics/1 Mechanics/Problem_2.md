@@ -141,10 +141,9 @@ $$
 ### Implementation
 
 **Python Implementation**
-
-```python
 <details>
   <summary>📌 Click to expand/collapse the Python simulation code</summary>
+```python
 
 import numpy as np
 import matplotlib.pyplot as plt
