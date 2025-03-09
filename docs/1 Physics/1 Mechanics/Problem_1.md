@@ -20,7 +20,39 @@ To analyze projectile motion, we start with Newton's equations of motion. The mo
 - **Range:**
   \[ R = \frac{v_0^2 \sin(2\theta)}{g} \]
 
-The horizontal range \( R \) depends on the launch angle \( \theta \). The maximum range is achieved at \( 45^\circ \), assuming no air resistance.
+### Derivation of Time of Flight
+The time of flight is determined by solving for the time when the projectile returns to the ground \( y = 0 \):
+
+\[
+0 = v_0 \sin(\theta) t - \frac{1}{2} g t^2
+\]
+
+Factorizing:
+
+\[
+ t \left( v_0 \sin(\theta) - \frac{1}{2} g t \right) = 0
+\]
+
+Solving for \( t \):
+
+\[
+ t = 0 \quad \text{or} \quad t = \frac{2 v_0 \sin(\theta)}{g}
+\]
+
+The non-trivial solution is taken as the total time of flight.
+
+### Derivation of Range
+Using the time of flight in the horizontal displacement equation:
+
+\[
+ R = v_0 \cos(\theta) \times \frac{2 v_0 \sin(\theta)}{g}
+\]
+
+Using the trigonometric identity \( 2 \sin(\theta) \cos(\theta) = \sin(2\theta) \), we get:
+
+\[
+ R = \frac{v_0^2 \sin(2\theta)}{g}
+\]
 
 ---
 
@@ -31,8 +63,20 @@ The horizontal range \( R \) depends on the launch angle \( \theta \). The maxim
 - **Gravity:** A higher gravitational acceleration reduces the range.
 - **Launch Angle:** The range follows a symmetric dependence on \( \theta \), peaking at \( 45^\circ \).
 
-### Graphical Representation
-A plot of \( R \) vs. \( \theta \) for different initial velocities illustrates the impact of these parameters.
+### Maximum Range Condition
+The maximum range occurs when:
+
+\[
+ \sin(2\theta) = 1
+\]
+
+which happens at \( 2\theta = 90^\circ \Rightarrow \theta = 45^\circ \).
+
+Thus, the maximum range is given by:
+
+\[
+ R_{max} = \frac{v_0^2}{g}
+\]
 
 ---
 
