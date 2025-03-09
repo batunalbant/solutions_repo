@@ -184,31 +184,51 @@
 <ul>
 <li>Begin with the governing differential equation of the forced damped pendulum:
 $$
-  <span class="arithmatex">\( \ddot{\theta} + \beta \dot{\theta} + \omega_0^2 \sin(\theta) = A \cos(\omega t) \)</span>
+\ddot{\theta} + \beta \dot{\theta} + \omega_0^2 \sin(\theta) = A \cos(\omega t) 
  $$</li>
 </ul>
 <p><strong>where:</strong>
-  - <span class="arithmatex">\( \theta \)</span> is the angular displacement,
-  - <span class="arithmatex">\( \beta \)</span> is the damping coefficient,
-  - <span class="arithmatex">\( \omega_0 \)</span> is the natural frequency,
-  - <span class="arithmatex">\( A \)</span> is the amplitude of the driving force,
-  - <span class="arithmatex">\( \omega \)</span> is the driving frequency.
-- For small-angle approximations, use <span class="arithmatex">\( \sin(\theta) \approx \theta \)</span>, reducing the equation to: <span class="arithmatex">\( \ddot{\theta} + \beta \dot{\theta} + \omega_0^2\theta = A \cos(\omega t) \)</span> which resembles a driven damped harmonic oscillator.</p>
+  - <span class="arithmatex">\( \theta \)</span> is the angular displacement,</p>
 <ul>
 <li>
+<p><span class="arithmatex">\( \beta \)</span> is the damping coefficient,</p>
+</li>
+<li>
+<p><span class="arithmatex">\( \omega_0 \)</span> is the natural frequency,</p>
+</li>
+<li>
+<p><span class="arithmatex">\( A \)</span> is the amplitude of the driving force,</p>
+</li>
+<li>
+<p><span class="arithmatex">\( \omega \)</span> is the driving frequency.</p>
+</li>
+<li>
+<p>For small-angle approximations, use <span class="arithmatex">\( \sin(\theta) \approx \theta \)</span>, reducing the equation to: 
+$$
+\ddot{\theta} + \beta \dot{\theta} + \omega_0^2\theta = A \cos(\omega t) 
+$$
+which resembles a driven damped harmonic oscillator.</p>
+</li>
+<li>
 <p>The general solution of the homogeneous equation:
-  <span class="arithmatex">\( \theta_h(t) = C_1 e^{-\beta t} \cos(\omega_0 t) + C_2 e^{-\beta t} \sin(\omega_0 t) \)</span>
-  where <span class="arithmatex">\( C_1 \)</span> and <span class="arithmatex">\( C_2 \)</span> are constants determined by initial conditions.</p>
+$$
+  \theta_h(t) = C_1 e^{-\beta t} \cos(\omega_0 t) + C_2 e^{-\beta t} \sin(\omega_0 t)
+ $$ 
+<strong>where <span class="arithmatex">\( C_1 \)</span> and <span class="arithmatex">\( C_2 \)</span> are constants determined by initial conditions.</strong></p>
 </li>
 <li>
 <p>The steady-state solution can be found using the method of undetermined coefficients:
   <span class="arithmatex">\( \theta_p(t) = \frac{A}{\sqrt{(\omega_0^2 - \omega^2)^2 + (2\beta\omega)^2}} \cos(\omega t - \delta) \)</span>
   where <span class="arithmatex">\( \delta \)</span> is the phase lag given by:
-  <span class="arithmatex">\( \tan(\delta) = \frac{2 \beta \omega}{\omega_0^2 - \omega^2} \)</span></p>
+$$
+  \tan(\delta) = \frac{2 \beta \omega}{\omega_0^2 - \omega^2}
+$$  </p>
 </li>
 <li>
 <p>Analyze resonance conditions and their impact on the system's energy, where resonance occurs at:
-  <span class="arithmatex">\( \omega_{res} = \sqrt{\omega_0^2 - 2\beta^2} \)</span></p>
+$$
+ \omega_{res} = \sqrt{\omega_0^2 - 2\beta^2}
+$$ </p>
 </li>
 <li>
 <p>Investigate stability criteria and <strong>fixed points</strong>, evaluating equilibrium solutions and their stability through <strong>linear stability analysis</strong> by examining the Jacobian matrix.</p>
