@@ -256,24 +256,62 @@ $$ </p>
 <p>Implement <strong>Lyapunov exponents</strong> to quantify chaos in the system and determine sensitive dependence on initial conditions.</p>
 </li>
 </ul>
-<h4 id="3-practical-applications">3. Practical Applications</h4>
+<h4 id="3practical-applications">3.Practical Applications</h4>
+<p>The forced damped pendulum has wide applications in science and engineering due to its ability to model complex oscillatory and chaotic systems. Below are some key applications along with their corresponding mathematical models:</p>
+<p><strong>Energy Harvesting Devices</strong></p>
 <ul>
-<li>Discuss real-world applications, such as:</li>
 <li>
-<p><strong>Energy harvesting devices</strong>, where controlled resonance conditions can be used to generate electrical power from oscillatory motion.</p>
+<p>Controlled resonance conditions can be used to extract electrical energy from mechanical oscillations.</p>
 </li>
 <li>
-<p><strong>Suspension bridges affected by periodic forces</strong>, leading to resonance-induced structural failures (e.g., Tacoma Narrows Bridge disaster).</p>
+<p>The power harvested from an oscillatory motion is given by:
+$$
+P=12CV2ωP = \frac{1}{2} C V^2 \omega 
+$$</p>
+</li>
+<li>where <span class="arithmatex">\( C \)</span> is capacitance, <span class="arithmatex">\( V \)</span> is voltage, and  is the frequency of oscillation.</li>
+</ul>
+<p><strong>Suspension Bridges and Structural Vibrations</strong></p>
+<ul>
+<li>
+<p>Bridges and tall buildings experience forced oscillations due to wind and external loads.</p>
 </li>
 <li>
-<p><strong>Electrical circuits modeled by forced oscillators</strong>, where an analogy between mechanical and electrical systems allows for the study of resonance in LC circuits.</p>
+<p>The governing equation for structural oscillations is:
+$$
+ mx¨+cx˙+kx=F0cos⁡(ωt)m \ddot{x} + c \dot{x} + kx = F_0 \cos(\omega t) 
+$$
+where <span class="arithmatex">\( m \)</span> is mass, <span class="arithmatex">\( c \)</span> is damping, <span class="arithmatex">\( k \)</span> is stiffness, and <span class="arithmatex">\( F_0 \)</span> is the external force.</p>
+</li>
+</ul>
+<p><strong>Electrical Circuits (RLC Circuits)</strong></p>
+<ul>
+<li>The forced damped pendulum has an electrical analogue in RLC circuits:
+$$
+Ld2Qdt2+RdQdt+QC=E0cos⁡(ωt)L \frac{d^2 Q}{dt^2} + R \frac{dQ}{dt} + \frac{Q}{C} = E_0 \cos(\omega t)
+$$</li>
+<li>which resembles the form of a forced oscillation equation.</li>
+</ul>
+<p><strong>Planetary Motion and Orbital Perturbations</strong></p>
+<ul>
+<li>he forced damped pendulum provides a framework for understanding orbital resonance and perturbations:
+$$
+d2rdt2−h2r3+GMr2=Fperturb\frac{d^2 r}{dt^2} - \frac{h^2}{r^3} + \frac{GM}{r^2} = F_{perturb} 
+$$
+-where <span class="arithmatex">\( r \)</span> is the radial distance, <span class="arithmatex">\( h \)</span> is angular momentum, and <span class="arithmatex">\( GM \)</span> is the gravitational parameter.</li>
+</ul>
+<p><strong>Biological Oscillations</strong></p>
+<ul>
+<li>
+<p>Heart rhythms, circadian cycles, and neural oscillations exhibit periodic and chaotic behaviors similar to a forced pendulum.</p>
 </li>
 <li>
-<p><strong>Planetary motion perturbations</strong>, where external gravitational forces act similarly to periodic forcing, leading to complex orbital behaviors.</p>
+<p>A general nonlinear model for biological oscillations is:
+$$
+d2xdt2+f(x,x˙)=Acos⁡(ωt)\frac{d^2 x}{dt^2} + f(x, \dot{x}) = A \cos(\omega t) where f(x,x˙)f(x, \dot{x})
+$$</p>
 </li>
-<li>
-<p><strong>Biological oscillations</strong>, such as heart rhythms and circadian cycles, which are governed by driven oscillatory behavior.</p>
-</li>
+<li>where <span class="arithmatex">\( f(x, \dot{x}) \)</span> represents nonlinear feedback mechanisms. in biological systems.</li>
 </ul>
 <h4 id="4-implementation">4. Implementation</h4>
 <ul>
@@ -297,8 +335,8 @@ $$ </p>
 </li>
 </ul>
 <hr/>
-<h3 id="deliverables">Deliverables</h3>
-<p>Python Implementation</p>
+<h3 id="implementation">Implementation</h3>
+<p><strong>Python Implementation</strong></p>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
@@ -410,7 +448,6 @@ This graph shows the angular displacement <span class="arithmatex">\( \theta \)<
 <p><strong>Conclusion</strong></p>
 <p>This phase space diagram shows that the forced damped pendulum stabilizes into a periodic oscillatory regime after initial transients. Further analysis with Poincaré sections or Lyapunov exponents could determine if chaotic behavior emerges under different conditions.</p>
 <hr/>
-<p><a href="https://colab.research.google.com/github/batunalbant/solutions_repo/blob/main/forced_pendulum.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></p>
 <hr/>
 <p>Markdown Document</p>
 <p>Containing theoretical explanations and equations.</p>
