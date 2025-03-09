@@ -144,15 +144,14 @@ Key Observations
 
 - The amplitude remains nearly constant, indicating no resonance.
 
-- If the driving frequency **ω** were close to the natural frequency **ω₀**
-
-, oscillations would grow due to resonance.
+- If the driving frequency **ω** were close to the natural frequency **ω₀**, oscillations would grow due to resonance.
 
 - Different parameter values could lead to chaotic motion.
 
 **Conclusion**
 
 The system reaches a stable oscillatory regime after an initial transient phase. Further analysis of phase space and bifurcations can reveal potential chaotic behavior.
+
 ---
 ![alt text](image-4.png)
 
