@@ -37,7 +37,7 @@ When an external periodic force is introduced, new parameters such as amplitude 
 
 - Analyze resonance conditions and their impact on the system's energy, where resonance occurs at:
   \( \omega_{res} = \sqrt{\omega_0^2 - 2\beta^2} \)
-  
+
 - Investigate stability criteria and **fixed points**, evaluating equilibrium solutions and their stability through **linear stability analysis** by examining the Jacobian matrix.
 
 #### 2. Analysis of Dynamics
@@ -66,17 +66,96 @@ When an external periodic force is introduced, new parameters such as amplitude 
 ---
 
 ### Deliverables
-- **Markdown document** containing theoretical explanations and equations.
-- **Python script or Jupyter Notebook** implementing simulations.
-- **Graphical analysis** including:
-  - Time series plots of \( \theta(t) \) for different parameters,
-  - Phase portraits showing trajectories in \( (\theta, \dot{\theta}) \) space,
-  - Bifurcation diagrams illustrating parameter sensitivity,
-  - Poincaré sections to reveal chaotic behavior,
-  - Lyapunov exponent plots to determine chaotic thresholds.
-- **Discussion** of model limitations and potential extensions, such as nonlinear damping, non-periodic driving forces, and coupling with other oscillators to study synchronization phenomena.
-- **Comparison with experimental data**, where feasible, to validate computational findings.
-- **Implementation of an adaptive numerical solver**, allowing efficient simulation of stiff differential equations and chaotic trajectories.
+
+Python Implementation
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Parameters
+beta = 0.5  # Damping coefficient
+omega_0 = 1.5  # Natural frequency
+A = 1.2  # Amplitude of external force
+omega = 0.8  # Driving frequency
+
+def forced_damped_pendulum(t, y, beta, omega_0, A, omega):
+    theta, omega_t = y
+    dtheta_dt = omega_t
+    domega_dt = -beta * omega_t - omega_0**2 * np.sin(theta) + A * np.cos(omega * t)
+    return [dtheta_dt, domega_dt]
+
+# Initial conditions
+theta_0 = 0.2
+omega_0_init = 0.0
+
+# Time span
+t_span = (0, 50)
+t_eval = np.linspace(*t_span, 1000)
+
+# Solve ODE
+sol = solve_ivp(forced_damped_pendulum, t_span, [theta_0, omega_0_init], t_eval=t_eval, args=(beta, omega_0, A, omega))
+
+# Extract results
+theta_vals = sol.y[0]
+omega_vals = sol.y[1]
+time_vals = sol.t
+
+# Plot time series
+plt.figure(figsize=(10, 5))
+plt.plot(time_vals, theta_vals, label=r'$\theta(t)$', color='b')
+plt.xlabel('Time (s)')
+plt.ylabel('Angle (radians)')
+plt.title('Time Series of Forced Damped Pendulum')
+plt.legend()
+plt.grid()
+plt.show()
+
+# Phase Space Diagram
+plt.figure(figsize=(6, 6))
+plt.plot(theta_vals, omega_vals, label=r'Phase Space: $\dot{\theta}$ vs $\theta$', color='r')
+plt.xlabel('Angle (radians)')
+plt.ylabel('Angular Velocity (rad/s)')
+plt.title('Phase Space Diagram of Forced Damped Pendulum')
+plt.legend()
+plt.grid()
+plt.show()
+```
+![alt text](image-3.png)
+
+Overview
+This graph shows the angular displacement 𝜃(𝑡)θ(t) of a forced damped pendulum over time. It highlights how the system transitions from an initial transient state to a steady oscillatory motion under external forcing.
+
+Key Observations
+**Initial Transient Phase (0 - 10 s)**
+
+- Oscillations are irregular due to damping effects.
+
+- Amplitude gradually stabilizes as the system adjusts.
+
+**Steady-State Motion**
+
+- After the transient phase, periodic oscillations emerge.
+
+- The system reaches an equilibrium where energy input from the external force balances damping losses.
+
+**Amplitude and Resonance**
+
+- The amplitude remains nearly constant, indicating no resonance.
+
+- If the driving frequency 𝜔ω were close to the natural frequency 𝜔0ω0, oscillations would grow due to resonance.
+
+- Different parameter values could lead to chaotic motion.
+
+**Conclusion**
+
+The system reaches a stable oscillatory regime after an initial transient phase. Further analysis of phase space and bifurcations can reveal potential chaotic behavior.
+
+Markdown Document
+
+Containing theoretical explanations and equations.
+
+
 
 ---
 
