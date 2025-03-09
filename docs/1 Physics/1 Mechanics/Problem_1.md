@@ -12,13 +12,13 @@ To analyze projectile motion, we start with Newton's equations of motion. The mo
 
 ### Governing Equations:
 - **Horizontal Motion:**
-  \[ x = v_0 \cos(\theta) t \]
+  \( x = v_0 \cos(\theta) t \)
 - **Vertical Motion:**
-  \[ y = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \]
+  \( y = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \)
 - **Time of Flight:**
-  \[ t_f = \frac{2 v_0 \sin(\theta)}{g} \]
+  \( t_f = \frac{2 v_0 \sin(\theta)}{g} \)
 - **Range:**
-  \[ R = \frac{v_0^2 \sin(2\theta)}{g} \]
+  \( R = \frac{v_0^2 \sin(2\theta)}{g} \)
 
 ### Derivation of Time of Flight
 The time of flight is determined by solving for the time when the projectile returns to the ground \( y = 0 \):
