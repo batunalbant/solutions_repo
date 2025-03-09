@@ -25,25 +25,25 @@ To analyze projectile motion, we start with Newton's equations of motion. The mo
 
 ### Derivation of Time of Flight
 
-The time of flight is determined by solving for the time when the projectile returns to the ground \(y = 0\):
+**The time of flight is determined by solving for the time when the projectile returns to the ground \(y = 0\):**
 
 $$
 0 = v_0 \sin(\theta) t - \frac{1}{2} g t^2
 $$
 
-Factorizing:
+**Factorizing:**
 
 $$
  t \left( v_0 \sin(\theta) - \frac{1}{2} g t \right) = 0
 $$
 
-Solving for \(t\):
+**Solving for \(t\):**
 
 $$
  t = 0 \quad \text{or} \quad t = \frac{2 v_0 \sin(\theta)}{g}
 $$
 
-The non-trivial solution is taken as the total time of flight.
+**The non-trivial solution is taken as the total time of flight.**
 
 ### Derivation of Range
 
