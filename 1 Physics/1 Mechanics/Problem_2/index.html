@@ -313,32 +313,10 @@ $$</p>
 </li>
 <li>where <span class="arithmatex">\( f(x, \dot{x}) \)</span> represents nonlinear feedback mechanisms. in biological systems.</li>
 </ul>
-<h4 id="4-implementation">4. Implementation</h4>
-<ul>
-<li>
-<p>Develop a computational model to simulate the motion of a forced damped pendulum.</p>
-</li>
-<li>
-<p>Visualize different dynamical regimes under varying damping and forcing conditions.</p>
-</li>
-<li>
-<p>Generate phase diagrams and Poincaré sections to illustrate chaotic transitions.</p>
-</li>
-<li>
-<p>Implement an interactive tool that allows users to manipulate parameters in real-time and observe system behavior.</p>
-</li>
-<li>
-<p>Use <strong>Fourier analysis</strong> to decompose motion into frequency components, identifying dominant frequencies in the response.</p>
-</li>
-<li>
-<p>Construct <strong>bifurcation diagrams</strong> showing how qualitative system behavior changes with driving force parameters.</p>
-</li>
-</ul>
 <hr/>
 <h3 id="implementation">Implementation</h3>
-<p><strong>Python Implementation</strong></p>
 <details>
-<summary>Phyton Code of this two Graphics</summary>
+<summary>A Markdown document with Python script or notebook implementing the simulations.</summary>
 <pre><code class="language-python">
 import numpy as np
 import matplotlib.pyplot as plt
@@ -395,9 +373,10 @@ plt.show()
 </code></pre>
 </details>
 <p><img alt="alt text" src="../image-3.png"/></p>
-<p>Overview
-This graph shows the angular displacement <span class="arithmatex">\( \theta \)</span>(𝑡) of a forced damped pendulum over time. It highlights how the system transitions from an initial transient state to a steady oscillatory motion under external forcing.</p>
-<p>Key Observations</p>
+<p><strong>Overview</strong></p>
+<p>This graph shows the angular displacement <span class="arithmatex">\( \theta \)</span>(𝑡) of a forced damped pendulum over time. It highlights how the system transitions from an initial transient state to a steady oscillatory motion under external forcing.</p>
+<hr/>
+<p><strong>Key Observations</strong></p>
 <p><strong>Initial Transient Phase (0 - 10 s)</strong></p>
 <ul>
 <li>
@@ -428,13 +407,15 @@ This graph shows the angular displacement <span class="arithmatex">\( \theta \)<
 <p>Different parameter values could lead to chaotic motion.</p>
 </li>
 </ul>
+<hr/>
 <p><strong>Conclusion</strong></p>
 <p>The system reaches a stable oscillatory regime after an initial transient phase. Further analysis of phase space and bifurcations can reveal potential chaotic behavior.</p>
 <hr/>
 <p><img alt="alt text" src="../image-4.png"/></p>
 <p><strong>Overview</strong></p>
 <p>This graph represents the phase space trajectory of the forced damped pendulum, plotting angular velocity <span class="arithmatex">\( \dot{\theta} \)</span> against angular displacement <span class="arithmatex">\( \theta \)</span>. It visualizes the system’s evolution in state space, revealing patterns of stability and energy dissipation.</p>
-<p>Key Observations</p>
+<hr/>
+<p><strong>Key Observations</strong></p>
 <p><strong>Initial Transient Motion</strong></p>
 <ul>
 <li>The trajectory starts spiraling inward, indicating energy dissipation due to damping.</li>
@@ -450,10 +431,11 @@ This graph shows the angular displacement <span class="arithmatex">\( \theta \)<
 <li>If the trajectory were more irregular and scattered, it could suggest chaotic motion.</li>
 <li>The smooth and repeating pattern here indicates periodic oscillations rather than chaos.</li>
 </ul>
+<hr/>
 <p><strong>Conclusion</strong></p>
 <p>This phase space diagram shows that the forced damped pendulum stabilizes into a periodic oscillatory regime after initial transients. Further analysis with Poincaré sections or Lyapunov exponents could determine if chaotic behavior emerges under different conditions.</p>
 <details>
-<summary>Phyton Code of this two Graphics</summary>
+<summary>A detailed explanation of the general solutions for the forced damped pendulum.</summary>
 <pre><code class="language-python">#  Import required libraries
 import numpy as np
 import matplotlib.pyplot as plt
@@ -506,7 +488,7 @@ plt.show()
 <p><img alt="alt text" src="../image-5.png"/></p>
 <p>This figure illustrates the time evolution of the <strong>forced damped pendulum</strong> under different <strong>damping coefficients <span class="arithmatex">\( \beta \)</span></strong> and <strong>forcing amplitudes (<span class="arithmatex">\( A \)</span>)</strong>. Each subplot represents a different combination of these parameters, showing how the system behaves under various conditions.</p>
 <hr/>
-<h3 id="key-observations"><strong>Key Observations</strong></h3>
+<p><strong>Key Observations</strong></p>
 <ol>
 <li>
 <p><strong>Top Row ( <span class="arithmatex">\( \beta \)</span> = 0.2): Low Damping</strong></p>
@@ -545,6 +527,7 @@ plt.show()
 </ul>
 </li>
 </ol>
+<hr/>
 <p><strong>Conclusion</strong></p>
 <ul>
 <li>
@@ -558,10 +541,10 @@ plt.show()
 </li>
 </ul>
 <details>
-<summary>Phyton Code of this two Graphics</summary>
+<summary>Graphical representations of the motion for different damping coefficients, driving amplitudes, and driving frequencies, including resonance and chaotic behavior.</summary>
 <pre><code class="language-python">
 
-# 📌 Different damping, forcing amplitude, and frequency cases visualization
+# Different damping, forcing amplitude, and frequency cases visualization
 
 # Define new parameter sets
 omega_values = [0.8, 1.5, 2.5]  # Low, natural, and high driving frequencies
@@ -597,7 +580,7 @@ plt.show()
 <h3 id="overview"><strong>Overview</strong></h3>
 <p>This figure represents the <strong>motion of a forced damped pendulum</strong> under different <strong>damping coefficients (<span class="arithmatex">\(\beta\)</span>)</strong> and <strong>driving frequencies (<span class="arithmatex">\(\omega\)</span>)</strong>, while keeping the forcing amplitude (<span class="arithmatex">\(A\)</span>) constant at a moderate value. Each subplot illustrates how the pendulum’s angular displacement evolves over time under these conditions.</p>
 <hr/>
-<h3 id="key-observations_1"><strong>Key Observations</strong></h3>
+<p><strong>Key Observations</strong></p>
 <p><strong>1. Top Row (<span class="arithmatex">\(\beta = 0.2\)</span>): Low Damping</strong></p>
 <ul>
 <li>
@@ -647,7 +630,7 @@ plt.show()
 </li>
 </ul>
 <details>
-<summary>Phyton Code of this two Graphics</summary>
+<summary>A discussion on the limitations of the model and potential extensions, such as introducing nonlinear damping or non-periodic driving forces.</summary>
 <pre><code class="language-python">
 #  Visualization of Model Limitations and Extensions
 # This plot will compare different extensions like nonlinear damping, stochastic forcing, and coupled oscillations
@@ -701,7 +684,7 @@ plt.show()
 <h3 id="overview_1"><strong>Overview</strong></h3>
 <p>This figure compares the <strong>standard forced damped pendulum model</strong> with an <strong>extended model</strong> that includes <strong>nonlinear damping effects</strong> across different <strong>driving frequencies (<span class="arithmatex">\(\omega\)</span>)</strong>. The plots display angular displacement over time under these two conditions.</p>
 <hr/>
-<h3 id="key-observations_2"><strong>Key Observations</strong></h3>
+<p><strong>Key Observations</strong></p>
 <p><strong>1. Left Plot (<span class="arithmatex">\(\omega = 0.8\)</span>): Low Driving Frequency</strong> </p>
 <ul>
 <li>
@@ -742,7 +725,7 @@ plt.show()
 </ul>
 <hr/>
 <details>
-<summary>Phyton Code of this two Graphics</summary>
+<summary>Phase portraits, Poincaré sections, and bifurcation diagrams to analyze transitions to complex dynamics.</summary>
 <pre><code class="language-python">
 #  Phase Portrait, Poincaré Section, and Bifurcation Diagram
 
@@ -779,7 +762,7 @@ plt.show()
 <h3 id="overview_2"><strong>Overview</strong></h3>
 <p>This <strong>phase portrait</strong> represents the <strong>state space</strong> of the <strong>forced damped pendulum</strong>, plotting <strong>angular velocity (<span class="arithmatex">\(\dot{\theta}\)</span>)</strong> against <strong>angular displacement (<span class="arithmatex">\(\theta\)</span>)</strong>. It provides insight into the system’s stability, periodicity, and long-term behavior.</p>
 <hr/>
-<h3 id="key-observations_3"><strong>Key Observations</strong></h3>
+<p><strong>Key Observations</strong></p>
 <p><strong>1. Spiral Inward Pattern</strong> </p>
 <ul>
 <li>
