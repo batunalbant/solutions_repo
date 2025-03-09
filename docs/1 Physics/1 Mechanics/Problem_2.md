@@ -128,6 +128,7 @@ Overview
 This graph shows the angular displacement \( \theta \)(𝑡) of a forced damped pendulum over time. It highlights how the system transitions from an initial transient state to a steady oscillatory motion under external forcing.
 
 Key Observations
+
 **Initial Transient Phase (0 - 10 s)**
 
 - Oscillations are irregular due to damping effects.
@@ -157,24 +158,30 @@ The system reaches a stable oscillatory regime after an initial transient phase.
 
 **Overview**
 
-This graph represents the phase space trajectory of the forced damped pendulum, plotting angular velocity 𝜃˙θ˙
-  against angular displacement 𝜃θ. It visualizes the system’s evolution in state space, revealing patterns of stability and energy dissipation.
+This graph represents the phase space trajectory of the forced damped pendulum, plotting angular velocity \( \dot{\theta} \) against angular displacement \( \theta \). It visualizes the system’s evolution in state space, revealing patterns of stability and energy dissipation.
 
 Key Observations
-Initial Transient Motion
 
-The trajectory starts spiraling inward, indicating energy dissipation due to damping.
-The system gradually loses excess energy and settles into a stable state.
-Steady-State Behavior
+**Initial Transient Motion**
 
-The formation of closed loops suggests the system has reached a limit cycle, meaning it oscillates periodically.
-The size and shape of loops indicate how external forcing influences oscillatory motion.
-Indicators of Stability or Chaos
+- The trajectory starts spiraling inward, indicating energy dissipation due to damping.
+- The system gradually loses excess energy and settles into a stable state.
 
-If the trajectory were more irregular and scattered, it could suggest chaotic motion.
-The smooth and repeating pattern here indicates periodic oscillations rather than chaos.
-Conclusion
+**Steady-State Behavior**
+
+- The formation of closed loops suggests the system has reached a limit cycle, meaning it oscillates periodically.
+- The size and shape of loops indicate how external forcing influences oscillatory motion.
+
+**Indicators of Stability or Chaos**
+
+- If the trajectory were more irregular and scattered, it could suggest chaotic motion.
+- The smooth and repeating pattern here indicates periodic oscillations rather than chaos.
+
+**Conclusion**
+
 This phase space diagram shows that the forced damped pendulum stabilizes into a periodic oscillatory regime after initial transients. Further analysis with Poincaré sections or Lyapunov exponents could determine if chaotic behavior emerges under different conditions.
+
+---
 
 Markdown Document
 
