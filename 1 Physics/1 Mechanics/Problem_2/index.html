@@ -337,9 +337,9 @@ $$</p>
 <hr/>
 <h3 id="implementation">Implementation</h3>
 <p><strong>Python Implementation</strong></p>
-<pre><code class="language-python">&lt;details&gt;
-  &lt;summary&gt;📌 Click to expand/collapse the Python simulation code&lt;/summary&gt;
-
+<details>
+<summary>📌 Click to expand/collapse the Python simulation code</summary>
+<pre><code class="language-python">
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
@@ -392,79 +392,92 @@ plt.legend()
 plt.grid()
 plt.show()
 </code></pre>
-<p><img alt="alt text" src="../image-3.png"/></p>
-<p>Overview
-This graph shows the angular displacement <span class="arithmatex">\( \theta \)</span>(𝑡) of a forced damped pendulum over time. It highlights how the system transitions from an initial transient state to a steady oscillatory motion under external forcing.</p>
-<p>Key Observations</p>
-<p><strong>Initial Transient Phase (0 - 10 s)</strong></p>
-<ul>
-<li>
-<p>Oscillations are irregular due to damping effects.</p>
-</li>
-<li>
-<p>Amplitude gradually stabilizes as the system adjusts.</p>
-</li>
-</ul>
-<p><strong>Steady-State Motion</strong></p>
-<ul>
-<li>
-<p>After the transient phase, periodic oscillations emerge.</p>
-</li>
-<li>
-<p>The system reaches an equilibrium where energy input from the external force balances damping losses.</p>
-</li>
-</ul>
-<p><strong>Amplitude and Resonance</strong></p>
-<ul>
-<li>
-<p>The amplitude remains nearly constant, indicating no resonance.</p>
-</li>
-<li>
-<p>If the driving frequency <strong>ω</strong> were close to the natural frequency <strong>ω₀</strong>, oscillations would grow due to resonance.</p>
-</li>
-<li>
-<p>Different parameter values could lead to chaotic motion.</p>
-</li>
-</ul>
-<p><strong>Conclusion</strong></p>
-<p>The system reaches a stable oscillatory regime after an initial transient phase. Further analysis of phase space and bifurcations can reveal potential chaotic behavior.</p>
-<hr/>
-<p><img alt="alt text" src="../image-4.png"/></p>
-<p><strong>Overview</strong></p>
-<p>This graph represents the phase space trajectory of the forced damped pendulum, plotting angular velocity <span class="arithmatex">\( \dot{\theta} \)</span> against angular displacement <span class="arithmatex">\( \theta \)</span>. It visualizes the system’s evolution in state space, revealing patterns of stability and energy dissipation.</p>
-<p>Key Observations</p>
-<p><strong>Initial Transient Motion</strong></p>
-<ul>
-<li>The trajectory starts spiraling inward, indicating energy dissipation due to damping.</li>
-<li>The system gradually loses excess energy and settles into a stable state.</li>
-</ul>
-<p><strong>Steady-State Behavior</strong></p>
-<ul>
-<li>The formation of closed loops suggests the system has reached a limit cycle, meaning it oscillates periodically.</li>
-<li>The size and shape of loops indicate how external forcing influences oscillatory motion.</li>
-</ul>
-<p><strong>Indicators of Stability or Chaos</strong></p>
-<ul>
-<li>If the trajectory were more irregular and scattered, it could suggest chaotic motion.</li>
-<li>The smooth and repeating pattern here indicates periodic oscillations rather than chaos.</li>
-</ul>
-<p><strong>Conclusion</strong></p>
-<p>This phase space diagram shows that the forced damped pendulum stabilizes into a periodic oscillatory regime after initial transients. Further analysis with Poincaré sections or Lyapunov exponents could determine if chaotic behavior emerges under different conditions.</p>
-<hr/>
-<hr/>
-<p>Markdown Document</p>
-<p>Containing theoretical explanations and equations.</p>
-<hr/>
-<h3 id="next-steps">Next Steps</h3>
-<ul>
-<li>Implement numerical integration (e.g., Runge-Kutta method) to solve the differential equation.</li>
-<li>Explore stability and sensitivity of the system to initial conditions.</li>
-<li>Compare theoretical predictions with computational results.</li>
-<li>Extend analysis to <strong>coupled pendulum systems</strong> to investigate synchronization effects and mode locking.</li>
-<li>Investigate <strong>stochastic driving forces</strong>, modeling external noise influences to simulate real-world uncertainties.</li>
-</ul>
-<p>By expanding upon these analyses and computational techniques, this study will provide a comprehensive understanding of the forced damped pendulum, paving the way for deeper insights into nonlinear oscillatory systems.</p>
-</div>
+
+
+![alt text](image-3.png)
+
+
+Overview
+This graph shows the angular displacement \( \theta \)(𝑡) of a forced damped pendulum over time. It highlights how the system transitions from an initial transient state to a steady oscillatory motion under external forcing.
+
+Key Observations
+
+**Initial Transient Phase (0 - 10 s)**
+
+- Oscillations are irregular due to damping effects.
+
+- Amplitude gradually stabilizes as the system adjusts.
+
+**Steady-State Motion**
+
+- After the transient phase, periodic oscillations emerge.
+
+- The system reaches an equilibrium where energy input from the external force balances damping losses.
+
+**Amplitude and Resonance**
+
+- The amplitude remains nearly constant, indicating no resonance.
+
+- If the driving frequency **ω** were close to the natural frequency **ω₀**, oscillations would grow due to resonance.
+
+- Different parameter values could lead to chaotic motion.
+
+**Conclusion**
+
+The system reaches a stable oscillatory regime after an initial transient phase. Further analysis of phase space and bifurcations can reveal potential chaotic behavior.
+
+---
+![alt text](image-4.png)
+
+**Overview**
+
+This graph represents the phase space trajectory of the forced damped pendulum, plotting angular velocity \( \dot{\theta} \) against angular displacement \( \theta \). It visualizes the system’s evolution in state space, revealing patterns of stability and energy dissipation.
+
+Key Observations
+
+**Initial Transient Motion**
+
+- The trajectory starts spiraling inward, indicating energy dissipation due to damping.
+- The system gradually loses excess energy and settles into a stable state.
+
+**Steady-State Behavior**
+
+- The formation of closed loops suggests the system has reached a limit cycle, meaning it oscillates periodically.
+- The size and shape of loops indicate how external forcing influences oscillatory motion.
+
+**Indicators of Stability or Chaos**
+
+- If the trajectory were more irregular and scattered, it could suggest chaotic motion.
+- The smooth and repeating pattern here indicates periodic oscillations rather than chaos.
+
+**Conclusion**
+
+This phase space diagram shows that the forced damped pendulum stabilizes into a periodic oscillatory regime after initial transients. Further analysis with Poincaré sections or Lyapunov exponents could determine if chaotic behavior emerges under different conditions.
+
+---
+
+
+
+---
+
+Markdown Document
+
+Containing theoretical explanations and equations.
+
+
+
+---
+
+### Next Steps
+- Implement numerical integration (e.g., Runge-Kutta method) to solve the differential equation.
+- Explore stability and sensitivity of the system to initial conditions.
+- Compare theoretical predictions with computational results.
+- Extend analysis to **coupled pendulum systems** to investigate synchronization effects and mode locking.
+- Investigate **stochastic driving forces**, modeling external noise influences to simulate real-world uncertainties.
+
+By expanding upon these analyses and computational techniques, this study will provide a comprehensive understanding of the forced damped pendulum, paving the way for deeper insights into nonlinear oscillatory systems.
+              
+            </details></div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
 <a class="btn btn-neutral float-left" href="../Problem_1/" title="Problem 1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
