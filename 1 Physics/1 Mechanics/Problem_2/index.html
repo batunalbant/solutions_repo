@@ -172,6 +172,89 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
+<h1 id="investigating-the-dynamics-of-a-forced-damped-pendulum">Investigating the Dynamics of a Forced Damped Pendulum</h1>
+<h3 id="introduction">Introduction</h3>
+<p>The forced damped pendulum is a crucial example of a nonlinear oscillatory system exhibiting a wide range of dynamical behaviors, from periodic motion to chaos. By incorporating damping and an external periodic force, this system serves as an excellent testbed for understanding resonance, energy transfer, and chaotic dynamics. In this study, we analyze the system both theoretically and computationally to uncover its key properties.</p>
+<h3 id="motivation">Motivation</h3>
+<p>Oscillatory systems appear in numerous scientific and engineering domains, including physics, engineering, and biology. The forced damped pendulum is a particularly rich system due to its sensitivity to initial conditions and external forcing parameters. Understanding this behavior is vital for applications such as vibration control, energy harvesting, and structural stability.</p>
+<p>When an external periodic force is introduced, new parameters such as amplitude and frequency significantly affect the system’s behavior. By adjusting these parameters, different dynamical responses emerge, ranging from synchronized oscillations to chaotic motion. </p>
+<hr/>
+<h3 id="task">Task</h3>
+<h4 id="1-theoretical-foundation">1. Theoretical Foundation</h4>
+<ul>
+<li>Begin with the governing differential equation of the forced damped pendulum:
+  [ \ddot{\theta} + \beta \dot{\theta} + \omega_0^2 \sin(\theta) = A \cos(\omega t) ]
+  where:</li>
+<li><span class="arithmatex">\( \theta \)</span> is the angular displacement,</li>
+<li><span class="arithmatex">\( \beta \)</span> is the damping coefficient,</li>
+<li><span class="arithmatex">\( \omega_0 \)</span> is the natural frequency,</li>
+<li><span class="arithmatex">\( A \)</span> is the amplitude of the driving force,</li>
+<li><span class="arithmatex">\( \omega \)</span> is the driving frequency.</li>
+<li>For small-angle approximations, use <span class="arithmatex">\( \sin(\theta) \approx \theta \)</span>, reducing the equation to:
+  [ \ddot{\theta} + \beta \dot{\theta} + \omega_0^2 \theta = A \cos(\omega t) ]
+  which resembles a driven damped harmonic oscillator.</li>
+<li>The general solution of the homogeneous equation:
+  [ \theta_h(t) = C_1 e^{-\beta t} \cos(\omega_0 t) + C_2 e^{-\beta t} \sin(\omega_0 t) ]
+  where <span class="arithmatex">\( C_1 \)</span> and <span class="arithmatex">\( C_2 \)</span> are constants determined by initial conditions.</li>
+<li>The steady-state solution can be found using the method of undetermined coefficients:
+  [ \theta_p(t) = \frac{A}{\sqrt{(\omega_0^2 - \omega^2)^2 + (2\beta\omega)^2}} \cos(\omega t - \delta) ]
+  where <span class="arithmatex">\( \delta \)</span> is the phase lag given by:
+  [ \tan(\delta) = \frac{2 \beta \omega}{\omega_0^2 - \omega^2} ]</li>
+<li>Analyze resonance conditions and their impact on the system's energy, where resonance occurs at:
+  [ \omega_{res} = \sqrt{\omega_0^2 - 2\beta^2} ]</li>
+<li>Investigate stability criteria and <strong>fixed points</strong>, evaluating equilibrium solutions and their stability through <strong>linear stability analysis</strong> by examining the Jacobian matrix.</li>
+</ul>
+<h4 id="2-analysis-of-dynamics">2. Analysis of Dynamics</h4>
+<ul>
+<li>Study the influence of the damping coefficient, driving amplitude, and driving frequency on the system’s motion.</li>
+<li>Examine the transition from regular to chaotic motion by varying control parameters.</li>
+<li>Interpret phase portraits and bifurcation diagrams to visualize stability changes.</li>
+<li>Investigate <strong>Poincaré sections</strong> to identify periodic orbits and chaotic attractors in phase space.</li>
+<li>Implement <strong>Lyapunov exponents</strong> to quantify chaos in the system and determine sensitive dependence on initial conditions.</li>
+</ul>
+<h4 id="3-practical-applications">3. Practical Applications</h4>
+<ul>
+<li>Discuss real-world applications, such as:</li>
+<li><strong>Energy harvesting devices</strong>, where controlled resonance conditions can be used to generate electrical power from oscillatory motion.</li>
+<li><strong>Suspension bridges affected by periodic forces</strong>, leading to resonance-induced structural failures (e.g., Tacoma Narrows Bridge disaster).</li>
+<li><strong>Electrical circuits modeled by forced oscillators</strong>, where an analogy between mechanical and electrical systems allows for the study of resonance in LC circuits.</li>
+<li><strong>Planetary motion perturbations</strong>, where external gravitational forces act similarly to periodic forcing, leading to complex orbital behaviors.</li>
+<li><strong>Biological oscillations</strong>, such as heart rhythms and circadian cycles, which are governed by driven oscillatory behavior.</li>
+</ul>
+<h4 id="4-implementation">4. Implementation</h4>
+<ul>
+<li>Develop a computational model to simulate the motion of a forced damped pendulum.</li>
+<li>Visualize different dynamical regimes under varying damping and forcing conditions.</li>
+<li>Generate phase diagrams and Poincaré sections to illustrate chaotic transitions.</li>
+<li>Implement an interactive tool that allows users to manipulate parameters in real-time and observe system behavior.</li>
+<li>Use <strong>Fourier analysis</strong> to decompose motion into frequency components, identifying dominant frequencies in the response.</li>
+<li>Construct <strong>bifurcation diagrams</strong> showing how qualitative system behavior changes with driving force parameters.</li>
+</ul>
+<hr/>
+<h3 id="deliverables">Deliverables</h3>
+<ul>
+<li><strong>Markdown document</strong> containing theoretical explanations and equations.</li>
+<li><strong>Python script or Jupyter Notebook</strong> implementing simulations.</li>
+<li><strong>Graphical analysis</strong> including:</li>
+<li>Time series plots of <span class="arithmatex">\( \theta(t) \)</span> for different parameters,</li>
+<li>Phase portraits showing trajectories in <span class="arithmatex">\( (\theta, \dot{\theta}) \)</span> space,</li>
+<li>Bifurcation diagrams illustrating parameter sensitivity,</li>
+<li>Poincaré sections to reveal chaotic behavior,</li>
+<li>Lyapunov exponent plots to determine chaotic thresholds.</li>
+<li><strong>Discussion</strong> of model limitations and potential extensions, such as nonlinear damping, non-periodic driving forces, and coupling with other oscillators to study synchronization phenomena.</li>
+<li><strong>Comparison with experimental data</strong>, where feasible, to validate computational findings.</li>
+<li><strong>Implementation of an adaptive numerical solver</strong>, allowing efficient simulation of stiff differential equations and chaotic trajectories.</li>
+</ul>
+<hr/>
+<h3 id="next-steps">Next Steps</h3>
+<ul>
+<li>Implement numerical integration (e.g., Runge-Kutta method) to solve the differential equation.</li>
+<li>Explore stability and sensitivity of the system to initial conditions.</li>
+<li>Compare theoretical predictions with computational results.</li>
+<li>Extend analysis to <strong>coupled pendulum systems</strong> to investigate synchronization effects and mode locking.</li>
+<li>Investigate <strong>stochastic driving forces</strong>, modeling external noise influences to simulate real-world uncertainties.</li>
+</ul>
+<p>By expanding upon these analyses and computational techniques, this study will provide a comprehensive understanding of the forced damped pendulum, paving the way for deeper insights into nonlinear oscillatory systems.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
