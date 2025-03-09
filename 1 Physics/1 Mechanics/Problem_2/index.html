@@ -191,22 +191,28 @@
   - <span class="arithmatex">\( \omega_0 \)</span> is the natural frequency,
   - <span class="arithmatex">\( A \)</span> is the amplitude of the driving force,
   - <span class="arithmatex">\( \omega \)</span> is the driving frequency.
-- For small-angle approximations, use <span class="arithmatex">\( \sin(\theta) \approx \theta \)</span>, reducing the equation to:</p>
-<p><span class="arithmatex">\( \ddot{\theta} + \beta \dot{\theta} + \omega_0^2 \theta = A \cos(\omega t) \)</span>
+- For small-angle approximations, use <span class="arithmatex">\( \sin(\theta) \approx \theta \)</span>, reducing the equation to:
+  <span class="arithmatex">\( \ddot{\theta} + \beta \dot{\theta} + \omega_0^2 \theta = A \cos(\omega t) \)</span>
   which resembles a driven damped harmonic oscillator.</p>
 <ul>
-<li>The general solution of the homogeneous equation:</li>
-</ul>
-<p><span class="arithmatex">\( \theta_h(t) = C_1 e^{-\beta t} \cos(\omega_0 t) + C_2 e^{-\beta t} \sin(\omega_0 t) \)</span></p>
-<p>where <span class="arithmatex">\( C_1 \)</span> and <span class="arithmatex">\( C_2 \)</span> are constants determined by initial conditions.</p>
-<ul>
-<li>The steady-state solution can be found using the method of undetermined coefficients:
+<li>
+<p>The general solution of the homogeneous equation:
+  <span class="arithmatex">\( \theta_h(t) = C_1 e^{-\beta t} \cos(\omega_0 t) + C_2 e^{-\beta t} \sin(\omega_0 t) \)</span>
+  where <span class="arithmatex">\( C_1 \)</span> and <span class="arithmatex">\( C_2 \)</span> are constants determined by initial conditions.</p>
+</li>
+<li>
+<p>The steady-state solution can be found using the method of undetermined coefficients:
   <span class="arithmatex">\( \theta_p(t) = \frac{A}{\sqrt{(\omega_0^2 - \omega^2)^2 + (2\beta\omega)^2}} \cos(\omega t - \delta) \)</span>
   where <span class="arithmatex">\( \delta \)</span> is the phase lag given by:
-  <span class="arithmatex">\( \tan(\delta) = \frac{2 \beta \omega}{\omega_0^2 - \omega^2} \)</span></li>
-<li>Analyze resonance conditions and their impact on the system's energy, where resonance occurs at:
-  <span class="arithmatex">\( \omega_{res} = \sqrt{\omega_0^2 - 2\beta^2} \)</span></li>
-<li>Investigate stability criteria and <strong>fixed points</strong>, evaluating equilibrium solutions and their stability through <strong>linear stability analysis</strong> by examining the Jacobian matrix.</li>
+  <span class="arithmatex">\( \tan(\delta) = \frac{2 \beta \omega}{\omega_0^2 - \omega^2} \)</span></p>
+</li>
+<li>
+<p>Analyze resonance conditions and their impact on the system's energy, where resonance occurs at:
+  <span class="arithmatex">\( \omega_{res} = \sqrt{\omega_0^2 - 2\beta^2} \)</span></p>
+</li>
+<li>
+<p>Investigate stability criteria and <strong>fixed points</strong>, evaluating equilibrium solutions and their stability through <strong>linear stability analysis</strong> by examining the Jacobian matrix.</p>
+</li>
 </ul>
 <h4 id="2-analysis-of-dynamics">2. Analysis of Dynamics</h4>
 <ul>
