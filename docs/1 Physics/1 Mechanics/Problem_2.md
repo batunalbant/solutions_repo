@@ -405,25 +405,33 @@ This figure represents the **motion of a forced damped pendulum** under differen
 **1. Top Row (\(\beta = 0.2\)): Low Damping**
 
 - **At low \(\omega = 0.8\)** → The oscillations are large and take longer to settle, as damping is weak.
+
 - **At resonance frequency (\(\omega = 1.5\))** → The amplitude increases significantly, showing a resonance effect.
+
 - **At high \(\omega = 2.5\)** → The oscillations become rapid but maintain periodicity, with smaller amplitudes.
 
 **2. Middle Row (\(\beta = 0.5\)): Moderate Damping**
 
 - **At low \(\omega = 0.8\)** → The system stabilizes faster compared to the top row.
+
 - **At resonance frequency (\(\omega = 1.5\))** → The amplitude still grows, but damping prevents excessive oscillations.
+
 - **At high \(\omega = 2.5\)** → The oscillations are more controlled, with reduced amplitude and higher frequency.
 
 **3. Bottom Row (\(\beta = 1.2\)): High Damping**
 
 - **At low \(\omega = 0.8\)** → The motion is quickly damped out, leading to smaller oscillations.
+
 - **At resonance frequency (\(\omega = 1.5\))** → The resonance effect is suppressed by damping.
+
 - **At high \(\omega = 2.5\)** → The system barely oscillates, showing that strong damping eliminates high-frequency responses.
 
 **Conclusion**
 
 - **Resonance effects** are visible at **\(\omega = 1.5\)**, especially when damping is low.
+
 - **Lower damping (\(\beta = 0.2\)) leads to larger oscillation amplitudes**, while higher damping (\(\beta = 1.2\)) suppresses them.
+
 - **Higher driving frequencies (\(\omega = 2.5\)) lead to rapid oscillations**, but their amplitudes decrease due to damping effects.
 
 
@@ -513,14 +521,89 @@ This figure compares the **standard forced damped pendulum model** with an **ext
 
 **Conclusion**
 - **Resonance effects are clearly visible at \(\omega = 1.5\)**, where oscillation amplitudes increase significantly.  
+
 - **Nonlinear damping reduces oscillation peaks**, demonstrating its role in stabilizing the system.  
+
 - **Higher driving frequencies (\(\omega = 2.5\)) lead to rapid oscillations**, but nonlinear damping helps control amplitude growth.  
 
 
 ---
+<details>
+  <summary>Phyton Code of this two Graphics</summary>
+
+```python
+
+#  Phase Portrait, Poincaré Section, and Bifurcation Diagram
+
+# Define parameters for phase portrait visualization
+beta_phase = 0.5  # Moderate damping
+A_phase = 1.2  # Moderate forcing amplitude
+omega_phase = 1.5  # Resonance frequency
+
+# Solve the differential equation for phase portrait
+sol_phase = solve_ivp(
+    forced_damped_pendulum, t_span, [theta_0, omega_0_init],
+    t_eval=t_eval, args=(beta_phase, omega_0, A_phase, omega_phase)
+)
+
+# Extract results
+theta_vals_phase = sol_phase.y[0]  # Angular displacement (θ)
+omega_vals_phase = sol_phase.y[1]  # Angular velocity (dθ/dt)
+
+#  Plot the Phase Portrait (θ vs dθ/dt)
+plt.figure(figsize=(6, 6))
+plt.plot(theta_vals_phase, omega_vals_phase, color='blue', label=r'Phase Space: $\dot{\theta}$ vs $\theta$')
+plt.xlabel('Angle (radians)')
+plt.ylabel('Angular Velocity (rad/s)')
+plt.title('Phase Portrait of Forced Damped Pendulum')
+plt.legend()
+plt.grid()
+
+#  Display the visualization
+plt.show()
+
+```
+
+</details>
 
 
 
+![alt text](image-8.png)
+
+### **Overview**  
+This **phase portrait** represents the **state space** of the **forced damped pendulum**, plotting **angular velocity (\(\dot{\theta}\))** against **angular displacement (\(\theta\))**. It provides insight into the system’s stability, periodicity, and long-term behavior.
+
+---
+
+### **Key Observations**
+
+**1. Spiral Inward Pattern**  
+
+- The trajectory **spirals inward**, indicating **energy dissipation due to damping**.  
+
+- Over time, the motion settles into a **stable limit cycle**, meaning periodic behavior emerges.
+
+**2. Closed Orbit Formation**  
+
+- After an initial transient phase, the system forms **closed loops**, representing a **stable periodic oscillation**.  
+
+- This suggests that despite the external forcing, the system reaches a steady oscillatory state.
+
+**3. Impact of Forcing and Damping**  
+
+- If the forcing amplitude were **higher**, chaotic motion might emerge, leading to an irregular phase space trajectory.  
+
+- If damping were **stronger**, the system would spiral to a fixed point, indicating complete energy dissipation.
+
+---
+
+**Conclusion**
+
+- The **phase portrait confirms that the system transitions from transient oscillations to a periodic steady-state motion**.  
+
+- The structure of the trajectory suggests that **the motion is stable but sensitive to external forcing conditions**.  
+
+- Further analysis with **Poincaré sections or bifurcation diagrams** can reveal whether the system exhibits chaos under different parameters.  
 
 
 
