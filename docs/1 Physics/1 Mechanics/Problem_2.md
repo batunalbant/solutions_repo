@@ -142,7 +142,8 @@ $$
 
 **Python Implementation**
 <details>
-  <summary>📌 Click to expand/collapse the Python simulation code</summary>
+  <summary>Phyton Code of this two Graphics</summary>
+
 ```python
 
 import numpy as np
@@ -196,8 +197,9 @@ plt.title('Phase Space Diagram of Forced Damped Pendulum')
 plt.legend()
 plt.grid()
 plt.show()
-</details> ```
 
+```
+</details>
 
 ![alt text](image-3.png)
 
@@ -258,6 +260,99 @@ Key Observations
 **Conclusion**
 
 This phase space diagram shows that the forced damped pendulum stabilizes into a periodic oscillatory regime after initial transients. Further analysis with Poincaré sections or Lyapunov exponents could determine if chaotic behavior emerges under different conditions.
+
+<details>
+  <summary>Phyton Code of this two Graphics</summary>
+
+```python
+#  Import required libraries
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+#  Define parameters
+beta_values = [0.2, 0.5, 1.2]  # Low, medium, and high damping coefficients
+A_values = [0.5, 1.2, 2.5]  # Small, medium, and large forcing amplitudes
+omega_0 = 1.5  # Natural frequency
+omega = 0.8  # Forcing frequency
+theta_0 = 0.2  # Initial angle
+omega_0_init = 0.0  # Initial angular velocity
+t_span = (0, 50)  # Simulation duration
+t_eval = np.linspace(*t_span, 1000)  # Time steps
+
+#  Define the differential equation
+def forced_damped_pendulum(t, y, beta, omega_0, A, omega):
+    theta, omega_t = y
+    dtheta_dt = omega_t
+    domega_dt = -beta * omega_t - omega_0**2 * np.sin(theta) + A * np.cos(omega * t)
+    return [dtheta_dt, domega_dt]
+
+#  Create subplots for different damping and forcing conditions
+fig, axes = plt.subplots(len(beta_values), len(A_values), figsize=(12, 10))
+fig.suptitle("Dynamics of Forced Damped Pendulum for Different Damping and Forcing Conditions")
+
+for i, beta in enumerate(beta_values):
+    for j, A in enumerate(A_values):
+        #  Solve the differential equation
+        sol = solve_ivp(forced_damped_pendulum, t_span, [theta_0, omega_0_init], t_eval=t_eval, args=(beta, omega_0, A, omega))
+        
+        #  Extract results
+        theta_vals = sol.y[0]  # Angular displacement (θ)
+        time_vals = sol.t       # Time (t)
+        
+        #  Plot time series (θ vs t)
+        ax = axes[i, j]
+        ax.plot(time_vals, theta_vals, label=f'β={beta}, A={A}', color='orange')
+        ax.set_xlabel('Time (s)')
+        ax.set_ylabel('Angle (radians)')
+        ax.set_title(f'β={beta}, A={A}')
+        ax.legend()
+        ax.grid()
+
+#  Display the visualization
+plt.tight_layout(rect=[0, 0, 1, 0.96])
+plt.show()
+```
+
+</details>
+
+![alt text](image-5.png)
+
+This figure illustrates the time evolution of the **forced damped pendulum** under different **damping coefficients \( \beta \)** and **forcing amplitudes (\( A \))**. Each subplot represents a different combination of these parameters, showing how the system behaves under various conditions.
+
+---
+
+### **Key Observations**
+
+1. **Top Row (\( \beta \)=0.2): Low Damping**
+    
+    - For **small \( A \) (leftmost plot)**, the oscillations are smooth and periodic.
+
+    - As \( A \) increases, the oscillation amplitude increases.
+
+    - At **large \( A \) (rightmost plot)**, chaotic motion begins to emerge.
+
+2. **Middle Row (\( \beta \)=0.5): Moderate Damping**
+    
+    - Small and medium \( A \) values lead to steady periodic motion.
+
+    - For **large \( A \)**, irregularities appear, indicating the onset of chaotic behavior.
+
+3. **Bottom Row (\( \beta \)=1.2): High Damping**
+    
+    - The motion is more constrained due to energy dissipation.
+
+    - Even for **large \( A \)**, the oscillations remain mostly periodic, showing the **suppressive effect of high damping** on chaos.
+
+
+**Conclusion**
+
+- Higher damping (\( \beta \)) leads to more stable oscillations.
+
+- Lower damping with high forcing (\( A \)) results in chaotic motion.
+
+- Moderate damping allows resonance-like behaviors without leading to extreme chaos.
+
 
 ---
 
