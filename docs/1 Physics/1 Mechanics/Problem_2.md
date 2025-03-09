@@ -39,12 +39,15 @@ which resembles a driven damped harmonic oscillator.
 $$
   \theta_h(t) = C_1 e^{-\beta t} \cos(\omega_0 t) + C_2 e^{-\beta t} \sin(\omega_0 t)
  $$ 
+
 **where \( C_1 \) and \( C_2 \) are constants determined by initial conditions.**
 
 
 - The steady-state solution can be found using the method of undetermined coefficients:
-  \( \theta_p(t) = \frac{A}{\sqrt{(\omega_0^2 - \omega^2)^2 + (2\beta\omega)^2}} \cos(\omega t - \delta) \)
-  where \( \delta \) is the phase lag given by:
+$$
+\theta_p(t) = \frac{A}{\sqrt{(\omega_0^2 - \omega^2)^2 + (2\beta\omega)^2}} \cos(\omega t - \delta)
+$$
+ ** where \( \delta \) is the phase lag given by:**
 $$
   \tan(\delta) = \frac{2 \beta \omega}{\omega_0^2 - \omega^2}
 $$  
