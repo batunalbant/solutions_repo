@@ -218,6 +218,11 @@ This phase space diagram shows that the forced damped pendulum stabilizes into a
 
 ---
 
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/batunalbant/solutions_repo/blob/main/forced_pendulum.ipynb)
+
+---
+
 Markdown Document
 
 Containing theoretical explanations and equations.
