@@ -14,7 +14,7 @@ When an external periodic force is introduced, new parameters such as amplitude 
 ### Task
 #### 1. Theoretical Foundation
 - Begin with the governing differential equation of the forced damped pendulum:
-  \[ \ddot{\theta} + \beta \dot{\theta} + \omega_0^2 \sin(\theta) = A \cos(\omega t) \]
+  \( \ddot{\theta} + \beta \dot{\theta} + \omega_0^2 \sin(\theta) = A \cos(\omega t) \)
   where:
   - \( \theta \) is the angular displacement,
   - \( \beta \) is the damping coefficient,
