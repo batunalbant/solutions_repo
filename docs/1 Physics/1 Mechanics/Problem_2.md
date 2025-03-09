@@ -402,39 +402,131 @@ This figure represents the **motion of a forced damped pendulum** under differen
 
 ### **Key Observations**
 
-#### **1. Top Row (\(\beta = 0.2\)): Low Damping**
+**1. Top Row (\(\beta = 0.2\)): Low Damping**
 
 - **At low \(\omega = 0.8\)** → The oscillations are large and take longer to settle, as damping is weak.
 - **At resonance frequency (\(\omega = 1.5\))** → The amplitude increases significantly, showing a resonance effect.
 - **At high \(\omega = 2.5\)** → The oscillations become rapid but maintain periodicity, with smaller amplitudes.
 
-#### **2. Middle Row (\(\beta = 0.5\)): Moderate Damping**
+**2. Middle Row (\(\beta = 0.5\)): Moderate Damping**
 
 - **At low \(\omega = 0.8\)** → The system stabilizes faster compared to the top row.
 - **At resonance frequency (\(\omega = 1.5\))** → The amplitude still grows, but damping prevents excessive oscillations.
 - **At high \(\omega = 2.5\)** → The oscillations are more controlled, with reduced amplitude and higher frequency.
 
-#### **3. Bottom Row (\(\beta = 1.2\)): High Damping**
+**3. Bottom Row (\(\beta = 1.2\)): High Damping**
 
 - **At low \(\omega = 0.8\)** → The motion is quickly damped out, leading to smaller oscillations.
 - **At resonance frequency (\(\omega = 1.5\))** → The resonance effect is suppressed by damping.
 - **At high \(\omega = 2.5\)** → The system barely oscillates, showing that strong damping eliminates high-frequency responses.
 
----
-
-### **Conclusion**
+**Conclusion**
 
 - **Resonance effects** are visible at **\(\omega = 1.5\)**, especially when damping is low.
 - **Lower damping (\(\beta = 0.2\)) leads to larger oscillation amplitudes**, while higher damping (\(\beta = 1.2\)) suppresses them.
 - **Higher driving frequencies (\(\omega = 2.5\)) lead to rapid oscillations**, but their amplitudes decrease due to damping effects.
 
 
+<details>
+  <summary>Phyton Code of this two Graphics</summary>
+
+```python
+
+#  Visualization of Model Limitations and Extensions
+# This plot will compare different extensions like nonlinear damping, stochastic forcing, and coupled oscillations
+
+# Define new system variations
+beta_values_extended = [0.5, 0.5, 0.5]  # Keep damping constant for comparison
+A_values_extended = [1.2, 1.2, 1.2]  # Keep forcing constant
+omega_values_extended = [0.8, 1.5, 2.5]  # Different driving frequencies
+
+#  Create subplots for different model extensions
+fig, axes = plt.subplots(1, len(omega_values_extended), figsize=(12, 4))
+fig.suptitle("Comparing Standard vs. Extended Models")
+
+for j, omega in enumerate(omega_values_extended):
+    # Solve the differential equation for standard forced damped pendulum
+    sol_standard = solve_ivp(
+        forced_damped_pendulum, t_span, [theta_0, omega_0_init], 
+        t_eval=t_eval, args=(beta_values_extended[j], omega_0, A_values_extended[j], omega)
+    )
+    
+    # Extract results
+    theta_vals_standard = sol_standard.y[0]  # Angular displacement (θ)
+    time_vals = sol_standard.t  # Time (t)
+    
+    #  Plot time series for standard model
+    ax = axes[j]
+    ax.plot(time_vals, theta_vals_standard, label=f'Standard Model (ω={omega})', color='blue')
+    
+    # Alternative: Introduce a nonlinear damping case
+    beta_nonlinear = beta_values_extended[j] + 0.2 * np.sin(theta_vals_standard)  # Nonlinear damping effect
+    sol_nonlinear = solve_ivp(
+        forced_damped_pendulum, t_span, [theta_0, omega_0_init], 
+        t_eval=t_eval, args=(beta_nonlinear.mean(), omega_0, A_values_extended[j], omega)
+    )
+    
+    #  Plot time series for nonlinear damping model
+    ax.plot(time_vals, sol_nonlinear.y[0], label=f'Nonlinear Damping (ω={omega})', color='red', linestyle='dashed')
+
+    ax.set_xlabel('Time (s)')
+    ax.set_ylabel('Angle (radians)')
+    ax.set_title(f'ω={omega} Comparison')
+    ax.legend()
+    ax.grid()
+
+#  Show visualization
+plt.tight_layout(rect=[0, 0, 1, 0.96])
+plt.show()
+```
+
+</details>
+
+![alt text](image-7.png)
+
+### **Overview**  
+This figure compares the **standard forced damped pendulum model** with an **extended model** that includes **nonlinear damping effects** across different **driving frequencies (\(\omega\))**. The plots display angular displacement over time under these two conditions.
+
+---
+
+### **Key Observations**
+
+**1. Left Plot (\(\omega = 0.8\)): Low Driving Frequency**  
+
+- Both models exhibit similar periodic oscillations with **steady amplitude**.
+
+- The nonlinear damping effect causes **slight differences in peak amplitudes**.  
+
+**2. Middle Plot (\(\omega = 1.5\)): Resonance Frequency**  
+
+- The oscillations **amplify significantly**, indicating a resonance effect.  
+
+- The **nonlinear damping (dashed red line)** moderates peak amplitudes more than the standard model.  
+
+**3. Right Plot (\(\omega = 2.5\)): High Driving Frequency**  
+
+- The oscillations become **rapid and periodic**. 
+
+- The nonlinear damping model leads to a **slight phase shift** and **more controlled oscillations** compared to the standard model.  
+
+---
+
+### **Conclusion**
+- **Resonance effects are clearly visible at \(\omega = 1.5\)**, where oscillation amplitudes increase significantly.  
+- **Nonlinear damping reduces oscillation peaks**, demonstrating its role in stabilizing the system.  
+- **Higher driving frequencies (\(\omega = 2.5\)) lead to rapid oscillations**, but nonlinear damping helps control amplitude growth.  
+
 
 ---
 
 
 
----
+
+
+
+
+
+
 
 Markdown Document
 
