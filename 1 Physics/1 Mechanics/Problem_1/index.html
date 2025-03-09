@@ -173,89 +173,125 @@
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
 <h1 id="investigating-the-range-as-a-function-of-the-angle-of-projection">Investigating the Range as a Function of the Angle of Projection</h1>
-<h2 id="introduction">Introduction</h2>
-<p>Projectile motion is a fundamental concept in physics, widely applicable in fields ranging from sports to aerospace engineering. While the basic principles may seem straightforward, the mathematical relationships governing the motion provide deep insights into how variables interact. This study aims to analyze how the range of a projectile depends on its angle of projection and explore the theoretical and computational models associated with it.</p>
+<p><strong>Investigating the Range as a Function of the Angle of Projection</strong></p>
+<h3 id="introduction">Introduction</h3>
+<p>Projectile motion is one of the most fundamental topics in classical mechanics, offering insights into the interplay between forces, motion, and trajectory prediction. The study of how the range of a projectile varies with its launch angle is crucial in both theoretical physics and practical applications. Whether analyzing the optimal angle for a long jump, the flight of a basketball shot, or the trajectory of artillery, understanding projectile motion provides a strong foundation for problem-solving in dynamics.</p>
+<h3 id="motivation">Motivation</h3>
+<p>The motion of a projectile follows a parabolic path, governed by Newton’s laws of motion and the equations of kinematics. While the problem seems straightforward—determine how the range depends on the launch angle—it encompasses a rich mathematical structure. The trajectory is influenced by several key parameters: initial velocity, gravitational acceleration, and launch height, each of which can significantly alter the resulting motion.</p>
+<p>By systematically varying the launch angle and analyzing the corresponding range, we can identify patterns that lead to deeper insights into the underlying physics. This study not only highlights the interplay of linear and quadratic relationships in motion equations but also offers practical implications in engineering, sports science, and aerodynamics.</p>
+<p>Understanding the dependencies in projectile motion enables precise predictions and optimizations, making it a cornerstone of both academic inquiry and technological advancements.</p>
 <hr/>
-<h2 id="motivation">Motivation</h2>
-<p>Projectile motion, while seemingly simple, provides a rich framework for exploring fundamental principles of physics. This problem requires analyzing how the range of a projectile depends on its angle of projection. The governing equations involve both linear and quadratic relationships, offering a blend of accessibility and depth.</p>
-<p>Several free parameters, such as initial velocity, gravitational acceleration, and launch height, influence the trajectory. These variations allow us to explore real-world applications, from sports to rocket science.</p>
-<hr/>
-<h2 id="theoretical-foundation">Theoretical Foundation</h2>
-<p>To analyze projectile motion, we start with Newton's equations of motion. The motion occurs in two independent components: horizontal and vertical.</p>
-<h3 id="governing-equations">Governing Equations:</h3>
-<ul>
-<li><strong>Horizontal Motion:</strong>
-<span class="arithmatex">\(x = v_0 \cos(\theta) t\)</span></li>
-<li><strong>Vertical Motion:</strong>
-<span class="arithmatex">\(y = v_0 \sin(\theta) t - \frac{1}{2} g t^2\)</span></li>
-<li><strong>Time of Flight:</strong>
-<span class="arithmatex">\(t_f = \frac{2 v_0 \sin(\theta)}{g}\)</span></li>
-<li><strong>Range:</strong>
-<span class="arithmatex">\(R = \frac{v_0^2 \sin(2\theta)}{g}\)</span></li>
-</ul>
-<h3 id="derivation-of-time-of-flight">Derivation of Time of Flight</h3>
-<p><strong>The time of flight is determined by solving for the time when the projectile returns to the ground <span class="arithmatex">\(y = 0\)</span>:</strong></p>
+<h3 id="theoretical-foundation">Theoretical Foundation</h3>
+<h4 id="newtons-laws-and-equations-of-motion">Newton's Laws and Equations of Motion</h4>
+<p>To understand projectile motion, we begin with Newton’s Second Law of Motion:</p>
 <div class="arithmatex">\[
-0 = v_0 \sin(\theta) t - \frac{1}{2} g t^2
+\mathbf{F} = m \mathbf{a}
 \]</div>
-<p><strong>Factorizing:</strong></p>
+<p>For a projectile moving under the influence of gravity alone, the only force acting is the gravitational force:</p>
 <div class="arithmatex">\[
- t \left( v_0 \sin(\theta) - \frac{1}{2} g t \right) = 0
+F = mg
 \]</div>
-<p><strong>Solving for <span class="arithmatex">\(t\)</span>:</strong></p>
+<p>Since force is the product of mass and acceleration, we write the equations of motion separately for horizontal and vertical components:</p>
+<ol>
+<li><strong>Horizontal Motion:</strong></li>
+<li>There is no acceleration in the horizontal direction (assuming no air resistance), meaning velocity remains constant:</li>
+</ol>
+<p>$$
+   x(t) = v_0 \cos \theta \cdot t
+   $$</p>
+<ol>
+<li><strong>Vertical Motion:</strong></li>
+<li>The only force acting is gravity, leading to constant acceleration in the downward direction:</li>
+</ol>
+<p>$$
+   y(t) = v_0 \sin \theta \cdot t - \frac{1}{2} g t^2
+   $$</p>
+<h4 id="deriving-the-time-of-flight">Deriving the Time of Flight</h4>
+<p>The projectile reaches the ground when <span class="arithmatex">\( y = 0 \)</span>, solving for time:</p>
 <div class="arithmatex">\[
- t = 0 \quad \text{or} \quad t = \frac{2 v_0 \sin(\theta)}{g}
+0 = v_0 \sin \theta \cdot t - \frac{1}{2} g t^2
 \]</div>
-<p><strong>The non-trivial solution is taken as the total time of flight.</strong></p>
-<h3 id="derivation-of-range">Derivation of Range</h3>
-<p>Using the time of flight in the horizontal displacement equation:</p>
+<p>Factoring out <span class="arithmatex">\( t \)</span>:</p>
 <div class="arithmatex">\[
- R = v_0 \cos(\theta) \times \frac{2 v_0 \sin(\theta)}{g}
+ t ( v_0 \sin \theta - \frac{1}{2} g t ) = 0
 \]</div>
-<p>Using the trigonometric identity <span class="arithmatex">\(2 \sin(\theta) \cos(\theta) = \sin(2\theta)\)</span>, we get:</p>
+<p>Ignoring the trivial solution <span class="arithmatex">\( t = 0 \)</span>, we solve for <span class="arithmatex">\( t_f \)</span>:</p>
 <div class="arithmatex">\[
- R = \frac{v_0^2 \sin(2\theta)}{g}
+ t_f = \frac{2 v_0 \sin \theta}{g}
 \]</div>
-<hr/>
-<h3 id="results-discussion">Results &amp; Discussion</h3>
-<p>From the numerical simulations and visualizations, we can draw the following conclusions:</p>
-<ul>
-<li>
-<p>The projectile's range is maximized at <strong>45°</strong>, confirming the theoretical prediction.</p>
-</li>
-<li>
-<p>Increasing the initial velocity significantly increases the range, as expected from the quadratic dependence on .</p>
-</li>
-<li>
-<p>The Isocontour map clearly shows that small angles result in shorter trajectories, while very high angles also limit range due to vertical motion dominating over horizontal displacement.</p>
-</li>
-<li>
-<p>The <strong>heatmap</strong> provides a direct way to determine optimal launch conditions for achieving maximum range in practical scenarios.</p>
-</li>
-<li>
-<p>These results validate the theoretical framework and emphasize the importance of choosing the right launch parameters based on specific applications.</p>
-</li>
-</ul>
-<hr/>
-<h3 id="limitations">Limitations</h3>
-<p>While the model provides valuable insights into projectile motion, some limitations must be considered:</p>
+<h4 id="deriving-the-range-equation">Deriving the Range Equation</h4>
+<p>The range <span class="arithmatex">\( R \)</span> is the horizontal distance traveled during <span class="arithmatex">\( t_f \)</span>:</p>
+<div class="arithmatex">\[
+ R = v_0 \cos \theta \cdot t_f
+\]</div>
+<p>Substituting <span class="arithmatex">\( t_f \)</span>:</p>
+<div class="arithmatex">\[
+ R = v_0 \cos \theta \cdot \frac{2 v_0 \sin \theta}{g}
+\]</div>
+<p>Using the identity <span class="arithmatex">\( 2 \sin \theta \cos \theta = \sin 2\theta \)</span>:</p>
+<div class="arithmatex">\[
+ R = \frac{v_0^2 \sin 2\theta}{g}
+\]</div>
+<p>-This equation reveals that the range depends on the square of the initial velocity and the sine of twice the launch angle. The maximum range occurs when <span class="arithmatex">\( \sin 2\theta \)</span> is maximized, which happens at <span class="arithmatex">\( \theta = 45^\circ \)</span>.</p>
+<h4 id="effect-of-initial-conditions">Effect of Initial Conditions</h4>
+<p>Variations in initial conditions, such as changes in <span class="arithmatex">\( v_0 \)</span> or <span class="arithmatex">\( \theta \)</span>, lead to different trajectories. For instance:</p>
 <ul>
 <li>
-<p>Air Resistance is Ignored: The model assumes a vacuum, meaning drag forces are not accounted for. In real-world applications, air resistance significantly affects both range and trajectory.</p>
+<p>Increasing <span class="arithmatex">\( v_0 \)</span> results in a proportionally larger range.</p>
 </li>
 <li>
-<p>Constant Gravitational Field: The model assumes a uniform gravitational field, which is a reasonable assumption for short-range projectiles but becomes inaccurate for high-altitude launches or planetary-scale motions.</p>
+<p>A small launch angle leads to a short, flat trajectory, while a large angle results in a steep, high trajectory with a shorter range.</p>
 </li>
 <li>
-<p>Flat Terrain: The analysis does not account for uneven ground or launch/landing height differences, which are crucial in many practical applications (e.g., artillery, sports, aerospace).</p>
-</li>
-<li>
-<p>Future refinements could include computational fluid dynamics (CFD) models for drag effects and adjustments for varying gravitational conditions in extraterrestrial applications.</p>
+<p>At <span class="arithmatex">\( 45^\circ \)</span>, the projectile achieves the maximum horizontal displacement.</p>
 </li>
 </ul>
+<p>This derivation forms the theoretical basis for studying projectile motion and optimizing real-world applications.</p>
 <hr/>
-<h2 id="implementation">Implementation</h2>
-<p>To better visualize projectile motion, we implement a Python simulation that generates plots of the range as a function of angle. Additionally, we compute the full trajectory of the projectile to examine the path it follows.</p>
+<h3 id="analysis-of-the-range">Analysis of the Range</h3>
+<h3 id="1-dependence-of-horizontal-range-on-launch-angle">1. Dependence of Horizontal Range on Launch Angle</h3>
+<p>The horizontal range <span class="arithmatex">\( R \)</span> of a projectile launched from the ground with an initial velocity <span class="arithmatex">\( v_0 \)</span> is given by:</p>
+<div class="arithmatex">\[
+R = \frac{v_0^2 \sin 2\theta}{g}
+\]</div>
+<h3 id="key-observations">Key Observations:</h3>
+<ul>
+<li>The range is maximized at <span class="arithmatex">\( 45^\circ \)</span>, where <span class="arithmatex">\( \sin 2\theta \)</span> reaches its peak value of 1.</li>
+<li>The function is symmetric, meaning that <span class="arithmatex">\( \theta = 30^\circ \)</span> and <span class="arithmatex">\( \theta = 60^\circ \)</span> yield the same range.</li>
+<li>At <span class="arithmatex">\( \theta = 0^\circ \)</span> and <span class="arithmatex">\( \theta = 90^\circ \)</span>, the range is zero because the projectile either moves entirely horizontally or vertically.</li>
+</ul>
+<h3 id="2-effect-of-initial-velocity-v_0">2. Effect of Initial Velocity (<span class="arithmatex">\( v_0 \)</span>)</h3>
+<p>Since the range formula has a quadratic dependence on <span class="arithmatex">\( v_0 \)</span>:</p>
+<div class="arithmatex">\[
+R \propto v_0^2
+\]</div>
+<ul>
+<li>Doubling <span class="arithmatex">\( v_0 \)</span> results in a fourfold increase in range.</li>
+<li>This is significant in applications like sports science (e.g., long jump, soccer kicks) and aerospace engineering (e.g., missile trajectories).</li>
+</ul>
+<h3 id="3-effect-of-gravitational-acceleration-g">3. Effect of Gravitational Acceleration (<span class="arithmatex">\( g \)</span>)</h3>
+<p>Since <span class="arithmatex">\( g \)</span> appears in the denominator:</p>
+<div class="arithmatex">\[
+R \propto \frac{1}{g}
+\]</div>
+<ul>
+<li>A lower gravitational field increases the projectile's range (e.g., on the Moon or Mars).</li>
+<li>In higher gravity environments, projectiles travel shorter distances.</li>
+<li>This has implications for interplanetary physics and ballistics research.</li>
+</ul>
+<h3 id="4-combined-effects-of-parameters-heatmap-isocontour-analysis">4. Combined Effects of Parameters: Heatmap &amp; Isocontour Analysis</h3>
+<p>A heatmap can visualize how range changes with both <span class="arithmatex">\( v_0 \)</span> and <span class="arithmatex">\( \theta \)</span>. Similarly, isocontour maps can show regions of optimal launch conditions.</p>
+<h3 id="5-summary-of-key-findings">5. Summary of Key Findings</h3>
+<ul>
+<li><span class="arithmatex">\( 45^\circ \)</span> is the optimal launch angle for maximum range.</li>
+<li>Increasing <span class="arithmatex">\( v_0 \)</span> significantly boosts range due to quadratic dependence.</li>
+<li>Lower gravity enhances range, while higher gravity shortens it.</li>
+<li>Visual tools like heatmaps and isocontours help determine the best launch conditions.</li>
+</ul>
+<p>This analysis provides key insights into projectile motion, making it applicable in engineering, sports, and aerospace research.</p>
+<hr/>
+<details>
+<summary>Develop a computational tool or algorithm to simulate projectile motion.</summary>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 
@@ -295,9 +331,29 @@ plt.grid()
 plt.tight_layout()
 plt.show()
 </code></pre>
+</details>
 <p><img alt="alt text" src="../image-1.png"/></p>
-<p>This implementation allows for both range analysis across different launch angles and a visualization of the projectile’s full motion for a chosen angle. The trajectory plot helps in understanding how the projectile moves through the air, while the range plot provides insights into how angle selection impacts overall displacement.</p>
+<hr/>
+<h3 id="limitations">Limitations</h3>
+<p>While the model provides valuable insights into projectile motion, some limitations must be considered:</p>
+<ul>
+<li>
+<p>Air Resistance is Ignored: The model assumes a vacuum, meaning drag forces are not accounted for. In real-world applications, air resistance significantly affects both range and trajectory.</p>
+</li>
+<li>
+<p>Constant Gravitational Field: The model assumes a uniform gravitational field, which is a reasonable assumption for short-range projectiles but becomes inaccurate for high-altitude launches or planetary-scale motions.</p>
+</li>
+<li>
+<p>Flat Terrain: The analysis does not account for uneven ground or launch/landing height differences, which are crucial in many practical applications (e.g., artillery, sports, aerospace).</p>
+</li>
+<li>
+<p>Future refinements could include computational fluid dynamics (CFD) models for drag effects and adjustments for varying gravitational conditions in extraterrestrial applications.</p>
+</li>
+</ul>
+<hr/>
 <h2 id="isocontour-map-for-range-analysis">Isocontour Map for Range Analysis</h2>
+<details>
+<summary>Develop a computational tool or algorithm to simulate projectile motion.</summary>
 <pre><code class="language-python"># Isocontour
 import numpy as np
 import matplotlib.pyplot as plt
@@ -332,24 +388,28 @@ plt.grid(True)
 
 plt.show()
 </code></pre>
-<p><img alt="alt text" src="../image-2.png"/></p>
-<p>The following heatmap represents the projectile range for different initial velocities and launch angles. This visualization helps in understanding the optimal conditions for maximizing range.</p>
-<h2 id="deliverables">Deliverables</h2>
-<ul>
-<li>A <strong>Markdown document</strong> with equations and explanations.</li>
-<li><strong>Python script</strong> for simulations, including range calculations and trajectory plots.</li>
-<li><strong>Graphs</strong> illustrating range vs. angle and projectile trajectory.</li>
-<li>A discussion on <strong>model limitations</strong>, including air resistance effects.</li>
-</ul>
-<hr/>
-<h2 id="hints-and-resources">Hints and Resources</h2>
-<ul>
-<li><strong>Start from first principles</strong> and derive key equations.</li>
-<li><strong>Use numerical simulations</strong> to extend beyond analytical solutions.</li>
-<li><strong>Apply concepts to real-world systems</strong>, including sports, engineering, and astrophysics.</li>
-<li><strong>Experiment with different initial velocities and launch angles</strong> to observe variations in projectile motion.</li>
-</ul>
-</div>
+
+![alt text](image-2.png)
+
+The following heatmap represents the projectile range for different initial velocities and launch angles. This visualization helps in understanding the optimal conditions for maximizing range.
+
+
+
+### Results &amp; Discussion
+
+From the numerical simulations and visualizations, we can draw the following conclusions:
+
+- The projectile's range is maximized at **45°**, confirming the theoretical prediction.
+
+- Increasing the initial velocity significantly increases the range, as expected from the quadratic dependence on .
+
+- The Isocontour map clearly shows that small angles result in shorter trajectories, while very high angles also limit range due to vertical motion dominating over horizontal displacement.
+
+- The **heatmap** provides a direct way to determine optimal launch conditions for achieving maximum range in practical scenarios.
+
+- These results validate the theoretical framework and emphasize the importance of choosing the right launch parameters based on specific applications.
+              
+            </details></div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
 <a class="btn btn-neutral float-left" href="../../.." title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
