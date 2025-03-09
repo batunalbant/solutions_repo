@@ -107,9 +107,53 @@ plt.show()
 ```
 ![alt text](image-1.png)
 
+
 This implementation allows for both range analysis across different launch angles and a visualization of the projectile’s full motion for a chosen angle. The trajectory plot helps in understanding how the projectile moves through the air, while the range plot provides insights into how angle selection impacts overall displacement.
 
----
+
+## Isocontour Map for Range Analysis
+
+ 
+
+```python
+# Isocontour
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+v0_values = np.linspace(5, 50, 50)  
+angles = np.linspace(0, 90, 50)  
+g = 9.81  
+
+
+def compute_range(v0, theta, g=9.81):
+    return (v0**2 * np.sin(2 * np.radians(theta))) / g
+
+
+range_matrix = np.zeros((len(v0_values), len(angles)))
+
+for i, v0 in enumerate(v0_values):
+    for j, theta in enumerate(angles):
+        range_matrix[i, j] = compute_range(v0, theta, g)
+
+
+plt.figure(figsize=(10, 6))
+contour = plt.contourf(angles, v0_values, range_matrix, cmap='plasma', levels=20)
+cbar = plt.colorbar(contour)
+cbar.set_label('Range (m)')
+
+plt.xlabel('Launch Angle (degrees)')
+plt.ylabel('Initial Velocity (m/s)')
+plt.title('Projectile Range Heatmap (Velocity vs. Angle)')
+plt.grid(True)
+
+
+plt.show()
+```
+![alt text](image-2.png)
+
+The following heatmap represents the projectile range for different initial velocities and launch angles. This visualization helps in understanding the optimal conditions for maximizing range.
+
 
 ## Deliverables
 
