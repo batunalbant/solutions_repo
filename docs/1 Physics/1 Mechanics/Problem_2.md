@@ -123,26 +123,12 @@ d2xdt2+f(x,x˙)=Acos⁡(ωt)\frac{d^2 x}{dt^2} + f(x, \dot{x}) = A \cos(\omega t
 $$
 - where \( f(x, \dot{x}) \) represents nonlinear feedback mechanisms. in biological systems.
 
-#### 4. Implementation
-- Develop a computational model to simulate the motion of a forced damped pendulum.
-
-- Visualize different dynamical regimes under varying damping and forcing conditions.
-
-- Generate phase diagrams and Poincaré sections to illustrate chaotic transitions.
-
-- Implement an interactive tool that allows users to manipulate parameters in real-time and observe system behavior.
-
-- Use **Fourier analysis** to decompose motion into frequency components, identifying dominant frequencies in the response.
-
-- Construct **bifurcation diagrams** showing how qualitative system behavior changes with driving force parameters.
-
 ---
 
 ### Implementation
 
-**Python Implementation**
 <details>
-  <summary>Phyton Code of this two Graphics</summary>
+  <summary>A Markdown document with Python script or notebook implementing the simulations.</summary>
 
 ```python
 
@@ -204,10 +190,13 @@ plt.show()
 ![alt text](image-3.png)
 
 
-Overview
+**Overview**
+
 This graph shows the angular displacement \( \theta \)(𝑡) of a forced damped pendulum over time. It highlights how the system transitions from an initial transient state to a steady oscillatory motion under external forcing.
 
-Key Observations
+---
+
+**Key Observations**
 
 **Initial Transient Phase (0 - 10 s)**
 
@@ -229,6 +218,8 @@ Key Observations
 
 - Different parameter values could lead to chaotic motion.
 
+---
+
 **Conclusion**
 
 The system reaches a stable oscillatory regime after an initial transient phase. Further analysis of phase space and bifurcations can reveal potential chaotic behavior.
@@ -240,7 +231,9 @@ The system reaches a stable oscillatory regime after an initial transient phase.
 
 This graph represents the phase space trajectory of the forced damped pendulum, plotting angular velocity \( \dot{\theta} \) against angular displacement \( \theta \). It visualizes the system’s evolution in state space, revealing patterns of stability and energy dissipation.
 
-Key Observations
+---
+
+**Key Observations**
 
 **Initial Transient Motion**
 
@@ -257,12 +250,14 @@ Key Observations
 - If the trajectory were more irregular and scattered, it could suggest chaotic motion.
 - The smooth and repeating pattern here indicates periodic oscillations rather than chaos.
 
+---
+
 **Conclusion**
 
 This phase space diagram shows that the forced damped pendulum stabilizes into a periodic oscillatory regime after initial transients. Further analysis with Poincaré sections or Lyapunov exponents could determine if chaotic behavior emerges under different conditions.
 
 <details>
-  <summary>Phyton Code of this two Graphics</summary>
+  <summary>A detailed explanation of the general solutions for the forced damped pendulum.</summary>
 
 ```python
 #  Import required libraries
@@ -322,7 +317,7 @@ This figure illustrates the time evolution of the **forced damped pendulum** und
 
 ---
 
-### **Key Observations**
+**Key Observations**
 
 1. **Top Row ( \( \beta \) = 0.2): Low Damping**
     
@@ -344,6 +339,7 @@ This figure illustrates the time evolution of the **forced damped pendulum** und
 
     - Even for **large \( A \)**, the oscillations remain mostly periodic, showing the **suppressive effect of high damping** on chaos.
 
+---
 
 **Conclusion**
 
@@ -354,12 +350,12 @@ This figure illustrates the time evolution of the **forced damped pendulum** und
 - Moderate damping allows resonance-like behaviors without leading to extreme chaos.
 
 <details>
-  <summary>Phyton Code of this two Graphics</summary>
+  <summary>Graphical representations of the motion for different damping coefficients, driving amplitudes, and driving frequencies, including resonance and chaotic behavior.</summary>
 
 ```python
 
 
-# 📌 Different damping, forcing amplitude, and frequency cases visualization
+# Different damping, forcing amplitude, and frequency cases visualization
 
 # Define new parameter sets
 omega_values = [0.8, 1.5, 2.5]  # Low, natural, and high driving frequencies
@@ -400,7 +396,7 @@ This figure represents the **motion of a forced damped pendulum** under differen
 
 ---
 
-### **Key Observations**
+**Key Observations**
 
 **1. Top Row (\(\beta = 0.2\)): Low Damping**
 
@@ -436,7 +432,7 @@ This figure represents the **motion of a forced damped pendulum** under differen
 
 
 <details>
-  <summary>Phyton Code of this two Graphics</summary>
+  <summary>A discussion on the limitations of the model and potential extensions, such as introducing nonlinear damping or non-periodic driving forces.</summary>
 
 ```python
 
@@ -497,7 +493,7 @@ This figure compares the **standard forced damped pendulum model** with an **ext
 
 ---
 
-### **Key Observations**
+**Key Observations**
 
 **1. Left Plot (\(\omega = 0.8\)): Low Driving Frequency**  
 
@@ -529,7 +525,7 @@ This figure compares the **standard forced damped pendulum model** with an **ext
 
 ---
 <details>
-  <summary>Phyton Code of this two Graphics</summary>
+  <summary>Phase portraits, Poincaré sections, and bifurcation diagrams to analyze transitions to complex dynamics.</summary>
 
 ```python
 
@@ -575,7 +571,7 @@ This **phase portrait** represents the **state space** of the **forced damped pe
 
 ---
 
-### **Key Observations**
+**Key Observations**
 
 **1. Spiral Inward Pattern**  
 
