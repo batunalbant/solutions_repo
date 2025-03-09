@@ -114,7 +114,7 @@ $$
 
 ---
 
-### Implementation
+### Analysis of Dynamics:
 
 <details>
   <summary>A Markdown document with Python script or notebook implementing the simulations.</summary>
