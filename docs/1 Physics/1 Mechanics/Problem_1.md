@@ -21,6 +21,7 @@ The study of projectile motion also provides an excellent opportunity to apply n
 Projectile motion in two dimensions can be described by the following equations derived from Newton's laws:
 
 \[ x(t) = v_0 \cos(\theta) t \]
+
 \[ y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \]
 
 where:
@@ -32,7 +33,9 @@ where:
 The total flight time \( T \), maximum height \( H \), and horizontal range \( R \) are given by:
 
 \[ T = \frac{2 v_0 \sin(\theta)}{g} \]
+
 \[ H = \frac{v_0^2 \sin^2(\theta)}{2g} \]
+
 \[ R = \frac{v_0^2 \sin(2\theta)}{g} \]
 
 ### 2. Analysis of the Range
@@ -74,6 +77,7 @@ The total flight time \( T \), maximum height \( H \), and horizontal range \( R
 The general equations derived from Newton’s second law for projectile motion are:
 
 \[ x(t) = v_0 \cos(\theta) t \]
+
 \[ y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \]
 
 ### Python Simulation
@@ -103,4 +107,3 @@ plt.show()
 - Present comparative plots to illustrate ideal vs. realistic conditions.
 
 This structured approach ensures clarity and aligns with the standards outlined by the course instructors, providing a solid foundation for further exploration and application in practical contexts.
-
