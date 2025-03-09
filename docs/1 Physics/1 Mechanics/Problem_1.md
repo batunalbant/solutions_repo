@@ -210,6 +210,7 @@ While the model provides valuable insights into projectile motion, some limitati
 - Flat Terrain: The analysis does not account for uneven ground or launch/landing height differences, which are crucial in many practical applications (e.g., artillery, sports, aerospace).
 
 - Future refinements could include computational fluid dynamics (CFD) models for drag effects and adjustments for varying gravitational conditions in extraterrestrial applications.
+
 ---
 ### Practical Applications of Projectile Motion
 

@@ -117,7 +117,7 @@ $$
 ### Analysis of Dynamics:
 
 <details>
-  <summary>A Markdown document with Python script or notebook implementing the simulations.</summary>
+  <summary>Phyton Codes.</summary>
 
 ```python
 
@@ -246,7 +246,7 @@ This graph represents the phase space trajectory of the forced damped pendulum, 
 This phase space diagram shows that the forced damped pendulum stabilizes into a periodic oscillatory regime after initial transients. Further analysis with Poincaré sections or Lyapunov exponents could determine if chaotic behavior emerges under different conditions.
 
 <details>
-  <summary>A detailed explanation of the general solutions for the forced damped pendulum.</summary>
+  <summary>Phyton Codes.</summary>
 
 ```python
 #  Import required libraries
@@ -339,7 +339,7 @@ This figure illustrates the time evolution of the **forced damped pendulum** und
 - Moderate damping allows resonance-like behaviors without leading to extreme chaos.
 
 <details>
-  <summary>Graphical representations of the motion for different damping coefficients, driving amplitudes, and driving frequencies, including resonance and chaotic behavior.</summary>
+  <summary>Phyton Codes.</summary>
 
 ```python
 
@@ -421,7 +421,7 @@ This figure represents the **motion of a forced damped pendulum** under differen
 
 
 <details>
-  <summary>A discussion on the limitations of the model and potential extensions, such as introducing nonlinear damping or non-periodic driving forces.</summary>
+  <summary>Phyton Codes.</summary>
 
 ```python
 
@@ -514,7 +514,7 @@ This figure compares the **standard forced damped pendulum model** with an **ext
 
 ---
 <details>
-  <summary>Phase portraits, Poincaré sections, and bifurcation diagrams to analyze transitions to complex dynamics.</summary>
+  <summary>Phyton Codes.</summary>
 
 ```python
 
