@@ -60,6 +60,37 @@ $$
 $$
 
 ---
+### Results & Discussion
+
+From the numerical simulations and visualizations, we can draw the following conclusions:
+
+- The projectile's range is maximized at **45°**, confirming the theoretical prediction.
+
+- Increasing the initial velocity significantly increases the range, as expected from the quadratic dependence on .
+
+- The Isocontour map clearly shows that small angles result in shorter trajectories, while very high angles also limit range due to vertical motion dominating over horizontal displacement.
+
+- The **heatmap** provides a direct way to determine optimal launch conditions for achieving maximum range in practical scenarios.
+
+- These results validate the theoretical framework and emphasize the importance of choosing the right launch parameters based on specific applications.
+
+
+---
+
+### Limitations
+
+While the model provides valuable insights into projectile motion, some limitations must be considered:
+
+- Air Resistance is Ignored: The model assumes a vacuum, meaning drag forces are not accounted for. In real-world applications, air resistance significantly affects both range and trajectory.
+
+- Constant Gravitational Field: The model assumes a uniform gravitational field, which is a reasonable assumption for short-range projectiles but becomes inaccurate for high-altitude launches or planetary-scale motions.
+
+- Flat Terrain: The analysis does not account for uneven ground or launch/landing height differences, which are crucial in many practical applications (e.g., artillery, sports, aerospace).
+
+- Future refinements could include computational fluid dynamics (CFD) models for drag effects and adjustments for varying gravitational conditions in extraterrestrial applications.
+
+
+---
 
 ## Implementation
 
