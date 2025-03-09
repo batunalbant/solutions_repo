@@ -324,7 +324,7 @@ This figure illustrates the time evolution of the **forced damped pendulum** und
 
 ### **Key Observations**
 
-1. **Top Row (\( \beta \)=0.2): Low Damping**
+1. **Top Row ( \( \beta \) = 0.2): Low Damping**
     
     - For **small \( A \) (leftmost plot)**, the oscillations are smooth and periodic.
 
@@ -332,13 +332,13 @@ This figure illustrates the time evolution of the **forced damped pendulum** und
 
     - At **large \( A \) (rightmost plot)**, chaotic motion begins to emerge.
 
-2. **Middle Row (\( \beta \)=0.5): Moderate Damping**
+2. **Middle Row ( \( \beta \) = 0.5 ): Moderate Damping**
     
     - Small and medium \( A \) values lead to steady periodic motion.
 
     - For **large \( A \)**, irregularities appear, indicating the onset of chaotic behavior.
 
-3. **Bottom Row (\( \beta \)=1.2): High Damping**
+3. **Bottom Row ( \( \beta \) = 1.2 ): High Damping**
     
     - The motion is more constrained due to energy dissipation.
 
@@ -352,6 +352,82 @@ This figure illustrates the time evolution of the **forced damped pendulum** und
 - Lower damping with high forcing (\( A \)) results in chaotic motion.
 
 - Moderate damping allows resonance-like behaviors without leading to extreme chaos.
+
+<details>
+  <summary>Phyton Code of this two Graphics</summary>
+
+```python
+
+
+# 📌 Different damping, forcing amplitude, and frequency cases visualization
+
+# Define new parameter sets
+omega_values = [0.8, 1.5, 2.5]  # Low, natural, and high driving frequencies
+
+# Create subplots for different damping, forcing, and frequency conditions
+fig, axes = plt.subplots(len(beta_values), len(omega_values), figsize=(12, 10))
+fig.suptitle("Motion of Forced Damped Pendulum for Different Parameters")
+
+for i, beta in enumerate(beta_values):
+    for j, omega in enumerate(omega_values):
+        # Solve the differential equation
+        sol = solve_ivp(forced_damped_pendulum, t_span, [theta_0, omega_0_init], t_eval=t_eval, args=(beta, omega_0, A_values[1], omega))
+        
+        # Extract results
+        theta_vals = sol.y[0]  # Angular displacement (θ)
+        time_vals = sol.t       # Time (t)
+        
+        # Plot time series (θ vs t)
+        ax = axes[i, j]
+        ax.plot(time_vals, theta_vals, label=f'β={beta}, ω={omega}', color='purple')
+        ax.set_xlabel('Time (s)')
+        ax.set_ylabel('Angle (radians)')
+        ax.set_title(f'β={beta}, ω={omega}')
+        ax.legend()
+        ax.grid()
+
+# Display visualization
+plt.tight_layout(rect=[0, 0, 1, 0.96])
+plt.show()
+```
+</details>
+
+![alt text](image-6.png)
+
+### **Overview**
+
+This figure represents the **motion of a forced damped pendulum** under different **damping coefficients (\(\beta\))** and **driving frequencies (\(\omega\))**, while keeping the forcing amplitude (\(A\)) constant at a moderate value. Each subplot illustrates how the pendulum’s angular displacement evolves over time under these conditions.
+
+---
+
+### **Key Observations**
+
+#### **1. Top Row (\(\beta = 0.2\)): Low Damping**
+
+- **At low \(\omega = 0.8\)** → The oscillations are large and take longer to settle, as damping is weak.
+- **At resonance frequency (\(\omega = 1.5\))** → The amplitude increases significantly, showing a resonance effect.
+- **At high \(\omega = 2.5\)** → The oscillations become rapid but maintain periodicity, with smaller amplitudes.
+
+#### **2. Middle Row (\(\beta = 0.5\)): Moderate Damping**
+
+- **At low \(\omega = 0.8\)** → The system stabilizes faster compared to the top row.
+- **At resonance frequency (\(\omega = 1.5\))** → The amplitude still grows, but damping prevents excessive oscillations.
+- **At high \(\omega = 2.5\)** → The oscillations are more controlled, with reduced amplitude and higher frequency.
+
+#### **3. Bottom Row (\(\beta = 1.2\)): High Damping**
+
+- **At low \(\omega = 0.8\)** → The motion is quickly damped out, leading to smaller oscillations.
+- **At resonance frequency (\(\omega = 1.5\))** → The resonance effect is suppressed by damping.
+- **At high \(\omega = 2.5\)** → The system barely oscillates, showing that strong damping eliminates high-frequency responses.
+
+---
+
+### **Conclusion**
+
+- **Resonance effects** are visible at **\(\omega = 1.5\)**, especially when damping is low.
+- **Lower damping (\(\beta = 0.2\)) leads to larger oscillation amplitudes**, while higher damping (\(\beta = 1.2\)) suppresses them.
+- **Higher driving frequencies (\(\omega = 2.5\)) lead to rapid oscillations**, but their amplitudes decrease due to damping effects.
+
 
 
 ---
