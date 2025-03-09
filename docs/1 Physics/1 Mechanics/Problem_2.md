@@ -141,8 +141,42 @@ $$
 ### Implementation
 
 **Python Implementation**
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Parameters
+beta = 0.5
+omega_0 = 1.5
+A = 1.2
+omega = 0.8
+
+def forced_damped_pendulum(t, y, beta, omega_0, A, omega):
+    theta, omega_t = y
+    dtheta_dt = omega_t
+    domega_dt = -beta * omega_t - omega_0**2 * np.sin(theta) + A * np.cos(omega * t)
+    return [dtheta_dt, domega_dt]
+
+# Solve ODE
+sol = solve_ivp(forced_damped_pendulum, (0, 50), [0.2, 0.0], t_eval=np.linspace(0, 50, 1000), args=(beta, omega_0, A, omega))
+
+# Plot time series
+plt.figure(figsize=(10, 5))
+plt.plot(sol.t, sol.y[0], label=r'$\theta(t)$', color='b')
+plt.xlabel('Time (s)')
+plt.ylabel('Angle (radians)')
+plt.title('Time Series of Forced Damped Pendulum')
+plt.legend()
+plt.grid()
+plt.show()
+```
+
 
 ```python
+
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
