@@ -20,28 +20,28 @@ Furthermore, utilizing computational tools to analyze projectile motion strength
 ### Governing Equations
 Projectile motion equations derived from Newton's second law are given explicitly in two separate components:
 
-**Horizontal motion:**  
-\[ x(t) = v_0 \cdot \cos(\theta) \cdot t \]
+**Horizontal motion:**
+\[ x(t) = v_0 \cos(\theta) \cdot t \]
 
-**Vertical motion:**  
-\[ y(t) = v_0 \cdot \sin(\theta) \cdot t - \frac{1}{2} g t^2 \]
+**Vertical motion:**
+\[ y(t) = v_0 \sin(\theta) \cdot t - \frac{1}{2} g t^2 \]
 
-### Parameters:
-- **\( v_0 \)**: Initial velocity (m/s)  
-- **\( \theta \)**: Launch angle (degrees or radians)  
-- **\( g \)**: Gravitational acceleration (approximately **9.81 m/s²** on Earth)  
-- **\( t \)**: Time elapsed (s)  
+**Parameters:**
+- \( v_0 \): Initial velocity (m/s)
+- \( \theta \): Launch angle (degrees or radians)
+- \( g \): Gravitational acceleration (approximately 9.81 m/s² on Earth)
+- \( t \): Time elapsed (s)
 
-### Derived Expressions:
+**Derived Expressions:**
 
-- **Total Flight Time \( T \):**  
-  \[ T = \frac{2 v_0 \sin(\theta)}{g} \]
+- **Total Flight Time \( T \)**:
+\[ T = \frac{2 v_0 \sin(\theta)}{g} \]
 
-- **Maximum Height \( H \):**  
-  \[ H = \frac{v_0^2 \sin^2(\theta)}{2g} \]
+- **Maximum Height \( H \)**:
+\[ H = \frac{v_0^2 \sin^2(\theta)}{2g} \]
 
-- **Horizontal Range \( R \):**  
-  \[ R = \frac{v_0^2 \sin(2\theta)}{g} \]
+- **Horizontal Range \( R \)**:
+\[ R = \frac{v_0^2 \sin(2\theta)}{g} \]
 
 ### 2. Analysis of the Range
 - Methodically analyze how the horizontal range \( R \) varies with the launch angle \( \theta \).
