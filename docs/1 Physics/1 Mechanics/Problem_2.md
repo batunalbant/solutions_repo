@@ -11,8 +11,7 @@ When an external periodic force is introduced, new parameters such as amplitude 
 
 ---
 
-### Task
-#### 1. Theoretical Foundation
+#### Theoretical Foundation
 - Begin with the governing differential equation of the forced damped pendulum:
 $$
 \ddot{\theta} + \beta \dot{\theta} + \omega_0^2 \sin(\theta) = A \cos(\omega t) 
@@ -62,18 +61,8 @@ $$
 - Investigate stability criteria and **fixed points**, evaluating equilibrium solutions and their stability through **linear stability analysis** by examining the Jacobian matrix.
 
 
-#### 2. Analysis of Dynamics
-- Study the influence of the damping coefficient, driving amplitude, and driving frequency on the system’s motion.
 
-- Examine the transition from regular to chaotic motion by varying control parameters.
-
-- Interpret phase portraits and bifurcation diagrams to visualize stability changes.
-
-- Investigate **Poincaré sections** to identify periodic orbits and chaotic attractors in phase space.
-
-- Implement **Lyapunov exponents** to quantify chaos in the system and determine sensitive dependence on initial conditions.
-
-#### 3.Practical Applications
+#### Practical Applications
 
 The forced damped pendulum has wide applications in science and engineering due to its ability to model complex oscillatory and chaotic systems. Below are some key applications along with their corresponding mathematical models:
 
