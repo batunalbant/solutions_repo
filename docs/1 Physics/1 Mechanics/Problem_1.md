@@ -1,5 +1,11 @@
 # Problem 1: Investigating the Range as a Function of the Angle of Projection
 
+## Introduction
+
+Projectile motion is a fundamental concept in physics, widely applicable in fields ranging from sports to aerospace engineering. While the basic principles may seem straightforward, the mathematical relationships governing the motion provide deep insights into how variables interact. This study aims to analyze how the range of a projectile depends on its angle of projection and explore the theoretical and computational models associated with it.
+
+---
+
 ## Motivation
 
 Projectile motion, while seemingly simple, provides a rich framework for exploring fundamental principles of physics. This problem requires analyzing how the range of a projectile depends on its angle of projection. The governing equations involve both linear and quadratic relationships, offering a blend of accessibility and depth.
