@@ -105,6 +105,7 @@ plt.grid()
 plt.tight_layout()
 plt.show()
 ```
+![alt text](image-1.png)
 
 This implementation allows for both range analysis across different launch angles and a visualization of the projectile’s full motion for a chosen angle. The trajectory plot helps in understanding how the projectile moves through the air, while the range plot provides insights into how angle selection impacts overall displacement.
 
