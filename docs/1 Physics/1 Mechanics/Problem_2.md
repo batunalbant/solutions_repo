@@ -18,7 +18,7 @@ $$
 \ddot{\theta} + \beta \dot{\theta} + \omega_0^2 \sin(\theta) = A \cos(\omega t) 
  $$
 
-  **where:**
+**where:**
   - \( \theta \) is the angular displacement,
 
   - \( \beta \) is the damping coefficient,
@@ -47,7 +47,7 @@ $$
 $$
 \theta_p(t) = \frac{A}{\sqrt{(\omega_0^2 - \omega^2)^2 + (2\beta\omega)^2}} \cos(\omega t - \delta)
 $$
- **where \( \delta \) is the phase lag given by:**
+**where \( \delta \) is the phase lag given by:**
 $$
   \tan(\delta) = \frac{2 \beta \omega}{\omega_0^2 - \omega^2}
 $$  
@@ -64,25 +64,38 @@ $$
 
 #### 2. Analysis of Dynamics
 - Study the influence of the damping coefficient, driving amplitude, and driving frequency on the system’s motion.
+
 - Examine the transition from regular to chaotic motion by varying control parameters.
+
 - Interpret phase portraits and bifurcation diagrams to visualize stability changes.
+
 - Investigate **Poincaré sections** to identify periodic orbits and chaotic attractors in phase space.
+
 - Implement **Lyapunov exponents** to quantify chaos in the system and determine sensitive dependence on initial conditions.
 
 #### 3. Practical Applications
 - Discuss real-world applications, such as:
   - **Energy harvesting devices**, where controlled resonance conditions can be used to generate electrical power from oscillatory motion.
+
   - **Suspension bridges affected by periodic forces**, leading to resonance-induced structural failures (e.g., Tacoma Narrows Bridge disaster).
+
   - **Electrical circuits modeled by forced oscillators**, where an analogy between mechanical and electrical systems allows for the study of resonance in LC circuits.
+
   - **Planetary motion perturbations**, where external gravitational forces act similarly to periodic forcing, leading to complex orbital behaviors.
+
   - **Biological oscillations**, such as heart rhythms and circadian cycles, which are governed by driven oscillatory behavior.
 
 #### 4. Implementation
 - Develop a computational model to simulate the motion of a forced damped pendulum.
+
 - Visualize different dynamical regimes under varying damping and forcing conditions.
+
 - Generate phase diagrams and Poincaré sections to illustrate chaotic transitions.
+
 - Implement an interactive tool that allows users to manipulate parameters in real-time and observe system behavior.
+
 - Use **Fourier analysis** to decompose motion into frequency components, identifying dominant frequencies in the response.
+
 - Construct **bifurcation diagrams** showing how qualitative system behavior changes with driving force parameters.
 
 ---
