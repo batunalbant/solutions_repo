@@ -58,6 +58,10 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#derivation-of-range">Derivation of Range</a>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="#results-discussion">Results &amp; Discussion</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#limitations">Limitations</a>
+</li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#implementation">Implementation</a>
@@ -232,6 +236,43 @@
 <div class="arithmatex">\[
  R = \frac{v_0^2 \sin(2\theta)}{g}
 \]</div>
+<hr/>
+<h3 id="results-discussion">Results &amp; Discussion</h3>
+<p>From the numerical simulations and visualizations, we can draw the following conclusions:</p>
+<ul>
+<li>
+<p>The projectile's range is maximized at <strong>45°</strong>, confirming the theoretical prediction.</p>
+</li>
+<li>
+<p>Increasing the initial velocity significantly increases the range, as expected from the quadratic dependence on .</p>
+</li>
+<li>
+<p>The Isocontour map clearly shows that small angles result in shorter trajectories, while very high angles also limit range due to vertical motion dominating over horizontal displacement.</p>
+</li>
+<li>
+<p>The <strong>heatmap</strong> provides a direct way to determine optimal launch conditions for achieving maximum range in practical scenarios.</p>
+</li>
+<li>
+<p>These results validate the theoretical framework and emphasize the importance of choosing the right launch parameters based on specific applications.</p>
+</li>
+</ul>
+<hr/>
+<h3 id="limitations">Limitations</h3>
+<p>While the model provides valuable insights into projectile motion, some limitations must be considered:</p>
+<ul>
+<li>
+<p>Air Resistance is Ignored: The model assumes a vacuum, meaning drag forces are not accounted for. In real-world applications, air resistance significantly affects both range and trajectory.</p>
+</li>
+<li>
+<p>Constant Gravitational Field: The model assumes a uniform gravitational field, which is a reasonable assumption for short-range projectiles but becomes inaccurate for high-altitude launches or planetary-scale motions.</p>
+</li>
+<li>
+<p>Flat Terrain: The analysis does not account for uneven ground or launch/landing height differences, which are crucial in many practical applications (e.g., artillery, sports, aerospace).</p>
+</li>
+<li>
+<p>Future refinements could include computational fluid dynamics (CFD) models for drag effects and adjustments for varying gravitational conditions in extraterrestrial applications.</p>
+</li>
+</ul>
 <hr/>
 <h2 id="implementation">Implementation</h2>
 <p>To better visualize projectile motion, we implement a Python simulation that generates plots of the range as a function of angle. Additionally, we compute the full trajectory of the projectile to examine the path it follows.</p>
