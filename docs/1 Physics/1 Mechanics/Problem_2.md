@@ -196,7 +196,8 @@ plt.title('Phase Space Diagram of Forced Damped Pendulum')
 plt.legend()
 plt.grid()
 plt.show()
-```
+</details> ```
+
 
 ![alt text](image-3.png)
 
