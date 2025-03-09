@@ -23,22 +23,21 @@ When an external periodic force is introduced, new parameters such as amplitude 
   - \( A \) is the amplitude of the driving force,
   - \( \omega \) is the driving frequency.
 - For small-angle approximations, use \( \sin(\theta) \approx \theta \), reducing the equation to:
-
   \( \ddot{\theta} + \beta \dot{\theta} + \omega_0^2 \theta = A \cos(\omega t) \)
   which resembles a driven damped harmonic oscillator.
 
 - The general solution of the homogeneous equation:
-
   \( \theta_h(t) = C_1 e^{-\beta t} \cos(\omega_0 t) + C_2 e^{-\beta t} \sin(\omega_0 t) \)
-
   where \( C_1 \) and \( C_2 \) are constants determined by initial conditions.
 
 - The steady-state solution can be found using the method of undetermined coefficients:
   \( \theta_p(t) = \frac{A}{\sqrt{(\omega_0^2 - \omega^2)^2 + (2\beta\omega)^2}} \cos(\omega t - \delta) \)
   where \( \delta \) is the phase lag given by:
   \( \tan(\delta) = \frac{2 \beta \omega}{\omega_0^2 - \omega^2} \)
+
 - Analyze resonance conditions and their impact on the system's energy, where resonance occurs at:
   \( \omega_{res} = \sqrt{\omega_0^2 - 2\beta^2} \)
+  
 - Investigate stability criteria and **fixed points**, evaluating equilibrium solutions and their stability through **linear stability analysis** by examining the Jacobian matrix.
 
 #### 2. Analysis of Dynamics
