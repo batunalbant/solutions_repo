@@ -852,6 +852,187 @@ T^2 \propto r^3
 </li>
 </ul>
 <p>These examples showcase how Kepler’s Third Law remains a fundamental tool in astronomy, physics, and space exploration, providing a reliable framework for understanding and predicting orbital dynamics.</p>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python"># Data for the Moon's orbit around Earth
+# Source: NASA
+moon_orbital_radius_km = 384400  # Semi-major axis in km
+moon_orbital_period_days = 27.3  # Orbital period in days
+
+# Convert period to years and radius to AU
+moon_orbital_radius_au = moon_orbital_radius_km / 1.496e8  # Convert km to AU
+moon_orbital_period_years = moon_orbital_period_days / 365.25  # Convert days to years
+
+# Compute T² and r³ for the Moon
+T_squared_moon = moon_orbital_period_years**2
+r_cubed_moon = moon_orbital_radius_au**3
+
+# Plot T² vs. r³ for the Moon
+fig, ax = plt.subplots(figsize=(7, 5))
+ax.scatter(r_cubed_moon, T_squared_moon, color='blue', label="Moon")
+ax.plot([0, r_cubed_moon], [0, T_squared_moon], linestyle="dashed", color='red', label="Kepler's Law Trendline")
+
+# Annotate the Moon's data point
+ax.annotate("Moon", (r_cubed_moon, T_squared_moon), textcoords="offset points", xytext=(5,5), ha='right')
+
+# Graph settings
+ax.set_xlabel(r"Orbital Radius Cubed ($r^3$) [AU³]")
+ax.set_ylabel(r"Orbital Period Squared ($T^2$) [Years²]")
+ax.set_title("Verification of Kepler's Third Law for the Moon's Orbit")
+ax.legend()
+ax.grid(True)
+
+# Show plot
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-7.png"/></p>
+<h3 id="verification-of-keplers-third-law-for-the-moons-orbit"><strong>Verification of Kepler’s Third Law for the Moon’s Orbit</strong></h3>
+<p><strong>Introduction to the Moon’s Orbit</strong></p>
+<p>Kepler’s Third Law applies to <strong>natural satellites</strong>, such as the Moon orbiting the Earth. The law states:</p>
+<div class="arithmatex">\[
+T^2 \propto r^3
+\]</div>
+<p><strong>where:</strong></p>
+<ul>
+<li>
+<p><span class="arithmatex">\( T \)</span> is the orbital period (in years),</p>
+</li>
+<li>
+<p><span class="arithmatex">\( r \)</span> is the semi-major axis (in astronomical units, AU).</p>
+</li>
+</ul>
+<p><strong>Data Used in the Graph</strong></p>
+<p>The graph plots the squared orbital period (<span class="arithmatex">\(T^2\)</span>) against the cubed orbital radius (<span class="arithmatex">\(r^3\)</span>) for the <strong>Moon</strong>:</p>
+<ul>
+<li>
+<p><strong>Orbital Radius</strong>: 384,400 km (~0.00257 AU).</p>
+</li>
+<li>
+<p><strong>Orbital Period</strong>: 27.3 days (~0.0748 years).</p>
+</li>
+<li>
+<p>Data is sourced from NASA.</p>
+</li>
+</ul>
+<p><strong>Observations &amp; Confirmation of Kepler’s Law</strong></p>
+<ul>
+<li>
+<p>The data point aligns with the expected Keplerian trend.</p>
+</li>
+<li>
+<p>The dashed red line represents the proportionality <span class="arithmatex">\( T^2 \propto r^3 \)</span>.</p>
+</li>
+<li>
+<p>This confirms that the Moon’s motion follows Kepler’s Law, just like planetary orbits.</p>
+</li>
+</ul>
+<p><strong>Conclusion</strong></p>
+<ul>
+<li>
+<p>Kepler’s Third Law is <strong>not limited to planets</strong>, but applies to moons and other natural satellites.</p>
+</li>
+<li>
+<p>Astronomers use this principle to estimate the masses of planets by studying their moons.</p>
+</li>
+<li>
+<p>This result supports the universality of Kepler’s Law.</p>
+</li>
+</ul>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python">
+# Data for Jupiter's Galilean Moons (Io, Europa, Ganymede, Callisto)
+# Source: NASA JPL
+moon_names = ["Io", "Europa", "Ganymede", "Callisto"]
+orbital_radii_au_jupiter = np.array([0.00282, 0.00448, 0.00716, 0.01258])  # Semi-major axis in AU
+orbital_periods_days_jupiter = np.array([1.77, 3.55, 7.15, 16.69])  # Orbital period in days
+
+# Convert orbital periods to years
+orbital_periods_years_jupiter = orbital_periods_days_jupiter / 365.25
+
+# Compute T² and r³ for Jupiter's moons
+T_squared_jupiter = orbital_periods_years_jupiter**2
+r_cubed_jupiter = orbital_radii_au_jupiter**3
+
+# Plot T² vs. r³ for Jupiter's moons
+fig, ax = plt.subplots(figsize=(7, 5))
+ax.scatter(r_cubed_jupiter, T_squared_jupiter, color='purple', label="Jupiter's Moons")
+ax.plot(r_cubed_jupiter, T_squared_jupiter, linestyle="dashed", color='red', label="Kepler's Law Trendline")
+
+# Annotate moons
+for i, name in enumerate(moon_names):
+    ax.annotate(name, (r_cubed_jupiter[i], T_squared_jupiter[i]), textcoords="offset points", xytext=(5,5), ha='right')
+
+# Graph settings
+ax.set_xlabel(r"Orbital Radius Cubed ($r^3$) [AU³]")
+ax.set_ylabel(r"Orbital Period Squared ($T^2$) [Years²]")
+ax.set_title("Verification of Kepler's Third Law for Jupiter's Moons")
+ax.legend()
+ax.grid(True)
+
+# Show plot
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-8.png"/></p>
+<h3 id="verification-of-keplers-third-law-for-jupiters-moons"><strong>Verification of Kepler’s Third Law for Jupiter’s Moons</strong></h3>
+<p><strong>Introduction to Jupiter’s Moons</strong></p>
+<p>Kepler’s Third Law applies to <strong>moons orbiting planets</strong>, just as it applies to planets orbiting stars. The relationship:</p>
+<div class="arithmatex">\[
+T^2 \propto r^3
+\]</div>
+<p>allows astronomers to determine the mass of the central planet (Jupiter in this case).</p>
+<p><strong>Data Used in the Graph</strong></p>
+<p>The graph plots the squared orbital periods (<span class="arithmatex">\(T^2\)</span>) against the cubed orbital radii (<span class="arithmatex">\(r^3\)</span>) for Jupiter’s <strong>four largest moons</strong>:</p>
+<ul>
+<li>
+<p><strong>Io</strong>: <span class="arithmatex">\( r = 0.00282 \)</span> AU, <span class="arithmatex">\( T = 1.77 \)</span> days.</p>
+</li>
+<li>
+<p><strong>Europa</strong>: <span class="arithmatex">\( r = 0.00448 \)</span> AU, <span class="arithmatex">\( T = 3.55 \)</span> days.</p>
+</li>
+<li>
+<p><strong>Ganymede</strong>: <span class="arithmatex">\( r = 0.00716 \)</span> AU, <span class="arithmatex">\( T = 7.15 \)</span> days.</p>
+</li>
+<li>
+<p><strong>Callisto</strong>: <span class="arithmatex">\( r = 0.01258 \)</span> AU, <span class="arithmatex">\( T = 16.69 \)</span> days.</p>
+</li>
+<li>
+<p>Data is sourced from NASA JPL.</p>
+</li>
+</ul>
+<p><strong>Observations &amp; Confirmation of Kepler’s Law</strong></p>
+<ul>
+<li>
+<p>The data points align with the expected trend <span class="arithmatex">\( T^2 \propto r^3 \)</span>.</p>
+</li>
+<li>
+<p>The dashed red line represents the Keplerian proportionality.</p>
+</li>
+<li>
+<p>This confirms that Jupiter’s moons obey Kepler’s Law, just as planets do.</p>
+</li>
+</ul>
+<p><strong>Conclusion</strong> </p>
+<ul>
+<li>
+<p>Kepler’s Law helps estimate planetary masses using moon orbits.</p>
+</li>
+<li>
+<p>This principle is used to determine the mass of <strong>Jupiter, Saturn, and exoplanets</strong>.</p>
+</li>
+<li>
+<p>It provides key insights into the structure and dynamics of planetary systems.</p>
+</li>
+</ul>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python">
+</code></pre>
+</details>
 <hr/>
 <p><strong>Computational Simulation</strong></p>
 <p>To further validate Kepler’s Third Law, we implement a computational simulation using Python. The simulation consists of the following steps:</p>
