@@ -122,17 +122,13 @@ These examples showcase how Kepler’s Third Law remains a fundamental tool in a
 
 **Task 4: Computational Simulation**
 
-To further validate Kepler’s Third Law, we implement a numerical simulation using Python. This simulation will:
+To further validate Kepler’s Third Law, we implement a computational simulation using Python. The simulation consists of the following steps:
 
-- **Model circular orbits** using Newtonian mechanics and simulate the motion of an orbiting body.
-- **Generate visual plots** showing the relationship between the orbital period and radius.
-- **Extend the analysis** to demonstrate how deviations occur in elliptical orbits and complex celestial systems.
+1. **Mathematical Model Implementation:** Using Kepler’s equation \(T^2 = \frac{4\pi^2}{GM} r^3\), we compute the orbital period for different radii.
+2. **Data Visualization:** We generate plots of \(T^2\) vs. \(r^3\) to confirm the expected linear relationship.
+3. **Numerical Orbital Simulation:** Using Newton’s laws of motion and gravitational force equations, we simulate an orbiting body’s motion in a 2D plane.
+4. **Extension to Elliptical Orbits:** The model can be extended to explore elliptical motion and deviations from circular orbits.
+5. **Code Implementation:** We use Python with Matplotlib and NumPy for numerical calculations and visualization.
 
-The Python implementation will include:
-
-1. Calculation of the orbital period for different radii.
-2. Plotting the relationship between \( T^2 \) and \( r^3 \) to confirm linearity.
-3. Simulating orbital paths and visualizing results using Matplotlib.
-
-By addressing these tasks, we aim to bridge theoretical concepts with computational tools, providing a comprehensive analysis of Kepler's Third Law in both an academic and applied context.
+By implementing this simulation, we will quantitatively validate Kepler’s Third Law and provide an interactive approach to understanding orbital mechanics. The next step is to generate graphical representations to visualize the results.
 
