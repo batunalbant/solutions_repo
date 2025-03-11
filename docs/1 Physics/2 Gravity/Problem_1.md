@@ -125,6 +125,79 @@ plt.show()
 
 This diagram serves as a foundation for understanding Kepler’s Third Law and orbital mechanics.
 
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define constants
+G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
+M = 1.989e30  # Mass of the Sun (kg)
+
+# Define range of orbital radii (in astronomical units converted to meters)
+radii_au = np.linspace(0.1, 5, 100)  # 0.1 AU to 5 AU
+radii_m = radii_au * 1.496e11  # Convert AU to meters
+
+# Compute orbital velocities using v = sqrt(GM/r)
+velocities = np.sqrt(G * M / radii_m)
+
+# Plot the velocity vs. radius graph
+fig, ax = plt.subplots(figsize=(7, 5))
+ax.plot(radii_au, velocities / 1e3, color='blue', linewidth=2, label=r'Orbital Velocity ($v \propto \frac{1}{\sqrt{r}}$)')
+
+# Graph settings
+ax.set_xlabel("Orbital Radius (AU)")
+ax.set_ylabel("Orbital Velocity (km/s)")
+ax.set_title("Orbital Velocity vs. Radius")
+ax.legend()
+ax.grid(True)
+
+# Show plot
+plt.show()
+
+```
+</details>
+
+![alt text](image-1.png)
+
+- **Orbital Velocity vs. Radius**
+
+- **Introduction to Orbital Velocity**
+- This plot illustrates how an orbiting body's velocity changes with its orbital radius around a central mass, following the equation:  
+
+\[
+v = \sqrt{\frac{GM}{r}}
+\]
+
+**where:**
+- \( G \) is the gravitational constant,
+- \( M \) is the mass of the central body (e.g., the Sun),
+- \( r \) is the orbital radius.
+
+- **Relationship Between Velocity and Radius**
+
+- The velocity decreases as the radius increases.
+
+- The function follows an inverse square root relationship:  
+
+\[
+v \propto \frac{1}{\sqrt{r}}
+\]
+
+- This means that planets or satellites closer to the central mass move faster, while those farther away move slower.
+
+- **Key Observations**
+
+- At **small orbital radii**, the velocity is high, indicating strong gravitational attraction.
+
+- At **large orbital radii**, the velocity decreases, leading to longer orbital periods.
+
+This result aligns with Kepler’s laws and Newtonian mechanics, confirming that planetary motion follows predictable gravitational rules.
+
+
 ---
 
 **Implications for Astronomy**
