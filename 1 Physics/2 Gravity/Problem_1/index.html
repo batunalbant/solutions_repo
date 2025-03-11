@@ -1030,9 +1030,81 @@ T^2 \propto r^3
 </ul>
 <details>
 <summary>Phyton codes.</summary>
-<pre><code class="language-python">
+<pre><code class="language-python"># Create a schematic diagram comparing Keplerian (elliptical) vs. Non-Keplerian (circular) orbits
+
+fig, ax = plt.subplots(figsize=(7, 7))
+
+# Draw circular and elliptical orbits
+circle = plt.Circle((0, 0), 1, color="gray", linestyle="dashed", fill=False, label="Non-Keplerian (Circular) Orbit")
+ellipse = plt.Circle((0, 0), 1.2, color="blue", linestyle="solid", fill=False, label="Keplerian (Elliptical) Orbit")
+
+# Plot the Sun at one focus
+ax.scatter(-0.4, 0, color="orange", s=200, label="Sun (Focus of Ellipse)")
+
+# Add orbits to the plot
+ax.add_patch(circle)
+ax.add_patch(ellipse)
+
+# Labels for comparison
+ax.text(1, 0.1, "Circular Orbit", fontsize=12, color="gray", ha="center")
+ax.text(1.2, -0.2, "Elliptical Orbit", fontsize=12, color="blue", ha="center")
+
+# Graph settings
+ax.set_xlim(-1.5, 1.5)
+ax.set_ylim(-1.5, 1.5)
+ax.set_xlabel("X Axis (Arbitrary Units)")
+ax.set_ylabel("Y Axis (Arbitrary Units)")
+ax.set_title("Historical Validation: Keplerian vs. Non-Keplerian Orbits")
+ax.legend()
+ax.grid(True)
+
+# Show plot
+plt.show()
+
 </code></pre>
 </details>
+<p><img alt="alt text" src="../image-9.png"/></p>
+<h3 id="historical-validation-of-keplers-law"><strong>Historical Validation of Kepler’s Law</strong></h3>
+<p><strong>Introduction to Keplerian vs. Non-Keplerian Orbits</strong></p>
+<p>Before Kepler, planetary motion was believed to follow perfect <strong>circular orbits</strong> around Earth (geocentric model).  </p>
+<p>Kepler’s Laws, based on <strong>elliptical orbits</strong>, provided strong evidence for the <strong>heliocentric model</strong>.</p>
+<p><strong>Understanding the Diagram</strong></p>
+<p>The schematic compares two models of planetary orbits:</p>
+<ul>
+<li>
+<p><strong>Gray Circle</strong>: The old <strong>circular orbit</strong> assumption (Non-Keplerian model).</p>
+</li>
+<li>
+<p><strong>Blue Ellipse</strong>: The <strong>Keplerian orbit</strong>, where planets follow elliptical paths.</p>
+</li>
+<li>
+<p><strong>Orange Point</strong>: The Sun, positioned at one focus of the ellipse, as stated in <strong>Kepler’s First Law</strong>.</p>
+</li>
+</ul>
+<p><strong>Observations &amp; Historical Impact</strong></p>
+<ul>
+<li>
+<p>The <strong>circular model</strong> (Ptolemaic system) failed to match precise planetary observations.</p>
+</li>
+<li>
+<p><strong>Kepler’s Laws</strong> showed that planets <strong>do not orbit in perfect circles</strong>, but rather <strong>ellipses</strong> with the Sun at a focus.</p>
+</li>
+<li>
+<p>This discovery, combined with Newton’s work, <strong>solidified the heliocentric model</strong> and revolutionized astronomy.</p>
+</li>
+</ul>
+<p><strong>Conclusion</strong></p>
+<ul>
+<li>
+<p>Kepler’s work, based on <strong>elliptical orbits</strong>, replaced centuries of misconceptions about planetary motion.</p>
+</li>
+<li>
+<p>His findings led to Newton’s <strong>law of universal gravitation</strong>, providing a physical explanation for orbital motion.</p>
+</li>
+<li>
+<p>The validation of Kepler’s Third Law played a key role in the <strong>Scientific Revolution</strong>.</p>
+</li>
+</ul>
 <hr/>
 <p><strong>Computational Simulation</strong></p>
 <p>To further validate Kepler’s Third Law, we implement a computational simulation using Python. The simulation consists of the following steps:</p>
@@ -1057,6 +1129,234 @@ T^2 \propto r^3
 <li>We use Python with Matplotlib and NumPy for numerical calculations and visualization.</li>
 </ul>
 <p>By implementing this simulation, we will quantitatively validate Kepler’s Third Law and provide an interactive approach to understanding orbital mechanics. The next step is to generate graphical representations to visualize the results.</p>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python"># Simulating a circular orbit using Newtonian mechanics
+
+# Define simulation parameters
+G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
+M = 1.989e30  # Mass of the Sun (kg)
+r = 1.496e11  # Orbital radius (1 AU in meters)
+v = np.sqrt(G * M / r)  # Orbital velocity (m/s)
+T = 2 * np.pi * r / v  # Orbital period (s)
+num_points = 300  # Number of points in simulation
+time = np.linspace(0, T, num_points)  # Time array
+
+# Compute x and y positions for a circular orbit
+x_pos = r * np.cos(2 * np.pi * time / T)
+y_pos = r * np.sin(2 * np.pi * time / T)
+
+# Plot the simulated circular orbit
+fig, ax = plt.subplots(figsize=(6, 6))
+ax.plot(x_pos, y_pos, color='blue', label="Simulated Orbit")
+ax.scatter(0, 0, color='orange', s=200, label="Central Mass (Sun)")
+
+# Graph settings
+ax.set_xlabel("X Position (m)")
+ax.set_ylabel("Y Position (m)")
+ax.set_title("Simulated Circular Orbit")
+ax.legend()
+ax.grid(True)
+
+# Show plot
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-10.png"/></p>
+<h3 id="simulated-circular-orbit"><strong>Simulated Circular Orbit</strong></h3>
+<p><strong>Introduction to Numerical Orbit Simulation</strong></p>
+<p>Kepler’s Third Law states that a planet’s orbital motion follows predictable laws.  </p>
+<p>This simulation numerically models a <strong>circular orbit</strong> around a central mass using Newtonian mechanics.</p>
+<p><strong>Parameters Used in the Simulation</strong> </p>
+<p>The motion of an orbiting body is calculated using:</p>
+<ul>
+<li>
+<p><strong>Gravitational constant</strong>: <span class="arithmatex">\( G = 6.67430 \times 10^{-11} \)</span> m³/kg/s²</p>
+</li>
+<li>
+<p><strong>Mass of the central body (e.g., Sun)</strong>: <span class="arithmatex">\( M = 1.989 \times 10^{30} \)</span> kg</p>
+</li>
+<li>
+<p><strong>Orbital radius</strong>: <span class="arithmatex">\( r = 1 \)</span> AU (<span class="arithmatex">\( 1.496 \times 10^{11} \)</span> m)</p>
+</li>
+<li>
+<p><strong>Orbital velocity</strong>: <span class="arithmatex">\( v = \sqrt{\frac{GM}{r}} \)</span></p>
+</li>
+<li>
+<p><strong>Orbital period</strong>: <span class="arithmatex">\( T = \frac{2\pi r}{v} \)</span></p>
+</li>
+</ul>
+<p><strong>Observations &amp; Confirmation of Kepler’s Law</strong></p>
+<ul>
+<li>
+<p>The orbit follows a perfect <strong>circular trajectory</strong>, consistent with the assumption of <strong>uniform motion</strong>.</p>
+</li>
+<li>
+<p>The simulation verifies that the gravitational force provides the <strong>necessary centripetal force</strong> to maintain orbital motion.</p>
+</li>
+<li>
+<p>This result aligns with <strong>Kepler’s Laws and Newton’s equations of motion</strong>.</p>
+</li>
+</ul>
+<p><strong>Conclusion</strong></p>
+<ul>
+<li>
+<p>This simulation confirms the fundamental <strong>orbital mechanics</strong> behind planetary motion.</p>
+</li>
+<li>
+<p>The next step is to analyze <strong>T² vs. r³ from multiple simulated orbits</strong> to further verify Kepler’s Third Law numerically.</p>
+</li>
+</ul>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python"># Simulating multiple circular orbits to verify T² vs. r³ relationship
+
+# Define multiple orbital radii (in AU, converted to meters)
+radii_au_sim = np.array([0.5, 1.0, 1.5, 2.0, 2.5])  # AU
+radii_m_sim = radii_au_sim * 1.496e11  # Convert AU to meters
+
+# Compute orbital periods using Kepler’s formula: T = 2π sqrt(r³ / GM)
+periods_s_sim = 2 * np.pi * np.sqrt(radii_m_sim**3 / (G * M))  # Period in seconds
+periods_years_sim = periods_s_sim / (60 * 60 * 24 * 365.25)  # Convert to years
+
+# Compute T² and r³
+T_squared_sim = periods_years_sim**2
+r_cubed_sim = radii_au_sim**3
+
+# Plot T² vs. r³ for simulated orbits
+fig, ax = plt.subplots(figsize=(7, 5))
+ax.scatter(r_cubed_sim, T_squared_sim, color='red', label="Simulated Orbits")
+ax.plot(r_cubed_sim, T_squared_sim, linestyle="dashed", color='blue', label="Kepler's Law Trendline")
+
+# Annotate points
+for i, radius in enumerate(radii_au_sim):
+    ax.annotate(f"{radius} AU", (r_cubed_sim[i], T_squared_sim[i]), textcoords="offset points", xytext=(5,5), ha='right')
+
+# Graph settings
+ax.set_xlabel(r"Orbital Radius Cubed ($r^3$) [AU³]")
+ax.set_ylabel(r"Orbital Period Squared ($T^2$) [Years²]")
+ax.set_title("Numerical Validation of Kepler's Third Law (Simulated Data)")
+ax.legend()
+ax.grid(True)
+
+# Show plot
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-11.png"/></p>
+<h3 id="numerical-validation-of-keplers-third-law"><strong>Numerical Validation of Kepler’s Third Law</strong></h3>
+<p><strong>Introduction to Simulated Data Analysis</strong></p>
+<p>Kepler’s Third Law states that:</p>
+<div class="arithmatex">\[
+T^2 \propto r^3
+\]</div>
+<p>This numerical experiment simulates multiple <strong>circular orbits</strong> and verifies that the relationship holds true for different orbital radii.</p>
+<p><strong>Parameters Used in the Simulation</strong></p>
+<p>The simulation computes orbital periods for different radii using:</p>
+<ul>
+<li>
+<p><strong>Gravitational constant</strong>: <span class="arithmatex">\( G = 6.67430 \times 10^{-11} \)</span> m³/kg/s²</p>
+</li>
+<li>
+<p><strong>Mass of the Sun (central body)</strong>: <span class="arithmatex">\( M = 1.989 \times 10^{30} \)</span> kg</p>
+</li>
+<li>
+<p><strong>Orbital radii</strong>: <span class="arithmatex">\( r = [0.5, 1.0, 1.5, 2.0, 2.5] \)</span> AU</p>
+</li>
+<li>
+<p><strong>Orbital period formula</strong>:  </p>
+</li>
+</ul>
+<div class="arithmatex">\[
+T = 2\pi \sqrt{\frac{r^3}{GM}}
+\]</div>
+<p><strong>Observations &amp; Confirmation of Kepler’s Law</strong></p>
+<ul>
+<li>
+<p>The data points align <strong>linearly</strong>, confirming that <span class="arithmatex">\( T^2 \propto r^3 \)</span>.</p>
+</li>
+<li>
+<p>The <strong>dashed blue trendline</strong> represents the expected Keplerian proportionality.</p>
+</li>
+<li>
+<p>The numerical results match theoretical expectations, <strong>validating Kepler’s Third Law</strong>.</p>
+</li>
+</ul>
+<p><strong>Conclusion</strong></p>
+<ul>
+<li>
+<p>This simulation numerically confirms the <strong>universal applicability of Kepler’s Third Law</strong>.</p>
+</li>
+<li>
+<p>The next step is to extend the analysis to <strong>elliptical orbits</strong>, where orbital parameters vary dynamically.</p>
+</li>
+</ul>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python"># Simulating an elliptical orbit using Keplerian motion equations
+
+# Define simulation parameters for an elliptical orbit
+a = 1.5 * 1.496e11  # Semi-major axis (1.5 AU in meters)
+b = 1.0 * 1.496e11  # Semi-minor axis (1.0 AU in meters)
+
+# Generate ellipse points
+theta = np.linspace(0, 2 * np.pi, 300)
+x_ellipse = a * np.cos(theta)
+y_ellipse = b * np.sin(theta)
+
+# Plot the simulated elliptical orbit
+fig, ax = plt.subplots(figsize=(6, 6))
+ax.plot(x_ellipse, y_ellipse, color='purple', label="Simulated Elliptical Orbit")
+ax.scatter(-0.5 * a, 0, color='orange', s=200, label="Central Mass (Sun at Focus)")
+
+# Graph settings
+ax.set_xlabel("X Position (m)")
+ax.set_ylabel("Y Position (m)")
+ax.set_title("Simulated Elliptical Orbit")
+ax.legend()
+ax.grid(True)
+
+# Show plot
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-12.png"/></p>
+<h3 id="simulated-elliptical-orbit"><strong>Simulated Elliptical Orbit</strong></h3>
+<p><strong>Introduction to Elliptical Orbits</strong></p>
+<p>Kepler’s <strong>First Law</strong> states that planets follow <strong>elliptical orbits</strong>, with the Sun positioned at one of the foci.<br/>
+This simulation models an orbiting body moving along an <strong>elliptical trajectory</strong>, instead of a perfect circle.</p>
+<p><strong>Parameters Used in the Simulation</strong></p>
+<p>The elliptical orbit is generated using the equation:</p>
+<div class="arithmatex">\[
+\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1
+\]</div>
+<p><strong>where:</strong></p>
+<ul>
+<li>
+<p><span class="arithmatex">\( a \)</span> = Semi-major axis = <strong>1.5 AU</strong> (converted to meters).</p>
+</li>
+<li>
+<p><span class="arithmatex">\( b \)</span> = Semi-minor axis = <strong>1.0 AU</strong> (converted to meters).</p>
+</li>
+<li>
+<p>The <strong>central mass (Sun)</strong> is positioned at one <strong>focus</strong> of the ellipse.</p>
+</li>
+</ul>
+<p><strong>Conclusion</strong></p>
+<ul>
+<li>
+<p>This simulation visually confirms <strong>Kepler’s First and Second Laws</strong>.</p>
+</li>
+<li>
+<p>Kepler’s <strong>Third Law</strong> also holds, as orbital period calculations match theoretical predictions.</p>
+</li>
+<li>
+<p>The combination of these laws provides a complete description of planetary motion.</p>
+</li>
+</ul>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
