@@ -271,7 +271,7 @@ plt.show()
 </code></pre>
 </details>
 <p><img alt="alt text" src="../image.png"/></p>
-<p><strong>Introduction to Central Mass and Orbiting Body</strong></p>
+<h3 id="introduction-to-central-mass-and-orbiting-body"><strong>Introduction to Central Mass and Orbiting Body</strong></h3>
 <ul>
 <li>This diagram illustrates an orbiting body (e.g., Earth) moving around a central mass (e.g., the Sun).</li>
 </ul>
@@ -323,7 +323,7 @@ plt.show()
 </code></pre>
 </details>
 <p><img alt="alt text" src="../image-1.png"/></p>
-<p><strong>Orbital Velocity vs. Radius</strong></p>
+<h3 id="orbital-velocity-vs-radius"><strong>Orbital Velocity vs. Radius</strong></h3>
 <ul>
 <li><strong>Introduction to Orbital Velocity</strong></li>
 <li>This plot illustrates how an orbiting body's velocity changes with its orbital radius around a central mass, following the equation:  </li>
@@ -360,6 +360,71 @@ v \propto \frac{1}{\sqrt{r}}
 </li>
 </ul>
 <p>This result aligns with Kepler’s laws and Newtonian mechanics, confirming that planetary motion follows predictable gravitational rules.</p>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python"># Diagram illustrating orbital dynamics with velocity and force vectors
+
+fig, ax = plt.subplots(figsize=(6, 6))
+
+# Central mass (e.g., the Sun)
+ax.scatter(0, 0, color='orange', s=300, label="Central Mass (Sun)")
+
+# Orbiting body (e.g., Earth)
+orbit_radius = 1  # Arbitrary units
+ax.scatter(orbit_radius, 0, color='blue', s=100, label="Orbiting Body (Earth)")
+
+# Gravitational force vector (pointing toward the central mass)
+ax.arrow(orbit_radius, 0, -0.5, 0, head_width=0.05, head_length=0.1, fc='red', ec='red', label="Gravitational Force (Fg)")
+
+# Centripetal force vector (pointing toward the central mass, same as gravitational force)
+ax.arrow(orbit_radius, 0, -0.5, 0, head_width=0.05, head_length=0.1, fc='green', ec='green', label="Centripetal Force (Fc)")
+
+# Velocity vector (tangential to the orbit)
+ax.arrow(orbit_radius, 0, 0, 0.5, head_width=0.05, head_length=0.1, fc='blue', ec='blue', label="Velocity Vector (v)")
+
+# Graph settings
+ax.set_xlim(-1.5, 1.5)
+ax.set_ylim(-1.5, 1.5)
+ax.set_xlabel("X Axis (Arbitrary Units)")
+ax.set_ylabel("Y Axis (Arbitrary Units)")
+ax.set_title("Orbital Dynamics: Forces and Velocity")
+ax.legend()
+ax.grid(True)
+
+# Display the plot
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-2.png"/></p>
+<h3 id="orbital-dynamics"><strong>Orbital Dynamics</strong></h3>
+<p><strong>Introduction to Orbital Dynamics</strong> </p>
+<p>This diagram represents the fundamental forces acting on an orbiting body, demonstrating how it remains in stable motion around a central mass.</p>
+<p><strong>Forces Acting on the Orbiting Body</strong></p>
+<ul>
+<li>
+<p><strong>Gravitational Force</strong> (<span class="arithmatex">\(F_g\)</span>): Pulls the orbiting body toward the central mass, maintaining the attraction.</p>
+</li>
+<li>
+<p><strong>Centripetal Force</strong> (<span class="arithmatex">\(F_c\)</span>): Keeps the body in circular motion by counteracting the inertia.</p>
+</li>
+<li>
+<p>The balance of these forces prevents the body from falling into the central mass or drifting away.</p>
+</li>
+</ul>
+<p><strong>Key Observations</strong></p>
+<ul>
+<li>
+<p>The orbiting body follows a <strong>circular trajectory</strong> due to the interaction of gravitational and centripetal forces.</p>
+</li>
+<li>
+<p>The velocity vector is always <strong>tangential</strong> to the orbit, while the force vectors act radially.</p>
+</li>
+<li>
+<p>This system is governed by Newton’s laws of motion and gravitation.</p>
+</li>
+</ul>
+<p>These principles are the foundation of Kepler’s Third Law and orbital mechanics.</p>
 <hr/>
 <p><strong>Implications for Astronomy</strong></p>
 <p>Kepler’s Third Law has profound implications in astronomy, as it provides a powerful tool for understanding and predicting celestial mechanics. Some key applications include:</p>
