@@ -104,13 +104,13 @@ plt.show()
 
 ![alt text](image.png)
 
-- **Introduction to Central Mass and Orbiting Body**
+**Introduction to Central Mass and Orbiting Body**
 
 
 - This diagram illustrates an orbiting body (e.g., Earth) moving around a central mass (e.g., the Sun).
 
 
-- **Representation of Forces**
+**Representation of Forces**
 
 
 - Red Arrow: The gravitational force (𝐹𝑔) pulls the orbiting body toward the central mass.
@@ -118,7 +118,7 @@ plt.show()
 - Green Arrow: The centripetal force (𝐹𝑐) keeps the body in circular motion.
 
 
-- **Orbital Dynamics**
+**Orbital Dynamics**
 
 - According to Newton's law of gravitation and the principles of centripetal force, the orbiting body is continuously pulled toward the central mass. However, due to its tangential velocity, it remains in orbit rather than falling directly into the central mass.
 
@@ -163,7 +163,7 @@ plt.show()
 
 ![alt text](image-1.png)
 
-- **Orbital Velocity vs. Radius**
+**Orbital Velocity vs. Radius**
 
 - **Introduction to Orbital Velocity**
 - This plot illustrates how an orbiting body's velocity changes with its orbital radius around a central mass, following the equation:  
@@ -177,7 +177,7 @@ v = \sqrt{\frac{GM}{r}}
 - \( M \) is the mass of the central body (e.g., the Sun),
 - \( r \) is the orbital radius.
 
-- **Relationship Between Velocity and Radius**
+**Relationship Between Velocity and Radius**
 
 - The velocity decreases as the radius increases.
 
@@ -189,7 +189,7 @@ v \propto \frac{1}{\sqrt{r}}
 
 - This means that planets or satellites closer to the central mass move faster, while those farther away move slower.
 
-- **Key Observations**
+**Key Observations**
 
 - At **small orbital radii**, the velocity is high, indicating strong gravitational attraction.
 
@@ -206,7 +206,7 @@ This result aligns with Kepler’s laws and Newtonian mechanics, confirming that
 Kepler’s Third Law has profound implications in astronomy, as it provides a powerful tool for understanding and predicting celestial mechanics. Some key applications include:
 
 
-- **Determining Planetary Masses and Distances:**
+**Determining Planetary Masses and Distances:**
 
 
 - By measuring a planet’s orbital period and radius, astronomers can determine the mass of its central star using Kepler’s equation.
@@ -218,7 +218,7 @@ Kepler’s Third Law has profound implications in astronomy, as it provides a po
 - For example, astronomers use Jupiter’s moons and their orbital periods to calculate Jupiter’s mass.
 
 
-- **Detecting and Characterizing Exoplanets:**
+**Detecting and Characterizing Exoplanets:**
 
 
 - The transit method and radial velocity method rely on Kepler’s Third Law to infer exoplanetary properties.
@@ -230,7 +230,7 @@ Kepler’s Third Law has profound implications in astronomy, as it provides a po
 - Many exoplanets discovered by missions like Kepler and TESS have been characterized using this method.
 
 
-- **Astrophysical Modeling and Space Mission Planning:**
+**Astrophysical Modeling and Space Mission Planning:**
 
 
 - Kepler’s Law plays a crucial role in astrophysical simulations, including planetary formation models and galaxy dynamics.
@@ -252,7 +252,7 @@ By leveraging Kepler’s Third Law, astronomers and space scientists can accurat
 Kepler’s Third Law is observed in various real-world scenarios, validating its accuracy and significance in celestial mechanics:
 
 
-- **The Moon’s orbit around Earth:**
+**The Moon’s orbit around Earth:**
 
 
 - The Moon’s orbital period (27.3 days) and average distance from Earth **(384,400 km)** fit the expected relationship dictated by Kepler’s Third Law.
@@ -261,7 +261,7 @@ Kepler’s Third Law is observed in various real-world scenarios, validating its
 - This relationship helps astronomers accurately model tidal effects and lunar cycles.
 
 
-- **The planets of the Solar System:**
+**The planets of the Solar System:**
 
 
 - Orbital data from Mercury to Neptune closely follow the cubic relationship of , confirming the law's predictive power.
@@ -270,7 +270,7 @@ Kepler’s Third Law is observed in various real-world scenarios, validating its
 - This allows astronomers to estimate unknown orbital parameters when limited observational data is available.
 
 
-- **Jupiter’s Moons:**
+**Jupiter’s Moons:**
 
 
 - Galileo’s observations of Jupiter’s four largest moons (Io, Europa, Ganymede, and Callisto) provided one of the earliest confirmations of Kepler’s Third Law beyond Earth.
@@ -279,7 +279,7 @@ Kepler’s Third Law is observed in various real-world scenarios, validating its
 - By measuring their orbital periods and distances, astronomers accurately determined Jupiter’s mass.
 
 
-- **Artificial Satellites and Space Missions:**
+**Artificial Satellites and Space Missions:**
 
 - The orbits of geostationary and low-Earth-orbit satellites adhere to Kepler’s Third Law, ensuring their stability and functionality.
 
@@ -287,7 +287,7 @@ Kepler’s Third Law is observed in various real-world scenarios, validating its
 - Space missions such as Mars orbiters and the Hubble Space Telescope use Kepler’s principles to maintain precise orbital paths.
 
 
-- **Binary Star Systems and Exoplanets:**
+**Binary Star Systems and Exoplanets:**
 
 - The law is instrumental in studying binary star systems, where astronomers use orbital period and separation to determine stellar masses.
 
@@ -300,19 +300,29 @@ These examples showcase how Kepler’s Third Law remains a fundamental tool in a
 
 ---
 
-**Task 4: Computational Simulation**
+**Computational Simulation**
 
 To further validate Kepler’s Third Law, we implement a computational simulation using Python. The simulation consists of the following steps:
 
-1. **Mathematical Model Implementation:** Using Kepler’s equation \(T^2 = \frac{4\pi^2}{GM} r^3\), we compute the orbital period for different radii.
+**Mathematical Model Implementation:** 
 
-2. **Data Visualization:** We generate plots of \(T^2\) vs. \(r^3\) to confirm the expected linear relationship.
+- Using Kepler’s equation \(T^2 = \frac{4\pi^2}{GM} r^3\), we compute the orbital period for different radii.
 
-3. **Numerical Orbital Simulation:** Using Newton’s laws of motion and gravitational force equations, we simulate an orbiting body’s motion in a 2D plane.
+**Data Visualization:** 
 
-4. **Extension to Elliptical Orbits:** The model can be extended to explore elliptical motion and deviations from circular orbits.
+- We generate plots of \(T^2\) vs. \(r^3\) to confirm the expected linear relationship.
 
-5. **Code Implementation:** We use Python with Matplotlib and NumPy for numerical calculations and visualization.
+**Numerical Orbital Simulation:**
+
+-  Using Newton’s laws of motion and gravitational force equations, we simulate an orbiting body’s motion in a 2D plane.
+ 
+**Extension to Elliptical Orbits:**
+
+ - The model can be extended to explore elliptical motion and deviations from circular orbits.
+
+**Code Implementation:**
+
+- We use Python with Matplotlib and NumPy for numerical calculations and visualization.
 
 
 By implementing this simulation, we will quantitatively validate Kepler’s Third Law and provide an interactive approach to understanding orbital mechanics. The next step is to generate graphical representations to visualize the results.
