@@ -295,6 +295,85 @@ plt.show()
 </li>
 </ul>
 <p>This diagram serves as a foundation for understanding Kepler’s Third Law and orbital mechanics.</p>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python">
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define constants
+G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
+M = 1.989e30  # Mass of the Sun (kg)
+
+# Define range of orbital radii (in astronomical units converted to meters)
+radii_au = np.linspace(0.1, 5, 100)  # 0.1 AU to 5 AU
+radii_m = radii_au * 1.496e11  # Convert AU to meters
+
+# Compute orbital velocities using v = sqrt(GM/r)
+velocities = np.sqrt(G * M / radii_m)
+
+# Plot the velocity vs. radius graph
+fig, ax = plt.subplots(figsize=(7, 5))
+ax.plot(radii_au, velocities / 1e3, color='blue', linewidth=2, label=r'Orbital Velocity ($v \propto \frac{1}{\sqrt{r}}$)')
+
+# Graph settings
+ax.set_xlabel("Orbital Radius (AU)")
+ax.set_ylabel("Orbital Velocity (km/s)")
+ax.set_title("Orbital Velocity vs. Radius")
+ax.legend()
+ax.grid(True)
+
+# Show plot
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-1.png"/></p>
+<ul>
+<li>
+<p><strong>Orbital Velocity vs. Radius</strong></p>
+</li>
+<li>
+<p><strong>Introduction to Orbital Velocity</strong></p>
+</li>
+<li>This plot illustrates how an orbiting body's velocity changes with its orbital radius around a central mass, following the equation:  </li>
+</ul>
+<div class="arithmatex">\[
+v = \sqrt{\frac{GM}{r}}
+\]</div>
+<p><strong>where:</strong>
+- <span class="arithmatex">\( G \)</span> is the gravitational constant,
+- <span class="arithmatex">\( M \)</span> is the mass of the central body (e.g., the Sun),
+- <span class="arithmatex">\( r \)</span> is the orbital radius.</p>
+<ul>
+<li>
+<p><strong>Relationship Between Velocity and Radius</strong></p>
+</li>
+<li>
+<p>The velocity decreases as the radius increases.</p>
+</li>
+<li>
+<p>The function follows an inverse square root relationship:  </p>
+</li>
+</ul>
+<div class="arithmatex">\[
+v \propto \frac{1}{\sqrt{r}}
+\]</div>
+<ul>
+<li>
+<p>This means that planets or satellites closer to the central mass move faster, while those farther away move slower.</p>
+</li>
+<li>
+<p><strong>Key Observations</strong></p>
+</li>
+<li>
+<p>At <strong>small orbital radii</strong>, the velocity is high, indicating strong gravitational attraction.</p>
+</li>
+<li>
+<p>At <strong>large orbital radii</strong>, the velocity decreases, leading to longer orbital periods.</p>
+</li>
+</ul>
+<p>This result aligns with Kepler’s laws and Newtonian mechanics, confirming that planetary motion follows predictable gravitational rules.</p>
 <hr/>
 <p><strong>Implications for Astronomy</strong></p>
 <p>Kepler’s Third Law has profound implications in astronomy, as it provides a powerful tool for understanding and predicting celestial mechanics. Some key applications include:</p>
