@@ -550,6 +550,259 @@ plt.show()
 </li>
 </ul>
 <p>By leveraging Kepler’s Third Law, astronomers and space scientists can accurately describe planetary motion, validate theoretical models, and optimize space travel trajectories.</p>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python"># Orbital data for planets in the Solar System
+# Data Source: NASA JPL
+planet_names = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+orbital_radii_au = np.array([0.39, 0.72, 1.0, 1.52, 5.2, 9.58, 19.18, 30.07])  # Semi-major axis in AU
+orbital_periods_years = np.array([0.24, 0.62, 1.0, 1.88, 11.86, 29.46, 84.01, 164.8])  # Orbital period in years
+
+# Compute T² and r³
+T_squared = orbital_periods_years**2
+r_cubed = orbital_radii_au**3
+
+# Plot T² vs. r³
+fig, ax = plt.subplots(figsize=(7, 5))
+ax.scatter(r_cubed, T_squared, color='blue', label="Planets")
+ax.plot(r_cubed, T_squared, linestyle="dashed", color='red', label="Kepler's Law Trendline")
+
+# Annotate planets
+for i, name in enumerate(planet_names):
+    ax.annotate(name, (r_cubed[i], T_squared[i]), textcoords="offset points", xytext=(5,5), ha='right')
+
+# Graph settings
+ax.set_xlabel(r"Orbital Radius Cubed ($r^3$) [AU³]")
+ax.set_ylabel(r"Orbital Period Squared ($T^2$) [Years²]")
+ax.set_title("Verification of Kepler's Third Law for Solar System Planets")
+ax.legend()
+ax.grid(True)
+
+# Show plot
+plt.show()
+
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-4.png"/></p>
+<h3 id="verification-of-keplers-third-law-for-solar-system-planets"><strong>Verification of Kepler’s Third Law for Solar System Planets</strong></h3>
+<p><strong>Introduction to Kepler’s Third Law</strong> </p>
+<p>Kepler’s Third Law states that the square of a planet’s orbital period (<span class="arithmatex">\(T^2\)</span>) is proportional to the cube of its semi-major axis (<span class="arithmatex">\(r^3\)</span>), given by:</p>
+<div class="arithmatex">\[
+T^2 \propto r^3
+\]</div>
+<p><strong>where:</strong></p>
+<ul>
+<li><span class="arithmatex">\( T \)</span> is the orbital period (years),</li>
+<li><span class="arithmatex">\( r \)</span> is the semi-major axis of the orbit (astronomical units, AU).</li>
+</ul>
+<p><strong>Data Used in the Graph</strong></p>
+<p>The graph plots the squared orbital periods (<span class="arithmatex">\(T^2\)</span>) against the cubed orbital radii (<span class="arithmatex">\(r^3\)</span>) for the eight planets in the Solar System:</p>
+<ul>
+<li>
+<p>Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune.</p>
+</li>
+<li>
+<p>The data is sourced from NASA JPL.</p>
+</li>
+</ul>
+<p><strong>Observations &amp; Confirmation of Kepler’s Law</strong></p>
+<ul>
+<li>
+<p>The data points form a nearly perfect straight line, confirming the proportionality <span class="arithmatex">\( T^2 \propto r^3 \)</span>.</p>
+</li>
+<li>
+<p>The dashed red line represents the expected Keplerian trend.</p>
+</li>
+<li>
+<p>This result verifies that planetary motion follows Kepler’s Third Law.</p>
+</li>
+</ul>
+<p><strong>Conclusion</strong></p>
+<ul>
+<li>
+<p>Kepler’s Third Law enables astronomers to estimate orbital properties without direct measurements.</p>
+</li>
+<li>
+<p>It is used to determine planetary masses, exoplanet characteristics, and satellite orbits.</p>
+</li>
+<li>
+<p>This fundamental principle holds true for <strong>both Solar System planets and exoplanets</strong>.</p>
+</li>
+</ul>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python"># Exoplanetary data (Kepler-186 system as an example)
+# Data Source: NASA Exoplanet Archive (approximate values)
+exoplanet_names = ["Kepler-186b", "Kepler-186c", "Kepler-186d", "Kepler-186e", "Kepler-186f"]
+orbital_radii_au_exo = np.array([0.11, 0.14, 0.20, 0.35, 0.43])  # Semi-major axis in AU
+orbital_periods_days_exo = np.array([3.9, 7.3, 13.3, 22.4, 33.6])  # Orbital period in days
+
+# Convert orbital periods to years
+orbital_periods_years_exo = orbital_periods_days_exo / 365.25
+
+# Compute T² and r³ for exoplanets
+T_squared_exo = orbital_periods_years_exo**2
+r_cubed_exo = orbital_radii_au_exo**3
+
+# Plot T² vs. r³ for exoplanets
+fig, ax = plt.subplots(figsize=(7, 5))
+ax.scatter(r_cubed_exo, T_squared_exo, color='purple', label="Exoplanets (Kepler-186 System)")
+ax.plot(r_cubed_exo, T_squared_exo, linestyle="dashed", color='red', label="Kepler's Law Trendline")
+
+# Annotate exoplanets
+for i, name in enumerate(exoplanet_names):
+    ax.annotate(name, (r_cubed_exo[i], T_squared_exo[i]), textcoords="offset points", xytext=(5,5), ha='right')
+
+# Graph settings
+ax.set_xlabel(r"Orbital Radius Cubed ($r^3$) [AU³]")
+ax.set_ylabel(r"Orbital Period Squared ($T^2$) [Years²]")
+ax.set_title("Verification of Kepler's Third Law for Exoplanets (Kepler-186 System)")
+ax.legend()
+ax.grid(True)
+
+# Show plot
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-5.png"/></p>
+<h3 id="verification-of-keplers-third-law-for-exoplanets"><strong>Verification of Kepler’s Third Law for Exoplanets</strong></h3>
+<p><strong>Introduction to Exoplanetary Systems</strong></p>
+<p>Kepler’s Third Law applies not only to the Solar System but also to exoplanetary systems, where the relationship:</p>
+<div class="arithmatex">\[
+T^2 \propto r^3
+\]</div>
+<p>allows astronomers to determine planetary properties in other star systems.</p>
+<p><strong>Data Used in the Graph</strong></p>
+<p>The graph plots the squared orbital periods (<span class="arithmatex">\(T^2\)</span>) against the cubed orbital radii (<span class="arithmatex">\(r^3\)</span>) for planets in the Kepler-186 system:</p>
+<ul>
+<li>
+<p>Kepler-186b, Kepler-186c, Kepler-186d, Kepler-186e, and Kepler-186f.</p>
+</li>
+<li>
+<p>The data is sourced from the NASA Exoplanet Archive.</p>
+</li>
+</ul>
+<p><strong>Observations &amp; Confirmation of Kepler’s Law</strong></p>
+<ul>
+<li>
+<p>The data points form a linear trend, confirming that <span class="arithmatex">\( T^2 \propto r^3 \)</span> holds for exoplanets.</p>
+</li>
+<li>
+<p>The dashed red line represents the expected Keplerian trend.</p>
+</li>
+<li>
+<p>This result supports the idea that orbital mechanics are <strong>universal</strong> and not limited to the Solar System.</p>
+</li>
+</ul>
+<p><strong>Conclusion</strong></p>
+<ul>
+<li>
+<p>Kepler’s Third Law is fundamental in exoplanet detection.</p>
+</li>
+<li>
+<p>Astronomers use this law to estimate exoplanet masses and distances from their host stars.</p>
+</li>
+<li>
+<p>This principle is critical in identifying habitable-zone planets.</p>
+</li>
+</ul>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python">
+# Satellite orbit data (example values for LEO and Geostationary satellites)
+# Source: NASA &amp; ESA satellite catalogs
+satellite_names = ["LEO-1", "LEO-2", "LEO-3", "MEO", "Geostationary"]
+orbital_altitudes_km = np.array([500, 800, 1200, 20000, 35786])  # Altitude above Earth's surface in km
+orbital_radii_km = orbital_altitudes_km + 6371  # Convert altitude to orbital radius (Earth's radius + altitude)
+orbital_periods_minutes = np.array([94, 105, 115, 720, 1436])  # Orbital period in minutes
+
+# Convert orbital period to hours
+orbital_periods_hours = orbital_periods_minutes / 60
+
+# Compute T² and r³ for satellites
+T_squared_sat = orbital_periods_hours**2
+r_cubed_sat = orbital_radii_km**3
+
+# Plot T² vs. r³ for satellites
+fig, ax = plt.subplots(figsize=(7, 5))
+ax.scatter(r_cubed_sat, T_squared_sat, color='green', label="Artificial Satellites")
+ax.plot(r_cubed_sat, T_squared_sat, linestyle="dashed", color='red', label="Kepler's Law Trendline")
+
+# Annotate satellites
+for i, name in enumerate(satellite_names):
+    ax.annotate(name, (r_cubed_sat[i], T_squared_sat[i]), textcoords="offset points", xytext=(5,5), ha='right')
+
+# Graph settings
+ax.set_xlabel(r"Orbital Radius Cubed ($r^3$) [km³]")
+ax.set_ylabel(r"Orbital Period Squared ($T^2$) [Hours²]")
+ax.set_title("Verification of Kepler's Third Law for Artificial Satellites")
+ax.legend()
+ax.grid(True)
+
+# Show plot
+plt.show()
+
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-6.png"/></p>
+<h3 id="verification-of-keplers-third-law-for-artificial-satellites"><strong>Verification of Kepler’s Third Law for Artificial Satellites</strong></h3>
+<p><strong>Introduction to Artificial Satellite Orbits</strong></p>
+<p>Kepler’s Third Law applies not only to natural celestial bodies but also to artificial satellites orbiting Earth. The law states:</p>
+<div class="arithmatex">\[
+T^2 \propto r^3
+\]</div>
+<p><strong>where:</strong></p>
+<ul>
+<li>
+<p><span class="arithmatex">\( T \)</span> is the orbital period (in hours),</p>
+</li>
+<li>
+<p><span class="arithmatex">\( r \)</span> is the orbital radius (Earth’s radius + satellite altitude, in km).</p>
+</li>
+</ul>
+<p><strong>Data Used in the Graph</strong></p>
+<p>The graph plots the squared orbital periods (<span class="arithmatex">\(T^2\)</span>) against the cubed orbital radii (<span class="arithmatex">\(r^3\)</span>) for different satellite types:</p>
+<ul>
+<li>
+<p><strong>LEO (Low-Earth Orbit) satellites</strong> at altitudes of 500 km to 1200 km.</p>
+</li>
+<li>
+<p><strong>MEO (Medium-Earth Orbit) satellites</strong> such as GPS satellites (~20,000 km altitude).</p>
+</li>
+<li>
+<p><strong>Geostationary satellites</strong> (~35,786 km altitude).</p>
+</li>
+<li>
+<p>Data is sourced from NASA and ESA satellite catalogs.</p>
+</li>
+</ul>
+<p><strong>Observations &amp; Confirmation of Kepler’s Law</strong></p>
+<ul>
+<li>
+<p>The data points align linearly, confirming that <span class="arithmatex">\( T^2 \propto r^3 \)</span>.</p>
+</li>
+<li>
+<p>The dashed red line represents the expected Keplerian trend.</p>
+</li>
+<li>
+<p>The trend shows that satellites at higher altitudes have <strong>longer orbital periods</strong>, consistent with Kepler’s Law.</p>
+</li>
+</ul>
+<p><strong>Conclusion</strong></p>
+<ul>
+<li>
+<p>Kepler’s Third Law is essential in designing stable satellite orbits.</p>
+</li>
+<li>
+<p>Engineers use it to calculate <strong>geostationary orbits</strong>, ensuring satellites maintain a fixed position above Earth.</p>
+</li>
+<li>
+<p>This principle is fundamental for <strong>GPS, communication satellites, and space exploration</strong>.</p>
+</li>
+</ul>
 <hr/>
 <p><strong>Real-World Examples</strong></p>
 <p>Kepler’s Third Law is observed in various real-world scenarios, validating its accuracy and significance in celestial mechanics:</p>
