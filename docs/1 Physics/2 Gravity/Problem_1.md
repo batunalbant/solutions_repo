@@ -48,6 +48,62 @@ Since the orbital period \( T \) is the time required for one complete orbit, we
 
 This confirms Kepler’s Third Law: the square of the orbital period is proportional to the cube of the orbital radius.
 
+<details>
+  <summary>Phyton codes.</summary>
+
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Central mass (e.g., the Sun) and orbiting body (e.g., Earth) diagram
+fig, ax = plt.subplots(figsize=(6, 6))
+
+# Central mass (e.g., the Sun)
+ax.scatter(0, 0, color='orange', s=300, label="Central Mass (Sun)")
+
+# Orbiting body (e.g., Earth)
+orbit_radius = 1  # Arbitrary units
+ax.scatter(orbit_radius, 0, color='blue', s=100, label="Orbiting Body (Earth)")
+
+# Gravitational force vector
+ax.arrow(orbit_radius, 0, -0.5, 0, head_width=0.05, head_length=0.1, fc='red', ec='red', label="Gravitational Force (Fg)")
+
+# Centripetal force vector
+ax.arrow(orbit_radius, 0, 0, 0.5, head_width=0.05, head_length=0.1, fc='green', ec='green', label="Centripetal Force (Fc)")
+
+# Graph settings
+ax.set_xlim(-1.5, 1.5)
+ax.set_ylim(-1.5, 1.5)
+ax.set_xlabel("X Axis (Arbitrary Units)")
+ax.set_ylabel("Y Axis (Arbitrary Units)")
+ax.set_title("Central Mass and Orbiting Body")
+ax.legend()
+ax.grid(True)
+
+# Display the plot
+plt.show()
+
+```
+</details>
+
+![alt text](image.png)
+
+1. Introduction to Central Mass and Orbiting Body
+This diagram illustrates an orbiting body (e.g., Earth) moving around a central mass (e.g., the Sun).
+
+2. Representation of Forces
+
+- Red Arrow: The gravitational force (𝐹𝑔) pulls the orbiting body toward the central mass.
+
+- Green Arrow: The centripetal force (𝐹𝑐) keeps the body in circular motion.
+
+3. Orbital Dynamics
+According to Newton's law of gravitation and the principles of centripetal force, the orbiting body is continuously pulled toward the central mass. However, due to its tangential velocity, it remains in orbit rather than falling directly into the central mass.
+
+
+This diagram serves as a foundation for understanding Kepler’s Third Law and orbital mechanics.
+
 ---
 
 **Implications for Astronomy**
