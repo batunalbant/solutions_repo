@@ -262,8 +262,86 @@ This diagram represents the fundamental forces acting on an orbiting body, demon
 
 These principles are the foundation of Kepler’s Third Law and orbital mechanics.
 
+<details>
+  <summary>Phyton codes.</summary>
 
+```python
 
+# Additional visualization: Orbital trajectory with velocity and force vectors at multiple points
+
+fig, ax = plt.subplots(figsize=(6, 6))
+
+# Define orbit
+theta = np.linspace(0, 2 * np.pi, 100)
+orbit_x = np.cos(theta)
+orbit_y = np.sin(theta)
+
+# Plot orbit
+ax.plot(orbit_x, orbit_y, linestyle="dashed", color="gray", label="Orbital Path")
+
+# Central mass (e.g., the Sun)
+ax.scatter(0, 0, color='orange', s=300, label="Central Mass (Sun)")
+
+# Define key positions on orbit for force/velocity vectors
+positions = [0, np.pi/4, np.pi/2, 3*np.pi/4]  # Four different points
+for angle in positions:
+    x = np.cos(angle)
+    y = np.sin(angle)
+    
+    # Plot orbiting body at key points
+    ax.scatter(x, y, color='blue', s=80)
+    
+    # Gravitational force (toward the center)
+    ax.arrow(x, y, -x * 0.2, -y * 0.2, head_width=0.05, head_length=0.05, fc='red', ec='red')
+
+    # Velocity vector (tangential to orbit)
+    vx = -np.sin(angle) * 0.2
+    vy = np.cos(angle) * 0.2
+    ax.arrow(x, y, vx, vy, head_width=0.05, head_length=0.05, fc='blue', ec='blue')
+
+# Graph settings
+ax.set_xlim(-1.5, 1.5)
+ax.set_ylim(-1.5, 1.5)
+ax.set_xlabel("X Axis (Arbitrary Units)")
+ax.set_ylabel("Y Axis (Arbitrary Units)")
+ax.set_title("Orbital Motion: Forces and Velocity at Different Points")
+ax.legend(["Orbital Path", "Central Mass", "Forces and Velocity Vectors"])
+ax.grid(True)
+
+# Display the plot
+plt.show()
+```
+</details>
+
+![alt text](image-3.png)
+
+### **Orbital Motion - Forces and Velocity at Different Points**
+
+**Introduction to Orbital Motion**
+
+This visualization depicts an orbiting body at multiple positions along its path, demonstrating how forces and velocity vectors change dynamically.
+
+**Key Components in the Diagram**
+
+- **Dashed Circle**: Represents the orbital trajectory of the body.
+
+- **Orange Point**: Central mass, acting as the gravitational source (e.g., the Sun).
+
+- **Blue Points**: The orbiting body at different locations in its orbit.
+
+- **Red Arrows**: Gravitational force vectors (\( F_g \)) pointing toward the central mass.
+
+- **Blue Arrows**: Velocity vectors (\( v \)) tangential to the orbit at each point.
+
+**Observations on Orbital Dynamics**
+
+- The gravitational force always **points toward the central mass**, maintaining the orbital motion.
+
+- The velocity vector is always **perpendicular to the gravitational force** at each position.
+
+- As the body moves along its orbit, the velocity changes direction but maintains a consistent speed in circular motion.
+
+- This aligns with Newton’s laws of motion and supports Kepler’s Third Law.
 
 ---
 
