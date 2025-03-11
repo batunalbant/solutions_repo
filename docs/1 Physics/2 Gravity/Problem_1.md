@@ -32,19 +32,34 @@ To derive the relationship between the square of the orbital period and the cube
   \( F_c = \frac{m v^2}{r} \)
   where \( v \) is the orbital velocity.
 
-Equating these forces for a stable orbit,
+- Equating these forces for a stable orbit,
   \( \frac{GMm}{r^2} = \frac{m v^2}{r} \)
   Canceling \( m \) from both sides and solving for \( v \),
-  \( v^2 = \frac{GM}{r} \)
 
-Since the orbital period \( T \) is the time required for one complete orbit, we relate \( v \) and \( T \) using:
+  $$
+  \( v^2 = \frac{GM}{r} \)
+  $$
+
+
+- Since the orbital period \( T \) is the time required for one complete orbit, we relate \( v \) and \( T \) using:
+  $$
   \( v = \frac{2\pi r}{T} \)
-  Substituting for \( v^2 \),
+  $$
+
+  - Substituting for \( v^2 \),
+  $$
   \( \left( \frac{2\pi r}{T} \right)^2 = \frac{GM}{r} \)
-  Simplifying,
+  $$
+
+  - Simplifying,
+  $$
   \( \frac{4\pi^2 r^2}{T^2} = \frac{GM}{r} \)
-  Rearranging for \( T^2 \),
+  $$
+
+  - Rearranging for \( T^2 \),
+  $$
   \( T^2 = \frac{4\pi^2}{GM} r^3 \)
+  $$
 
 This confirms Kepler’s Third Law: the square of the orbital period is proportional to the cube of the orbital radius.
 
