@@ -104,7 +104,7 @@ plt.show()
 
 ![alt text](image.png)
 
-**Introduction to Central Mass and Orbiting Body**
+### **Introduction to Central Mass and Orbiting Body**
 
 
 - This diagram illustrates an orbiting body (e.g., Earth) moving around a central mass (e.g., the Sun).
@@ -163,7 +163,7 @@ plt.show()
 
 ![alt text](image-1.png)
 
-**Orbital Velocity vs. Radius**
+### **Orbital Velocity vs. Radius**
 
 - **Introduction to Orbital Velocity**
 - This plot illustrates how an orbiting body's velocity changes with its orbital radius around a central mass, following the equation:  
@@ -196,6 +196,73 @@ v \propto \frac{1}{\sqrt{r}}
 - At **large orbital radii**, the velocity decreases, leading to longer orbital periods.
 
 This result aligns with Kepler’s laws and Newtonian mechanics, confirming that planetary motion follows predictable gravitational rules.
+
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+# Diagram illustrating orbital dynamics with velocity and force vectors
+
+fig, ax = plt.subplots(figsize=(6, 6))
+
+# Central mass (e.g., the Sun)
+ax.scatter(0, 0, color='orange', s=300, label="Central Mass (Sun)")
+
+# Orbiting body (e.g., Earth)
+orbit_radius = 1  # Arbitrary units
+ax.scatter(orbit_radius, 0, color='blue', s=100, label="Orbiting Body (Earth)")
+
+# Gravitational force vector (pointing toward the central mass)
+ax.arrow(orbit_radius, 0, -0.5, 0, head_width=0.05, head_length=0.1, fc='red', ec='red', label="Gravitational Force (Fg)")
+
+# Centripetal force vector (pointing toward the central mass, same as gravitational force)
+ax.arrow(orbit_radius, 0, -0.5, 0, head_width=0.05, head_length=0.1, fc='green', ec='green', label="Centripetal Force (Fc)")
+
+# Velocity vector (tangential to the orbit)
+ax.arrow(orbit_radius, 0, 0, 0.5, head_width=0.05, head_length=0.1, fc='blue', ec='blue', label="Velocity Vector (v)")
+
+# Graph settings
+ax.set_xlim(-1.5, 1.5)
+ax.set_ylim(-1.5, 1.5)
+ax.set_xlabel("X Axis (Arbitrary Units)")
+ax.set_ylabel("Y Axis (Arbitrary Units)")
+ax.set_title("Orbital Dynamics: Forces and Velocity")
+ax.legend()
+ax.grid(True)
+
+# Display the plot
+plt.show()
+
+```
+</details>
+
+![alt text](image-2.png)
+
+### **Orbital Dynamics**
+
+**Introduction to Orbital Dynamics**  
+
+This diagram represents the fundamental forces acting on an orbiting body, demonstrating how it remains in stable motion around a central mass.
+
+**Forces Acting on the Orbiting Body**
+
+- **Gravitational Force** (\(F_g\)): Pulls the orbiting body toward the central mass, maintaining the attraction.
+
+- **Centripetal Force** (\(F_c\)): Keeps the body in circular motion by counteracting the inertia.
+
+- The balance of these forces prevents the body from falling into the central mass or drifting away.
+
+**Key Observations**
+
+- The orbiting body follows a **circular trajectory** due to the interaction of gravitational and centripetal forces.
+
+- The velocity vector is always **tangential** to the orbit, while the force vectors act radially.
+
+- This system is governed by Newton’s laws of motion and gravitation.
+
+These principles are the foundation of Kepler’s Third Law and orbital mechanics.
+
+
 
 
 ---
