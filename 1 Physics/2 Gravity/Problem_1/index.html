@@ -425,6 +425,91 @@ plt.show()
 </li>
 </ul>
 <p>These principles are the foundation of Kepler’s Third Law and orbital mechanics.</p>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python">
+# Additional visualization: Orbital trajectory with velocity and force vectors at multiple points
+
+fig, ax = plt.subplots(figsize=(6, 6))
+
+# Define orbit
+theta = np.linspace(0, 2 * np.pi, 100)
+orbit_x = np.cos(theta)
+orbit_y = np.sin(theta)
+
+# Plot orbit
+ax.plot(orbit_x, orbit_y, linestyle="dashed", color="gray", label="Orbital Path")
+
+# Central mass (e.g., the Sun)
+ax.scatter(0, 0, color='orange', s=300, label="Central Mass (Sun)")
+
+# Define key positions on orbit for force/velocity vectors
+positions = [0, np.pi/4, np.pi/2, 3*np.pi/4]  # Four different points
+for angle in positions:
+    x = np.cos(angle)
+    y = np.sin(angle)
+
+    # Plot orbiting body at key points
+    ax.scatter(x, y, color='blue', s=80)
+
+    # Gravitational force (toward the center)
+    ax.arrow(x, y, -x * 0.2, -y * 0.2, head_width=0.05, head_length=0.05, fc='red', ec='red')
+
+    # Velocity vector (tangential to orbit)
+    vx = -np.sin(angle) * 0.2
+    vy = np.cos(angle) * 0.2
+    ax.arrow(x, y, vx, vy, head_width=0.05, head_length=0.05, fc='blue', ec='blue')
+
+# Graph settings
+ax.set_xlim(-1.5, 1.5)
+ax.set_ylim(-1.5, 1.5)
+ax.set_xlabel("X Axis (Arbitrary Units)")
+ax.set_ylabel("Y Axis (Arbitrary Units)")
+ax.set_title("Orbital Motion: Forces and Velocity at Different Points")
+ax.legend(["Orbital Path", "Central Mass", "Forces and Velocity Vectors"])
+ax.grid(True)
+
+# Display the plot
+plt.show()
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-3.png"/></p>
+<h3 id="orbital-motion-forces-and-velocity-at-different-points"><strong>Orbital Motion - Forces and Velocity at Different Points</strong></h3>
+<p><strong>Introduction to Orbital Motion</strong></p>
+<p>This visualization depicts an orbiting body at multiple positions along its path, demonstrating how forces and velocity vectors change dynamically.</p>
+<p><strong>Key Components in the Diagram</strong></p>
+<ul>
+<li>
+<p><strong>Dashed Circle</strong>: Represents the orbital trajectory of the body.</p>
+</li>
+<li>
+<p><strong>Orange Point</strong>: Central mass, acting as the gravitational source (e.g., the Sun).</p>
+</li>
+<li>
+<p><strong>Blue Points</strong>: The orbiting body at different locations in its orbit.</p>
+</li>
+<li>
+<p><strong>Red Arrows</strong>: Gravitational force vectors (<span class="arithmatex">\( F_g \)</span>) pointing toward the central mass.</p>
+</li>
+<li>
+<p><strong>Blue Arrows</strong>: Velocity vectors (<span class="arithmatex">\( v \)</span>) tangential to the orbit at each point.</p>
+</li>
+</ul>
+<p><strong>Observations on Orbital Dynamics</strong></p>
+<ul>
+<li>
+<p>The gravitational force always <strong>points toward the central mass</strong>, maintaining the orbital motion.</p>
+</li>
+<li>
+<p>The velocity vector is always <strong>perpendicular to the gravitational force</strong> at each position.</p>
+</li>
+<li>
+<p>As the body moves along its orbit, the velocity changes direction but maintains a consistent speed in circular motion.</p>
+</li>
+<li>
+<p>This aligns with Newton’s laws of motion and supports Kepler’s Third Law.</p>
+</li>
+</ul>
 <hr/>
 <p><strong>Implications for Astronomy</strong></p>
 <p>Kepler’s Third Law has profound implications in astronomy, as it provides a powerful tool for understanding and predicting celestial mechanics. Some key applications include:</p>
