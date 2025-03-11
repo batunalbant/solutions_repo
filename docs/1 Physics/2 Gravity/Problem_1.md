@@ -104,17 +104,22 @@ plt.show()
 
 ![alt text](image.png)
 
-1. Introduction to Central Mass and Orbiting Body
-This diagram illustrates an orbiting body (e.g., Earth) moving around a central mass (e.g., the Sun).
+- **Introduction to Central Mass and Orbiting Body**
 
-2. Representation of Forces
+- This diagram illustrates an orbiting body (e.g., Earth) moving around a central mass (e.g., the Sun).
+
+- **Representation of Forces**
+
 
 - Red Arrow: The gravitational force (𝐹𝑔) pulls the orbiting body toward the central mass.
 
+
 - Green Arrow: The centripetal force (𝐹𝑐) keeps the body in circular motion.
 
-3. Orbital Dynamics
-According to Newton's law of gravitation and the principles of centripetal force, the orbiting body is continuously pulled toward the central mass. However, due to its tangential velocity, it remains in orbit rather than falling directly into the central mass.
+
+- **Orbital Dynamics**
+
+- According to Newton's law of gravitation and the principles of centripetal force, the orbiting body is continuously pulled toward the central mass. However, due to its tangential velocity, it remains in orbit rather than falling directly into the central mass.
 
 
 This diagram serves as a foundation for understanding Kepler’s Third Law and orbital mechanics.
