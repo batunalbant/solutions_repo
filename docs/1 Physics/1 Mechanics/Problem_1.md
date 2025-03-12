@@ -367,7 +367,7 @@ plt.show()
 - **Understanding trajectory shape is crucial for optimizing projectile motion in real-world applications like sports, engineering, and aerospace.**
 
 ---
-<a> file:///C:/Users/batu/Desktop/index.html
+<a href="file:///C:/Users/batu/Desktop/index.html">Simulation</a>
 
 **And as we have seen and analyzed the graph so far, we can experience this simulation ourselves.**
 
