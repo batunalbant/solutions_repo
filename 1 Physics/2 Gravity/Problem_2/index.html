@@ -331,7 +331,6 @@ plt.show()
 </code></pre>
 
 <p><img alt="alt text" src="../image-13.png"/></p>
-<h2 id="visualization-of-cosmic-velocities-for-different-celestial-bodies"><strong>Visualization of Cosmic Velocities for Different Celestial Bodies</strong></h2>
 <h3 id="introduction_1"><strong>Introduction</strong></h3>
 <p>The following bar chart compares the first, second, and third cosmic velocities for three celestial bodies: <strong>Earth, Mars, and Jupiter</strong>. These velocities determine the conditions required for an object to maintain orbit, escape a planet's gravity, and exit the Solar System.</p>
 <h3 id="key-observations"><strong>Key Observations</strong></h3>
@@ -365,22 +364,115 @@ v_3 = \sqrt{v_2^2 + v_{\text{orbital}}^2}
 <li>The <strong>y-axis</strong> represents velocity in <strong>km/s</strong>.</li>
 <li>Three different colored bars indicate <strong><span class="arithmatex">\( v_1 \)</span></strong> (orbital velocity), <strong><span class="arithmatex">\( v_2 \)</span></strong> (escape velocity), and <strong><span class="arithmatex">\( v_3 \)</span></strong> (interstellar velocity).</li>
 </ul>
-<hr/>
 <p>This visualization is crucial for understanding the physics behind launching satellites, planning interplanetary missions, and conceptualizing interstellar travel.</p>
+<hr/>
 <p>details&gt;
 <br/>
 <summary>Phyton codes.</summary>
 </p>
-<pre><code class="language-python">
+<pre><code class="language-python"># Generate a dataset for planetary mass vs escape velocity
+masses = np.logspace(22, 28, num=100)  # Mass range from 10^22 kg to 10^28 kg
+radius_earth = 6.371 * 10**6  # Earth's radius in meters
+
+# Calculate escape velocities for varying planetary masses
+v2_masses = np.sqrt(2 * G * masses / radius_earth) / 1000  # Convert to km/s
+
+# Plot mass vs escape velocity
+fig, ax = plt.subplots(figsize=(8, 6))
+ax.plot(masses, v2_masses, label="Escape Velocity (km/s)", color='b')
+
+ax.set_xscale("log")  # Logarithmic scale for better visualization
+ax.set_xlabel("Mass of Celestial Body (kg)")
+ax.set_ylabel("Escape Velocity (km/s)")
+ax.set_title("Escape Velocity vs. Planetary Mass")
+ax.legend()
+plt.grid(True, linestyle="--", alpha=0.7)
+
+# Display the plot
+plt.show()
+
 </code></pre>
 
+<p><img alt="alt text" src="../image-14.png"/></p>
+<h3 id="introduction_2"><strong>Introduction</strong></h3>
+<p>This graph illustrates how the <strong>escape velocity (<span class="arithmatex">\( v_2 \)</span>)</strong> changes with the <strong>mass of a celestial body</strong>, while keeping the radius constant (Earth's radius is used for reference). Escape velocity is the minimum speed required for an object to overcome the gravitational pull of a planet or celestial body without additional propulsion.</p>
+<h3 id="key-observations_1"><strong>Key Observations</strong></h3>
+<ol>
+<li><strong>Escape velocity increases as planetary mass increases</strong> due to the stronger gravitational attraction.</li>
+<li>The relationship follows a <strong>square root function</strong>:
+   [
+   v_2 = \sqrt{\frac{2GM}{R}}
+   ]
+   which means that doubling the mass does <strong>not</strong> double the escape velocity but increases it by a factor of <span class="arithmatex">\( \sqrt{2} \)</span>.</li>
+<li><strong>Larger planets like Jupiter have significantly higher escape velocities</strong>, making it harder for spacecraft to leave their gravitational influence.</li>
+</ol>
+<h3 id="graph-description"><strong>Graph Description</strong></h3>
+<ul>
+<li>The <strong>x-axis</strong> represents the mass of the celestial body (in <strong>kg</strong>), displayed on a <strong>logarithmic scale</strong> for better visualization.</li>
+<li>The <strong>y-axis</strong> represents the escape velocity (in <strong>km/s</strong>).</li>
+<li>The curve shows that <strong>as mass increases, the escape velocity also increases</strong>, following a non-linear trend.</li>
+</ul>
+<h3 id="scientific-implications"><strong>Scientific Implications</strong></h3>
+<ul>
+<li>Planets with <strong>higher escape velocities</strong> require <strong>more energy</strong> for spacecraft to escape, impacting space mission designs.</li>
+<li>Smaller bodies like asteroids have <strong>low escape velocities</strong>, making them easier targets for spacecraft landings.</li>
+<li>Understanding this relationship is crucial for <strong>interplanetary mission planning</strong> and <strong>launch vehicle engineering</strong>.</li>
+</ul>
+<p>This visualization helps illustrate the fundamental physics behind gravitational escape and the challenges faced in launching spacecraft from different celestial bodies.</p>
+<hr/>
 <p>details&gt;
 <br/>
 <summary>Phyton codes.</summary>
 </p>
-<pre><code class="language-python">
+<pre><code class="language-python"># Generate a dataset for planetary radius vs escape velocity
+radii = np.linspace(1e6, 8e7, num=100)  # Radius range from 1,000 km to 80,000 km
+mass_earth = 5.972 * 10**24  # Earth's mass in kg
+
+# Calculate escape velocities for varying planetary radii
+v2_radii = np.sqrt(2 * G * mass_earth / radii) / 1000  # Convert to km/s
+
+# Plot radius vs escape velocity
+fig, ax = plt.subplots(figsize=(8, 6))
+ax.plot(radii / 1000, v2_radii, label="Escape Velocity (km/s)", color='r')
+
+ax.set_xlabel("Radius of Celestial Body (km)")
+ax.set_ylabel("Escape Velocity (km/s)")
+ax.set_title("Escape Velocity vs. Planetary Radius")
+ax.legend()
+plt.grid(True, linestyle="--", alpha=0.7)
+
+# Display the plot
+plt.show()
+
 </code></pre>
 
+<p><img alt="alt text" src="../image-15.png"/></p>
+<h3 id="introduction_3"><strong>Introduction</strong></h3>
+<p>This graph illustrates how the <strong>escape velocity (<span class="arithmatex">\( v_2 \)</span>)</strong> varies with the <strong>radius of a celestial body</strong>, while keeping its mass constant (Earth's mass is used for reference). Escape velocity is influenced not only by mass but also by the planet's size.</p>
+<h3 id="key-observations_2"><strong>Key Observations</strong></h3>
+<ol>
+<li><strong>Escape velocity decreases as planetary radius increases</strong>, assuming mass remains constant.</li>
+<li>The relationship follows an <strong>inverse square root function</strong>:
+   [
+   v_2 = \sqrt{\frac{2GM}{R}}
+   ]
+   which means that doubling the radius decreases the escape velocity by a factor of <span class="arithmatex">\( \frac{1}{\sqrt{2}} \)</span>.</li>
+<li><strong>Compact celestial bodies (e.g., neutron stars) have extremely high escape velocities</strong> due to their small radii, while <strong>gas giants (e.g., Jupiter, Saturn) have lower escape velocities than expected from their mass alone</strong> due to their large radii.</li>
+</ol>
+<h3 id="graph-description_1"><strong>Graph Description</strong></h3>
+<ul>
+<li>The <strong>x-axis</strong> represents the radius of the celestial body (in <strong>km</strong>).</li>
+<li>The <strong>y-axis</strong> represents the escape velocity (in <strong>km/s</strong>).</li>
+<li>The curve shows that <strong>as planetary radius increases, the escape velocity decreases</strong>, illustrating the inverse relationship.</li>
+</ul>
+<h3 id="scientific-implications_1"><strong>Scientific Implications</strong></h3>
+<ul>
+<li>A planet with a <strong>larger radius and the same mass</strong> has a <strong>lower escape velocity</strong>, making it easier for spacecraft to leave its gravitational pull.</li>
+<li><strong>Dense celestial objects</strong>, like white dwarfs and neutron stars, have extreme escape velocities, sometimes exceeding the speed of light (in the case of black holes).</li>
+<li>This relationship is critical in <strong>designing space missions</strong>, <strong>predicting atmospheric retention</strong>, and <strong>understanding planetary formation</strong>.</li>
+</ul>
+<p>This visualization highlights the important role planetary size plays in determining gravitational strength and the feasibility of space travel.</p>
+<hr/>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
