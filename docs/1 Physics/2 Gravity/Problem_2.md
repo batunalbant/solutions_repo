@@ -405,49 +405,63 @@ Mastering cosmic velocities is essential for advancing space exploration. From d
 
 ---
 
-### Simulations
+## Simulations
 
 ### **Escape Velocity Simulation**  
 
-### **Introduction**  
+**Introduction**  
+
 This simulation demonstrates the concept of **escape velocity**, the minimum speed an object must reach to break free from a planet’s gravitational influence without additional propulsion. Users can enter different launch velocities and observe whether the rocket escapes or falls back to the planet.  
 
 ---
 
-### **How It Works**  
+**How It Works**  
+
 1. **User Input:**  
    - The user enters a **launch velocity (km/s)** and clicks the **Launch** button.  
 
-2. **Rocket Motion:**  
+
+**Rocket Motion:**  
+
    - The rocket moves upward based on the initial velocity.  
    - Gravity continuously affects the rocket, slowing it down.  
    - If the velocity is too low, the rocket **falls back**.  
    - If the velocity reaches or exceeds the **escape velocity**, the rocket **leaves the planet's gravity**.  
 
-3. **Simulation Conditions:**  
+
+**Simulation Conditions:**  
+
    - The system checks if the rocket surpasses **five times the planet’s radius** to confirm escape.  
    - If the rocket falls back, an alert appears.  
    - The simulation **resets after 1.5 seconds** for another test.  
 
----
 
-### **Mathematical Model**  
+**Mathematical Model**  
+
 The simulation is based on **Newton’s Law of Universal Gravitation** and **kinematics equations**.  
 
-### **Gravity Force Acting on the Rocket:**  
+**Gravity Force Acting on the Rocket:**  
+
 \(
 F = \frac{G M m}{r^2}
 \)
-where:  
+
+where: 
+
 - \( G \) = \( 6.674 × 10^{-11} \) \( m^3 kg^{-1} s^{-2} \) (gravitational constant)  
+
 - \( M \) = mass of the planet (Earth)  
+
 - \( r \) = distance from the center of the planet  
 
-### **Escape Velocity Formula:**  
+
+**Escape Velocity Formula:**  
 
 \(
 v_e = \sqrt{\frac{2GM}{R}}
 \)
+
+
 where:  
 
 - \( R \) = radius of the planet  
@@ -485,47 +499,66 @@ This simulation helps understand:
 ### **Simulation Link**  
 <a> file:///C:/Users/batu/Desktop/simulation2_1.html  </a>
 
-# **Orbital Velocity Simulation**
+### **Orbital Velocity Simulation**
 
-## **Introduction**
+**Introduction**
 This simulation demonstrates the concept of **orbital velocity**, the minimum speed an object must reach to maintain a stable orbit around a planet. Users can enter different launch velocities and observe whether the object:
+
 - **Falls back to the planet** (velocity too low),
+
 - **Enters a stable orbit** (correct orbital velocity),
+
 - **Escapes the planet’s gravity** (velocity too high).
 
 ---
 
-### **How It Works**
-1. **User Input:**  
+**How It Works**
+
+**User Input:**  
    - The user enters a **launch velocity (km/s)** and clicks the **Launch** button.  
 
-2. **Object Motion:**  
+**Object Motion:**  
+
    - The object moves tangentially to the planet's surface.
+
    - Gravity continuously affects the object, pulling it towards the planet.
+   
    - If the velocity is **below orbital speed**, the object **falls back**.
+
    - If the velocity is **at orbital speed**, the object **maintains orbit**.
+
    - If the velocity **exceeds escape velocity**, the object **leaves the planet's gravity**.
 
-3. **Simulation Conditions:**  
+**Simulation Conditions:**  
+
    - The system checks if the object remains in **orbit, falls back, or escapes**.
+
    - If the object falls back or escapes, an alert appears.
+   
    - The simulation **resets after 1.5 seconds** for another test.
 
 ---
 
-## **Mathematical Model**
+**Mathematical Model**
+
 The simulation is based on **Newtonian mechanics** and **orbital velocity equations**.
 
-### **Orbital Velocity Formula:**
+**Orbital Velocity Formula:**
+
 \(
 v_o = \sqrt{\frac{GM}{R}}
 \)
+
 where:  
+
 - \( G \) = \( 6.674 × 10^{-11} \) \( m^3 kg^{-1} s^{-2} \) (gravitational constant)  
+
 - \( M \) = mass of the planet (Earth)  
+
 - \( R \) = radius of the planet  
 
-### **Gravity Force Acting on the Object:**
+**Gravity Force Acting on the Object:**
+
 \(
 F = \frac{G M m}{r^2}
 \)
