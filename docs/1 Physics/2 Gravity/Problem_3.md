@@ -110,6 +110,49 @@ v_e = \sqrt{\frac{2GM}{r}}
 
 which is the minimum velocity needed to escape Earth's gravity.
 
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.67430e-11  # Gravitational constant (m³/kg/s²)
+M = 5.972e24  # Mass of Earth (kg)
+R_E = 6371e3  # Radius of Earth (m)
+
+# Define range of distances (altitudes) from Earth's center
+r_values = np.linspace(R_E, R_E + 5000000, 500)  # 5000 km above surface
+
+# Compute escape velocity for each altitude
+v_escape = np.sqrt(2 * G * M / r_values)
+
+# Compute orbital velocity for circular orbits at each altitude
+v_orbit = np.sqrt(G * M / r_values)
+
+# Compute parabolic velocity (transition between bound and unbound)
+v_parabolic = np.sqrt(2) * v_orbit
+
+# Plot results
+plt.figure(figsize=(8, 6))
+plt.plot(r_values / 1000 - R_E / 1000, v_escape / 1000, label="Escape Velocity (km/s)", color='r')
+plt.plot(r_values / 1000 - R_E / 1000, v_orbit / 1000, label="Orbital Velocity (km/s)", color='b')
+plt.plot(r_values / 1000 - R_E / 1000, v_parabolic / 1000, label="Parabolic Velocity (km/s)", color='g', linestyle='dashed')
+
+plt.xlabel("Altitude above Earth's Surface (km)")
+plt.ylabel("Velocity (km/s)")
+plt.title("Orbital, Escape, and Parabolic Velocities vs. Altitude")
+plt.legend()
+plt.grid()
+plt.show()
+```
+</details>
+
+![alt text](image-17.png)
+
 ### **Numerical Analysis of Payload Trajectory**
 
 #### **Introduction**
@@ -272,7 +315,78 @@ plt.show()
 
 ![alt text](image-16.png)
 
+<details>
+  <summary>Phyton codes.</summary>
 
+```python
+# Simulating the trajectory of a payload released from a moving rocket
+
+# Define simulation parameters
+dt = 1  # Time step in seconds
+t_max = 6000  # Simulation duration in seconds
+
+# Initial conditions (starting 500 km above Earth's surface)
+x0, y0 = R_E + 500e3, 0  # Initial position
+vx0, vy0 = 0, 7500  # Initial velocity (m/s)
+
+# Time array
+t_values = np.arange(0, t_max, dt)
+
+# Arrays to store trajectory data
+x_values = [x0]
+y_values = [y0]
+vx, vy = vx0, vy0
+
+# Numerical Integration using Euler's Method
+for t in t_values[1:]:
+    r = np.sqrt(x_values[-1]**2 + y_values[-1]**2)
+    ax = -G * M * x_values[-1] / r**3
+    ay = -G * M * y_values[-1] / r**3
+
+    # Update velocity
+    vx += ax * dt
+    vy += ay * dt
+
+    # Update position
+    x_new = x_values[-1] + vx * dt
+    y_new = y_values[-1] + vy * dt
+
+    x_values.append(x_new)
+    y_values.append(y_new)
+
+# Convert lists to numpy arrays for plotting
+x_values = np.array(x_values)
+y_values = np.array(y_values)
+
+# Plot the trajectory
+plt.figure(figsize=(8, 8))
+plt.plot(x_values / 1000, y_values / 1000, label="Payload Trajectory", color='b')
+plt.scatter([0], [0], color='r', marker='o', label="Earth")
+plt.xlabel("X Position (km)")
+plt.ylabel("Y Position (km)")
+plt.title("Numerical Simulation of a Freely Released Payload Trajectory")
+plt.legend()
+plt.grid()
+plt.show()
+
+```
+</details>
+
+![alt text](image-18.png)
+
+**Numerical Simulation of a Freely Released Payload**
+
+To understand how a payload behaves when released in near-Earth space, we performed a numerical simulation using Euler's method. The following trajectory plot illustrates the motion of a payload initially released at 500 km altitude with a velocity of 7.5 km/s:
+
+
+- The blue curve represents the trajectory of the payload, influenced by Earth's gravity.
+
+- The red dot represents Earth, acting as the gravitational center.
+
+- The motion follows a closed elliptical orbit, demonstrating how objects in space remain bound to Earth's gravity unless sufficient velocity is given to escape.
+
+This numerical approach helps validate theoretical models and provides insights into spacecraft motion under gravitational influence.
+---
 
 
 ### **Interpretation of Results**
