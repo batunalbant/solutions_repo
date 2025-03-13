@@ -2,13 +2,13 @@
 
 # Escape Velocities and Cosmic Velocities
 
-## Introduction
+###Introduction
 
 Escape velocity is the minimum speed an object must achieve to break free from a celestial body's gravitational influence without additional propulsion. This concept extends to different cosmic velocities, which dictate orbital and interstellar travel conditions. Understanding these velocities is fundamental in astrophysics, rocketry, and space exploration.
 
 The study of these velocities helps scientists and engineers design space missions, launch satellites, and send probes to other planets and beyond. Without these fundamental concepts, space exploration would not be feasible.
 
-## Motivation
+### Motivation
 
 The study of escape and cosmic velocities is essential in:
 
