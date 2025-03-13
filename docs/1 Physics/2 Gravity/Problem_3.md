@@ -386,6 +386,141 @@ To understand how a payload behaves when released in near-Earth space, we perfor
 - The motion follows a closed elliptical orbit, demonstrating how objects in space remain bound to Earth's gravity unless sufficient velocity is given to escape.
 
 This numerical approach helps validate theoretical models and provides insights into spacecraft motion under gravitational influence.
+
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+
+# Recalculating kinetic and potential energy over time
+
+# Convert trajectory data into arrays for element-wise operations
+x_values = np.array(x_values)
+y_values = np.array(y_values)
+r_values = np.sqrt(x_values**2 + y_values**2)  # Distance from Earth's center
+
+# Compute kinetic energy per unit mass (KE = 0.5 * v^2)
+KE_values = 0.5 * (vx**2 + vy**2) * np.ones_like(r_values)
+
+# Compute potential energy per unit mass (PE = -GM/r)
+PE_values = -G * M / r_values
+
+# Compute total mechanical energy per unit mass
+Total_Energy = KE_values + PE_values
+
+# Plot the energy variations over time
+plt.figure(figsize=(8, 6))
+plt.plot(t_values / 60, KE_values, label="Kinetic Energy (J/kg)", color='b')
+plt.plot(t_values / 60, PE_values, label="Potential Energy (J/kg)", color='r')
+plt.plot(t_values / 60, Total_Energy, label="Total Energy (J/kg)", color='g', linestyle='dashed')
+
+plt.xlabel("Time (minutes)")
+plt.ylabel("Energy per unit mass (J/kg)")
+plt.title("Kinetic, Potential, and Total Energy over Time")
+plt.legend()
+plt.grid()
+plt.show()
+```
+</details>
+
+![alt text](image-19.png)
+
+**Energy Variation During Payload Motion**
+
+The motion of a freely released payload is governed by kinetic **energy (KE), gravitational potential energy (PE),** and total mechanical energy. The following graph shows how these energy components change over time:
+
+
+- The blue line represents kinetic energy, which fluctuates as the payload moves in its orbit.
+
+- The red line represents gravitational potential energy, which varies with distance from Earth.
+
+- The green dashed line represents total energy, which remains constant in a closed orbit, confirming conservation of energy.
+
+This visualization highlights how orbital mechanics follows fundamental conservation laws.
+
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+
+# Simulating a phase space diagram (Velocity vs. Position)
+
+# Compute velocity magnitude at each time step
+velocity_magnitude = np.sqrt(vx**2 + vy**2)
+
+# Plot the phase space diagram (Velocity vs. Position)
+plt.figure(figsize=(8, 6))
+plt.plot(r_values / 1000, velocity_magnitude / 1000, label="Phase Space Trajectory", color='purple')
+
+plt.xlabel("Distance from Earth's Center (km)")
+plt.ylabel("Velocity (km/s)")
+plt.title("Phase Space Diagram: Velocity vs. Distance")
+plt.legend()
+plt.grid()
+plt.show()
+```
+</details>
+
+![alt text](image-20.png)
+
+**Phase Space Analysis: Velocity vs. Position**
+
+To analyze how a payload’s velocity varies with its position in space, we use a phase space diagram. The following graph represents the relationship between velocity magnitude and radial distance from Earth's center:
+
+
+- The purple line represents the trajectory in phase space, showing how the velocity changes relative to the payload's distance.
+
+- This type of visualization helps in understanding the stability of orbits and identifying escape conditions based on initial velocity.
+
+Phase space diagrams are essential in celestial mechanics for analyzing long-term behavior of space objects.
+
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+
+# Simulating a 3D trajectory of the payload
+
+from mpl_toolkits.mplot3d import Axes3D
+
+# Generating a simple 3D orbit representation using the computed trajectory
+fig = plt.figure(figsize=(8, 8))
+ax = fig.add_subplot(111, projection='3d')
+
+# Plot the trajectory in 3D
+ax.plot(x_values / 1000, y_values / 1000, np.zeros_like(x_values), label="Payload Trajectory", color='b')
+
+# Plot Earth as a sphere
+u = np.linspace(0, 2 * np.pi, 100)
+v = np.linspace(0, np.pi, 50)
+x_sphere = (R_E / 1000) * np.outer(np.cos(u), np.sin(v))
+y_sphere = (R_E / 1000) * np.outer(np.sin(u), np.sin(v))
+z_sphere = (R_E / 1000) * np.outer(np.ones(np.size(u)), np.cos(v))
+ax.plot_surface(x_sphere, y_sphere, z_sphere, color='r', alpha=0.3)
+
+# Labels and settings
+ax.set_xlabel("X Position (km)")
+ax.set_ylabel("Y Position (km)")
+ax.set_zlabel("Z Position (km)")
+ax.set_title("3D Visualization of Payload Trajectory")
+ax.legend()
+plt.show()
+```
+</details>
+
+![alt text](image-21.png)
+
+**3D Visualization of Payload Trajectory**
+
+To better understand how a freely released payload moves in space, we simulate its 3D trajectory relative to Earth. The following visualization illustrates the orbital path:
+
+
+- The blue curve represents the trajectory of the payload, showing its motion in a three-dimensional space.
+
+- The red sphere represents Earth, demonstrating how the payload orbits around it.
+
+This visualization provides a deeper understanding of orbital mechanics beyond 2D projections.
+
 ---
 
 
