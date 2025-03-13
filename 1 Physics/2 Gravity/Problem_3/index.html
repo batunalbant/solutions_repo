@@ -201,10 +201,8 @@
 <p><span class="arithmatex">\(
   F = \frac{GMm}{r^2}
   \)</span></p>
-<ul>
-<li>
 <p><strong>where:</strong></p>
-</li>
+<ul>
 <li>
 <p><span class="arithmatex">\( G \)</span> is the gravitational constant,</p>
 </li>
@@ -274,12 +272,11 @@ E = \frac{1}{2}v^2 - \frac{GM}{r}
 v_e = \sqrt{\frac{2GM}{r}}
 \)</span></p>
 <p>which is the minimum velocity needed to escape Earth's gravity.</p>
-<h3 id="numerical-simulations"><strong>Numerical Simulations</strong></h3>
-<p><strong>Numerical Analysis of Payload Trajectory</strong></p>
+<h3 id="numerical-analysis-of-payload-trajectory"><strong>Numerical Analysis of Payload Trajectory</strong></h3>
 <h4 id="introduction"><strong>Introduction</strong></h4>
 <p>Numerical analysis plays a crucial role in computing the trajectory of a payload released near Earth. Since exact analytical solutions are often impractical due to the complexity of gravitational interactions, numerical integration methods such as the <strong>Euler method</strong>, <strong>Runge-Kutta method (RK4)</strong>, and <strong>Verlet integration</strong> are employed to approximate the motion of the payload.</p>
 <p>This section details the numerical computation of the payload's path based on given <strong>initial conditions</strong> including position, velocity, and altitude.</p>
-<h3 id="governing-equations"><strong>Governing Equations</strong></h3>
+<h4 id="governing-equations"><strong>Governing Equations</strong></h4>
 <p>The motion of the payload is governed by <strong>Newton’s Second Law</strong> and the <strong>Gravitational Force Law</strong>:</p>
 <h4 id="newtons-second-law"><strong>Newton's Second Law</strong></h4>
 <p><span class="arithmatex">\(
@@ -403,7 +400,7 @@ plt.grid()
 plt.show()
 </code></pre>
 </details>
-<p><img alt="alt text" src="../image-17.png"/></p>
+<p>!(alt text)(image-17.png)</p>
 <h3 id="interpretation-of-results"><strong>Interpretation of Results</strong></h3>
 <p>By running the above simulation, we can analyze:</p>
 <ul>
@@ -418,6 +415,133 @@ plt.show()
 </li>
 </ul>
 <p>This approach provides a powerful tool for predicting the motion of space-bound objects with high precision. By refining the initial conditions and including additional forces (e.g., atmospheric drag), we can improve real-world applicability in space mission planning and satellite deployment.</p>
+<hr/>
+<h4 id="trajectory-analysis-in-orbital-insertion-reentry-and-escape-scenarios"><strong>Trajectory Analysis in Orbital Insertion, Reentry, and Escape Scenarios</strong></h4>
+<p><strong>Introduction</strong>
+Understanding the trajectories of payloads released from spacecraft is essential in orbital mechanics. These trajectories determine whether a payload enters into a stable orbit, undergoes atmospheric reentry, or escapes Earth’s gravity entirely. This section explores how different initial conditions influence these scenarios and provides an in-depth mathematical and numerical analysis.</p>
+<hr/>
+<h3 id="orbital-insertion"><strong>Orbital Insertion</strong></h3>
+<h4 id="conditions-for-stable-orbits"><strong>Conditions for Stable Orbits</strong></h4>
+<p>To achieve orbital insertion, the payload must have sufficient tangential velocity to counteract Earth’s gravitational pull without exceeding escape velocity. The required velocity for a <strong>circular orbit</strong> at altitude <span class="arithmatex">\( h \)</span> above Earth is:</p>
+<p><span class="arithmatex">\(
+v_{orb} = \sqrt{\frac{GM}{R_E + h}}
+\)</span></p>
+<p><strong>where:</strong></p>
+<ul>
+<li>
+<p><span class="arithmatex">\( G \)</span> is the gravitational constant,</p>
+</li>
+<li>
+<p><span class="arithmatex">\( M \)</span> is Earth’s mass,</p>
+</li>
+<li>
+<p><span class="arithmatex">\( R_E \)</span> is Earth's radius,</p>
+</li>
+<li>
+<p><span class="arithmatex">\( h \)</span> is the altitude of orbit.</p>
+</li>
+</ul>
+<p>For <strong>elliptical orbits</strong>, the velocity at any point is given by the vis-viva equation:</p>
+<p><span class="arithmatex">\(
+v^2 = GM \left( \frac{2}{r} - \frac{1}{a} \right)
+\)</span></p>
+<p><strong>where:</strong></p>
+<ul>
+<li>
+<p><span class="arithmatex">\( r \)</span> is the distance from the center of Earth,</p>
+</li>
+<li>
+<p><span class="arithmatex">\( a \)</span> is the semi-major axis of the ellipse.</p>
+</li>
+</ul>
+<h4 id="numerical-simulation-of-orbital-insertion"><strong>Numerical Simulation of Orbital Insertion</strong></h4>
+<p>Using numerical integration methods (e.g., <strong>Runge-Kutta 4th Order (RK4)</strong>), we can compute the trajectory given an initial velocity <span class="arithmatex">\( v_0 \)</span> and release altitude <span class="arithmatex">\( h_0 \)</span>. A correct initial velocity will ensure stable orbital motion, while a suboptimal velocity may result in a decaying orbit or an escape trajectory.</p>
+<h3 id="reentry-trajectories"><strong>Reentry Trajectories</strong></h3>
+<h4 id="atmospheric-entry-conditions"><strong>Atmospheric Entry Conditions</strong></h4>
+<p>A payload undergoing reentry must encounter atmospheric drag, which plays a significant role in slowing it down. The trajectory is influenced by:</p>
+<ul>
+<li>
+<p><strong>Initial velocity</strong> <span class="arithmatex">\( v_0 \)</span> (must be lower than escape velocity),</p>
+</li>
+<li>
+<p><strong>Entry angle</strong> <span class="arithmatex">\( \theta_{entry} \)</span> (too shallow may cause skipping; too steep results in excessive heating).</p>
+</li>
+</ul>
+<p>The atmospheric deceleration force is given by:</p>
+<p><span class="arithmatex">\(
+F_d = \frac{1}{2} C_d \rho v^2 A
+\)</span></p>
+<p><strong>where:</strong></p>
+<ul>
+<li>
+<p><span class="arithmatex">\( C_d \)</span> is the drag coefficient,</p>
+</li>
+<li>
+<p><span class="arithmatex">\( \rho \)</span> is the atmospheric density (which decreases exponentially with altitude),</p>
+</li>
+<li>
+<p><span class="arithmatex">\( A \)</span> is the payload’s cross-sectional area.</p>
+</li>
+</ul>
+<h4 id="simulation-of-reentry"><strong>Simulation of Reentry</strong></h4>
+<p>Numerical solutions use coupled equations for velocity, altitude, and heating rate to model reentry. The energy equation accounts for aerodynamic heating:</p>
+<p><span class="arithmatex">\(
+dT = \frac{F_d v}{mc_p} dt
+\)</span></p>
+<p>where <span class="arithmatex">\( c_p \)</span> is the specific heat capacity of the material.</p>
+<p>A successful reentry must balance drag forces and heat shielding efficiency to prevent disintegration.</p>
+<h3 id="escape-trajectories"><strong>Escape Trajectories</strong></h3>
+<h4 id="achieving-escape-velocity"><strong>Achieving Escape Velocity</strong></h4>
+<p>A payload will escape Earth’s gravity if it reaches the <strong>escape velocity</strong>:</p>
+<p><span class="arithmatex">\(
+v_e = \sqrt{\frac{2GM}{r}}
+\)</span></p>
+<p>If the payload's velocity <span class="arithmatex">\( v_0 \)</span> satisfies <span class="arithmatex">\( v_0 \geq v_e \)</span>, it will follow a <strong>parabolic</strong> or <strong>hyperbolic</strong> trajectory.</p>
+<h4 id="hyperbolic-trajectory-equations"><strong>Hyperbolic Trajectory Equations</strong></h4>
+<p>For objects exceeding escape velocity, the trajectory follows a hyperbolic path given by:</p>
+<p><span class="arithmatex">\(
+r = \frac{a(1 - e^2)}{1 + e \cos\theta}
+\)</span></p>
+<p><strong>where:</strong></p>
+<ul>
+<li>
+<p><span class="arithmatex">\( a \)</span> is the semi-major axis,</p>
+</li>
+<li>
+<p><span class="arithmatex">\( e \)</span> is the eccentricity (<span class="arithmatex">\( e &gt; 1 \)</span> for hyperbolic motion),</p>
+</li>
+<li>
+<p><span class="arithmatex">\( \theta \)</span> is the true anomaly.</p>
+</li>
+</ul>
+<h4 id="practical-applications"><strong>Practical Applications</strong></h4>
+<p>Escape trajectories are critical for:</p>
+<ul>
+<li>
+<p><strong>Interplanetary missions</strong> (e.g., Mars, Moon landings),</p>
+</li>
+<li>
+<p><strong>Gravity assists</strong> to increase velocity efficiently,</p>
+</li>
+<li>
+<p><strong>Deep-space probe launches</strong> (e.g., Voyager, New Horizons).</p>
+</li>
+</ul>
+<h3 id="comparative-numerical-simulations"><strong>Comparative Numerical Simulations</strong></h3>
+<p>By implementing numerical solvers (e.g., <strong>RK4</strong>, <strong>Verlet Integration</strong>) in Python, we can simulate these three types of trajectories:</p>
+<ol>
+<li>
+<p><strong>Orbital insertion</strong>: A stable circular or elliptical orbit is achieved.</p>
+</li>
+<li>
+<p><strong>Reentry</strong>: The payload slows down due to atmospheric drag and lands safely.</p>
+</li>
+<li>
+<p><strong>Escape</strong>: The payload reaches hyperbolic velocity and exits Earth’s gravity well.</p>
+</li>
+</ol>
+<p>By adjusting initial conditions, we can determine the feasibility of each trajectory scenario for real-world space missions.</p>
+<hr/>
 <h3 id="graphical-and-visual-analysis"><strong>Graphical and Visual Analysis</strong></h3>
 <p>Graphical analysis helps in interpreting trajectory behavior. The most common methods include:</p>
 <ul>
