@@ -549,49 +549,52 @@ plt.show()
 <h3 id="conclusion">Conclusion</h3>
 <p>Mastering cosmic velocities is essential for advancing space exploration. From deploying satellites to deep-space missions and interstellar travel, these velocity thresholds define the limits of human and robotic exploration. As technology progresses, understanding and applying these principles will be crucial for future space endeavors, including possible human missions beyond the Solar System.</p>
 <hr/>
-<h3 id="simulations">Simulations</h3>
+<h2 id="simulations">Simulations</h2>
 <h3 id="escape-velocity-simulation"><strong>Escape Velocity Simulation</strong></h3>
-<h3 id="introduction_4"><strong>Introduction</strong></h3>
+<p><strong>Introduction</strong> </p>
 <p>This simulation demonstrates the concept of <strong>escape velocity</strong>, the minimum speed an object must reach to break free from a planet’s gravitational influence without additional propulsion. Users can enter different launch velocities and observe whether the rocket escapes or falls back to the planet.  </p>
 <hr/>
-<h3 id="how-it-works"><strong>How It Works</strong></h3>
+<p><strong>How It Works</strong> </p>
 <ol>
 <li><strong>User Input:</strong> </li>
-<li>
-<p>The user enters a <strong>launch velocity (km/s)</strong> and clicks the <strong>Launch</strong> button.  </p>
-</li>
-<li>
+<li>The user enters a <strong>launch velocity (km/s)</strong> and clicks the <strong>Launch</strong> button.  </li>
+</ol>
 <p><strong>Rocket Motion:</strong> </p>
-</li>
+<ul>
 <li>The rocket moves upward based on the initial velocity.  </li>
 <li>Gravity continuously affects the rocket, slowing it down.  </li>
 <li>If the velocity is too low, the rocket <strong>falls back</strong>.  </li>
-<li>
-<p>If the velocity reaches or exceeds the <strong>escape velocity</strong>, the rocket <strong>leaves the planet's gravity</strong>.  </p>
-</li>
-<li>
+<li>If the velocity reaches or exceeds the <strong>escape velocity</strong>, the rocket <strong>leaves the planet's gravity</strong>.  </li>
+</ul>
 <p><strong>Simulation Conditions:</strong> </p>
-</li>
+<ul>
 <li>The system checks if the rocket surpasses <strong>five times the planet’s radius</strong> to confirm escape.  </li>
 <li>If the rocket falls back, an alert appears.  </li>
 <li>The simulation <strong>resets after 1.5 seconds</strong> for another test.  </li>
-</ol>
-<hr/>
-<h3 id="mathematical-model"><strong>Mathematical Model</strong></h3>
+</ul>
+<p><strong>Mathematical Model</strong> </p>
 <p>The simulation is based on <strong>Newton’s Law of Universal Gravitation</strong> and <strong>kinematics equations</strong>.  </p>
-<h3 id="gravity-force-acting-on-the-rocket"><strong>Gravity Force Acting on the Rocket:</strong></h3>
+<p><strong>Gravity Force Acting on the Rocket:</strong> </p>
 <p><span class="arithmatex">\(
 F = \frac{G M m}{r^2}
-\)</span>
-where:<br/>
-- <span class="arithmatex">\( G \)</span> = <span class="arithmatex">\( 6.674 × 10^{-11} \)</span> <span class="arithmatex">\( m^3 kg^{-1} s^{-2} \)</span> (gravitational constant)<br/>
-- <span class="arithmatex">\( M \)</span> = mass of the planet (Earth)<br/>
-- <span class="arithmatex">\( r \)</span> = distance from the center of the planet  </p>
-<h3 id="escape-velocity-formula"><strong>Escape Velocity Formula:</strong></h3>
+\)</span></p>
+<p>where: </p>
+<ul>
+<li>
+<p><span class="arithmatex">\( G \)</span> = <span class="arithmatex">\( 6.674 × 10^{-11} \)</span> <span class="arithmatex">\( m^3 kg^{-1} s^{-2} \)</span> (gravitational constant)  </p>
+</li>
+<li>
+<p><span class="arithmatex">\( M \)</span> = mass of the planet (Earth)  </p>
+</li>
+<li>
+<p><span class="arithmatex">\( r \)</span> = distance from the center of the planet  </p>
+</li>
+</ul>
+<p><strong>Escape Velocity Formula:</strong> </p>
 <p><span class="arithmatex">\(
 v_e = \sqrt{\frac{2GM}{R}}
-\)</span>
-where:  </p>
+\)</span></p>
+<p>where:  </p>
 <ul>
 <li><span class="arithmatex">\( R \)</span> = radius of the planet  </li>
 </ul>
@@ -626,48 +629,74 @@ This simulation helps understand:
 </details>
 <h3 id="simulation-link"><strong>Simulation Link</strong></h3>
 <p><a> file:///C:/Users/batu/Desktop/simulation2_1.html  </a></p>
-<h1 id="orbital-velocity-simulation"><strong>Orbital Velocity Simulation</strong></h1>
-<h2 id="introduction_5"><strong>Introduction</strong></h2>
-<p>This simulation demonstrates the concept of <strong>orbital velocity</strong>, the minimum speed an object must reach to maintain a stable orbit around a planet. Users can enter different launch velocities and observe whether the object:
-- <strong>Falls back to the planet</strong> (velocity too low),
-- <strong>Enters a stable orbit</strong> (correct orbital velocity),
-- <strong>Escapes the planet’s gravity</strong> (velocity too high).</p>
+<h3 id="orbital-velocity-simulation"><strong>Orbital Velocity Simulation</strong></h3>
+<p><strong>Introduction</strong>
+This simulation demonstrates the concept of <strong>orbital velocity</strong>, the minimum speed an object must reach to maintain a stable orbit around a planet. Users can enter different launch velocities and observe whether the object:</p>
+<ul>
+<li>
+<p><strong>Falls back to the planet</strong> (velocity too low),</p>
+</li>
+<li>
+<p><strong>Enters a stable orbit</strong> (correct orbital velocity),</p>
+</li>
+<li>
+<p><strong>Escapes the planet’s gravity</strong> (velocity too high).</p>
+</li>
+</ul>
 <hr/>
-<h3 id="how-it-works_1"><strong>How It Works</strong></h3>
-<ol>
-<li><strong>User Input:</strong> </li>
-<li>
-<p>The user enters a <strong>launch velocity (km/s)</strong> and clicks the <strong>Launch</strong> button.  </p>
-</li>
-<li>
+<p><strong>How It Works</strong></p>
+<p><strong>User Input:</strong><br/>
+   - The user enters a <strong>launch velocity (km/s)</strong> and clicks the <strong>Launch</strong> button.  </p>
 <p><strong>Object Motion:</strong> </p>
+<ul>
+<li>
+<p>The object moves tangentially to the planet's surface.</p>
 </li>
-<li>The object moves tangentially to the planet's surface.</li>
-<li>Gravity continuously affects the object, pulling it towards the planet.</li>
-<li>If the velocity is <strong>below orbital speed</strong>, the object <strong>falls back</strong>.</li>
-<li>If the velocity is <strong>at orbital speed</strong>, the object <strong>maintains orbit</strong>.</li>
+<li>
+<p>Gravity continuously affects the object, pulling it towards the planet.</p>
+</li>
+<li>
+<p>If the velocity is <strong>below orbital speed</strong>, the object <strong>falls back</strong>.</p>
+</li>
+<li>
+<p>If the velocity is <strong>at orbital speed</strong>, the object <strong>maintains orbit</strong>.</p>
+</li>
 <li>
 <p>If the velocity <strong>exceeds escape velocity</strong>, the object <strong>leaves the planet's gravity</strong>.</p>
 </li>
-<li>
+</ul>
 <p><strong>Simulation Conditions:</strong> </p>
+<ul>
+<li>
+<p>The system checks if the object remains in <strong>orbit, falls back, or escapes</strong>.</p>
 </li>
-<li>The system checks if the object remains in <strong>orbit, falls back, or escapes</strong>.</li>
-<li>If the object falls back or escapes, an alert appears.</li>
-<li>The simulation <strong>resets after 1.5 seconds</strong> for another test.</li>
-</ol>
+<li>
+<p>If the object falls back or escapes, an alert appears.</p>
+</li>
+<li>
+<p>The simulation <strong>resets after 1.5 seconds</strong> for another test.</p>
+</li>
+</ul>
 <hr/>
-<h2 id="mathematical-model_1"><strong>Mathematical Model</strong></h2>
+<p><strong>Mathematical Model</strong></p>
 <p>The simulation is based on <strong>Newtonian mechanics</strong> and <strong>orbital velocity equations</strong>.</p>
-<h3 id="orbital-velocity-formula"><strong>Orbital Velocity Formula:</strong></h3>
+<p><strong>Orbital Velocity Formula:</strong></p>
 <p><span class="arithmatex">\(
 v_o = \sqrt{\frac{GM}{R}}
-\)</span>
-where:<br/>
-- <span class="arithmatex">\( G \)</span> = <span class="arithmatex">\( 6.674 × 10^{-11} \)</span> <span class="arithmatex">\( m^3 kg^{-1} s^{-2} \)</span> (gravitational constant)<br/>
-- <span class="arithmatex">\( M \)</span> = mass of the planet (Earth)<br/>
-- <span class="arithmatex">\( R \)</span> = radius of the planet  </p>
-<h3 id="gravity-force-acting-on-the-object"><strong>Gravity Force Acting on the Object:</strong></h3>
+\)</span></p>
+<p>where:  </p>
+<ul>
+<li>
+<p><span class="arithmatex">\( G \)</span> = <span class="arithmatex">\( 6.674 × 10^{-11} \)</span> <span class="arithmatex">\( m^3 kg^{-1} s^{-2} \)</span> (gravitational constant)  </p>
+</li>
+<li>
+<p><span class="arithmatex">\( M \)</span> = mass of the planet (Earth)  </p>
+</li>
+<li>
+<p><span class="arithmatex">\( R \)</span> = radius of the planet  </p>
+</li>
+</ul>
+<p><strong>Gravity Force Acting on the Object:</strong></p>
 <p><span class="arithmatex">\(
 F = \frac{G M m}{r^2}
 \)</span></p>
