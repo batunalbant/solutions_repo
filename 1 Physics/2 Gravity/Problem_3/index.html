@@ -195,7 +195,7 @@
 <p>By exploring these trajectories, students and researchers can deepen their grasp of fundamental physics, enhance computational skills, and contribute to the broader field of aerospace engineering.</p>
 <hr/>
 <p><strong>Analysis of Possible Trajectories</strong></p>
-<h3 id="1-theoretical-background">1. <strong>Theoretical Background</strong></h3>
+<h3 id="theoretical-background"><strong>Theoretical Background</strong></h3>
 <p>The trajectory of a payload released near Earth is governed by fundamental principles of gravitational physics. The key concepts that influence its motion are:</p>
 <ul>
 <li><strong>Newton’s Law of Universal Gravitation</strong>: The gravitational force between two bodies is given by:</li>
@@ -218,7 +218,7 @@
 <p><span class="arithmatex">\( r \)</span> is the distance between the payload and Earth’s center.</p>
 </li>
 <li>
-<p><strong>Kepler’s Laws of Planetary Motion</strong>:</p>
+<h4 id="keplers-laws-of-planetary-motion"><strong>Kepler’s Laws of Planetary Motion</strong>:</h4>
 </li>
 <li>
 <p><strong>Elliptical Orbits</strong>: A payload in a stable orbit around Earth follows an elliptical path with Earth at one of the foci.</p>
@@ -230,7 +230,7 @@
 <p><strong>Orbital Period Relation</strong>: The square of the orbital period is proportional to the cube of the semi-major axis.</p>
 </li>
 <li>
-<p><strong>Conservation of Energy and Angular Momentum</strong>:</p>
+<h4 id="conservation-of-energy-and-angular-momentum"><strong>Conservation of Energy and Angular Momentum</strong>:</h4>
 </li>
 <li>
 <p>The total energy of the system determines whether the trajectory is bound (elliptical) or unbound (parabolic or hyperbolic).</p>
@@ -239,7 +239,7 @@
 <p>Angular momentum is conserved, affecting the shape of the trajectory.</p>
 </li>
 </ul>
-<h3 id="2-mathematical-formulation-and-derivations">2. <strong>Mathematical Formulation and Derivations</strong></h3>
+<h3 id="mathematical-formulation-and-derivations"><strong>Mathematical Formulation and Derivations</strong></h3>
 <p>The trajectory type is determined by the total specific mechanical energy <span class="arithmatex">\( E \)</span>:</p>
 <p><span class="arithmatex">\(
 E = 
@@ -274,12 +274,146 @@ E = \frac{1}{2}v^2 - \frac{GM}{r}
 v_e = \sqrt{\frac{2GM}{r}}
 \)</span></p>
 <p>which is the minimum velocity needed to escape Earth's gravity.</p>
-<h3 id="3-numerical-simulations">3. <strong>Numerical Simulations</strong></h3>
-<p>To numerically solve the trajectory of a payload, we utilize <strong>Newton’s Second Law</strong> in a two-dimensional coordinate system:</p>
+<h3 id="numerical-simulations"><strong>Numerical Simulations</strong></h3>
+<p><strong>Numerical Analysis of Payload Trajectory</strong></p>
+<h3 id="introduction"><strong>Introduction</strong></h3>
+<p>Numerical analysis plays a crucial role in computing the trajectory of a payload released near Earth. Since exact analytical solutions are often impractical due to the complexity of gravitational interactions, numerical integration methods such as the <strong>Euler method</strong>, <strong>Runge-Kutta method (RK4)</strong>, and <strong>Verlet integration</strong> are employed to approximate the motion of the payload.</p>
+<p>This section details the numerical computation of the payload's path based on given <strong>initial conditions</strong> including position, velocity, and altitude.</p>
+<hr/>
+<h3 id="governing-equations"><strong>Governing Equations</strong></h3>
+<p>The motion of the payload is governed by <strong>Newton’s Second Law</strong> and the <strong>Gravitational Force Law</strong>:</p>
+<h4 id="newtons-second-law"><strong>Newton's Second Law</strong></h4>
+<p><span class="arithmatex">\(
+F = m a
+\)</span></p>
+<p>where:
+- <span class="arithmatex">\( F \)</span> is the gravitational force,
+- <span class="arithmatex">\( m \)</span> is the mass of the payload,
+- <span class="arithmatex">\( a \)</span> is the acceleration.</p>
+<h4 id="gravitational-force-law"><strong>Gravitational Force Law</strong></h4>
+<p><span class="arithmatex">\(
+F = \frac{GMm}{r^2}
+\)</span></p>
+<p>By substituting Newton’s second law into the gravitational force equation, we obtain the acceleration equations:</p>
 <p><span class="arithmatex">\(
 \frac{d^2x}{dt^2} = -\frac{GMx}{(x^2 + y^2)^{3/2}}, \quad \frac{d^2y}{dt^2} = -\frac{GMy}{(x^2 + y^2)^{3/2}}
 \)</span></p>
-<p>Using <strong>Runge-Kutta methods</strong> or <strong>Verlet Integration</strong>, we can integrate these equations over time to determine the precise trajectory. External perturbations such as atmospheric drag and other celestial bodies can be incorporated for more accurate simulations.</p>
+<p>where:
+- <span class="arithmatex">\( G \)</span> is the gravitational constant (<span class="arithmatex">\( 6.674 \times 10^{-11} \)</span> m³/kg/s²),</p>
+<ul>
+<li>
+<p><span class="arithmatex">\( M \)</span> is Earth’s mass (<span class="arithmatex">\( 5.972 \times 10^{24} \)</span> kg),</p>
+</li>
+<li>
+<p><span class="arithmatex">\( r \)</span> is the distance from Earth's center.</p>
+</li>
+</ul>
+<hr/>
+<h3 id="numerical-integration-methods"><strong>Numerical Integration Methods</strong></h3>
+<p>To solve the system of differential equations numerically, we use different methods:</p>
+<h4 id="eulers-method"><strong>Euler’s Method</strong></h4>
+<p>Euler’s method is the simplest numerical integration technique. Given velocity <span class="arithmatex">\( v \)</span> and position <span class="arithmatex">\( x \)</span>, it updates the values iteratively:</p>
+<p><span class="arithmatex">\(
+x_{n+1} = x_n + v_n dt
+\)</span>
+<span class="arithmatex">\(
+v_{n+1} = v_n + a_n dt
+\)</span></p>
+<p>Although simple, Euler’s method suffers from large numerical errors over long periods.</p>
+<h4 id="runge-kutta-rk4-method"><strong>Runge-Kutta (RK4) Method</strong></h4>
+<p>The <strong>Runge-Kutta 4th order method (RK4)</strong> improves accuracy by computing intermediate steps:</p>
+<p><span class="arithmatex">\(
+k_1 = f(t_n, y_n)
+\)</span></p>
+<p><span class="arithmatex">\(
+k_2 = f(t_n + \frac{dt}{2}, y_n + \frac{k_1 dt}{2})
+\)</span></p>
+<p><span class="arithmatex">\(
+k_3 = f(t_n + \frac{dt}{2}, y_n + \frac{k_2 dt}{2})
+\)</span></p>
+<p><span class="arithmatex">\(
+k_4 = f(t_n + dt, y_n + k_3 dt)
+\)</span></p>
+<p><span class="arithmatex">\(
+y_{n+1} = y_n + \frac{dt}{6} (k_1 + 2k_2 + 2k_3 + k_4)
+\)</span></p>
+<p>This method provides higher accuracy with better stability.</p>
+<h4 id="33-verlet-integration"><strong>3.3 Verlet Integration</strong></h4>
+<p>Verlet integration is widely used in physics simulations due to its conservation properties:</p>
+<p><span class="arithmatex">\(
+x_{n+1} = 2x_n - x_{n-1} + a_n dt^2
+\)</span></p>
+<p>This method is particularly useful for long-term simulations where energy conservation is important.</p>
+<hr/>
+<h3 id="implementation-and-simulation"><strong>Implementation and Simulation</strong></h3>
+<p>We will implement the RK4 method in Python to compute the payload's trajectory based on initial position and velocity.</p>
+<h4 id="initial-conditions"><strong>Initial Conditions</strong></h4>
+<ul>
+<li>
+<p><strong>Altitude</strong>: <span class="arithmatex">\( 500 \)</span> km (above Earth's surface)</p>
+</li>
+<li>
+<p><strong>Initial Position</strong>: <span class="arithmatex">\( (x_0, y_0) = (R_E + 500000, 0) \)</span></p>
+</li>
+<li>
+<p><strong>Initial Velocity</strong>: <span class="arithmatex">\( (v_{x0}, v_{y0}) = (0, 7500) \)</span> m/s</p>
+</li>
+<li>
+<p><strong>Time Step</strong>: <span class="arithmatex">\( dt = 1 \)</span> second</p>
+</li>
+<li>
+<p><strong>Simulation Duration</strong>: <span class="arithmatex">\( 6000 \)</span> seconds</p>
+</li>
+</ul>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python">
+n
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Constants
+G = 6.67430e-11  # Gravitational constant (m³/kg/s²)
+M = 5.972e24  # Mass of Earth (kg)
+R_E = 6371e3  # Radius of Earth (m)
+
+def equations(t, state):
+    x, y, vx, vy = state
+    r = np.sqrt(x**2 + y**2)
+    ax = -G * M * x / r**3
+    ay = -G * M * y / r**3
+    return (vx, vy, ax, ay)
+
+# Initial conditions
+x0, y0 = R_E + 500e3, 0  # Initial position (500 km altitude)
+vx0, vy0 = 0, 7500  # Initial velocity (m/s)
+initial_state = (x0, y0, vx0, vy0)
+
+# Time span
+time_span = (0, 6000)  # 6000 seconds
+time_eval = np.linspace(0, 6000, 1000)
+
+# Solve using Runge-Kutta (RK45)
+solution = solve_ivp(equations, time_span, initial_state, t_eval=time_eval, method='RK45')
+
+# Plot results
+plt.plot(solution.y(0), solution.y(1))
+plt.xlabel('X Position (m)')
+plt.ylabel('Y Position (m)')
+plt.title('Numerical Simulation of Payload Trajectory')
+plt.grid()
+plt.show()
+</code></pre>
+</details>
+<p>!(alt text)(image-16.png)</p>
+<hr/>
+<h3 id="5-interpretation-of-results"><strong>5. Interpretation of Results</strong></h3>
+<p>By running the above simulation, we can analyze:
+- <strong>The shape of the trajectory</strong> (elliptical, parabolic, or hyperbolic).
+- <strong>Orbital stability</strong> and whether the payload remains in orbit or escapes Earth's gravity.
+- <strong>Energy conservation</strong> and the effects of numerical integration methods.</p>
+<p>This approach provides a powerful tool for predicting the motion of space-bound objects with high precision. By refining the initial conditions and including additional forces (e.g., atmospheric drag), we can improve real-world applicability in space mission planning and satellite deployment.</p>
 <h3 id="4-graphical-and-visual-analysis">4. <strong>Graphical and Visual Analysis</strong></h3>
 <p>Graphical analysis helps in interpreting trajectory behavior. The most common methods include:</p>
 <ul>
