@@ -277,10 +277,8 @@
 <p>This analysis comprehensively explains how cosmic velocities are derived and the key factors influencing them. These velocities are fundamental in space exploration and rocket science.</p>
 <hr/>
 <h3 id="calculation-and-visualization-of-cosmic-velocities">Calculation and Visualization of Cosmic Velocities</h3>
-<p>details&gt;
-<br/>
+<details>
 <summary>Phyton codes.</summary>
-</p>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 
@@ -329,7 +327,7 @@ plt.grid(axis="y", linestyle="--", alpha=0.7)
 plt.show()
 
 </code></pre>
-
+</details>
 <p><img alt="alt text" src="../image-13.png"/></p>
 <h3 id="introduction_1"><strong>Introduction</strong></h3>
 <p>The following bar chart compares the first, second, and third cosmic velocities for three celestial bodies: <strong>Earth, Mars, and Jupiter</strong>. These velocities determine the conditions required for an object to maintain orbit, escape a planet's gravity, and exit the Solar System.</p>
@@ -366,10 +364,8 @@ v_3 = \sqrt{v_2^2 + v_{\text{orbital}}^2}
 </ul>
 <p>This visualization is crucial for understanding the physics behind launching satellites, planning interplanetary missions, and conceptualizing interstellar travel.</p>
 <hr/>
-<p>details&gt;
-<br/>
+<details>
 <summary>Phyton codes.</summary>
-</p>
 <pre><code class="language-python"># Generate a dataset for planetary mass vs escape velocity
 masses = np.logspace(22, 28, num=100)  # Mass range from 10^22 kg to 10^28 kg
 radius_earth = 6.371 * 10**6  # Earth's radius in meters
@@ -392,7 +388,7 @@ plt.grid(True, linestyle="--", alpha=0.7)
 plt.show()
 
 </code></pre>
-
+</details>
 <p><img alt="alt text" src="../image-14.png"/></p>
 <h3 id="introduction_2"><strong>Introduction</strong></h3>
 <p>This graph illustrates how the <strong>escape velocity (<span class="arithmatex">\( v_2 \)</span>)</strong> changes with the <strong>mass of a celestial body</strong>, while keeping the radius constant (Earth's radius is used for reference). Escape velocity is the minimum speed required for an object to overcome the gravitational pull of a planet or celestial body without additional propulsion.</p>
@@ -420,10 +416,8 @@ plt.show()
 </ul>
 <p>This visualization helps illustrate the fundamental physics behind gravitational escape and the challenges faced in launching spacecraft from different celestial bodies.</p>
 <hr/>
-<p>details&gt;
-<br/>
+<details>
 <summary>Phyton codes.</summary>
-</p>
 <pre><code class="language-python"># Generate a dataset for planetary radius vs escape velocity
 radii = np.linspace(1e6, 8e7, num=100)  # Radius range from 1,000 km to 80,000 km
 mass_earth = 5.972 * 10**24  # Earth's mass in kg
@@ -445,7 +439,7 @@ plt.grid(True, linestyle="--", alpha=0.7)
 plt.show()
 
 </code></pre>
-
+</details>
 <p><img alt="alt text" src="../image-15.png"/></p>
 <h3 id="introduction_3"><strong>Introduction</strong></h3>
 <p>This graph illustrates how the <strong>escape velocity (<span class="arithmatex">\( v_2 \)</span>)</strong> varies with the <strong>radius of a celestial body</strong>, while keeping its mass constant (Earth's mass is used for reference). Escape velocity is influenced not only by mass but also by the planet's size.</p>
