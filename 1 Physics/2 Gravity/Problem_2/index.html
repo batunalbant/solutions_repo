@@ -241,7 +241,8 @@
    - <strong>Orbital Velocity of the Planet</strong>: If a spacecraft is launched in the direction of planetary motion, it gains additional velocity.
    - <strong>Star’s Gravitational Influence</strong>: A stronger gravitational field increases the required velocity to escape the system.
    - <strong>Additional Propulsion</strong>: Spacecraft may require additional propulsion systems to reach the required velocity.</p>
-<h2 id="summary-of-escape-and-cosmic-velocities">Summary of Escape and Cosmic Velocities</h2>
+<hr/>
+<h3 id="summary-of-escape-and-cosmic-velocities">Summary of Escape and Cosmic Velocities</h3>
 <table>
 <thead>
 <tr>
@@ -274,6 +275,112 @@
 </tbody>
 </table>
 <p>This analysis comprehensively explains how cosmic velocities are derived and the key factors influencing them. These velocities are fundamental in space exploration and rocket science.</p>
+<hr/>
+<h3 id="calculation-and-visualization-of-cosmic-velocities">Calculation and Visualization of Cosmic Velocities</h3>
+<p>details&gt;
+<br/>
+<summary>Phyton codes.</summary>
+</p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.674 * 10**-11  # Gravitational constant (m^3/kg/s^2)
+
+# Celestial bodies (Mass in kg, Radius in meters)
+bodies = {
+    "Earth": {"mass": 5.972 * 10**24, "radius": 6.371 * 10**6},
+    "Mars": {"mass": 6.417 * 10**23, "radius": 3.3895 * 10**6},
+    "Jupiter": {"mass": 1.898 * 10**27, "radius": 6.9911 * 10**7},
+}
+
+# Calculate first, second, and third cosmic velocities
+for body, data in bodies.items():
+    mass = data["mass"]
+    radius = data["radius"]
+    v1 = np.sqrt(G * mass / radius) / 1000  # First cosmic velocity (km/s)
+    v2 = np.sqrt(2 * G * mass / radius) / 1000  # Second cosmic velocity (km/s)
+    v3 = np.sqrt(v2**2 + (29.78 if body == "Earth" else 24.077 if body == "Mars" else 13.07)**2)  # Approximate third cosmic velocity (km/s)
+    data["v1"] = v1
+    data["v2"] = v2
+    data["v3"] = v3
+
+# Plot bar chart
+fig, ax = plt.subplots(figsize=(8, 6))
+width = 0.25  # Bar width
+x = np.arange(len(bodies))
+
+v1_values = [bodies[body]["v1"] for body in bodies]
+v2_values = [bodies[body]["v2"] for body in bodies]
+v3_values = [bodies[body]["v3"] for body in bodies]
+
+ax.bar(x - width, v1_values, width, label="First Cosmic Velocity (km/s)")
+ax.bar(x, v2_values, width, label="Second Cosmic Velocity (km/s)")
+ax.bar(x + width, v3_values, width, label="Third Cosmic Velocity (km/s)")
+
+ax.set_xticks(x)
+ax.set_xticklabels(bodies.keys())
+ax.set_ylabel("Velocity (km/s)")
+ax.set_title("Comparison of Cosmic Velocities for Different Celestial Bodies")
+ax.legend()
+plt.grid(axis="y", linestyle="--", alpha=0.7)
+
+# Display the plot
+plt.show()
+
+</code></pre>
+
+<p><img alt="alt text" src="../image-13.png"/></p>
+<h2 id="visualization-of-cosmic-velocities-for-different-celestial-bodies"><strong>Visualization of Cosmic Velocities for Different Celestial Bodies</strong></h2>
+<h3 id="introduction_1"><strong>Introduction</strong></h3>
+<p>The following bar chart compares the first, second, and third cosmic velocities for three celestial bodies: <strong>Earth, Mars, and Jupiter</strong>. These velocities determine the conditions required for an object to maintain orbit, escape a planet's gravity, and exit the Solar System.</p>
+<h3 id="key-observations"><strong>Key Observations</strong></h3>
+<ol>
+<li><strong>First Cosmic Velocity (<span class="arithmatex">\( v_1 \)</span>)</strong>: The minimum speed needed to maintain a stable circular orbit around the planet.</li>
+<li><strong>Second Cosmic Velocity (<span class="arithmatex">\( v_2 \)</span>)</strong>: The escape velocity required to leave the gravitational pull of the planet without further propulsion.</li>
+<li><strong>Third Cosmic Velocity (<span class="arithmatex">\( v_3 \)</span>)</strong>: The velocity needed to completely escape the Solar System.</li>
+</ol>
+<h3 id="comparison-highlights"><strong>Comparison Highlights</strong></h3>
+<ul>
+<li><strong>Jupiter</strong> has the highest escape velocity (~59.5 km/s) due to its massive gravitational influence.</li>
+<li><strong>Mars</strong> has significantly lower cosmic velocities compared to Earth, making it easier for spacecraft to escape.</li>
+<li><strong>Earth's third cosmic velocity (~16.7 km/s relative to Earth's surface)</strong> is comparable to the velocities of interstellar-bound spacecraft like <em>Voyager 1</em>.</li>
+</ul>
+<h3 id="mathematical-background"><strong>Mathematical Background</strong></h3>
+<p>These velocities are derived from Newtonian mechanics using the gravitational constant <span class="arithmatex">\( G \)</span>, planetary mass <span class="arithmatex">\( M \)</span>, and planetary radius <span class="arithmatex">\( R \)</span>:</p>
+<div class="arithmatex">\[
+v_1 = \sqrt{\frac{GM}{R}}
+\]</div>
+<div class="arithmatex">\[
+v_2 = \sqrt{\frac{2GM}{R}}
+\]</div>
+<div class="arithmatex">\[
+v_3 = \sqrt{v_2^2 + v_{\text{orbital}}^2}
+\]</div>
+<p>where <span class="arithmatex">\( v_{\text{orbital}} \)</span> is the orbital velocity of the planet around the Sun.</p>
+<h3 id="bar-chart-description"><strong>Bar Chart Description</strong></h3>
+<ul>
+<li>The chart visually compares the three velocities for <strong>Earth, Mars, and Jupiter</strong>.</li>
+<li>The <strong>x-axis</strong> represents the celestial bodies.</li>
+<li>The <strong>y-axis</strong> represents velocity in <strong>km/s</strong>.</li>
+<li>Three different colored bars indicate <strong><span class="arithmatex">\( v_1 \)</span></strong> (orbital velocity), <strong><span class="arithmatex">\( v_2 \)</span></strong> (escape velocity), and <strong><span class="arithmatex">\( v_3 \)</span></strong> (interstellar velocity).</li>
+</ul>
+<hr/>
+<p>This visualization is crucial for understanding the physics behind launching satellites, planning interplanetary missions, and conceptualizing interstellar travel.</p>
+<p>details&gt;
+<br/>
+<summary>Phyton codes.</summary>
+</p>
+<pre><code class="language-python">
+</code></pre>
+
+<p>details&gt;
+<br/>
+<summary>Phyton codes.</summary>
+</p>
+<pre><code class="language-python">
+</code></pre>
+
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
