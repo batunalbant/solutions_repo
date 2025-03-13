@@ -24,9 +24,9 @@ The first cosmic velocity is the minimum speed required for an object to maintai
 Mathematically, the first cosmic velocity is given by:
    
    
-   \[
+   \(
    v_1 = \sqrt{\frac{GM}{R}}
-   \]
+   \)
    
    where:
    - \( v_1 \) is the velocity required to maintain a circular orbit,
@@ -36,9 +36,9 @@ Mathematically, the first cosmic velocity is given by:
 
 For Earth, the first cosmic velocity is approximately:
    
-   \[
+   \(
    v_1 = \sqrt{\frac{6.674 × 10^{-11} × 5.972 × 10^{24}}{6.371 × 10^6}} \approx 7.91 \text{ km/s}
-   \]
+   \)
    
 This means that a satellite must travel at approximately 7.91 km/s to stay in a low Earth orbit.
 
@@ -47,15 +47,15 @@ The second cosmic velocity, or escape velocity, is the minimum speed required fo
 
 The escape velocity is given by:
    
-   \[
+   \(
    v_2 = \sqrt{\frac{2GM}{R}} = \sqrt{2} v_1
-   \]
+   \)
    
 For Earth, this velocity is:
    
-   \[
+   \(
    v_2 = \sqrt{\frac{2 × 6.674 × 10^{-11} × 5.972 × 10^{24}}{6.371 × 10^6}} \approx 11.19 \text{ km/s}
-   \]
+   \)
    
 This means that any spacecraft leaving Earth's surface must achieve at least 11.19 km/s to escape Earth's gravity without further acceleration.
 
@@ -69,15 +69,15 @@ The third cosmic velocity is the speed required for an object to escape not just
 
 To calculate the third cosmic velocity, we consider both the escape velocity from the planet and the orbital velocity of the planet around the Sun:
    
-   \[
+   \(
    v_3 = \sqrt{v_{\text{esc,planet}}^2 + v_{\text{orbital}}^2}
-   \]
+   \)
    
 For Earth, where the escape velocity from the Sun at Earth's orbit is about 42.1 km/s, and Earth's orbital velocity around the Sun is about 29.78 km/s:
    
-   \[
+   \(
    v_3 = \sqrt{(42.1)^2 + (29.78)^2} \approx 16.7 \text{ km/s (relative to Earth's surface)}
-   \]
+   \)
    
 This means a spacecraft must reach approximately 16.7 km/s relative to Earth's surface to leave the Solar System. Notable spacecraft that have achieved or exceeded this velocity include:
    - **Voyager 1** (~17.1 km/s, currently in interstellar space)
