@@ -31,6 +31,7 @@ The first cosmic velocity is derived by equating the gravitational force acting 
    
    where:
    - \( F_g = \frac{GMm}{R^2} \) (gravitational force)
+
    - \( F_c = \frac{m v^2}{R} \) (centripetal force)
    
    Equating these two expressions:
@@ -46,6 +47,7 @@ The first cosmic velocity is derived by equating the gravitational force acting 
    $$
    
    **Derivation from Energy Considerations:**
+
    Since total mechanical energy in a stable orbit is given by:
    
    $$
@@ -59,7 +61,9 @@ The first cosmic velocity is derived by equating the gravitational force acting 
    $$
 
    **Factors Affecting First Cosmic Velocity:**
+
    - **Mass of the Celestial Body (\( M \))**: A higher mass results in a stronger gravitational pull, requiring a higher orbital velocity.
+
    - **Radius of the Celestial Body (\( R \))**: A larger radius decreases the required orbital velocity as gravitational attraction weakens with distance.
 
 ### **Mathematical Derivation of Second Cosmic Velocity**
@@ -71,7 +75,9 @@ The escape velocity (\( v_2 \)) is derived by considering the total mechanical e
    $$
    
    where:
+
    - Kinetic energy: \( E_k = \frac{1}{2} m v_2^2 \)
+
    - Gravitational potential energy: \( E_p = -\frac{GMm}{R} \)
    
    Applying energy conservation:
@@ -87,6 +93,7 @@ The escape velocity (\( v_2 \)) is derived by considering the total mechanical e
    $$
    
    **Alternative Derivation Using Work-Energy Theorem:**
+
    The work required to move an object from a planet's surface to infinity is:
    
    $$
@@ -116,8 +123,11 @@ The third cosmic velocity (\( v_3 \)) is the speed needed to escape not just the
    $$
    
    **Factors Affecting Third Cosmic Velocity:**
+
    - **Orbital Velocity of the Planet**: If a spacecraft is launched in the direction of planetary motion, it gains additional velocity.
+
    - **Star’s Gravitational Influence**: A stronger gravitational field increases the required velocity to escape the system.
+
    - **Additional Propulsion**: Spacecraft may require additional propulsion systems to reach the required velocity.
 
 ## Summary of Escape and Cosmic Velocities
@@ -195,25 +205,35 @@ plt.show()
 The following bar chart compares the first, second, and third cosmic velocities for three celestial bodies: **Earth, Mars, and Jupiter**. These velocities determine the conditions required for an object to maintain orbit, escape a planet's gravity, and exit the Solar System.
 
 ### **Key Observations**
+
 1. **First Cosmic Velocity (\( v_1 \))**: The minimum speed needed to maintain a stable circular orbit around the planet.
+
 2. **Second Cosmic Velocity (\( v_2 \))**: The escape velocity required to leave the gravitational pull of the planet without further propulsion.
+
 3. **Third Cosmic Velocity (\( v_3 \))**: The velocity needed to completely escape the Solar System.
 
+
 ### **Comparison Highlights**
+
 - **Jupiter** has the highest escape velocity (~59.5 km/s) due to its massive gravitational influence.
+
 - **Mars** has significantly lower cosmic velocities compared to Earth, making it easier for spacecraft to escape.
+
 - **Earth's third cosmic velocity (~16.7 km/s relative to Earth's surface)** is comparable to the velocities of interstellar-bound spacecraft like *Voyager 1*.
 
 ### **Mathematical Background**
+
 These velocities are derived from Newtonian mechanics using the gravitational constant \( G \), planetary mass \( M \), and planetary radius \( R \):
 
 \[
 v_1 = \sqrt{\frac{GM}{R}}
 \]
 
+
 \[
 v_2 = \sqrt{\frac{2GM}{R}}
 \]
+
 
 \[
 v_3 = \sqrt{v_2^2 + v_{\text{orbital}}^2}
@@ -222,9 +242,13 @@ v_3 = \sqrt{v_2^2 + v_{\text{orbital}}^2}
 where \( v_{\text{orbital}} \) is the orbital velocity of the planet around the Sun.
 
 ### **Bar Chart Description**
+
 - The chart visually compares the three velocities for **Earth, Mars, and Jupiter**.
+
 - The **x-axis** represents the celestial bodies.
+
 - The **y-axis** represents velocity in **km/s**.
+
 - Three different colored bars indicate **\( v_1 \)** (orbital velocity), **\( v_2 \)** (escape velocity), and **\( v_3 \)** (interstellar velocity).
 
 This visualization is crucial for understanding the physics behind launching satellites, planning interplanetary missions, and conceptualizing interstellar travel.
@@ -263,25 +287,37 @@ plt.show()
 
 
 ### **Introduction**
+
 This graph illustrates how the **escape velocity (\( v_2 \))** changes with the **mass of a celestial body**, while keeping the radius constant (Earth's radius is used for reference). Escape velocity is the minimum speed required for an object to overcome the gravitational pull of a planet or celestial body without additional propulsion.
 
 ### **Key Observations**
+
 1. **Escape velocity increases as planetary mass increases** due to the stronger gravitational attraction.
+
 2. The relationship follows a **square root function**:
+
    \[
    v_2 = \sqrt{\frac{2GM}{R}}
    \]
+
    which means that doubling the mass does **not** double the escape velocity but increases it by a factor of \( \sqrt{2} \).
+
 3. **Larger planets like Jupiter have significantly higher escape velocities**, making it harder for spacecraft to leave their gravitational influence.
 
 ### **Graph Description**
+
 - The **x-axis** represents the mass of the celestial body (in **kg**), displayed on a **logarithmic scale** for better visualization.
+
 - The **y-axis** represents the escape velocity (in **km/s**).
+
 - The curve shows that **as mass increases, the escape velocity also increases**, following a non-linear trend.
 
 ### **Scientific Implications**
+
 - Planets with **higher escape velocities** require **more energy** for spacecraft to escape, impacting space mission designs.
+
 - Smaller bodies like asteroids have **low escape velocities**, making them easier targets for spacecraft landings.
+
 - Understanding this relationship is crucial for **interplanetary mission planning** and **launch vehicle engineering**.
 
 
@@ -318,25 +354,37 @@ plt.show()
 ![alt text](image-15.png)
 
 ### **Introduction**
+
 This graph illustrates how the **escape velocity (\( v_2 \))** varies with the **radius of a celestial body**, while keeping its mass constant (Earth's mass is used for reference). Escape velocity is influenced not only by mass but also by the planet's size.
 
 ### **Key Observations**
+
 1. **Escape velocity decreases as planetary radius increases**, assuming mass remains constant.
+
 2. The relationship follows an **inverse square root function**:
+
    \[
    v_2 = \sqrt{\frac{2GM}{R}}
    \]
+
    which means that doubling the radius decreases the escape velocity by a factor of \( \frac{1}{\sqrt{2}} \).
+
 3. **Compact celestial bodies (e.g., neutron stars) have extremely high escape velocities** due to their small radii, while **gas giants (e.g., Jupiter, Saturn) have lower escape velocities than expected from their mass alone** due to their large radii.
 
 ### **Graph Description**
+
 - The **x-axis** represents the radius of the celestial body (in **km**).
+
 - The **y-axis** represents the escape velocity (in **km/s**).
+
 - The curve shows that **as planetary radius increases, the escape velocity decreases**, illustrating the inverse relationship.
 
 ### **Scientific Implications**
+
 - A planet with a **larger radius and the same mass** has a **lower escape velocity**, making it easier for spacecraft to leave its gravitational pull.
+
 - **Dense celestial objects**, like white dwarfs and neutron stars, have extreme escape velocities, sometimes exceeding the speed of light (in the case of black holes).
+
 - This relationship is critical in **designing space missions**, **predicting atmospheric retention**, and **understanding planetary formation**.
 
 This visualization highlights the important role planetary size plays in determining gravitational strength and the feasibility of space travel.
@@ -354,16 +402,23 @@ This section discusses the significance of these velocities in various aspects o
 The first cosmic velocity (\( v_1 \)) is the minimum velocity required for an object to stay in orbit around a celestial body. For Earth, this velocity is approximately **7.91 km/s**.
 
 ### Applications:
+
 - **Satellite Communication Systems:**
+
   - Satellites such as Starlink (SpaceX), GPS satellites, and Earth observation systems rely on first cosmic velocity to stay in stable orbits.
+
   - Precise calculations ensure efficient fuel usage and longevity of operational satellites.
 
 - **International Space Station (ISS) and Low Earth Orbit Missions:**
+
   - The ISS orbits at approximately **7.66 km/s**, requiring periodic boosts to maintain its altitude.
+
   - Spacecraft like Crew Dragon and Soyuz must match this velocity for docking maneuvers.
 
 - **Geostationary and Polar Orbiting Satellites:**
+
   - Geostationary satellites maintain a constant position above Earth by orbiting at **35,786 km altitude**.
+
   - Polar satellites move from pole to pole, covering the entire planet for climate and reconnaissance missions.
 
 ### 2. Second Cosmic Velocity: Escape from Gravitational Fields
@@ -371,15 +426,21 @@ The first cosmic velocity (\( v_1 \)) is the minimum velocity required for an ob
 The second cosmic velocity (\( v_2 \)) is the escape velocity required for an object to break free from a planet’s gravitational pull. For Earth, this velocity is **11.19 km/s**.
 
 ### Applications:
+
 - **Lunar and Interplanetary Missions:**
+
   - Apollo missions required exceeding Earth’s escape velocity to reach the Moon.
+
   - Current Mars missions (Perseverance, Curiosity) rely on second cosmic velocity calculations to leave Earth's gravity efficiently.
 
 - **Deep Space Exploration:**
+
   - Spacecraft such as **Voyager 1, New Horizons, and Juno** exceeded escape velocity to explore the outer planets.
+
   - The Parker Solar Probe, designed to study the Sun, required precise velocity calculations to navigate its gravitational field.
 
 - **Asteroid and Comet Missions:**
+
   - Missions like **OSIRIS-REx (Bennu asteroid)** and **Rosetta (67P/Churyumov-Gerasimenko comet)** use escape velocity principles to navigate between celestial bodies.
 
 ### 3. Third Cosmic Velocity: Interstellar Exploration
@@ -387,16 +448,23 @@ The second cosmic velocity (\( v_2 \)) is the escape velocity required for an ob
 The third cosmic velocity (\( v_3 \)) is the speed needed to escape the gravitational influence of the entire Solar System. For Earth, this velocity is **16.7 km/s** relative to its surface.
 
 ### Applications:
+
 - **Voyager and Pioneer Probes:**
+
   - **Voyager 1 (17.1 km/s)** and **Voyager 2 (15.4 km/s)** are now in interstellar space, having exceeded third cosmic velocity.
+
   - **Pioneer 10 & 11** have also left the Solar System, though their signals have faded.
 
 - **New Horizons and Future Missions:**
+
   - New Horizons, the Pluto mission, utilized a **Jupiter gravity assist** to exceed third cosmic velocity.
+
   - Future interstellar probes, such as the **Interstellar Probe concept**, aim to explore beyond the heliosphere.
 
 - **Theoretical Interstellar Travel:**
+
   - The **Breakthrough Starshot** initiative proposes light sail spacecraft capable of reaching 20% the speed of light.
+  
   - Advanced propulsion systems, including nuclear fusion and antimatter rockets, are being researched for future interstellar missions.
 
 ### Conclusion
