@@ -596,35 +596,108 @@ where:  </p>
 <li><span class="arithmatex">\( R \)</span> = radius of the planet  </li>
 </ul>
 <hr/>
-<h3 id="what-are-we-testing"><strong>What Are We Testing?</strong></h3>
-<ul>
-<li>The relationship between <strong>initial velocity and escape conditions</strong>.  </li>
-<li>The effect of <strong>gravity pulling the object back</strong> if velocity is too low.  </li>
-<li>The difference between <strong>sub-orbital, orbital, and escape trajectories</strong>.  </li>
-</ul>
-<hr/>
-<h3 id="expected-results"><strong>Expected Results</strong></h3>
-<ul>
-<li>If <strong>velocity &lt; escape velocity</strong>, the rocket <strong>falls back</strong>.  </li>
-<li>If <strong>velocity ≥ escape velocity</strong>, the rocket <strong>escapes</strong>.  </li>
-</ul>
-<hr/>
-<h3 id="usage-instructions"><strong>Usage Instructions</strong></h3>
-<ol>
-<li><strong>Enter a velocity</strong> in the input box.  </li>
-<li><strong>Click "Launch"</strong> to initiate the simulation.  </li>
-<li>Observe whether the rocket <strong>escapes or falls back</strong>.  </li>
-<li>The system resets automatically after <strong>1.5 seconds</strong>.  </li>
-</ol>
-<hr/>
-<h3 id="applications-in-space-exploration"><strong>Applications in Space Exploration</strong></h3>
-<p>This simulation helps understand:<br/>
-- <strong>Rocket launches and mission planning</strong>.<br/>
-- <strong>Orbital mechanics</strong> and how satellites remain in space.<br/>
-- <strong>Interplanetary travel</strong> and how spacecraft escape Earth’s gravity.  </p>
-<hr/>
+<details>
+<summary>Details about simulation.</summary>
+
+### **What Are We Testing?**  
+- The relationship between **initial velocity and escape conditions**.  
+- The effect of **gravity pulling the object back** if velocity is too low.  
+- The difference between **sub-orbital, orbital, and escape trajectories**.  
+
+
+### **Expected Results**  
+- If **velocity &lt; escape velocity**, the rocket **falls back**.  
+- If **velocity ≥ escape velocity**, the rocket **escapes**.  
+
+
+### **Usage Instructions**  
+1. **Enter a velocity** in the input box.  
+2. **Click "Launch"** to initiate the simulation.  
+3. Observe whether the rocket **escapes or falls back**.  
+4. The system resets automatically after **1.5 seconds**.  
+
+
+### **Applications in Space Exploration**  
+This simulation helps understand:  
+- **Rocket launches and mission planning**.  
+- **Orbital mechanics** and how satellites remain in space.  
+- **Interplanetary travel** and how spacecraft escape Earth’s gravity.  
+
+</details>
 <h3 id="simulation-link"><strong>Simulation Link</strong></h3>
 <p><a> file:///C:/Users/batu/Desktop/simulation2_1.html  </a></p>
+<h1 id="orbital-velocity-simulation"><strong>Orbital Velocity Simulation</strong></h1>
+<h2 id="introduction_5"><strong>Introduction</strong></h2>
+<p>This simulation demonstrates the concept of <strong>orbital velocity</strong>, the minimum speed an object must reach to maintain a stable orbit around a planet. Users can enter different launch velocities and observe whether the object:
+- <strong>Falls back to the planet</strong> (velocity too low),
+- <strong>Enters a stable orbit</strong> (correct orbital velocity),
+- <strong>Escapes the planet’s gravity</strong> (velocity too high).</p>
+<hr/>
+<h3 id="how-it-works_1"><strong>How It Works</strong></h3>
+<ol>
+<li><strong>User Input:</strong> </li>
+<li>
+<p>The user enters a <strong>launch velocity (km/s)</strong> and clicks the <strong>Launch</strong> button.  </p>
+</li>
+<li>
+<p><strong>Object Motion:</strong> </p>
+</li>
+<li>The object moves tangentially to the planet's surface.</li>
+<li>Gravity continuously affects the object, pulling it towards the planet.</li>
+<li>If the velocity is <strong>below orbital speed</strong>, the object <strong>falls back</strong>.</li>
+<li>If the velocity is <strong>at orbital speed</strong>, the object <strong>maintains orbit</strong>.</li>
+<li>
+<p>If the velocity <strong>exceeds escape velocity</strong>, the object <strong>leaves the planet's gravity</strong>.</p>
+</li>
+<li>
+<p><strong>Simulation Conditions:</strong> </p>
+</li>
+<li>The system checks if the object remains in <strong>orbit, falls back, or escapes</strong>.</li>
+<li>If the object falls back or escapes, an alert appears.</li>
+<li>The simulation <strong>resets after 1.5 seconds</strong> for another test.</li>
+</ol>
+<hr/>
+<h2 id="mathematical-model_1"><strong>Mathematical Model</strong></h2>
+<p>The simulation is based on <strong>Newtonian mechanics</strong> and <strong>orbital velocity equations</strong>.</p>
+<h3 id="orbital-velocity-formula"><strong>Orbital Velocity Formula:</strong></h3>
+<p><span class="arithmatex">\(
+v_o = \sqrt{\frac{GM}{R}}
+\)</span>
+where:<br/>
+- <span class="arithmatex">\( G \)</span> = <span class="arithmatex">\( 6.674 × 10^{-11} \)</span> <span class="arithmatex">\( m^3 kg^{-1} s^{-2} \)</span> (gravitational constant)<br/>
+- <span class="arithmatex">\( M \)</span> = mass of the planet (Earth)<br/>
+- <span class="arithmatex">\( R \)</span> = radius of the planet  </p>
+<h3 id="gravity-force-acting-on-the-object"><strong>Gravity Force Acting on the Object:</strong></h3>
+<p><span class="arithmatex">\(
+F = \frac{G M m}{r^2}
+\)</span></p>
+<hr/>
+<details>
+<summary>Details about simulation.</summary>
+### **What Are We Testing?**
+- The relationship between **velocity and orbital stability**.
+- The effect of **gravity pulling the object back** if velocity is too low.
+- The difference between **stable orbit, sub-orbital trajectory, and escape trajectory**.
+
+### **Expected Results**
+- If **velocity &lt; orbital velocity**, the object **falls back**.
+- If **velocity ≈ orbital velocity**, the object **enters stable orbit**.
+- If **velocity &gt; escape velocity**, the object **escapes planetary gravity**.
+
+### **Usage Instructions**
+1. **Enter a velocity** in the input box.
+2. **Click "Launch"** to start the simulation.
+3. Observe whether the object **enters orbit, falls back, or escapes**.
+4. The system resets automatically after **1.5 seconds**.
+
+### **Applications in Space Exploration**
+This simulation helps understand:
+- **Satellite launches and orbit insertion**.
+- **Orbital mechanics for space stations and planetary exploration**.
+- **Interplanetary travel and escape conditions**.
+</details>
+<h3 id="simulation-link_1"><strong>Simulation Link</strong></h3>
+<p><a>file:///C:/Users/batu/Desktop/simulationp2,1,2.html </a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
