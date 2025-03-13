@@ -31,13 +31,14 @@ By exploring these trajectories, students and researchers can deepen their grasp
 
 The trajectory of a payload released near Earth is governed by fundamental principles of gravitational physics. The key concepts that influence its motion are:
 
-- **Newton’s Law of Universal Gravitation**: The gravitational force between two bodies is given by:
+##### **Newton’s Law of Universal Gravitation**: The gravitational force between two bodies is given by:
   
   \(
   F = \frac{GMm}{r^2}
   \)
   
-  **where:**
+  - **where:**
+
 
   - \( G \) is the gravitational constant,
 
@@ -52,7 +53,7 @@ The trajectory of a payload released near Earth is governed by fundamental princ
   
 
 
-- #### **Kepler’s Laws of Planetary Motion**:
+#### **Kepler’s Laws of Planetary Motion**:
 
   1. **Elliptical Orbits**: A payload in a stable orbit around Earth follows an elliptical path with Earth at one of the foci.
 
@@ -60,7 +61,7 @@ The trajectory of a payload released near Earth is governed by fundamental princ
 
   3. **Orbital Period Relation**: The square of the orbital period is proportional to the cube of the semi-major axis.
   
-- #### **Conservation of Energy and Angular Momentum**:
+#### **Conservation of Energy and Angular Momentum**:
 
   - The total energy of the system determines whether the trajectory is bound (elliptical) or unbound (parabolic or hyperbolic).
 
@@ -113,12 +114,11 @@ which is the minimum velocity needed to escape Earth's gravity.
 
 **Numerical Analysis of Payload Trajectory**
 
-### **Introduction**
+#### **Introduction**
 Numerical analysis plays a crucial role in computing the trajectory of a payload released near Earth. Since exact analytical solutions are often impractical due to the complexity of gravitational interactions, numerical integration methods such as the **Euler method**, **Runge-Kutta method (RK4)**, and **Verlet integration** are employed to approximate the motion of the payload.
 
 This section details the numerical computation of the payload's path based on given **initial conditions** including position, velocity, and altitude.
 
----
 
 ### **Governing Equations**
 
@@ -152,9 +152,7 @@ where:
 
 - \( r \) is the distance from Earth's center.
 
----
-
-### **Numerical Integration Methods**
+##### **Numerical Integration Methods**
 
 To solve the system of differential equations numerically, we use different methods:
 
@@ -197,7 +195,7 @@ y_{n+1} = y_n + \frac{dt}{6} (k_1 + 2k_2 + 2k_3 + k_4)
 
 This method provides higher accuracy with better stability.
 
-#### **3.3 Verlet Integration**
+#### **Verlet Integration**
 Verlet integration is widely used in physics simulations due to its conservation properties:
 
 \(
@@ -206,22 +204,27 @@ x_{n+1} = 2x_n - x_{n-1} + a_n dt^2
 
 This method is particularly useful for long-term simulations where energy conservation is important.
 
----
+#### **Implementation and Simulation**
 
-### **Implementation and Simulation**
 We will implement the RK4 method in Python to compute the payload's trajectory based on initial position and velocity.
 
 #### **Initial Conditions**
 
+
 - **Altitude**: \( 500 \) km (above Earth's surface)
+
 
 - **Initial Position**: \( (x_0, y_0) = (R_E + 500000, 0) \)
 
+
 - **Initial Velocity**: \( (v_{x0}, v_{y0}) = (0, 7500) \) m/s
+
 
 - **Time Step**: \( dt = 1 \) second
 
+
 - **Simulation Duration**: \( 6000 \) seconds
+
 
 
 <details>
@@ -268,31 +271,40 @@ plt.show()
 ```
 </details>
 
-!(alt text)(image-16.png)
+![alt text](image-17.png)
 
----
 
-### **5. Interpretation of Results**
+
+
+### **Interpretation of Results**
 By running the above simulation, we can analyze:
+
 - **The shape of the trajectory** (elliptical, parabolic, or hyperbolic).
+
 - **Orbital stability** and whether the payload remains in orbit or escapes Earth's gravity.
+
 - **Energy conservation** and the effects of numerical integration methods.
 
 This approach provides a powerful tool for predicting the motion of space-bound objects with high precision. By refining the initial conditions and including additional forces (e.g., atmospheric drag), we can improve real-world applicability in space mission planning and satellite deployment.
 
 
 
-### 4. **Graphical and Visual Analysis**
+### **Graphical and Visual Analysis**
 
 Graphical analysis helps in interpreting trajectory behavior. The most common methods include:
 
+
 - **2D and 3D trajectory plotting** to visualize how the payload moves in space.
+
 
 - **Vector field representation** to show gravitational influences.
 
+
 - **Phase space diagrams** (velocity vs. position plots) to analyze orbital stability.
 
+
 - **Animated simulations** using Python’s `matplotlib` and `VPython` to create dynamic visualizations.
+
 
 By employing these graphical methods, researchers can validate theoretical models and refine numerical simulations.
 
