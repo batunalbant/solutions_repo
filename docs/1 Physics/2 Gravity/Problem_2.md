@@ -403,3 +403,88 @@ The third cosmic velocity (\( v_3 \)) is the speed needed to escape the gravitat
 
 Mastering cosmic velocities is essential for advancing space exploration. From deploying satellites to deep-space missions and interstellar travel, these velocity thresholds define the limits of human and robotic exploration. As technology progresses, understanding and applying these principles will be crucial for future space endeavors, including possible human missions beyond the Solar System.
 
+---
+
+### Simulations
+
+# **Escape Velocity Simulation**  
+
+## **Introduction**  
+This simulation demonstrates the concept of **escape velocity**, the minimum speed an object must reach to break free from a planet’s gravitational influence without additional propulsion. Users can enter different launch velocities and observe whether the rocket escapes or falls back to the planet.  
+
+---
+
+## **How It Works**  
+1. **User Input:**  
+   - The user enters a **launch velocity (km/s)** and clicks the **Launch** button.  
+
+2. **Rocket Motion:**  
+   - The rocket moves upward based on the initial velocity.  
+   - Gravity continuously affects the rocket, slowing it down.  
+   - If the velocity is too low, the rocket **falls back**.  
+   - If the velocity reaches or exceeds the **escape velocity**, the rocket **leaves the planet's gravity**.  
+
+3. **Simulation Conditions:**  
+   - The system checks if the rocket surpasses **five times the planet’s radius** to confirm escape.  
+   - If the rocket falls back, an alert appears.  
+   - The simulation **resets after 1.5 seconds** for another test.  
+
+---
+
+## **Mathematical Model**  
+The simulation is based on **Newton’s Law of Universal Gravitation** and **kinematics equations**.  
+
+### **Gravity Force Acting on the Rocket:**  
+\[
+F = \frac{G M m}{r^2}
+\]
+where:  
+- \( G \) = \( 6.674 × 10^{-11} \) \( m^3 kg^{-1} s^{-2} \) (gravitational constant)  
+- \( M \) = mass of the planet (Earth)  
+- \( r \) = distance from the center of the planet  
+
+### **Escape Velocity Formula:**  
+\[
+v_e = \sqrt{\frac{2GM}{R}}
+\]
+where:  
+- \( R \) = radius of the planet  
+
+---
+
+## **What Are We Testing?**  
+- The relationship between **initial velocity and escape conditions**.  
+- The effect of **gravity pulling the object back** if velocity is too low.  
+- The difference between **sub-orbital, orbital, and escape trajectories**.  
+
+---
+
+## **Expected Results**  
+- If **velocity < escape velocity**, the rocket **falls back**.  
+- If **velocity ≥ escape velocity**, the rocket **escapes**.  
+
+---
+
+## **Usage Instructions**  
+1. **Enter a velocity** in the input box.  
+2. **Click "Launch"** to initiate the simulation.  
+3. Observe whether the rocket **escapes or falls back**.  
+4. The system resets automatically after **1.5 seconds**.  
+
+---
+
+## **Applications in Space Exploration**  
+This simulation helps understand:  
+- **Rocket launches and mission planning**.  
+- **Orbital mechanics** and how satellites remain in space.  
+- **Interplanetary travel** and how spacecraft escape Earth’s gravity.  
+
+---
+
+## **Simulation Link**  
+[Run Simulation](file:///C:/Users/batu/Desktop/simulation2_1.html)  
+
+*For web-based usage, consider running a local server:*  
+```sh
+cd "C:/Users/batu/Desktop"
+python -m http.server 8000
