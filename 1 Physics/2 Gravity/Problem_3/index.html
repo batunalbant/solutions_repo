@@ -171,7 +171,103 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-3">Problem 3</h1>
+<p><strong>Introduction</strong></p>
+<p>In the field of orbital mechanics, the trajectory of a payload released from a moving rocket is a fundamental problem with profound applications. Whether deploying satellites, releasing scientific probes, or even executing controlled re-entry maneuvers, understanding the motion of an object in Earth's vicinity is crucial. The study of such trajectories involves a combination of Newtonian physics, gravitational forces, and numerical methods for precise predictions. </p>
+<p>This problem extends beyond mere theoretical interest; it is vital for the successful execution of space missions. It requires a careful consideration of the initial velocity, altitude, and the effects of Earth’s gravitational pull. A well-defined understanding of these elements allows scientists and engineers to design precise orbital insertions, controlled descents, and even interplanetary transfers.</p>
+<p><strong>Motivation</strong></p>
+<p>The motivation behind analyzing freely released payload trajectories is deeply rooted in practical and theoretical aspects of physics and space exploration. By understanding these principles, scientists can predict how payloads behave once separated from their carrier vehicles. The importance of this study can be highlighted in the following ways:</p>
+<ol>
+<li>
+<p><strong>Satellite Deployment</strong>: When a satellite is released from a rocket, its trajectory determines whether it will maintain a stable orbit, drift away, or fall back to Earth. Understanding these dynamics ensures that satellites reach their designated orbits with minimal adjustments.</p>
+</li>
+<li>
+<p><strong>Re-entry Vehicles</strong>: Controlled descents of payloads, such as return capsules or reusable rocket stages, rely on precise trajectory calculations to ensure safe re-entry into Earth’s atmosphere.</p>
+</li>
+<li>
+<p><strong>Space Exploration</strong>: Many space missions involve deploying instruments or landers onto celestial bodies. Knowing how objects behave when released near a gravitational field is key to ensuring their successful arrival at their destinations.</p>
+</li>
+<li>
+<p><strong>Numerical Methods in Physics</strong>: Beyond applications in spaceflight, studying such trajectories also provides an opportunity to apply and refine numerical integration methods, such as Runge-Kutta and Euler’s methods, which are widely used in computational physics.</p>
+</li>
+</ol>
+<p>By exploring these trajectories, students and researchers can deepen their grasp of fundamental physics, enhance computational skills, and contribute to the broader field of aerospace engineering.</p>
+<hr/>
+<p><strong>Analysis of Possible Trajectories</strong></p>
+<h3 id="1-theoretical-background">1. <strong>Theoretical Background</strong></h3>
+<p>The trajectory of a payload released near Earth is governed by fundamental principles of gravitational physics. The key concepts that influence its motion are:</p>
+<ul>
+<li><strong>Newton’s Law of Universal Gravitation</strong>: The gravitational force between two bodies is given by:</li>
+</ul>
+<p><span class="arithmatex">\(
+  F = \frac{GMm}{r^2}
+  \)</span></p>
+<p>where:
+  - <span class="arithmatex">\( G \)</span> is the gravitational constant,
+  - <span class="arithmatex">\( M \)</span> is Earth’s mass,
+  - <span class="arithmatex">\( m \)</span> is the payload’s mass,
+  - <span class="arithmatex">\( r \)</span> is the distance between the payload and Earth’s center.</p>
+<ul>
+<li><strong>Kepler’s Laws of Planetary Motion</strong>:</li>
+<li><strong>Elliptical Orbits</strong>: A payload in a stable orbit around Earth follows an elliptical path with Earth at one of the foci.</li>
+<li><strong>Equal Area Law</strong>: The payload sweeps equal areas in equal time intervals, meaning its velocity varies along the orbit.</li>
+<li>
+<p><strong>Orbital Period Relation</strong>: The square of the orbital period is proportional to the cube of the semi-major axis.</p>
+</li>
+<li>
+<p><strong>Conservation of Energy and Angular Momentum</strong>:</p>
+</li>
+<li>The total energy of the system determines whether the trajectory is bound (elliptical) or unbound (parabolic or hyperbolic).</li>
+<li>Angular momentum is conserved, affecting the shape of the trajectory.</li>
+</ul>
+<h3 id="2-mathematical-formulation-and-derivations">2. <strong>Mathematical Formulation and Derivations</strong></h3>
+<p>The trajectory type is determined by the total specific mechanical energy <span class="arithmatex">\( E \)</span>:</p>
+<p><span class="arithmatex">\(
+E = 
+\frac{1}{2} v^2 - \frac{GM}{r}
+\)</span></p>
+<p>where <span class="arithmatex">\( v \)</span> is the velocity of the payload. The total energy consists of kinetic energy <span class="arithmatex">\( KE \)</span> and gravitational potential energy <span class="arithmatex">\( U \)</span>:</p>
+<p><span class="arithmatex">\(
+KE = \frac{1}{2}mv^2, \quad U = -\frac{GMm}{r}
+\)</span></p>
+<p>Substituting these into the total energy equation:</p>
+<p><span class="arithmatex">\(
+E = \frac{1}{2}mv^2 - \frac{GMm}{r}
+\)</span></p>
+<p>Dividing through by <span class="arithmatex">\( m \)</span> (since the mass of the payload cancels out in a two-body system):</p>
+<p><span class="arithmatex">\(
+E = \frac{1}{2}v^2 - \frac{GM}{r}
+\)</span></p>
+<p>Based on the value of <span class="arithmatex">\( E \)</span>:</p>
+<ul>
+<li><strong>Elliptical Trajectory (Bound Motion, <span class="arithmatex">\( E &lt; 0 \)</span>)</strong>: The payload remains in orbit around Earth, following an elliptical path.</li>
+<li><strong>Parabolic Trajectory (Escape Motion, <span class="arithmatex">\( E = 0 \)</span>)</strong>: The payload achieves exactly escape velocity and follows a parabolic trajectory.</li>
+<li><strong>Hyperbolic Trajectory (Unbound Motion, <span class="arithmatex">\( E &gt; 0 \)</span>)</strong>: The payload exceeds escape velocity and follows a hyperbolic trajectory, never returning to Earth.</li>
+</ul>
+<h3 id="3-numerical-simulations">3. <strong>Numerical Simulations</strong></h3>
+<p>Numerical simulations allow for an in-depth understanding of a payload's motion under Earth's gravitational influence. By implementing computational methods, we can approximate the motion of the payload more accurately than with purely analytical techniques.</p>
+<ul>
+<li><strong>Euler's Method</strong> provides a simple approach, but it is prone to accumulating errors over time, making it less ideal for long-duration simulations.</li>
+<li><strong>Runge-Kutta Methods (RK4)</strong> offer higher accuracy by improving step-wise approximations, making them the preferred method for trajectory calculations.</li>
+<li><strong>Verlet Integration</strong> is useful for simulations requiring high precision, such as planetary motion studies, due to its conservation of energy over time.</li>
+</ul>
+<p>Advanced simulations incorporate external factors like atmospheric drag, perturbative gravitational influences (from the Moon or Sun), and relativistic effects. These additional factors refine real-world predictions of a payload’s movement beyond Earth's immediate vicinity.</p>
+<h3 id="4-graphical-and-visual-analysis">4. <strong>Graphical and Visual Analysis</strong></h3>
+<p>Graphical representation of trajectories enhances comprehension by offering visual insight into how payloads move. Various visualization techniques include:</p>
+<ul>
+<li><strong>2D and 3D trajectory plots</strong> using libraries like Matplotlib and VPython.</li>
+<li><strong>Animated simulations</strong> that display dynamic changes in velocity, altitude, and position over time.</li>
+<li><strong>Phase space analysis</strong> where velocity vs. position graphs reveal stability properties of orbits.</li>
+</ul>
+<p>By using computational tools, students and engineers can generate highly detailed visualizations that allow for better predictions and refinements of theoretical models.</p>
+<h3 id="5-real-world-applications">5. <strong>Real-World Applications</strong></h3>
+<p>Understanding payload trajectories is essential in multiple aerospace applications:</p>
+<ul>
+<li><strong>Satellite Operations</strong>: Ensuring satellites reach and maintain their correct orbits requires precise trajectory calculations.</li>
+<li><strong>Spacecraft Navigation</strong>: Missions such as Mars landings and asteroid rendezvous rely on accurate trajectory modeling to ensure successful arrivals.</li>
+<li><strong>Rocket Stage Recovery</strong>: Companies like SpaceX use trajectory predictions to guide boosters safely back to designated landing zones.</li>
+<li><strong>Debris Mitigation</strong>: Predicting the motion of space debris helps avoid collisions that could damage operational satellites or the ISS.</li>
+</ul>
+<p>By integrating theoretical understanding with numerical simulations and graphical analyses, scientists and engineers can enhance mission planning, optimize fuel efficiency, and develop new strategies for future space exploration endeavors.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
