@@ -37,7 +37,7 @@ The trajectory of a payload released near Earth is governed by fundamental princ
   F = \frac{GMm}{r^2}
   \)
   
-  where:
+  **where:**
 
   - \( G \) is the gravitational constant,
 
@@ -47,6 +47,7 @@ The trajectory of a payload released near Earth is governed by fundamental princ
 
   - \( r \) is the distance between the payload and Earth’s center.
   
+
 - **Kepler’s Laws of Planetary Motion**:
 
   1. **Elliptical Orbits**: A payload in a stable orbit around Earth follows an elliptical path with Earth at one of the foci.
