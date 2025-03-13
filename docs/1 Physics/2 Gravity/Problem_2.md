@@ -59,7 +59,7 @@ The escape velocity (\( v_2 \)) is derived by considering the total mechanical e
    
    **where:**
    - Kinetic energy: \( E_k = \frac{1}{2} m v_2^2 \)
-   
+
    - Gravitational potential energy: \( E_p = -\frac{GMm}{R} \)
    
    Applying energy conservation:
@@ -92,8 +92,9 @@ The third cosmic velocity (\( v_3 \)) is the speed needed to escape not just the
    - **Orbital Velocity of the Planet**: If a spacecraft is launched in the direction of planetary motion, it gains additional velocity.
    - **Star’s Gravitational Influence**: A stronger gravitational field increases the required velocity to escape the system.
    - **Additional Propulsion**: Spacecraft may require additional propulsion systems to reach the required velocity.
+---
 
-## Summary of Escape and Cosmic Velocities
+### Summary of Escape and Cosmic Velocities
 | Celestial Body | First Cosmic Velocity (km/s) | Escape Velocity (km/s) |
 |---------------|-----------------------------|-------------------------|
 | Earth         | 7.91                        | 11.19                   |
@@ -102,3 +103,131 @@ The third cosmic velocity (\( v_3 \)) is the speed needed to escape not just the
 | Jupiter      | 12.44                       | 59.5                    |
 
 This analysis comprehensively explains how cosmic velocities are derived and the key factors influencing them. These velocities are fundamental in space exploration and rocket science.
+
+---
+
+### Calculation and Visualization of Cosmic Velocities
+
+details>
+  <summary>Phyton codes.</summary>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.674 * 10**-11  # Gravitational constant (m^3/kg/s^2)
+
+# Celestial bodies (Mass in kg, Radius in meters)
+bodies = {
+    "Earth": {"mass": 5.972 * 10**24, "radius": 6.371 * 10**6},
+    "Mars": {"mass": 6.417 * 10**23, "radius": 3.3895 * 10**6},
+    "Jupiter": {"mass": 1.898 * 10**27, "radius": 6.9911 * 10**7},
+}
+
+# Calculate first, second, and third cosmic velocities
+for body, data in bodies.items():
+    mass = data["mass"]
+    radius = data["radius"]
+    v1 = np.sqrt(G * mass / radius) / 1000  # First cosmic velocity (km/s)
+    v2 = np.sqrt(2 * G * mass / radius) / 1000  # Second cosmic velocity (km/s)
+    v3 = np.sqrt(v2**2 + (29.78 if body == "Earth" else 24.077 if body == "Mars" else 13.07)**2)  # Approximate third cosmic velocity (km/s)
+    data["v1"] = v1
+    data["v2"] = v2
+    data["v3"] = v3
+
+# Plot bar chart
+fig, ax = plt.subplots(figsize=(8, 6))
+width = 0.25  # Bar width
+x = np.arange(len(bodies))
+
+v1_values = [bodies[body]["v1"] for body in bodies]
+v2_values = [bodies[body]["v2"] for body in bodies]
+v3_values = [bodies[body]["v3"] for body in bodies]
+
+ax.bar(x - width, v1_values, width, label="First Cosmic Velocity (km/s)")
+ax.bar(x, v2_values, width, label="Second Cosmic Velocity (km/s)")
+ax.bar(x + width, v3_values, width, label="Third Cosmic Velocity (km/s)")
+
+ax.set_xticks(x)
+ax.set_xticklabels(bodies.keys())
+ax.set_ylabel("Velocity (km/s)")
+ax.set_title("Comparison of Cosmic Velocities for Different Celestial Bodies")
+ax.legend()
+plt.grid(axis="y", linestyle="--", alpha=0.7)
+
+# Display the plot
+plt.show()
+
+```
+</details>
+
+![alt text](image-13.png)
+
+## **Visualization of Cosmic Velocities for Different Celestial Bodies**
+
+### **Introduction**
+The following bar chart compares the first, second, and third cosmic velocities for three celestial bodies: **Earth, Mars, and Jupiter**. These velocities determine the conditions required for an object to maintain orbit, escape a planet's gravity, and exit the Solar System.
+
+### **Key Observations**
+1. **First Cosmic Velocity (\( v_1 \))**: The minimum speed needed to maintain a stable circular orbit around the planet.
+2. **Second Cosmic Velocity (\( v_2 \))**: The escape velocity required to leave the gravitational pull of the planet without further propulsion.
+3. **Third Cosmic Velocity (\( v_3 \))**: The velocity needed to completely escape the Solar System.
+
+### **Comparison Highlights**
+- **Jupiter** has the highest escape velocity (~59.5 km/s) due to its massive gravitational influence.
+- **Mars** has significantly lower cosmic velocities compared to Earth, making it easier for spacecraft to escape.
+- **Earth's third cosmic velocity (~16.7 km/s relative to Earth's surface)** is comparable to the velocities of interstellar-bound spacecraft like *Voyager 1*.
+
+### **Mathematical Background**
+These velocities are derived from Newtonian mechanics using the gravitational constant \( G \), planetary mass \( M \), and planetary radius \( R \):
+
+\[
+v_1 = \sqrt{\frac{GM}{R}}
+\]
+
+\[
+v_2 = \sqrt{\frac{2GM}{R}}
+\]
+
+\[
+v_3 = \sqrt{v_2^2 + v_{\text{orbital}}^2}
+\]
+
+where \( v_{\text{orbital}} \) is the orbital velocity of the planet around the Sun.
+
+### **Bar Chart Description**
+- The chart visually compares the three velocities for **Earth, Mars, and Jupiter**.
+- The **x-axis** represents the celestial bodies.
+- The **y-axis** represents velocity in **km/s**.
+- Three different colored bars indicate **\( v_1 \)** (orbital velocity), **\( v_2 \)** (escape velocity), and **\( v_3 \)** (interstellar velocity).
+
+---
+
+This visualization is crucial for understanding the physics behind launching satellites, planning interplanetary missions, and conceptualizing interstellar travel.
+
+
+
+
+
+
+details>
+  <summary>Phyton codes.</summary>
+
+```python
+
+```
+</details>
+
+
+
+
+
+
+details>
+  <summary>Phyton codes.</summary>
+
+```python
+
+```
+</details>
