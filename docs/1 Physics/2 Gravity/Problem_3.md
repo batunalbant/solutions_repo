@@ -270,7 +270,7 @@ plt.show()
 ```
 </details>
 
-!(alt text)(image-18.png)
+![alt text](image-16.png)
 
 
 
@@ -510,7 +510,7 @@ E =
 
 where the total energy remains negative for bound orbits.
 
-#### **3.2 Orbital Adjustments and Station-Keeping**
+#### **Orbital Adjustments and Station-Keeping**
 
 Satellites require periodic **station-keeping maneuvers** to counteract perturbations from:
 
