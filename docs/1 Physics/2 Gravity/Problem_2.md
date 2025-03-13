@@ -499,6 +499,8 @@ This simulation helps understand:
 ### **Simulation Link**  
 <a> file:///C:/Users/batu/Desktop/simulation2_1.html  </a>
 
+---
+
 ### **Orbital Velocity Simulation**
 
 **Introduction**
@@ -510,7 +512,6 @@ This simulation demonstrates the concept of **orbital velocity**, the minimum sp
 
 - **Escapes the planet’s gravity** (velocity too high).
 
----
 
 **How It Works**
 
@@ -566,6 +567,7 @@ F = \frac{G M m}{r^2}
 ---
 <details>
   <summary>Details about simulation.</summary>
+
 ### **What Are We Testing?**
 - The relationship between **velocity and orbital stability**.
 - The effect of **gravity pulling the object back** if velocity is too low.
@@ -587,6 +589,7 @@ This simulation helps understand:
 - **Satellite launches and orbit insertion**.
 - **Orbital mechanics for space stations and planetary exploration**.
 - **Interplanetary travel and escape conditions**.
+
 </details>
 
 ### **Simulation Link**
