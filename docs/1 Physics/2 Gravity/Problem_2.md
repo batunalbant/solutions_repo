@@ -108,7 +108,7 @@ This analysis comprehensively explains how cosmic velocities are derived and the
 
 ### Calculation and Visualization of Cosmic Velocities
 
-details>
+<details>
   <summary>Phyton codes.</summary>
 
 ```python
@@ -204,7 +204,7 @@ This visualization is crucial for understanding the physics behind launching sat
 
 ---
 
-details>
+<details>
   <summary>Phyton codes.</summary>
 
 ```python
@@ -261,9 +261,9 @@ This graph illustrates how the **escape velocity (\( v_2 \))** changes with the 
 This visualization helps illustrate the fundamental physics behind gravitational escape and the challenges faced in launching spacecraft from different celestial bodies.
 
 ---
-details>
+<details>
   <summary>Phyton codes.</summary>
-
+  
 ```python
 # Generate a dataset for planetary radius vs escape velocity
 radii = np.linspace(1e6, 8e7, num=100)  # Radius range from 1,000 km to 80,000 km
