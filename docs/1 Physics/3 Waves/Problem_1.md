@@ -88,9 +88,230 @@ $$
 
 This allows us to mathematically compute how energy is distributed across the interference pattern.
 
-## Deliverables
+---
 
-- A thoroughly detailed Markdown document accompanied by a Python script or Jupyter notebook containing all simulation implementations.
-- An extensive analytical explanation of the observed interference patterns specific to the chosen polygon, emphasizing and clearly illustrating the underlying principles of wave superposition.
-- Comprehensive graphical visualizations and dynamic animations demonstrating explicitly marked regions of constructive and destructive interference across the water surface.
+<details>
+  <summary>Phyton codes.</summary>
 
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define the number of sides for the regular polygon (e.g., square has 4 sides)
+polygon_sides = 4  
+radius = 5  # Radius of the polygon where the wave sources are positioned
+
+# Calculate the coordinates of the polygon's vertices
+theta = np.linspace(0, 2*np.pi, polygon_sides, endpoint=False)
+x_sources = radius * np.cos(theta)
+y_sources = radius * np.sin(theta)
+
+# Create the figure and axis for plotting
+fig, ax = plt.subplots(figsize=(6,6))
+ax.scatter(x_sources, y_sources, color='red', s=100, label="Wave Sources")  # Mark wave sources
+
+# Draw the polygon edges by connecting the vertices
+x_polygon = np.append(x_sources, x_sources[0])  # Close the polygon
+y_polygon = np.append(y_sources, y_sources[0])
+ax.plot(x_polygon, y_polygon, 'b-', linestyle="dashed", label="Polygon Edges")  # Dashed blue line for the polygon
+
+# Customize axis settings
+ax.set_xlabel("X Coordinate")
+ax.set_ylabel("Y Coordinate")
+ax.set_title("Wave Sources Positioned on a Regular Polygon")
+ax.axhline(0, color='black', linewidth=0.5)  # X-axis reference line
+ax.axvline(0, color='black', linewidth=0.5)  # Y-axis reference line
+ax.legend()
+ax.set_aspect('equal')  # Keep the aspect ratio equal to avoid distortion
+
+# Display the grid for better readability
+plt.grid(True, linestyle="--", alpha=0.6)
+plt.show()
+
+```
+</details>
+
+![alt text](image.png)
+
+### **Wave Sources Positioned on a Regular Polygon**  
+
+This visualization represents the placement of wave sources at the vertices of a regular polygon, which serves as the foundation for understanding wave interference. The structured positioning of sources determines the resultant wave patterns due to symmetry and spatial distribution.
+
+---
+
+### **Mathematical Representation of Source Placement**  
+
+A regular polygon with \( N \) sides is defined by evenly spacing the wave sources along a circular boundary of radius \( R \). The coordinates of each wave source are calculated using:
+
+\[
+x_i = R \cos \left( \frac{2\pi i}{N} \right), \quad y_i = R \sin \left( \frac{2\pi i}{N} \right), \quad \text{for } i = 0,1,2, \dots, N-1
+\]
+
+where:  
+- \( x_i, y_i \) are the Cartesian coordinates of the \( i \)-th source,  
+- \( R \) is the distance from the center to each vertex,  
+- \( N \) is the number of sides of the polygon (or number of sources),  
+- \( i \) represents each source indexed from 0 to \( N-1 \),  
+- The angle \( \theta_i = \frac{2\pi i}{N} \) ensures equal angular spacing.
+
+The sources are placed symmetrically, forming a geometric structure that significantly influences how wavefronts interact.
+
+---
+
+### **Graphical Representation**  
+
+- **Red Dots (\(\bullet\))**: Represent the **wave sources**, which are evenly spaced along the polygon's boundary.  
+- **Dashed Blue Lines (\(\cdots\))**: Indicate the **edges of the polygon**, illustrating the underlying geometric structure.  
+- **Cartesian Axes (X, Y)**: Provide a spatial reference for understanding wave propagation directions.
+
+The polygonal structure ensures that interference patterns exhibit a high degree of symmetry, enabling a detailed mathematical analysis of constructive and destructive interference.
+
+---
+
+### **Adjustable Parameters in the Model**  
+
+1. **Number of Wave Sources (\( N \))**  
+   - Determines the complexity of the resulting wave pattern.  
+   - Increasing \( N \) leads to more intricate interference effects.
+
+2. **Polygon Radius (\( R \))**  
+   - Defines the spatial scale of the system.  
+   - Larger \( R \) values spread out the wave sources, affecting interference zones.
+
+3. **Wave Properties (To be applied in the next step)**  
+   - Wave amplitude \( A \), wavelength \( \lambda \), and phase \( \phi \) will directly influence the interference effects in later simulations.
+
+---
+
+### **Importance of this Configuration**  
+
+This structured positioning of wave sources forms the **basis for simulating wave superposition**. The geometric arrangement determines the locations where constructive and destructive interference occur. 
+
+By understanding how wave sources are placed, we can accurately predict **wavefront interactions** and analyze **interference patterns** mathematically.
+
+---
+
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define parameters for wave propagation
+source_position = (0, 0)  # Central wave source at origin
+grid_size = 100  # Resolution of the grid
+x_range = np.linspace(-10, 10, grid_size)
+y_range = np.linspace(-10, 10, grid_size)
+X, Y = np.meshgrid(x_range, y_range)
+
+# Calculate radial distance from the source
+r = np.sqrt((X - source_position[0])**2 + (Y - source_position[1])**2)
+
+# Define wave properties
+wavelength = 2  # Wavelength (lambda)
+k = 2 * np.pi / wavelength  # Wave number
+wave_amplitude = np.cos(k * r)  # Wavefront pattern
+
+# Plot the wavefronts
+fig, ax = plt.subplots(figsize=(6,6))
+contour = ax.contourf(X, Y, wave_amplitude, levels=50, cmap="viridis")
+
+# Mark the source location
+ax.scatter(*source_position, color='red', s=100, label="Wave Source")
+
+# Axis settings
+ax.set_xlabel("X Coordinate")
+ax.set_ylabel("Y Coordinate")
+ax.set_title("Wave Propagation from a Single Source")
+ax.axhline(0, color='black', linewidth=0.5)
+ax.axvline(0, color='black', linewidth=0.5)
+ax.legend()
+plt.colorbar(contour, label="Wave Amplitude")
+
+# Display the figure
+plt.show()
+
+```
+</details>
+
+![alt text](image-1.png)
+
+### **Wave Propagation from a Single Source**
+
+This visualization illustrates the propagation of circular waves emitted from a **single point source**. This is the fundamental basis for understanding how individual wavefronts interact before superposition occurs with multiple sources.
+
+---
+
+### **Mathematical Representation of Wave Propagation**
+
+A single wave originating from a point source located at \( (x_0, y_0) \) spreads outward in circular patterns. The wave function at any position \( (x, y) \) at time \( t \) can be described as:
+
+\[
+\eta(x, y, t) = A \cos(k r - \omega t + \phi)
+\]
+
+where:  
+- \( \eta(x,y,t) \) is the wave displacement at position \( (x,y) \) and time \( t \),  
+- \( A \) is the **wave amplitude**,  
+- \( k = \frac{2\pi}{\lambda} \) is the **wave number**, defined in terms of the wavelength \( \lambda \),  
+- \( \omega = 2\pi f \) is the **angular frequency**, related to the wave frequency \( f \),  
+- \( r \) is the **radial distance** from the source, given by:
+
+\[
+r = \sqrt{(x - x_0)^2 + (y - y_0)^2}
+\]
+
+- \( \phi \) is the **initial phase**, which determines the starting state of the wave.
+
+This equation captures the essence of a **monochromatic wave**, which oscillates periodically in both space and time.
+
+---
+
+### **Graphical Interpretation**  
+
+- **Color Contours**: Represent the varying wave amplitude across space.  
+  - **Bright regions** indicate wave crests (positive amplitude).  
+  - **Dark regions** indicate wave troughs (negative amplitude).  
+  - The oscillatory nature is due to the cosine function governing the wave behavior.
+
+- **Wavefronts**:  
+  - Concentric rings represent **equal-phase wavefronts**, meaning all points on a given ring oscillate in phase.
+  - The spacing between wavefronts corresponds to the **wavelength \( \lambda \)**.
+
+- **Wave Source (\(\bullet\))**:  
+  - The red dot marks the **central wave source**, from which the waves originate.
+
+---
+
+### **Wavefront Properties and Parameters**  
+
+1. **Wavelength (\(\lambda\))**  
+   - Controls the distance between successive wave crests.
+   - Smaller \( \lambda \) values lead to more tightly packed wavefronts.
+
+2. **Wave Number (\( k \))**  
+   - Defines how rapidly the wave oscillates in space.
+   - Given by \( k = \frac{2\pi}{\lambda} \), larger \( k \) values result in denser wavefronts.
+
+3. **Amplitude (\( A \))**  
+   - Represents the height of the wave peaks.
+   - Affects the intensity of wave interference in future simulations.
+
+4. **Radial Distance (\( r \))**  
+   - Defines how the wave propagates outward symmetrically.
+   - Directly affects the phase and amplitude at each spatial point.
+
+---
+
+### **Physical Significance**  
+
+This representation is essential for understanding:
+- **Fundamental wave behavior**, which applies to water waves, sound waves, and electromagnetic waves.
+- **Interference effects**, since the combination of multiple waves is governed by the same fundamental principles.
+- **Wave energy distribution**, showing how amplitude diminishes as waves spread radially outward.
+
+By analyzing single-source wave propagation, we can now move forward to examining **wave interference patterns resulting from multiple sources**.
+
+ 
+ 

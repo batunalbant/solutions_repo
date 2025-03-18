@@ -296,9 +296,9 @@ This graph illustrates how the **escape velocity (\( v_2 \))** changes with the 
 
 2. The relationship follows a **square root function**:
 
-   \[
+   \(
    v_2 = \sqrt{\frac{2GM}{R}}
-   \]
+   \)
 
    which means that doubling the mass does **not** double the escape velocity but increases it by a factor of \( \sqrt{2} \).
 
@@ -363,9 +363,9 @@ This graph illustrates how the **escape velocity (\( v_2 \))** varies with the *
 
 2. The relationship follows an **inverse square root function**:
 
-   \[
+   \(
    v_2 = \sqrt{\frac{2GM}{R}}
-   \]
+   \)
 
    which means that doubling the radius decreases the escape velocity by a factor of \( \frac{1}{\sqrt{2}} \).
 
@@ -451,17 +451,17 @@ The third cosmic velocity (\( v_3 \)) is the speed needed to escape the gravitat
 
 - **Voyager and Pioneer Probes:**
 
-  - **Voyager 1 (17.1 km/s)** and **Voyager 2 (15.4 km/s)** are now in interstellar space, having exceeded third cosmic velocity.
+  -Voyager 1 (17.1 km/s) and Voyager 2 (15.4 km/s) are now in interstellar space, having exceeded third cosmic velocity.
 
-  - **Pioneer 10 & 11** have also left the Solar System, though their signals have faded.
+  -Pioneer 10 & 11 have also left the Solar System, though their signals have faded.
 
-- **New Horizons and Future Missions:**
+**New Horizons and Future Missions:**
 
   - New Horizons, the Pluto mission, utilized a **Jupiter gravity assist** to exceed third cosmic velocity.
 
   - Future interstellar probes, such as the **Interstellar Probe concept**, aim to explore beyond the heliosphere.
 
-- **Theoretical Interstellar Travel:**
+**Theoretical Interstellar Travel:**
 
   - The **Breakthrough Starshot** initiative proposes light sail spacecraft capable of reaching 20% the speed of light.
 
