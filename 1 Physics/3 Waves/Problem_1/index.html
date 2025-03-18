@@ -172,6 +172,73 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="interference-patterns-on-a-water-surface">Interference Patterns on a water surface</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Wave interference is a fundamental phenomenon in physics, occurring when two or more waves overlap and interact with each other, producing regions of amplified or diminished displacement. This interaction is particularly visible in waves on a water surface, where ripples generated from different sources meet, forming distinctive and visually captivating interference patterns.</p>
+<p>In this detailed analysis, we will explore and examine the complex interference patterns formed by multiple coherent point sources arranged at the vertices of a regular polygon. Each source generates circular waves of identical amplitude, frequency, and wavelength, ensuring a structured and predictable pattern of interference. Through careful observation and simulation, we aim to deepen our understanding of wave superposition, identify distinct regions of constructive and destructive interference, and visually represent these fascinating interactions.</p>
+<p>We will rigorously describe the wave propagation process using the single disturbance equation, meticulously applying the superposition principle. The results will be presented through comprehensive graphical simulations, providing clarity on how wave interactions develop and evolve dynamically on water surfaces.</p>
+<h2 id="motivation">Motivation</h2>
+<p>Studying wave interference patterns is essential because of their broad applications and their significance in understanding fundamental wave behaviors. Important applications of wave interference include:</p>
+<ul>
+<li><strong>Engineering and Structural Design</strong>: Engineers utilize interference pattern studies to construct robust maritime structures such as harbors, piers, and protective coastal barriers designed to resist the impacts of waves.</li>
+<li><strong>Environmental Science and Oceanography</strong>: Insight into wave interactions assists scientists in predicting and mitigating coastal erosion, improving forecasts of ocean currents and wave-related natural events.</li>
+<li><strong>Educational and Pedagogical Tools</strong>: Demonstrative interference experiments visually illustrate complex physical principles, enriching educational experiences and facilitating a deeper intuitive understanding of physics.</li>
+<li><strong>Technological Innovations</strong>: Interference concepts form the foundation of various advanced technologies, including radar systems, sonar mapping, optical interferometry, and precision measurement instruments.</li>
+</ul>
+<p>Thorough investigation and simulation of these wave patterns can enable significant advancements in controlling and utilizing wave-related phenomena across numerous scientific, educational, and technological domains.</p>
+<h3 id="1-selection-of-a-regular-polygon">1. Selection of a Regular Polygon</h3>
+<p>Begin by selecting a regular polygon, such as an equilateral triangle, square, pentagon, or hexagon, to strategically position wave sources for optimal interference pattern analysis. The choice of polygon influences the resultant wave pattern due to symmetry and spatial distribution of sources.</p>
+<h3 id="2-positioning-the-sources">2. Positioning the Sources</h3>
+<p>Accurately position coherent wave sources at each vertex of the selected regular polygon, ensuring each source acts as the origin for circular waves emanating uniformly outward. The distance between sources directly affects interference zones, dictating how constructive and destructive interference regions are distributed.</p>
+<h3 id="3-wave-equations">3. Wave Equations</h3>
+<p>Wave propagation from each source located at coordinates <span class="arithmatex">\((x_0, y_0)\)</span> is mathematically represented by the single disturbance equation:</p>
+<div class="arithmatex">\[
+\eta(x, y, t) = \frac{A}{\sqrt{r}} \cos(kr - \omega t + \phi)
+\]</div>
+<p>To break this down further:
+- The term <span class="arithmatex">\( A/\sqrt{r} \)</span> represents the amplitude reduction due to the radial spreading of the wave energy, based on the inverse square root law.
+- The argument of the cosine function, <span class="arithmatex">\( kr - \omega t + \phi \)</span>, defines the phase of the wave at any given point, where each component contributes uniquely:
+  - The wave number <span class="arithmatex">\( k = \frac{2\pi}{\lambda} \)</span> determines the spatial periodicity of the wave.
+  - The angular frequency <span class="arithmatex">\( \omega = 2\pi f \)</span> dictates the oscillatory motion in time.
+  - The phase term <span class="arithmatex">\( \phi \)</span> accounts for the initial displacement of the wave, which can shift the interference patterns.
+- The radial distance <span class="arithmatex">\( r = \sqrt{(x - x_0)^2 + (y - y_0)^2} \)</span> follows directly from the Euclidean distance formula, defining how far a point <span class="arithmatex">\((x,y)\)</span> is from a source at <span class="arithmatex">\((x_0,y_0)\)</span>.</p>
+<h3 id="4-superposition-of-waves">4. Superposition of Waves</h3>
+<p>To accurately describe the total wave displacement at a given point <span class="arithmatex">\((x,y)\)</span>, we employ the principle of superposition, summing the individual contributions from all sources:</p>
+<div class="arithmatex">\[
+\eta_{\text{sum}}(x,y,t) = \sum_{i=1}^{N} \frac{A}{\sqrt{r_i}} \cos(k r_i - \omega t + \phi_i)
+\]</div>
+<p>Where:
+- <span class="arithmatex">\( N \)</span> is the number of sources.
+- <span class="arithmatex">\( r_i = \sqrt{(x - x_i)^2 + (y - y_i)^2} \)</span> represents the Euclidean distance from the <span class="arithmatex">\( i \)</span>th source.
+- Each source may have a different initial phase <span class="arithmatex">\( \phi_i \)</span>, though coherence is maintained across sources in this analysis.</p>
+<p>This summation models the cumulative wave effect at each spatial point, determining the amplitude variations due to constructive and destructive interference.</p>
+<h3 id="5-analysis-of-interference-patterns">5. Analysis of Interference Patterns</h3>
+<p>Interference patterns emerge based on the phase difference between waves arriving at a given location. Constructive interference amplifies the wave, while destructive interference diminishes it.</p>
+<ul>
+<li><strong>Constructive Interference:</strong> When two waves reinforce each other, the resultant amplitude is maximized. This condition is satisfied when:</li>
+</ul>
+<p>$$
+  k (r_i - r_j) = m 2\pi, \quad m \in \mathbb{Z}
+ $$</p>
+<p>Meaning the path difference <span class="arithmatex">\( r_i - r_j \)</span> must be an integer multiple of the wavelength.</p>
+<ul>
+<li><strong>Destructive Interference:</strong> When two waves cancel each other out, the resultant amplitude approaches zero. This occurs when:</li>
+</ul>
+<p>$$
+  k (r_i - r_j) = (2m + 1) \pi, \quad m \in \mathbb{Z}
+  $$</p>
+<p>Here, the path difference corresponds to an odd multiple of half the wavelength.</p>
+<p>To further quantify interference, we define the <strong>intensity</strong> <span class="arithmatex">\( I \)</span> of the resultant wave as proportional to the square of the amplitude:</p>
+<div class="arithmatex">\[
+I = A_{ ext{eff}}^2 = \left( \sum_{i=1}^{N} \frac{A}{\sqrt{r_i}} \cos(k r_i - \omega t + \phi_i) \right)^2
+\]</div>
+<p>This allows us to mathematically compute how energy is distributed across the interference pattern.</p>
+<h2 id="deliverables">Deliverables</h2>
+<ul>
+<li>A thoroughly detailed Markdown document accompanied by a Python script or Jupyter notebook containing all simulation implementations.</li>
+<li>An extensive analytical explanation of the observed interference patterns specific to the chosen polygon, emphasizing and clearly illustrating the underlying principles of wave superposition.</li>
+<li>Comprehensive graphical visualizations and dynamic animations demonstrating explicitly marked regions of constructive and destructive interference across the water surface.</li>
+</ul>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
