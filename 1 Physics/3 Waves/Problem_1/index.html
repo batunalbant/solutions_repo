@@ -619,6 +619,166 @@ plt.show()
 </li>
 </ul>
 <p>This visualization extends the previous <strong>two-source interference model</strong>, introducing more complex <strong>multi-wave interactions</strong> that lead to highly structured interference patterns.</p>
+<hr/>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Define parameters for four wave sources forming a square
+source1 = (-3, -3)  # Bottom-left
+source2 = (3, -3)   # Bottom-right
+source3 = (-3, 3)   # Top-left
+source4 = (3, 3)    # Top-right
+grid_size = 200  # Resolution of the grid
+x_range = np.linspace(-10, 10, grid_size)
+y_range = np.linspace(-10, 10, grid_size)
+X, Y = np.meshgrid(x_range, y_range)
+
+# Compute distances from the four sources
+r1 = np.sqrt((X - source1[0])**2 + (Y - source1[1])**2)
+r2 = np.sqrt((X - source2[0])**2 + (Y - source2[1])**2)
+r3 = np.sqrt((X - source3[0])**2 + (Y - source3[1])**2)
+r4 = np.sqrt((X - source4[0])**2 + (Y - source4[1])**2)
+
+# Define wave properties
+wavelength = 2  # Wavelength (lambda)
+k = 2 * np.pi / wavelength  # Wave number
+wave1 = np.cos(k * r1)  # Wave from source 1
+wave2 = np.cos(k * r2)  # Wave from source 2
+wave3 = np.cos(k * r3)  # Wave from source 3
+wave4 = np.cos(k * r4)  # Wave from source 4
+
+# Compute the total interference pattern
+wave_superposition = wave1 + wave2 + wave3 + wave4
+
+# Plot the interference pattern
+fig, ax = plt.subplots(figsize=(7,6))
+contour = ax.contourf(X, Y, wave_superposition, levels=50, cmap="viridis")
+
+# Mark the four source locations
+ax.scatter(*source1, color='red', s=100, label="Source 1")
+ax.scatter(*source2, color='blue', s=100, label="Source 2")
+ax.scatter(*source3, color='green', s=100, label="Source 3")
+ax.scatter(*source4, color='orange', s=100, label="Source 4")
+
+# Axis settings
+ax.set_xlabel("X Coordinate")
+ax.set_ylabel("Y Coordinate")
+ax.set_title("Interference Pattern of Four Wave Sources")
+ax.axhline(0, color='black', linewidth=0.5)
+ax.axvline(0, color='black', linewidth=0.5)
+ax.legend()
+plt.colorbar(contour, label="Wave Amplitude")
+
+# Display the figure
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-3.png"/></p>
+<p>### <strong>Interference Pattern of Four Wave Sources</strong> </p>
+<p>This visualization illustrates the <strong>interference pattern</strong> produced by four coherent wave sources positioned at the vertices of a square. The symmetrical placement results in a highly structured wave interference pattern.</p>
+<hr/>
+<h3 id="mathematical-representation-of-four-source-interference"><strong>Mathematical Representation of Four-Source Interference</strong></h3>
+<p>When four wave sources located at <span class="arithmatex">\( (x_1, y_1) \)</span>, <span class="arithmatex">\( (x_2, y_2) \)</span>, <span class="arithmatex">\( (x_3, y_3) \)</span>, and <span class="arithmatex">\( (x_4, y_4) \)</span> emit waves simultaneously, the displacement at any point <span class="arithmatex">\( (x,y) \)</span> follows the <strong>superposition principle</strong>:</p>
+<div class="arithmatex">\[
+\eta_{\text{total}}(x, y, t) = \eta_1(x, y, t) + \eta_2(x, y, t) + \eta_3(x, y, t) + \eta_4(x, y, t)
+\]</div>
+<p>where each individual wave is given by:</p>
+<div class="arithmatex">\[
+\eta_i(x, y, t) = A \cos(k r_i - \omega t + \phi)
+\]</div>
+<p>for <span class="arithmatex">\( i = 1,2,3,4 \)</span>, and:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\( A \)</span> is the wave <strong>amplitude</strong>,  </p>
+</li>
+<li>
+<p><span class="arithmatex">\( k = \frac{2\pi}{\lambda} \)</span> is the <strong>wave number</strong>,  </p>
+</li>
+<li>
+<p><span class="arithmatex">\( \omega = 2\pi f \)</span> is the <strong>angular frequency</strong>,  </p>
+</li>
+<li>
+<p><span class="arithmatex">\( r_i = \sqrt{(x - x_i)^2 + (y - y_i)^2} \)</span> is the <strong>distance from the <span class="arithmatex">\( i \)</span>-th source to the point <span class="arithmatex">\( (x,y) \)</span></strong>,  </p>
+</li>
+<li>
+<p><span class="arithmatex">\( \phi \)</span> is the initial phase.</p>
+</li>
+</ul>
+<p>By summing the four contributions, we obtain the resultant wave displacement at each spatial point.</p>
+<hr/>
+<h3 id="constructive-and-destructive-interference-conditions_1"><strong>Constructive and Destructive Interference Conditions</strong></h3>
+<ul>
+<li><strong>Constructive Interference</strong> (Amplitude Maximum) occurs when all four waves arrive <strong>in phase</strong>, meaning their phase difference is a multiple of <span class="arithmatex">\( 2\pi \)</span>:</li>
+</ul>
+<p>[
+  k (r_1 - r_2) = m 2\pi, \quad k (r_1 - r_3) = n 2\pi, \quad k (r_1 - r_4) = p 2\pi, \quad m, n, p \in \mathbb{Z}
+  ]</p>
+<p>This implies that the path differences must be integer multiples of the wavelength <span class="arithmatex">\( \lambda \)</span>.</p>
+<p><strong>Destructive Interference</strong> (Amplitude Minimum) occurs when the waves arrive <strong>out of phase</strong>, meaning their phase differences correspond to odd multiples of <span class="arithmatex">\( \pi \)</span>:</p>
+<p>[
+  k (r_1 - r_2) = (2m + 1) \pi, \quad k (r_1 - r_3) = (2n + 1) \pi, \quad k (r_1 - r_4) = (2p + 1) \pi, \quad m, n, p \in \mathbb{Z}
+  ]</p>
+<p>Here, the path differences correspond to odd multiples of half the wavelength <span class="arithmatex">\( \lambda/2 \)</span>.</p>
+<p>The presence of four sources introduces <strong>more frequent interference zones</strong> compared to the previous cases.</p>
+<hr/>
+<h3 id="graphical-interpretation_2"><strong>Graphical Interpretation</strong></h3>
+<p><strong>Color Contours</strong>: Represent the resultant wave amplitude.  </p>
+<ul>
+<li>
+<p><strong>Bright regions</strong> correspond to <strong>constructive interference</strong>, where wave amplitudes reinforce.  </p>
+</li>
+<li>
+<p><strong>Dark regions</strong> correspond to <strong>destructive interference</strong>, where waves cancel.  </p>
+</li>
+</ul>
+<p><strong>Wave Sources</strong>:  </p>
+<ul>
+<li>
+<p><strong>Red Dot</strong> (<span class="arithmatex">\(\bullet\)</span>) represents the first wave source.  </p>
+</li>
+<li>
+<p><strong>Blue Dot</strong> (<span class="arithmatex">\(\bullet\)</span>) represents the second wave source.  </p>
+</li>
+<li>
+<p><strong>Green Dot</strong> (<span class="arithmatex">\(\bullet\)</span>) represents the third wave source.  </p>
+</li>
+<li>
+<p><strong>Orange Dot</strong> (<span class="arithmatex">\(\bullet\)</span>) represents the fourth wave source.  </p>
+</li>
+<li>
+<p>These sources are positioned symmetrically at the <strong>vertices of a square</strong>.</p>
+</li>
+</ul>
+<p><strong>Wave Superposition</strong>:  </p>
+<ul>
+<li>
+<p>The interaction of four sets of wavefronts leads to <strong>complex periodic patterns</strong>.</p>
+</li>
+<li>
+<p>The intensity of interference bands increases due to the larger number of superimposed waves.</p>
+</li>
+</ul>
+<hr/>
+<h3 id="physical-significance_2"><strong>Physical Significance</strong></h3>
+<p>This four-source interference model is relevant to:  </p>
+<ul>
+<li>
+<p><strong>Optical physics</strong>, particularly in multi-slit diffraction and phase holography. </p>
+</li>
+<li>
+<p><strong>Acoustics</strong>, in sound wave reinforcement and cancellation applications.  </p>
+</li>
+<li>
+<p><strong>Wave mechanics</strong>, demonstrating how multiple oscillating systems interact.  </p>
+</li>
+<li>
+<p><strong>Antenna arrays</strong>, where phased signals combine to produce focused beams.</p>
+</li>
+</ul>
+<p>The addition of more sources further refines the structure of the interference pattern, leading to higher levels of periodicity and symmetry.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
