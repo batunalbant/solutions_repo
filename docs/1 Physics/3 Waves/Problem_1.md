@@ -37,12 +37,18 @@ $$
 \eta(x, y, t) = \frac{A}{\sqrt{r}} \cos(kr - \omega t + \phi)
 $$
 
-To break this down further:
+**To break this down further:**
+
 - The term \( A/\sqrt{r} \) represents the amplitude reduction due to the radial spreading of the wave energy, based on the inverse square root law.
+
 - The argument of the cosine function, \( kr - \omega t + \phi \), defines the phase of the wave at any given point, where each component contributes uniquely:
+
   - The wave number \( k = \frac{2\pi}{\lambda} \) determines the spatial periodicity of the wave.
+
   - The angular frequency \( \omega = 2\pi f \) dictates the oscillatory motion in time.
+
   - The phase term \( \phi \) accounts for the initial displacement of the wave, which can shift the interference patterns.
+
 - The radial distance \( r = \sqrt{(x - x_0)^2 + (y - y_0)^2} \) follows directly from the Euclidean distance formula, defining how far a point \((x,y)\) is from a source at \((x_0,y_0)\).
 
 ### 4. Superposition of Waves
@@ -170,15 +176,20 @@ The polygonal structure ensures that interference patterns exhibit a high degree
 
 ### **Adjustable Parameters in the Model**  
 
-1. **Number of Wave Sources (\( N \))**  
+**Number of Wave Sources (\( N \))**  
+
    - Determines the complexity of the resulting wave pattern.  
+
    - Increasing \( N \) leads to more intricate interference effects.
 
-2. **Polygon Radius (\( R \))**  
+**Polygon Radius (\( R \))**  
+
    - Defines the spatial scale of the system.  
+
    - Larger \( R \) values spread out the wave sources, affecting interference zones.
 
-3. **Wave Properties (To be applied in the next step)**  
+**Wave Properties (To be applied in the next step)**  
+
    - Wave amplitude \( A \), wavelength \( \lambda \), and phase \( \phi \) will directly influence the interference effects in later simulations.
 
 ---
@@ -252,10 +263,15 @@ A single wave originating from a point source located at \( (x_0, y_0) \) spread
 \]
 
 where:  
+
 - \( \eta(x,y,t) \) is the wave displacement at position \( (x,y) \) and time \( t \),  
+
 - \( A \) is the **wave amplitude**,  
+
 - \( k = \frac{2\pi}{\lambda} \) is the **wave number**, defined in terms of the wavelength \( \lambda \),  
+
 - \( \omega = 2\pi f \) is the **angular frequency**, related to the wave frequency \( f \),  
+
 - \( r \) is the **radial distance** from the source, given by:
 
 \[
@@ -270,35 +286,41 @@ This equation captures the essence of a **monochromatic wave**, which oscillates
 
 ### **Graphical Interpretation**  
 
-- **Color Contours**: Represent the varying wave amplitude across space.  
+**Color Contours**: Represent the varying wave amplitude across space. 
+
   - **Bright regions** indicate wave crests (positive amplitude).  
+
   - **Dark regions** indicate wave troughs (negative amplitude).  
+
   - The oscillatory nature is due to the cosine function governing the wave behavior.
 
-- **Wavefronts**:  
+**Wavefronts**:  
+
   - Concentric rings represent **equal-phase wavefronts**, meaning all points on a given ring oscillate in phase.
+
   - The spacing between wavefronts corresponds to the **wavelength \( \lambda \)**.
 
-- **Wave Source (\(\bullet\))**:  
+**Wave Source (\(\bullet\))**:  
+
   - The red dot marks the **central wave source**, from which the waves originate.
 
 ---
 
 ### **Wavefront Properties and Parameters**  
 
-1. **Wavelength (\(\lambda\))**  
+**Wavelength (\(\lambda\))**  
    - Controls the distance between successive wave crests.
    - Smaller \( \lambda \) values lead to more tightly packed wavefronts.
 
-2. **Wave Number (\( k \))**  
+**Wave Number (\( k \))**  
    - Defines how rapidly the wave oscillates in space.
    - Given by \( k = \frac{2\pi}{\lambda} \), larger \( k \) values result in denser wavefronts.
 
-3. **Amplitude (\( A \))**  
+**Amplitude (\( A \))**  
    - Represents the height of the wave peaks.
    - Affects the intensity of wave interference in future simulations.
 
-4. **Radial Distance (\( r \))**  
+**Radial Distance (\( r \))**  
    - Defines how the wave propagates outward symmetrically.
    - Directly affects the phase and amplitude at each spatial point.
 
@@ -307,9 +329,12 @@ This equation captures the essence of a **monochromatic wave**, which oscillates
 ### **Physical Significance**  
 
 This representation is essential for understanding:
-- **Fundamental wave behavior**, which applies to water waves, sound waves, and electromagnetic waves.
-- **Interference effects**, since the combination of multiple waves is governed by the same fundamental principles.
-- **Wave energy distribution**, showing how amplitude diminishes as waves spread radially outward.
+
+**Fundamental wave behavior**, which applies to water waves, sound waves, and electromagnetic waves.
+
+**Interference effects**, since the combination of multiple waves is governed by the same fundamental principles.
+
+**Wave energy distribution**, showing how amplitude diminishes as waves spread radially outward.
 
 By analyzing single-source wave propagation, we can now move forward to examining **wave interference patterns resulting from multiple sources**.
 
