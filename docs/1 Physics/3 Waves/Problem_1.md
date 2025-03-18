@@ -1320,3 +1320,8 @@ Time-dependent wave interference is essential in:
 **Fluid Dynamics**: Water wave motion, ripple tank experiments.  
 
 This visualization demonstrates **real-time wave interactions**, highlighting **how waves propagate, interfere, and form dynamic interference patterns over time**.
+
+---
+
+### **Simulation Link**  
+<a> file:///C:/Users/batu/Desktop/simulationwawes.html </a>
