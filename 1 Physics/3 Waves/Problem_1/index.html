@@ -195,13 +195,27 @@
 <div class="arithmatex">\[
 \eta(x, y, t) = \frac{A}{\sqrt{r}} \cos(kr - \omega t + \phi)
 \]</div>
-<p>To break this down further:
-- The term <span class="arithmatex">\( A/\sqrt{r} \)</span> represents the amplitude reduction due to the radial spreading of the wave energy, based on the inverse square root law.
-- The argument of the cosine function, <span class="arithmatex">\( kr - \omega t + \phi \)</span>, defines the phase of the wave at any given point, where each component contributes uniquely:
-  - The wave number <span class="arithmatex">\( k = \frac{2\pi}{\lambda} \)</span> determines the spatial periodicity of the wave.
-  - The angular frequency <span class="arithmatex">\( \omega = 2\pi f \)</span> dictates the oscillatory motion in time.
-  - The phase term <span class="arithmatex">\( \phi \)</span> accounts for the initial displacement of the wave, which can shift the interference patterns.
-- The radial distance <span class="arithmatex">\( r = \sqrt{(x - x_0)^2 + (y - y_0)^2} \)</span> follows directly from the Euclidean distance formula, defining how far a point <span class="arithmatex">\((x,y)\)</span> is from a source at <span class="arithmatex">\((x_0,y_0)\)</span>.</p>
+<p><strong>To break this down further:</strong></p>
+<ul>
+<li>
+<p>The term <span class="arithmatex">\( A/\sqrt{r} \)</span> represents the amplitude reduction due to the radial spreading of the wave energy, based on the inverse square root law.</p>
+</li>
+<li>
+<p>The argument of the cosine function, <span class="arithmatex">\( kr - \omega t + \phi \)</span>, defines the phase of the wave at any given point, where each component contributes uniquely:</p>
+</li>
+<li>
+<p>The wave number <span class="arithmatex">\( k = \frac{2\pi}{\lambda} \)</span> determines the spatial periodicity of the wave.</p>
+</li>
+<li>
+<p>The angular frequency <span class="arithmatex">\( \omega = 2\pi f \)</span> dictates the oscillatory motion in time.</p>
+</li>
+<li>
+<p>The phase term <span class="arithmatex">\( \phi \)</span> accounts for the initial displacement of the wave, which can shift the interference patterns.</p>
+</li>
+<li>
+<p>The radial distance <span class="arithmatex">\( r = \sqrt{(x - x_0)^2 + (y - y_0)^2} \)</span> follows directly from the Euclidean distance formula, defining how far a point <span class="arithmatex">\((x,y)\)</span> is from a source at <span class="arithmatex">\((x_0,y_0)\)</span>.</p>
+</li>
+</ul>
 <h3 id="4-superposition-of-waves">4. Superposition of Waves</h3>
 <p>To accurately describe the total wave displacement at a given point <span class="arithmatex">\((x,y)\)</span>, we employ the principle of superposition, summing the individual contributions from all sources:</p>
 <div class="arithmatex">\[
@@ -298,24 +312,28 @@ x_i = R \cos \left( \frac{2\pi i}{N} \right), \quad y_i = R \sin \left( \frac{2\
 <p>The polygonal structure ensures that interference patterns exhibit a high degree of symmetry, enabling a detailed mathematical analysis of constructive and destructive interference.</p>
 <hr/>
 <h3 id="adjustable-parameters-in-the-model"><strong>Adjustable Parameters in the Model</strong></h3>
-<ol>
-<li><strong>Number of Wave Sources (<span class="arithmatex">\( N \)</span>)</strong> </li>
-<li>Determines the complexity of the resulting wave pattern.  </li>
+<p><strong>Number of Wave Sources (<span class="arithmatex">\( N \)</span>)</strong> </p>
+<ul>
+<li>
+<p>Determines the complexity of the resulting wave pattern.  </p>
+</li>
 <li>
 <p>Increasing <span class="arithmatex">\( N \)</span> leads to more intricate interference effects.</p>
 </li>
-<li>
+</ul>
 <p><strong>Polygon Radius (<span class="arithmatex">\( R \)</span>)</strong> </p>
+<ul>
+<li>
+<p>Defines the spatial scale of the system.  </p>
 </li>
-<li>Defines the spatial scale of the system.  </li>
 <li>
 <p>Larger <span class="arithmatex">\( R \)</span> values spread out the wave sources, affecting interference zones.</p>
 </li>
-<li>
+</ul>
 <p><strong>Wave Properties (To be applied in the next step)</strong> </p>
-</li>
+<ul>
 <li>Wave amplitude <span class="arithmatex">\( A \)</span>, wavelength <span class="arithmatex">\( \lambda \)</span>, and phase <span class="arithmatex">\( \phi \)</span> will directly influence the interference effects in later simulations.</li>
-</ol>
+</ul>
 <hr/>
 <h3 id="importance-of-this-configuration"><strong>Importance of this Configuration</strong></h3>
 <p>This structured positioning of wave sources forms the <strong>basis for simulating wave superposition</strong>. The geometric arrangement determines the locations where constructive and destructive interference occur. </p>
@@ -371,12 +389,24 @@ plt.show()
 <div class="arithmatex">\[
 \eta(x, y, t) = A \cos(k r - \omega t + \phi)
 \]</div>
-<p>where:<br/>
-- <span class="arithmatex">\( \eta(x,y,t) \)</span> is the wave displacement at position <span class="arithmatex">\( (x,y) \)</span> and time <span class="arithmatex">\( t \)</span>,<br/>
-- <span class="arithmatex">\( A \)</span> is the <strong>wave amplitude</strong>,<br/>
-- <span class="arithmatex">\( k = \frac{2\pi}{\lambda} \)</span> is the <strong>wave number</strong>, defined in terms of the wavelength <span class="arithmatex">\( \lambda \)</span>,<br/>
-- <span class="arithmatex">\( \omega = 2\pi f \)</span> is the <strong>angular frequency</strong>, related to the wave frequency <span class="arithmatex">\( f \)</span>,<br/>
-- <span class="arithmatex">\( r \)</span> is the <strong>radial distance</strong> from the source, given by:</p>
+<p>where:  </p>
+<ul>
+<li>
+<p><span class="arithmatex">\( \eta(x,y,t) \)</span> is the wave displacement at position <span class="arithmatex">\( (x,y) \)</span> and time <span class="arithmatex">\( t \)</span>,  </p>
+</li>
+<li>
+<p><span class="arithmatex">\( A \)</span> is the <strong>wave amplitude</strong>,  </p>
+</li>
+<li>
+<p><span class="arithmatex">\( k = \frac{2\pi}{\lambda} \)</span> is the <strong>wave number</strong>, defined in terms of the wavelength <span class="arithmatex">\( \lambda \)</span>,  </p>
+</li>
+<li>
+<p><span class="arithmatex">\( \omega = 2\pi f \)</span> is the <strong>angular frequency</strong>, related to the wave frequency <span class="arithmatex">\( f \)</span>,  </p>
+</li>
+<li>
+<p><span class="arithmatex">\( r \)</span> is the <strong>radial distance</strong> from the source, given by:</p>
+</li>
+</ul>
 <div class="arithmatex">\[
 r = \sqrt{(x - x_0)^2 + (y - y_0)^2}
 \]</div>
@@ -386,59 +416,51 @@ r = \sqrt{(x - x_0)^2 + (y - y_0)^2}
 <p>This equation captures the essence of a <strong>monochromatic wave</strong>, which oscillates periodically in both space and time.</p>
 <hr/>
 <h3 id="graphical-interpretation"><strong>Graphical Interpretation</strong></h3>
+<p><strong>Color Contours</strong>: Represent the varying wave amplitude across space. </p>
 <ul>
-<li><strong>Color Contours</strong>: Represent the varying wave amplitude across space.  </li>
-<li><strong>Bright regions</strong> indicate wave crests (positive amplitude).  </li>
-<li><strong>Dark regions</strong> indicate wave troughs (negative amplitude).  </li>
+<li>
+<p><strong>Bright regions</strong> indicate wave crests (positive amplitude).  </p>
+</li>
+<li>
+<p><strong>Dark regions</strong> indicate wave troughs (negative amplitude).  </p>
+</li>
 <li>
 <p>The oscillatory nature is due to the cosine function governing the wave behavior.</p>
 </li>
-<li>
+</ul>
 <p><strong>Wavefronts</strong>:  </p>
+<ul>
+<li>
+<p>Concentric rings represent <strong>equal-phase wavefronts</strong>, meaning all points on a given ring oscillate in phase.</p>
 </li>
-<li>Concentric rings represent <strong>equal-phase wavefronts</strong>, meaning all points on a given ring oscillate in phase.</li>
 <li>
 <p>The spacing between wavefronts corresponds to the <strong>wavelength <span class="arithmatex">\( \lambda \)</span></strong>.</p>
 </li>
-<li>
+</ul>
 <p><strong>Wave Source (<span class="arithmatex">\(\bullet\)</span>)</strong>:  </p>
-</li>
+<ul>
 <li>The red dot marks the <strong>central wave source</strong>, from which the waves originate.</li>
 </ul>
 <hr/>
 <h3 id="wavefront-properties-and-parameters"><strong>Wavefront Properties and Parameters</strong></h3>
-<ol>
-<li><strong>Wavelength (<span class="arithmatex">\(\lambda\)</span>)</strong> </li>
-<li>Controls the distance between successive wave crests.</li>
-<li>
-<p>Smaller <span class="arithmatex">\( \lambda \)</span> values lead to more tightly packed wavefronts.</p>
-</li>
-<li>
-<p><strong>Wave Number (<span class="arithmatex">\( k \)</span>)</strong> </p>
-</li>
-<li>Defines how rapidly the wave oscillates in space.</li>
-<li>
-<p>Given by <span class="arithmatex">\( k = \frac{2\pi}{\lambda} \)</span>, larger <span class="arithmatex">\( k \)</span> values result in denser wavefronts.</p>
-</li>
-<li>
-<p><strong>Amplitude (<span class="arithmatex">\( A \)</span>)</strong> </p>
-</li>
-<li>Represents the height of the wave peaks.</li>
-<li>
-<p>Affects the intensity of wave interference in future simulations.</p>
-</li>
-<li>
-<p><strong>Radial Distance (<span class="arithmatex">\( r \)</span>)</strong> </p>
-</li>
-<li>Defines how the wave propagates outward symmetrically.</li>
-<li>Directly affects the phase and amplitude at each spatial point.</li>
-</ol>
+<p><strong>Wavelength (<span class="arithmatex">\(\lambda\)</span>)</strong><br/>
+   - Controls the distance between successive wave crests.
+   - Smaller <span class="arithmatex">\( \lambda \)</span> values lead to more tightly packed wavefronts.</p>
+<p><strong>Wave Number (<span class="arithmatex">\( k \)</span>)</strong><br/>
+   - Defines how rapidly the wave oscillates in space.
+   - Given by <span class="arithmatex">\( k = \frac{2\pi}{\lambda} \)</span>, larger <span class="arithmatex">\( k \)</span> values result in denser wavefronts.</p>
+<p><strong>Amplitude (<span class="arithmatex">\( A \)</span>)</strong><br/>
+   - Represents the height of the wave peaks.
+   - Affects the intensity of wave interference in future simulations.</p>
+<p><strong>Radial Distance (<span class="arithmatex">\( r \)</span>)</strong><br/>
+   - Defines how the wave propagates outward symmetrically.
+   - Directly affects the phase and amplitude at each spatial point.</p>
 <hr/>
 <h3 id="physical-significance"><strong>Physical Significance</strong></h3>
-<p>This representation is essential for understanding:
-- <strong>Fundamental wave behavior</strong>, which applies to water waves, sound waves, and electromagnetic waves.
-- <strong>Interference effects</strong>, since the combination of multiple waves is governed by the same fundamental principles.
-- <strong>Wave energy distribution</strong>, showing how amplitude diminishes as waves spread radially outward.</p>
+<p>This representation is essential for understanding:</p>
+<p><strong>Fundamental wave behavior</strong>, which applies to water waves, sound waves, and electromagnetic waves.</p>
+<p><strong>Interference effects</strong>, since the combination of multiple waves is governed by the same fundamental principles.</p>
+<p><strong>Wave energy distribution</strong>, showing how amplitude diminishes as waves spread radially outward.</p>
 <p>By analyzing single-source wave propagation, we can now move forward to examining <strong>wave interference patterns resulting from multiple sources</strong>.</p>
 </div>
 </div><footer>
