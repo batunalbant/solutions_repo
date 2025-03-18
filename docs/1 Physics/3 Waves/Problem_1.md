@@ -500,9 +500,183 @@ This model is widely applicable in:
 - **Acoustics**, where multiple sound sources generate **standing wave fields** in enclosed spaces. 
 
 - **Water wave experiments**, which demonstrate ripple tank patterns with multiple oscillators. 
- 
+
 - **Electromagnetic wave theory**, where antennas use similar multi-source interference principles to focus or cancel signals.
 
 This visualization extends the previous **two-source interference model**, introducing more complex **multi-wave interactions** that lead to highly structured interference patterns.
 
- 
+ ---
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define parameters for four wave sources forming a square
+source1 = (-3, -3)  # Bottom-left
+source2 = (3, -3)   # Bottom-right
+source3 = (-3, 3)   # Top-left
+source4 = (3, 3)    # Top-right
+grid_size = 200  # Resolution of the grid
+x_range = np.linspace(-10, 10, grid_size)
+y_range = np.linspace(-10, 10, grid_size)
+X, Y = np.meshgrid(x_range, y_range)
+
+# Compute distances from the four sources
+r1 = np.sqrt((X - source1[0])**2 + (Y - source1[1])**2)
+r2 = np.sqrt((X - source2[0])**2 + (Y - source2[1])**2)
+r3 = np.sqrt((X - source3[0])**2 + (Y - source3[1])**2)
+r4 = np.sqrt((X - source4[0])**2 + (Y - source4[1])**2)
+
+# Define wave properties
+wavelength = 2  # Wavelength (lambda)
+k = 2 * np.pi / wavelength  # Wave number
+wave1 = np.cos(k * r1)  # Wave from source 1
+wave2 = np.cos(k * r2)  # Wave from source 2
+wave3 = np.cos(k * r3)  # Wave from source 3
+wave4 = np.cos(k * r4)  # Wave from source 4
+
+# Compute the total interference pattern
+wave_superposition = wave1 + wave2 + wave3 + wave4
+
+# Plot the interference pattern
+fig, ax = plt.subplots(figsize=(7,6))
+contour = ax.contourf(X, Y, wave_superposition, levels=50, cmap="viridis")
+
+# Mark the four source locations
+ax.scatter(*source1, color='red', s=100, label="Source 1")
+ax.scatter(*source2, color='blue', s=100, label="Source 2")
+ax.scatter(*source3, color='green', s=100, label="Source 3")
+ax.scatter(*source4, color='orange', s=100, label="Source 4")
+
+# Axis settings
+ax.set_xlabel("X Coordinate")
+ax.set_ylabel("Y Coordinate")
+ax.set_title("Interference Pattern of Four Wave Sources")
+ax.axhline(0, color='black', linewidth=0.5)
+ax.axvline(0, color='black', linewidth=0.5)
+ax.legend()
+plt.colorbar(contour, label="Wave Amplitude")
+
+# Display the figure
+plt.show()
+
+```
+</details>
+
+
+ ![alt text](image-3.png)
+
+ ### **Interference Pattern of Four Wave Sources**  
+
+This visualization illustrates the **interference pattern** produced by four coherent wave sources positioned at the vertices of a square. The symmetrical placement results in a highly structured wave interference pattern.
+
+---
+
+### **Mathematical Representation of Four-Source Interference**  
+
+When four wave sources located at \( (x_1, y_1) \), \( (x_2, y_2) \), \( (x_3, y_3) \), and \( (x_4, y_4) \) emit waves simultaneously, the displacement at any point \( (x,y) \) follows the **superposition principle**:
+
+
+\[
+\eta_{\text{total}}(x, y, t) = \eta_1(x, y, t) + \eta_2(x, y, t) + \eta_3(x, y, t) + \eta_4(x, y, t)
+\]
+
+
+where each individual wave is given by:
+
+
+\[
+\eta_i(x, y, t) = A \cos(k r_i - \omega t + \phi)
+\]
+
+
+for \( i = 1,2,3,4 \), and:
+
+
+- \( A \) is the wave **amplitude**,  
+
+- \( k = \frac{2\pi}{\lambda} \) is the **wave number**,  
+
+- \( \omega = 2\pi f \) is the **angular frequency**,  
+
+- \( r_i = \sqrt{(x - x_i)^2 + (y - y_i)^2} \) is the **distance from the \( i \)-th source to the point \( (x,y) \)**,  
+
+- \( \phi \) is the initial phase.
+
+
+By summing the four contributions, we obtain the resultant wave displacement at each spatial point.
+
+---
+
+### **Constructive and Destructive Interference Conditions**  
+
+- **Constructive Interference** (Amplitude Maximum) occurs when all four waves arrive **in phase**, meaning their phase difference is a multiple of \( 2\pi \):
+
+
+  \[
+  k (r_1 - r_2) = m 2\pi, \quad k (r_1 - r_3) = n 2\pi, \quad k (r_1 - r_4) = p 2\pi, \quad m, n, p \in \mathbb{Z}
+  \]
+
+
+  This implies that the path differences must be integer multiples of the wavelength \( \lambda \).
+
+
+**Destructive Interference** (Amplitude Minimum) occurs when the waves arrive **out of phase**, meaning their phase differences correspond to odd multiples of \( \pi \):
+
+
+  \[
+  k (r_1 - r_2) = (2m + 1) \pi, \quad k (r_1 - r_3) = (2n + 1) \pi, \quad k (r_1 - r_4) = (2p + 1) \pi, \quad m, n, p \in \mathbb{Z}
+  \]
+
+
+  Here, the path differences correspond to odd multiples of half the wavelength \( \lambda/2 \).
+
+The presence of four sources introduces **more frequent interference zones** compared to the previous cases.
+
+---
+
+### **Graphical Interpretation**  
+
+**Color Contours**: Represent the resultant wave amplitude.  
+
+  - **Bright regions** correspond to **constructive interference**, where wave amplitudes reinforce.  
+
+  - **Dark regions** correspond to **destructive interference**, where waves cancel.  
+  
+
+**Wave Sources**:  
+
+  - **Red Dot** (\(\bullet\)) represents the first wave source.  
+
+  - **Blue Dot** (\(\bullet\)) represents the second wave source.  
+
+  - **Green Dot** (\(\bullet\)) represents the third wave source.  
+
+  - **Orange Dot** (\(\bullet\)) represents the fourth wave source.  
+  
+  - These sources are positioned symmetrically at the **vertices of a square**.
+
+**Wave Superposition**:  
+
+  - The interaction of four sets of wavefronts leads to **complex periodic patterns**.
+
+  - The intensity of interference bands increases due to the larger number of superimposed waves.
+
+---
+
+### **Physical Significance**  
+
+This four-source interference model is relevant to:  
+
+- **Optical physics**, particularly in multi-slit diffraction and phase holography. 
+
+- **Acoustics**, in sound wave reinforcement and cancellation applications.  
+
+- **Wave mechanics**, demonstrating how multiple oscillating systems interact.  
+
+- **Antenna arrays**, where phased signals combine to produce focused beams.
+
+The addition of more sources further refines the structure of the interference pattern, leading to higher levels of periodicity and symmetry.
+
