@@ -847,3 +847,476 @@ This model applies to:
 - **Radio signal propagation**, influencing antenna array designs.
 
 The five-source arrangement introduces additional complexity compared to the previous four-source case, resulting in an **even richer interference pattern** with enhanced periodicity and symmetry.
+
+---
+
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define simulation grid
+grid_size = 200
+x_range = np.linspace(-10, 10, grid_size)
+y_range = np.linspace(-10, 10, grid_size)
+X, Y = np.meshgrid(x_range, y_range)
+
+# Define a sample wave pattern with constructive and destructive interference regions
+wavelength = 2  # Wavelength (lambda)
+k = 2 * np.pi / wavelength  # Wave number
+
+# Simulate three wave sources interfering at different locations
+source_positions = [(-3, -3), (3, -3), (0, 3)]  # Source locations
+waves = []
+
+for (x_s, y_s) in source_positions:
+    r = np.sqrt((X - x_s)**2 + (Y - y_s)**2)
+    waves.append(np.cos(k * r))  # Compute wave from each source
+
+# Compute the total wave interference pattern
+wave_superposition = sum(waves)
+
+# Create a binary map for constructive and destructive interference
+constructive_threshold = 1.5  # Adjust threshold for constructive regions
+destructive_threshold = -1.5  # Adjust threshold for destructive regions
+constructive_map = wave_superposition > constructive_threshold
+destructive_map = wave_superposition < destructive_threshold
+
+# Plot the interference regions
+fig, ax = plt.subplots(figsize=(7,6))
+contour = ax.contourf(X, Y, wave_superposition, levels=50, cmap="viridis", alpha=0.6)
+
+# Overlay constructive and destructive interference regions
+ax.contour(X, Y, constructive_map, levels=[0.5], colors='red', linewidths=1.5)
+ax.contour(X, Y, destructive_map, levels=[0.5], colors='blue', linewidths=1.5)
+
+# Mark the wave source locations
+ax.scatter(*zip(*source_positions), color='white', s=100, edgecolor='black', label="Wave Sources")
+
+# Axis settings
+ax.set_xlabel("X Coordinate")
+ax.set_ylabel("Y Coordinate")
+ax.set_title("Constructive and Destructive Interference Regions")
+ax.axhline(0, color='black', linewidth=0.5)
+ax.axvline(0, color='black', linewidth=0.5)
+ax.legend()
+plt.colorbar(contour, label="Wave Amplitude")
+
+# Display the figure
+plt.show()
+
+```
+</details>
+
+![alt text](image-5.png)
+
+### **Constructive and Destructive Interference Regions**  
+
+This visualization highlights the **regions of maximum (constructive) and minimum (destructive) interference** in a wave system with multiple sources. These zones are fundamental in wave physics, affecting how waves interact in various physical systems.
+
+---
+
+### **Mathematical Representation of Interference Regions**  
+
+When multiple wave sources located at \( (x_i, y_i) \) emit waves, the total displacement at any point \( (x, y) \) follows the **superposition principle**:
+
+
+$$
+\eta_{\text{total}}(x, y, t) = \sum_{i=1}^{N} \eta_i(x, y, t)
+$$
+
+
+where each wave function is given by:
+
+$$
+\eta_i(x, y, t) = A \cos(k r_i - \omega t + \phi)
+$$
+
+for \( i = 1,2,...,N \), and:
+
+- \( A \) is the **wave amplitude**, 
+
+- \( k = \frac{2\pi}{\lambda} \) is the **wave number**,  
+
+- \( \omega = 2\pi f \) is the **angular frequency**,  
+
+- \( r_i = \sqrt{(x - x_i)^2 + (y - y_i)^2} \) is the **distance from the \( i \)-th source to the point \( (x,y) \)**,  
+
+- \( \phi \) is the **initial phase**.
+
+The total interference pattern is obtained by summing the individual wave contributions.
+
+---
+
+### **Constructive and Destructive Interference Conditions**  
+
+**Constructive Interference (Red Contours)**  
+
+   - Occurs when wave crests meet wave crests, reinforcing amplitude.  
+
+   - The phase difference between waves must be an integer multiple of \( 2\pi \):
+
+     $$
+     k (r_i - r_j) = m 2\pi, \quad m \in \mathbb{Z}
+     $$
+
+   - The condition for constructive interference is met when the **resultant wave amplitude surpasses a predefined threshold**.
+
+**Destructive Interference (Blue Contours)**  
+
+   - Occurs when wave crests meet wave troughs, canceling out amplitude.  
+
+   - The phase difference between waves must be an odd multiple of \( \pi \):
+
+     $$
+     k (r_i - r_j) = (2m + 1) \pi, \quad m \in \mathbb{Z}
+     $$
+
+   - The condition for destructive interference is met when the **resultant wave amplitude drops below a predefined threshold**.
+
+These conditions define the **periodic bright and dark regions** in wave interference patterns.
+
+---
+
+### **Graphical Interpretation**  
+
+**Color Contours (Wave Amplitude)**: Represent the resultant wave amplitude across space.  
+
+  - Higher intensity zones indicate stronger wave presence.  
+
+  - Lower intensity zones indicate weaker wave presence.  
+
+**Red Contours (Constructive Interference)**:  
+
+  - These regions highlight **where wave amplitudes reinforce**.
+
+  - Correspond to **maximum intensity points** in the interference pattern.
+
+**Blue Contours (Destructive Interference)**:  
+
+  - These regions highlight **where wave amplitudes cancel each other**.
+
+  - Correspond to **minimum intensity points** (wave nullification).
+
+**White Dots (\(\bullet\))**: Represent the **wave source locations**.
+
+---
+
+### **Physical Significance**  
+
+Understanding constructive and destructive interference is crucial in:  
+
+**Optics** (laser beam superposition, thin-film interference).  
+
+**Acoustics** (noise-canceling technology, room acoustics).  
+
+**Antenna Arrays** (radio wave interference, phased array radar).  
+
+**Water Wave Dynamics** (wave propagation in harbors and wave energy harvesting).
+
+By visualizing these regions, we can predict where wave interactions will amplify or cancel out, which is essential for both theoretical and applied wave physics.
+
+
+---
+
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define simulation grid
+grid_size = 200
+x_range = np.linspace(-10, 10, grid_size)
+y_range = np.linspace(-10, 10, grid_size)
+X, Y = np.meshgrid(x_range, y_range)
+
+# Define wave properties
+wavelengths = [1.5, 2, 2.5]  # Different wavelengths for comparison
+colors = ["viridis", "plasma", "coolwarm"]  # Different colormap styles
+
+fig, axes = plt.subplots(1, 3, figsize=(15, 5))
+
+# Generate and plot interference patterns for different wavelengths
+for i, (wavelength, cmap) in enumerate(zip(wavelengths, colors)):
+    k = 2 * np.pi / wavelength  # Wave number
+
+    # Define three wave sources
+    source_positions = [(-3, -3), (3, -3), (0, 3)]
+    waves = []
+
+    for (x_s, y_s) in source_positions:
+        r = np.sqrt((X - x_s)**2 + (Y - y_s)**2)
+        waves.append(np.cos(k * r))  # Compute wave from each source
+
+    # Compute the total wave interference pattern
+    wave_superposition = sum(waves)
+
+    # Plot the interference pattern
+    ax = axes[i]
+    contour = ax.contourf(X, Y, wave_superposition, levels=50, cmap=cmap)
+    ax.set_title(f"Interference Pattern\nWavelength = {wavelength}")
+    ax.set_xlabel("X Coordinate")
+    ax.set_ylabel("Y Coordinate")
+    ax.axhline(0, color='black', linewidth=0.5)
+    ax.axvline(0, color='black', linewidth=0.5)
+    fig.colorbar(contour, ax=ax, label="Wave Amplitude")
+
+# Display the figure
+plt.tight_layout()
+plt.show()
+
+```
+</details>
+
+![alt text](image-6.png)
+
+### **Effect of Wavelength on Interference Patterns**  
+
+This visualization compares the **interference patterns** produced by different **wavelengths (\(\lambda\))**. The variation in \(\lambda\) significantly influences the **spacing and intensity** of interference fringes.
+
+---
+
+### **Mathematical Representation of Wavelength Dependence**  
+
+Each wave emitted from sources at \( (x_i, y_i) \) follows:
+
+
+$$
+\eta_i(x, y, t) = A \cos(k r_i - \omega t + \phi)
+$$
+
+
+where:  
+
+- \( k = \frac{2\pi}{\lambda} \) is the **wave number**,  
+
+- \( \lambda \) is the **wavelength**,  
+
+- \( \omega = 2\pi f \) is the **angular frequency**,  
+
+- \( r_i = \sqrt{(x - x_i)^2 + (y - y_i)^2} \) is the distance from source \( i \),  
+
+- \( \phi \) is the **initial phase**.
+
+By varying \( \lambda \), we modify **\( k \)**, which directly impacts the **density of interference fringes**.
+
+---
+
+### **Effect of Wavelength (\(\lambda\)) on Interference**  
+
+**Smaller Wavelength (\(\lambda = 1.5\))**  
+
+   - Higher **wave number \( k \)** results in **denser interference fringes**. 
+    
+   - More frequent constructive and destructive interference zones.  
+
+**Intermediate Wavelength (\(\lambda = 2\))**  
+
+- Balanced wave distribution.  
+
+- Moderate spacing between fringes.  
+
+**Larger Wavelength (\(\lambda = 2.5\))**  
+
+   - Lower \( k \) leads to **wider fringe spacing**.  
+
+   - Fewer, more separated constructive/destructive zones.
+
+
+These effects are clearly visible in the **three subplots**, where each interference pattern differs due to its unique \( \lambda \).
+
+---
+
+### **Graphical Interpretation**  
+
+**Color Contours**: Represent the resultant wave amplitude.  
+
+  - High-amplitude regions correspond to **constructive interference**.  
+
+  - Low-amplitude regions correspond to **destructive interference**.  
+
+**X and Y Axes**: Provide spatial reference.  
+
+**Different Colormaps**: Used for visual clarity.  
+
+Each subplot represents **a different wavelength**, demonstrating how **wave density and interference pattern complexity** are affected by changing \( \lambda \).
+
+---
+
+### **Physical Significance**  
+
+
+The dependence of interference on \( \lambda \) is critical in:  
+
+**Optics**: Diffraction grating analysis, light wave interference.  
+
+**Acoustics**: Sound wave interference, noise control techniques.  
+
+**Radio Waves**: Antenna signal modulation, wave propagation. 
+
+**Water Waves**: Studying wave dispersion in fluid dynamics.  
+
+By adjusting \( \lambda \), we can **manipulate interference effects**, which is essential in designing **optical instruments, sonar systems, and communication devices**.
+
+
+---
+
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+
+# Define simulation grid
+grid_size = 200
+x_range = np.linspace(-10, 10, grid_size)
+y_range = np.linspace(-10, 10, grid_size)
+X, Y = np.meshgrid(x_range, y_range)
+
+# Define wave properties
+wavelength = 2  # Wavelength (lambda)
+k = 2 * np.pi / wavelength  # Wave number
+omega = 2 * np.pi  # Angular frequency
+
+# Define three wave sources
+source_positions = [(-3, -3), (3, -3), (0, 3)]
+
+# Create figure for animation
+fig, ax = plt.subplots(figsize=(7, 6))
+ax.set_xlabel("X Coordinate")
+ax.set_ylabel("Y Coordinate")
+ax.set_title("Wave Interference Over Time")
+ax.axhline(0, color='black', linewidth=0.5)
+ax.axvline(0, color='black', linewidth=0.5)
+
+# Initialize plot
+contour = ax.contourf(X, Y, np.zeros_like(X), levels=50, cmap="viridis")
+plt.colorbar(contour, label="Wave Amplitude")
+
+# Animation update function
+def update(frame):
+    global contour
+    for c in contour.collections:
+        c.remove()  # Clear previous frame
+
+    time_t = frame / 10  # Time variable
+    waves = []
+
+    for (x_s, y_s) in source_positions:
+        r = np.sqrt((X - x_s)**2 + (Y - y_s)**2)
+        waves.append(np.cos(k * r - omega * time_t))  # Time-dependent wave
+
+    # Compute the total wave interference pattern
+    wave_superposition = sum(waves)
+    contour = ax.contourf(X, Y, wave_superposition, levels=50, cmap="viridis")
+
+# Create animation
+ani = animation.FuncAnimation(fig, update, frames=30, interval=100)
+
+# Display the animation
+plt.show()
+
+```
+</details>
+
+![alt text](image-7.png)
+
+### **Time Evolution of Wave Interference**  
+
+This visualization presents a **time-dependent animation** of wave interference, showing how wavefronts dynamically evolve over time. This is crucial for understanding **real-time wave behavior** in various physical systems.
+
+---
+
+### **Mathematical Representation of Time-Dependent Waves**  
+
+Each wave emitted from a source at \( (x_i, y_i) \) follows:
+
+
+$$
+\eta_i(x, y, t) = A \cos(k r_i - \omega t + \phi)
+$$
+
+
+where:  
+
+- \( A \) is the **wave amplitude**, 
+
+- \( k = \frac{2\pi}{\lambda} \) is the **wave number**,  
+
+- \( \omega = 2\pi f \) is the **angular frequency**,  
+
+- \( r_i = \sqrt{(x - x_i)^2 + (y - y_i)^2} \) is the **distance from the source \( i \)**,  
+
+- \( t \) is the **time variable**,  
+
+- \( \phi \) is the **initial phase**.
+
+By summing the contributions from all sources at each instant, we obtain the **total dynamic wave displacement**:
+
+$$
+\eta_{\text{total}}(x, y, t) = \sum_{i=1}^{N} A \cos(k r_i - \omega t + \phi)
+$$
+
+This equation describes **how waves evolve over time**, forming dynamic interference patterns.
+
+---
+
+### **Temporal Interference Effects**  
+
+**Constructive and Destructive Interference Shifts**  
+
+   - Over time, wave peaks and troughs **move and recombine**, shifting interference regions.  
+
+   - This causes periodic alternation between **high-intensity (bright) and low-intensity (dark) regions**.  
+
+**Wave Propagation**  
+
+   - The animation visualizes **how individual wavefronts expand outward** from each source.  
+
+   - As time progresses, wave superposition dynamically reshapes the interference pattern.  
+
+**Standing Wave Formation**  
+
+   - In specific conditions, stationary high-amplitude zones emerge, similar to **standing waves in confined systems**.  
+
+---
+
+### **Graphical Interpretation**  
+
+
+**Color Contours**: Represent **real-time wave amplitude**.  
+
+  - Bright regions correspond to **constructive interference**.  
+
+  - Dark regions correspond to **destructive interference**.  
+
+**Oscillatory Motion**:  
+
+  - The animation cycles through **multiple time frames**, showing **wave propagation and interaction**.  
+
+  - The **frequency of oscillations** corresponds to \( \omega \).  
+
+**X and Y Axes**: Provide spatial reference for understanding wave expansion directions.
+
+---
+
+### **Physical Significance**  
+
+
+Time-dependent wave interference is essential in:  
+
+**Electromagnetic Waves**: Radio wave propagation, fiber optics, microwave systems.  
+
+**Acoustics**: Sound wave resonance, speaker wave interference, musical acoustics.  
+
+**Quantum Mechanics**: Probability wave evolution, Schrödinger wave dynamics. 
+
+**Fluid Dynamics**: Water wave motion, ripple tank experiments.  
+
+This visualization demonstrates **real-time wave interactions**, highlighting **how waves propagate, interfere, and form dynamic interference patterns over time**.
