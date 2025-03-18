@@ -565,7 +565,7 @@ This simulation helps understand:
 </details>
 
 ### **Simulation Link**  
-<a> file:///C:/Users/batu/Desktop/simulation2_1.html  </a>
+<a> file:///C:/Users/batu/Desktop/Ders/2025/PHYSICS/simulationp2,1.html </a>
 
 ---
 
@@ -662,7 +662,7 @@ This simulation helps understand:
 
 ### **Simulation Link**
 
-<a>file:///C:/Users/batu/Desktop/simulationp2,1,2.html </a>
+<a> file:///C:/Users/batu/Desktop/Ders/2025/PHYSICS/simulationp2,1,2.html </a>
 
 ---
 

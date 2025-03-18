@@ -1324,4 +1324,4 @@ This visualization demonstrates **real-time wave interactions**, highlighting **
 ---
 
 ### **Simulation Link**  
-<a> file:///C:/Users/batu/Desktop/simulationwawes.html </a>
+<a> file:///C:/Users/batu/Desktop/Ders/2025/PHYSICS/simulationwawes.html </a>
