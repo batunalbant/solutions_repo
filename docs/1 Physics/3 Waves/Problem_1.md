@@ -441,9 +441,9 @@ By summing these three contributions, we obtain the resultant wave displacement 
 - **Constructive Interference** (Amplitude Maximum) occurs when the three waves arrive **in phase**, meaning their phase difference is a multiple of \( 2\pi \):
 
 
-  \[
+  \(
   k (r_1 - r_2) = m 2\pi, \quad k (r_1 - r_3) = n 2\pi, \quad m, n \in \mathbb{Z}
-  \]
+  \)
 
 
   This implies that the path differences \( r_1 - r_2 \) and \( r_1 - r_3 \) are integer multiples of the wavelength \( \lambda \).
@@ -451,9 +451,9 @@ By summing these three contributions, we obtain the resultant wave displacement 
 **Destructive Interference** (Amplitude Minimum) occurs when the waves arrive **out of phase**, meaning their phase differences correspond to odd multiples of \( \pi \):
 
 
-  \[
+  \(
   k (r_1 - r_2) = (2m + 1) \pi, \quad k (r_1 - r_3) = (2n + 1) \pi, \quad m, n \in \mathbb{Z}
-  \]
+  \)
 
 
   Here, the path differences must be odd multiples of half the wavelength \( \lambda/2 \).
