@@ -7,28 +7,36 @@ Understanding and analyzing electrical circuits is a fundamental aspect of elect
 
 Graph theory provides an alternative and efficient approach by representing the circuit as a weighted graph, where:
 
-- **Nodes** correspond to junctions.
-- **Edges** correspond to resistors with resistance values as weights.
+**Nodes** correspond to junctions.
+
+**Edges** correspond to resistors with resistance values as weights.
 
 By systematically simplifying this representation using graph algorithms, we can compute the equivalent resistance efficiently. This approach is particularly useful in modern circuit analysis tools, simulation software, and optimization techniques used in electronic circuit design. It also provides an automated way to handle complex networks, making the process faster and less prone to human errors.
 
 ## Motivation
 Calculating equivalent resistance is a fundamental problem in electrical circuits, essential for understanding and designing efficient systems. Traditional methods involve iteratively applying series and parallel resistor rules, which become cumbersome for complex circuits. Graph theory provides a structured and algorithmic alternative, allowing us to model circuits as weighted graphs where:
 
-- **Nodes** represent circuit junctions.
-- **Edges** represent resistors, weighted by resistance values.
+**Nodes** represent circuit junctions.
+
+**Edges** represent resistors, weighted by resistance values.
 
 By employing graph reduction techniques, we can systematically simplify even intricate networks, leading to efficient circuit analysis methods used in modern applications like circuit simulation software, optimization problems, and network design. This method also integrates well with software-based solutions, allowing for real-time modifications and enhancements in circuit analysis.
 
 ## Theoretical Background
+
 ### Graph Representation of Electrical Circuits
+
 An electrical circuit can be represented as a graph:
-- **Vertices (V):** Represent junctions where resistors connect.
-- **Edges (E):** Represent resistors, with edge weights corresponding to resistance values.
-- **Adjacency Matrix or List:** Used to store the graph structure, where each row represents a node and each column represents a connection to another node with a specific resistance value.
+**Vertices (V):** Represent junctions where resistors connect.
+
+**Edges (E):** Represent resistors, with edge weights corresponding to resistance values.
+
+**Adjacency Matrix or List:** Used to store the graph structure, where each row represents a node and each column represents a connection to another node with a specific resistance value.
 
 ### Series and Parallel Resistance in Graphs
-1. **Series Connection:**
+
+
+**Series Connection:**
    - Resistors in series have the same current flowing through them.
 
    - The total voltage across them is the sum of the individual voltages:
@@ -51,7 +59,8 @@ An electrical circuit can be represented as a graph:
 
    - Graphically, this corresponds to **contracting** a path of connected edges into a single edge, thus reducing the complexity of the graph.
 
-2. **Parallel Connection:**
+
+**Parallel Connection:**
    - Resistors in parallel share the same voltage.
 
    - The total current is the sum of the individual currents:
@@ -80,13 +89,13 @@ An electrical circuit can be represented as a graph:
 
 For circuits involving mixed configurations of series and parallel resistances, the equivalent resistance must be determined iteratively. If a circuit consists of nested parallel and series resistances, the calculation follows a hierarchical approach:
 
-1. Identify the **innermost** parallel or series components.
+- Identify the **innermost** parallel or series components.
 
-2. Compute their equivalent resistance.
+- Compute their equivalent resistance.
 
-3. Replace these components with their equivalent resistance and repeat the process.
+- Replace these components with their equivalent resistance and repeat the process.
 
-4. Continue until only one resistance remains.
+- Continue until only one resistance remains.
 
 For example, if a circuit consists of three resistors \( R_1, R_2, R_3 \) arranged in a mixed configuration:
 
@@ -114,21 +123,24 @@ Using advanced mathematical techniques such as **matrix representation of circui
 
 To find the equivalent resistance between two nodes:
 
-1. **Construct the Graph**: Parse circuit components into a graph data structure.
+**Construct the Graph**: Parse circuit components into a graph data structure.
 
-2. **Identify Series and Parallel Components**: Use graph traversal techniques such as Depth-First Search (DFS) or Breadth-First Search (BFS).
+**Identify Series and Parallel Components**: Use graph traversal techniques such as Depth-First Search (DFS) or Breadth-First Search (BFS).
 
-3. **Iteratively Reduce the Graph**:
+**Iteratively Reduce the Graph**:
 
    - Replace series connections with their equivalent resistance.
 
    - Merge parallel connections into a single equivalent resistor.
 
-4. **Repeat Until Simplification is Complete**: Continue reducing until only two nodes remain (input and output terminals).
+**Repeat Until Simplification is Complete**: Continue reducing until only two nodes remain (input and output terminals).
 
-5. **Output the Equivalent Resistance**: The final edge weight represents the total equivalent resistance.
+**Output the Equivalent Resistance**: The final edge weight represents the total equivalent resistance.
+
+---
 
 ## Algorithm Implementation
+
 ### Pseudocode
 ```python
 function compute_equivalent_resistance(graph, start, end):
