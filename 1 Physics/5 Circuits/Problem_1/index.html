@@ -369,12 +369,15 @@ circuit.visualize("Initial Circuit Representation")
 <p>This graphical representation will help us simplify the circuit in the next steps, where we will iteratively reduce the network by identifying series and parallel resistors.</p>
 <h2 id="detecting-and-merging-series-and-parallel-resistors">Detecting and Merging Series and Parallel Resistors</h2>
 <p>To simplify the circuit, we apply the following rules:</p>
-<p><strong>Series Resistors</strong>: If a node has exactly two connections, the resistances are summed up and the node is removed.<br/>
-  - Formula: </p>
-<pre><code>\( 
+<p><strong>Series Resistors</strong>: If a node has exactly two connections, the resistances are summed up and the node is removed.  </p>
+<ul>
+<li>
+<p>Formula: </p>
+<div class="arithmatex">\[
 R_{eq} = R_1 + R_2
-\)
-</code></pre>
+\]</div>
+</li>
+</ul>
 <p><strong>Parallel Resistors</strong>: If two nodes are connected by multiple resistors, they are merged using the parallel resistance formula.  </p>
 <ul>
 <li>
