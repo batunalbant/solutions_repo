@@ -231,11 +231,13 @@ This graphical representation will help us simplify the circuit in the next step
 To simplify the circuit, we apply the following rules:
 
 **Series Resistors**: If a node has exactly two connections, the resistances are summed up and the node is removed.  
+
   - Formula: 
 
-    \( 
+    $$
     R_{eq} = R_1 + R_2
-    \)
+    $$
+
 
 **Parallel Resistors**: If two nodes are connected by multiple resistors, they are merged using the parallel resistance formula.  
 
