@@ -494,27 +494,23 @@ print(f"Test Case 3 - Equivalent Resistance: {equivalent_resistance_3} Ω")  # E
 ```
 </details>
 
-## Step 4: Performance Analysis and Final Report
+## **Step 4: Performance Analysis and Test Cases**
 
 ### **Performance Analysis**
+
 To evaluate the efficiency of our algorithm, we analyzed the computational complexity:
 
-- **Series Detection:** \(O(n)\)
-- **Parallel Detection:** \(O(m)\)
-- **Overall Complexity:** \(O(n^2)\) in the worst case.
+**Series Detection:** \(O(n)\)
+
+**Parallel Detection:** \(O(m)\)
+
+**Overall Complexity:** \(O(n^2)\) in the worst case.
 
 For large circuits, this approach is efficient but may require further optimizations in highly interconnected networks.
 
----
+### **Test Cases and Results**
 
-### **Test Cases**
-To validate our implementation, we tested different circuit configurations:
-
-| Test Case | Circuit Type | Expected Resistance |
-|-----------|-------------|---------------------|
-| **Test Case 1** | Simple Series Circuit (5Ω, 10Ω) | **15Ω** |
-| **Test Case 2** | Simple Parallel Circuit (10Ω, 20Ω) | **6.67Ω** |
-| **Test Case 3** | Mixed Series and Parallel | **Computed Output** |
+To validate our implementation, we tested different circuit configurations.
 
 ### **Test Case 1: Simple Series Circuit**
 
