@@ -555,7 +555,7 @@ To validate our implementation, we tested different circuit configurations.
 
   - The equivalent resistance should be computed after series and parallel simplifications.
 
-  ![alt text](image-7.png)
+  ![alt text](image-8.png)
 
 ---
 
