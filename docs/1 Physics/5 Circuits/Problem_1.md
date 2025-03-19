@@ -337,3 +337,123 @@ In this step, the circuit graph has been progressively reduced by merging equiva
 
 
 
+## Computing the Final Equivalent Resistance
+
+After fully simplifying the circuit, only two nodes remain, representing the total equivalent resistance.
+
+### **Final Equivalent Resistance Calculation**
+
+Using our graph-based algorithm, we obtained the following result:
+
+**Remaining Nodes:** C and D
+
+**Final Equivalent Resistance:** **70Ω**
+
+### **Final Simplified Circuit Representation**
+
+Below is the final simplified representation of the circuit:
+
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+
+class CircuitGraph:
+    def __init__(self):
+        """ Initializes an empty graph to represent the circuit. """
+        self.graph = nx.Graph()
+
+    def add_resistor(self, node1, node2, resistance):
+        """ Adds a resistor between two nodes with a given resistance value. """
+        self.graph.add_edge(node1, node2, weight=resistance)
+
+    def detect_series(self):
+        """ Detects and merges series resistances in the circuit """
+        for node in list(self.graph.nodes):
+            neighbors = list(self.graph.neighbors(node))
+            if len(neighbors) == 2:  # A node with exactly two neighbors → Series connection
+                n1, n2 = neighbors
+                if self.graph.has_edge(n1, node) and self.graph.has_edge(node, n2):
+                    r1 = self.graph[n1][node]['weight']
+                    r2 = self.graph[node][n2]['weight']
+                    new_resistance = r1 + r2  # Series formula: Req = R1 + R2
+
+                    # Merge nodes
+                    self.graph.add_edge(n1, n2, weight=new_resistance)
+                    self.graph.remove_node(node)  # Remove merged node
+
+    def detect_parallel(self):
+        """ Detects and merges parallel resistances in the circuit """
+        to_merge = []
+        for u, v, data in self.graph.edges(data=True):
+            if self.graph.number_of_edges(u, v) > 1:  # More than one edge between nodes → Parallel
+                to_merge.append((u, v))
+
+        for u, v in to_merge:
+            parallel_resistances = [
+                data['weight'] for u_, v_, data in self.graph.edges(data=True) if (u_, v_) == (u, v)
+            ]
+            new_resistance = 1 / sum(1 / r for r in parallel_resistances)  # Parallel formula: 1/Req = 1/R1 + 1/R2
+
+            # Remove all parallel edges and add the new equivalent resistance
+            self.graph.remove_edges_from([(u, v) for _ in parallel_resistances])
+            self.graph.add_edge(u, v, weight=new_resistance)
+
+    def simplify_circuit(self):
+        """ Iteratively simplifies the circuit by detecting and merging series and parallel resistances """
+        while len(self.graph.nodes) > 2:  # Keep simplifying until only two nodes remain
+            self.detect_series()
+            self.detect_parallel()
+
+    def compute_equivalent_resistance(self, start, end):
+        """ Returns the equivalent resistance between the two remaining nodes """
+        if len(self.graph.nodes) == 2 and self.graph.has_edge(start, end):
+            return self.graph[start][end]['weight']
+        else:
+            raise ValueError("The circuit has not been simplified correctly.")
+
+    def visualize(self, title="Circuit Representation"):
+        """ Visualizes the circuit graph with nodes and edge weights. """
+        pos = nx.spring_layout(self.graph)  # Defines the layout of the graph
+        labels = nx.get_edge_attributes(self.graph, 'weight')
+
+        plt.figure(figsize=(8,6))
+        nx.draw(self.graph, pos, with_labels=True, node_color='lightblue', edge_color='black', node_size=2000, font_size=12)
+        nx.draw_networkx_edge_labels(self.graph, pos, edge_labels=labels)
+        plt.title(title)
+        plt.show()
+
+
+# 🔹 Creating a test circuit
+circuit = CircuitGraph()
+circuit.add_resistor('A', 'B', 10)
+circuit.add_resistor('B', 'C', 20)
+circuit.add_resistor('C', 'D', 30)
+circuit.add_resistor('A', 'D', 40)
+
+# 🔹 Visualizing the initial circuit
+circuit.visualize("Initial Circuit Representation")
+
+# 🔹 Simplifying the circuit
+circuit.simplify_circuit()
+print("Remaining nodes in the circuit:", circuit.graph.nodes)
+
+
+# 🔹 Computing the final equivalent resistance
+try:
+    equivalent_resistance = circuit.compute_equivalent_resistance('C', 'D')
+
+    print(f"Equivalent Resistance between A and D: {equivalent_resistance} Ω")
+except ValueError as e:
+    print(e)
+
+# 🔹 Visualizing the final circuit
+circuit.visualize("Final Simplified Circuit Representation")
+
+```
+</details>
+
+![alt text](image-4.png)
+
+This result confirms that all series and parallel resistances were properly merged, leading to an accurate calculation of the total equivalent resistance.
+
