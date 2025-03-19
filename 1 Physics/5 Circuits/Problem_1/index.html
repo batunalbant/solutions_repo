@@ -574,6 +574,130 @@ circuit.visualize("Final Simplified Circuit Representation")
 </details>
 <p><img alt="alt text" src="../image-4.png"/></p>
 <p>This result confirms that all series and parallel resistances were properly merged, leading to an accurate calculation of the total equivalent resistance.</p>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python">
+# Test Case 1: Simple Series Circuit
+circuit1 = CircuitGraph()
+circuit1.add_resistor('X', 'Y', 5)
+circuit1.add_resistor('Y', 'Z', 10)
+circuit1.simplify_circuit()
+equivalent_resistance_1 = circuit1.compute_equivalent_resistance('X', 'Z')
+print(f"Test Case 1 - Equivalent Resistance: {equivalent_resistance_1} Ω")  # Expected: 15Ω
+
+# Test Case 2: Simple Parallel Circuit
+circuit2 = CircuitGraph()
+circuit2.add_resistor('M', 'N', 10)
+circuit2.add_resistor('M', 'N', 20)
+circuit2.simplify_circuit()
+equivalent_resistance_2 = circuit2.compute_equivalent_resistance('M', 'N')
+print(f"Test Case 2 - Equivalent Resistance: {equivalent_resistance_2} Ω")  # Expected: 6.67Ω
+
+# Test Case 3: Mixed Series and Parallel
+circuit3 = CircuitGraph()
+circuit3.add_resistor('A', 'B', 10)
+circuit3.add_resistor('B', 'C', 20)
+circuit3.add_resistor('C', 'D', 30)
+circuit3.add_resistor('A', 'D', 40)
+circuit3.simplify_circuit()
+print("Remaining nodes in the circuit after simplification:", circuit3.graph.nodes)
+print("Remaining edges in the circuit after simplification:", circuit3.graph.edges(data=True))
+
+equivalent_resistance_3 = circuit3.compute_equivalent_resistance('C', 'D')
+
+print(f"Test Case 3 - Equivalent Resistance: {equivalent_resistance_3} Ω")  # Expected: Check Output
+
+</code></pre>
+</details>
+<h2 id="step-4-performance-analysis-and-final-report">Step 4: Performance Analysis and Final Report</h2>
+<h3 id="performance-analysis"><strong>Performance Analysis</strong></h3>
+<p>To evaluate the efficiency of our algorithm, we analyzed the computational complexity:</p>
+<ul>
+<li><strong>Series Detection:</strong> <span class="arithmatex">\(O(n)\)</span></li>
+<li><strong>Parallel Detection:</strong> <span class="arithmatex">\(O(m)\)</span></li>
+<li><strong>Overall Complexity:</strong> <span class="arithmatex">\(O(n^2)\)</span> in the worst case.</li>
+</ul>
+<p>For large circuits, this approach is efficient but may require further optimizations in highly interconnected networks.</p>
+<hr/>
+<h3 id="test-cases"><strong>Test Cases</strong></h3>
+<p>To validate our implementation, we tested different circuit configurations:</p>
+<table>
+<thead>
+<tr>
+<th>Test Case</th>
+<th>Circuit Type</th>
+<th>Expected Resistance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Test Case 1</strong></td>
+<td>Simple Series Circuit (5Ω, 10Ω)</td>
+<td><strong>15Ω</strong></td>
+</tr>
+<tr>
+<td><strong>Test Case 2</strong></td>
+<td>Simple Parallel Circuit (10Ω, 20Ω)</td>
+<td><strong>6.67Ω</strong></td>
+</tr>
+<tr>
+<td><strong>Test Case 3</strong></td>
+<td>Mixed Series and Parallel</td>
+<td><strong>Computed Output</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-case-1-simple-series-circuit"><strong>Test Case 1: Simple Series Circuit</strong></h3>
+<h4 id="circuit-configuration"><strong>Circuit Configuration</strong></h4>
+<p><strong>Resistors:</strong> </p>
+<ul>
+<li>
+<p>5Ω between <code>X</code> and <code>Y</code></p>
+</li>
+<li>
+<p>10Ω between <code>Y</code> and <code>Z</code>
+-Expected Result: </p>
+</li>
+<li>
+<p>Equivalent resistance between <code>X</code> and <code>Z</code> should be <strong>15Ω</strong> (Series formula: <span class="arithmatex">\( R_{eq} = R_1 + R_2 \)</span>)</p>
+</li>
+</ul>
+<p><img alt="alt text" src="../image-5.png"/></p>
+<h3 id="test-case-2-simple-parallel-circuit"><strong>Test Case 2: Simple Parallel Circuit</strong></h3>
+<h4 id="circuit-configuration_1"><strong>Circuit Configuration</strong></h4>
+<p><strong>Resistors:</strong><br/>
+  - 10Ω and 20Ω in parallel between <code>M</code> and <code>N</code></p>
+<p><strong>Expected Result:</strong> </p>
+<ul>
+<li>Equivalent resistance between <code>M</code> and <code>N</code> should be <strong>6.67Ω</strong> </li>
+<li>(Parallel formula: <span class="arithmatex">\( \frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} \)</span>)</li>
+</ul>
+<p><img alt="alt text" src="../image-6.png"/></p>
+<h3 id="test-case-3-mixed-series-and-parallel-circuit"><strong>Test Case 3: Mixed Series and Parallel Circuit</strong></h3>
+<h4 id="circuit-configuration_2"><strong>Circuit Configuration</strong></h4>
+<p><strong>Resistors:</strong>
+  - 10Ω between <code>A</code> and <code>B</code>
+  - 20Ω between <code>B</code> and <code>C</code>
+  - 30Ω between <code>C</code> and <code>D</code>
+  - 40Ω between <code>A</code> and <code>D</code></p>
+<ul>
+<li>
+<p><strong>Expected Result:</strong> </p>
+</li>
+<li>
+<p>The equivalent resistance should be computed after series and parallel simplifications.</p>
+</li>
+</ul>
+<p><img alt="alt text" src="../image-7.png"/></p>
+<hr/>
+<h3 id="conclusion"><strong>Conclusion</strong></h3>
+<p>This project demonstrated how graph theory can be applied to electrical circuit analysis. Using <strong>graph-based algorithms</strong>, we efficiently calculated equivalent resistance in <strong>series, parallel, and mixed networks</strong>. This approach is particularly useful in <strong>circuit simulation software, network design, and electrical engineering applications</strong>.</p>
+<h3 id="future-improvements"><strong>Future Improvements</strong></h3>
+<ul>
+<li>Optimize the algorithm for <strong>large-scale circuits</strong>.</li>
+<li>Extend the model to handle <strong>capacitors and inductors</strong> in <strong>AC circuits</strong>.</li>
+<li>Implement a <strong>GUI-based interactive circuit solver</strong>.</li>
+</ul>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
