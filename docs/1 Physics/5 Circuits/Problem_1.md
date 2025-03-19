@@ -514,7 +514,7 @@ print(f"Test Case 3 - Equivalent Resistance: {equivalent_resistance_3} Ω")  # E
 ```
 </details>
 
-## **Step 4: Performance Analysis and Test Cases**
+## **Performance Analysis and Test Cases**
 
 ### **Performance Analysis**
 
