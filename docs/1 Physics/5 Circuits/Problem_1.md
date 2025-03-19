@@ -456,4 +456,118 @@ circuit.visualize("Final Simplified Circuit Representation")
 ![alt text](image-4.png)
 
 This result confirms that all series and parallel resistances were properly merged, leading to an accurate calculation of the total equivalent resistance.
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+
+# Test Case 1: Simple Series Circuit
+circuit1 = CircuitGraph()
+circuit1.add_resistor('X', 'Y', 5)
+circuit1.add_resistor('Y', 'Z', 10)
+circuit1.simplify_circuit()
+equivalent_resistance_1 = circuit1.compute_equivalent_resistance('X', 'Z')
+print(f"Test Case 1 - Equivalent Resistance: {equivalent_resistance_1} Ω")  # Expected: 15Ω
+
+# Test Case 2: Simple Parallel Circuit
+circuit2 = CircuitGraph()
+circuit2.add_resistor('M', 'N', 10)
+circuit2.add_resistor('M', 'N', 20)
+circuit2.simplify_circuit()
+equivalent_resistance_2 = circuit2.compute_equivalent_resistance('M', 'N')
+print(f"Test Case 2 - Equivalent Resistance: {equivalent_resistance_2} Ω")  # Expected: 6.67Ω
+
+# Test Case 3: Mixed Series and Parallel
+circuit3 = CircuitGraph()
+circuit3.add_resistor('A', 'B', 10)
+circuit3.add_resistor('B', 'C', 20)
+circuit3.add_resistor('C', 'D', 30)
+circuit3.add_resistor('A', 'D', 40)
+circuit3.simplify_circuit()
+print("Remaining nodes in the circuit after simplification:", circuit3.graph.nodes)
+print("Remaining edges in the circuit after simplification:", circuit3.graph.edges(data=True))
+
+equivalent_resistance_3 = circuit3.compute_equivalent_resistance('C', 'D')
+
+print(f"Test Case 3 - Equivalent Resistance: {equivalent_resistance_3} Ω")  # Expected: Check Output
+
+```
+</details>
+
+## Step 4: Performance Analysis and Final Report
+
+### **Performance Analysis**
+To evaluate the efficiency of our algorithm, we analyzed the computational complexity:
+
+- **Series Detection:** \(O(n)\)
+- **Parallel Detection:** \(O(m)\)
+- **Overall Complexity:** \(O(n^2)\) in the worst case.
+
+For large circuits, this approach is efficient but may require further optimizations in highly interconnected networks.
+
+---
+
+### **Test Cases**
+To validate our implementation, we tested different circuit configurations:
+
+| Test Case | Circuit Type | Expected Resistance |
+|-----------|-------------|---------------------|
+| **Test Case 1** | Simple Series Circuit (5Ω, 10Ω) | **15Ω** |
+| **Test Case 2** | Simple Parallel Circuit (10Ω, 20Ω) | **6.67Ω** |
+| **Test Case 3** | Mixed Series and Parallel | **Computed Output** |
+
+### **Test Case 1: Simple Series Circuit**
+
+#### **Circuit Configuration**
+
+**Resistors:**  
+
+  - 5Ω between `X` and `Y`
+
+  - 10Ω between `Y` and `Z`
+-Expected Result: 
+
+  - Equivalent resistance between `X` and `Z` should be **15Ω** (Series formula: \( R_{eq} = R_1 + R_2 \))
+
+![alt text](image-5.png)
+
+### **Test Case 2: Simple Parallel Circuit**
+
+#### **Circuit Configuration**
+
+**Resistors:**  
+  - 10Ω and 20Ω in parallel between `M` and `N`
+
+**Expected Result:**  
+
+  - Equivalent resistance between `M` and `N` should be **6.67Ω**  
+  - (Parallel formula: \( \frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} \))
+
+![alt text](image-6.png)
+
+### **Test Case 3: Mixed Series and Parallel Circuit**
+
+#### **Circuit Configuration**
+
+**Resistors:**
+  - 10Ω between `A` and `B`
+  - 20Ω between `B` and `C`
+  - 30Ω between `C` and `D`
+  - 40Ω between `A` and `D`
+
+- **Expected Result:**  
+
+  - The equivalent resistance should be computed after series and parallel simplifications.
+
+  ![alt text](image-7.png)
+
+---
+
+### **Conclusion**
+This project demonstrated how graph theory can be applied to electrical circuit analysis. Using **graph-based algorithms**, we efficiently calculated equivalent resistance in **series, parallel, and mixed networks**. This approach is particularly useful in **circuit simulation software, network design, and electrical engineering applications**.
+
+### **Future Improvements**
+- Optimize the algorithm for **large-scale circuits**.
+- Extend the model to handle **capacitors and inductors** in **AC circuits**.
+- Implement a **GUI-based interactive circuit solver**.
 
