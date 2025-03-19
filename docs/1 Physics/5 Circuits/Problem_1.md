@@ -577,6 +577,10 @@ To validate our implementation, we tested different circuit configurations.
 
 ---
 
+## Simulation
+
+<a> file:///C:/Users/batu/Desktop/Ders/2025/PHYSICS/circuits.html</a>
+
 ### **Conclusion**
 This project demonstrated how graph theory can be applied to electrical circuit analysis. Using **graph-based algorithms**, we efficiently calculated equivalent resistance in **series, parallel, and mixed networks**. This approach is particularly useful in **circuit simulation software, network design, and electrical engineering applications**.
 
