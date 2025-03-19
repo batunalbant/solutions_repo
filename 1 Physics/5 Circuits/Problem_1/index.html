@@ -478,67 +478,86 @@ circuit.visualize("Simplified Circuit Representation")
 <details>
 <summary>Phyton codes.</summary>
 <pre><code class="language-python">
+import networkx as nx
+import matplotlib.pyplot as plt
+
+import networkx as nx
+import matplotlib.pyplot as plt
+
 class CircuitGraph:
     def __init__(self):
         """ Initializes an empty graph to represent the circuit. """
         self.graph = nx.Graph()
 
     def add_resistor(self, node1, node2, resistance):
-        """ Adds a resistor between two nodes with a given resistance value. """
-        self.graph.add_edge(node1, node2, weight=resistance)
+        """ Adds a resistor between two nodes.
+            If a connection already exists, the new resistor is added in parallel.
+        """
+        if self.graph.has_edge(node1, node2):
+            self.graph[node1][node2]['resistances'].append(resistance)
+        else:
+            self.graph.add_edge(node1, node2, resistances=[resistance])
 
     def detect_series(self):
-        """ Detects and merges series resistances in the circuit """
-        for node in list(self.graph.nodes):
-            neighbors = list(self.graph.neighbors(node))
-            if len(neighbors) == 2:  # A node with exactly two neighbors → Series connection
-                n1, n2 = neighbors
-                if self.graph.has_edge(n1, node) and self.graph.has_edge(node, n2):
-                    r1 = self.graph[n1][node]['weight']
-                    r2 = self.graph[node][n2]['weight']
+        """ Detects and merges series resistances in the circuit.
+            The function iterates until no more series combinations exist.
+        """
+        merged = True
+        while merged:  # Keep looping until all series connections are merged
+            merged = False
+            for node in list(self.graph.nodes):
+                neighbors = list(self.graph.neighbors(node))
+                if len(neighbors) == 2:  # A node with exactly two neighbors → Series connection
+                    n1, n2 = neighbors
+                    r1 = sum(self.graph[n1][node]['resistances'])
+                    r2 = sum(self.graph[node][n2]['resistances'])
                     new_resistance = r1 + r2  # Series formula: Req = R1 + R2
 
                     # Merge nodes
-                    self.graph.add_edge(n1, n2, weight=new_resistance)
+                    self.graph.add_edge(n1, n2, resistances=[new_resistance])
                     self.graph.remove_node(node)  # Remove merged node
+                    merged = True
+                    break  # Restart the loop since the graph structure changed
 
     def detect_parallel(self):
-        """ Detects and merges parallel resistances in the circuit """
-        to_merge = []
-        for u, v, data in self.graph.edges(data=True):
-            if self.graph.number_of_edges(u, v) &gt; 1:  # More than one edge between nodes → Parallel
-                to_merge.append((u, v))
-
-        for u, v in to_merge:
-            parallel_resistances = [
-                data['weight'] for u_, v_, data in self.graph.edges(data=True) if (u_, v_) == (u, v)
-            ]
-            new_resistance = 1 / sum(1 / r for r in parallel_resistances)  # Parallel formula: 1/Req = 1/R1 + 1/R2
-
-            # Remove all parallel edges and add the new equivalent resistance
-            self.graph.remove_edges_from([(u, v) for _ in parallel_resistances])
-            self.graph.add_edge(u, v, weight=new_resistance)
+        """ Detects and merges parallel resistances in the circuit.
+            It identifies parallel connections and computes their equivalent resistance.
+        """
+        edges = list(self.graph.edges(data=True))
+        for u, v, data in edges:
+            if len(data['resistances']) &gt; 1:  # Parallel connection detected
+                new_resistance = 1 / sum(1/r for r in data['resistances'])  # Parallel formula
+                self.graph.remove_edge(u, v)  # Remove original parallel resistors
+                self.graph.add_edge(u, v, resistances=[new_resistance])  # Add equivalent resistance
 
     def simplify_circuit(self):
-        """ Iteratively simplifies the circuit by detecting and merging series and parallel resistances """
-        while len(self.graph.nodes) &gt; 2:  # Keep simplifying until only two nodes remain
-            self.detect_series()
-            self.detect_parallel()
+        """ Iteratively simplifies the circuit by detecting and merging parallel and series resistances.
+            The process repeats until no further simplifications are possible.
+        """
+        prev_nodes = -1
+        while len(self.graph.nodes) != prev_nodes:
+            prev_nodes = len(self.graph.nodes)
+            self.detect_parallel()  # First, merge parallel resistances
+            self.detect_series()    # Then, merge series resistances
 
     def compute_equivalent_resistance(self, start, end):
-        """ Returns the equivalent resistance between the two remaining nodes """
-        if len(self.graph.nodes) == 2 and self.graph.has_edge(start, end):
-            return self.graph[start][end]['weight']
+        """ Computes the equivalent resistance between two nodes in the circuit.
+            If the circuit was simplified correctly, this function returns the final resistance.
+        """
+        if self.graph.has_edge(start, end):
+            return round(sum(self.graph[start][end]['resistances']), 2)  # Return total resistance
         else:
-            raise ValueError("The circuit has not been simplified correctly.")
+            raise ValueError("Circuit simplification failed.")  # Error if simplification was incorrect
 
     def visualize(self, title="Circuit Representation"):
-        """ Visualizes the circuit graph with nodes and edge weights. """
-        pos = nx.spring_layout(self.graph)  # Defines the layout of the graph
-        labels = nx.get_edge_attributes(self.graph, 'weight')
+        """ Generates a graphical visualization of the circuit.
+            Nodes represent junctions, and edges represent resistors with their resistance values.
+        """
+        pos = nx.spring_layout(self.graph)  # Defines the graph layout
+        labels = {(u, v): f"{sum(data['resistances']):.2f}Ω" for u, v, data in self.graph.edges(data=True)}
 
-        plt.figure(figsize=(8,6))
-        nx.draw(self.graph, pos, with_labels=True, node_color='lightblue', edge_color='black', node_size=2000, font_size=12)
+        plt.figure(figsize=(8, 6))
+        nx.draw(self.graph, pos, with_labels=True, node_color='lightblue', node_size=2000)
         nx.draw_networkx_edge_labels(self.graph, pos, edge_labels=labels)
         plt.title(title)
         plt.show()
@@ -558,17 +577,16 @@ circuit.visualize("Initial Circuit Representation")
 circuit.simplify_circuit()
 print("Remaining nodes in the circuit:", circuit.graph.nodes)
 
-
 # 🔹 Computing the final equivalent resistance
 try:
     equivalent_resistance = circuit.compute_equivalent_resistance('C', 'D')
-
-    print(f"Equivalent Resistance between A and D: {equivalent_resistance} Ω")
+    print(f"Equivalent Resistance between C and D: {equivalent_resistance} Ω")
 except ValueError as e:
     print(e)
 
-# 🔹 Visualizing the final circuit
+# 🔹 Visualizing the final simplified circuit
 circuit.visualize("Final Simplified Circuit Representation")
+
 
 </code></pre>
 </details>
@@ -643,7 +661,7 @@ print(f"Test Case 3 - Equivalent Resistance: {equivalent_resistance_3} Ω")  # E
 <li>Equivalent resistance between <code>M</code> and <code>N</code> should be <strong>6.67Ω</strong> </li>
 <li>(Parallel formula: <span class="arithmatex">\( \frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} \)</span>)</li>
 </ul>
-<p><img alt="alt text" src="../image-6.png"/></p>
+<p><img alt="alt text" src="../image-9.png"/></p>
 <h3 id="test-case-3-mixed-series-and-parallel-circuit"><strong>Test Case 3: Mixed Series and Parallel Circuit</strong></h3>
 <h4 id="circuit-configuration_2"><strong>Circuit Configuration</strong></h4>
 <p><strong>Resistors:</strong>
