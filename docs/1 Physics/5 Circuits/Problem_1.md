@@ -142,45 +142,198 @@ To find the equivalent resistance between two nodes:
 ## Algorithm Implementation
 
 ### Pseudocode
+
 ```python
 function compute_equivalent_resistance(graph, start, end):
     while graph has more than 2 nodes:
-        for each series connection:
-            merge_series_resistors(graph)
-        for each parallel connection:
-            merge_parallel_resistors(graph)
+        for each node in graph:
+            if node has exactly 2 neighbors (series connection):
+            
+                neighbor_1, neighbor_2 = get_neighbors(node)
+                new_resistance = graph.get_edge_weight(node, neighbor_1) + graph.get_edge_weight(node, neighbor_2)
+                merge_nodes(graph, node, neighbor_1, neighbor_2, new_resistance)
+            
+            elif node is part of a parallel connection:
+        
+                parallel_edges = get_parallel_edges(node)
+                new_resistance = 1 / sum(1 / resistance for resistance in parallel_edges)
+                merge_parallel_resistors(graph, node, new_resistance)
+
+        if no changes were made:
+           
+            apply_advanced_reduction(graph) 
+    
     return graph.get_edge_weight(start, end)
+
+        
+    RETURN the remaining resistance between start and end nodes
 ```
 
 ### Implementation Plan
-- **Step 1:** Represent the circuit as a graph using adjacency lists.
-- **Step 2:** Identify and merge series and parallel resistances iteratively.
-- **Step 3:** Implement a function to compute equivalent resistance from start to end nodes.
-- **Step 4:** Test with simple and complex circuit configurations.
-- **Step 5:** Visualize the graph transformation process using Python’s `networkx` and `matplotlib`.
 
-## Simulation and Visualization
-Using Python and `networkx`, we will:
-- **Construct circuit graphs.**
-- **Apply iterative reductions.**
-- **Visualize transformations with plots.**
-- **Compare computed equivalent resistances with theoretical values to validate accuracy.**
+Below is the initial representation of the circuit, modeled as a graph.  
+Each **node (A, B, C, D)** represents a connection point in the circuit,  
+and each **edge** represents a resistor with a specific resistance value.
 
-## Conclusion
-This graph-theoretic approach to circuit analysis:
-- Provides a systematic method for reducing complex resistor networks.
-- Can be extended to automated circuit analysis tools.
-- Bridges electrical engineering and computational graph theory for efficient problem-solving.
-- Allows integration with software-based solutions for enhanced circuit simulations and optimizations.
+<details>
+  <summary>Phyton codes.</summary>
 
----
+```python
+import networkx as nx
+import matplotlib.pyplot as plt
 
-### Next Steps
-- Implement the algorithm in Python.
-- Test with various circuit configurations.
-- Generate graphical representations of circuit reductions.
-- Analyze performance and efficiency.
-- Extend the model to handle non-linear components and reactive elements in AC circuits.
+class CircuitGraph:
+    def __init__(self):
+        """ Initializes an empty graph to represent the circuit. """
+        self.graph = nx.Graph()
 
----
+    def add_resistor(self, node1, node2, resistance):
+        """ Adds a resistor between two nodes with a given resistance value. """
+        self.graph.add_edge(node1, node2, weight=resistance)
+
+    def visualize(self, title="Circuit Representation"):
+        """ Visualizes the circuit graph with nodes and edge weights. """
+        pos = nx.spring_layout(self.graph)  # Defines the layout of the graph
+        labels = nx.get_edge_attributes(self.graph, 'weight')
+
+        plt.figure(figsize=(8,6))
+        nx.draw(self.graph, pos, with_labels=True, node_color='lightblue', edge_color='black', node_size=2000, font_size=12)
+        nx.draw_networkx_edge_labels(self.graph, pos, edge_labels=labels)
+        plt.title(title)
+        plt.show()
+
+# 🔹 Creating a test circuit
+circuit = CircuitGraph()
+circuit.add_resistor('A', 'B', 10)
+circuit.add_resistor('B', 'C', 20)
+circuit.add_resistor('C', 'D', 30)
+circuit.add_resistor('A', 'D', 40)
+
+# 🔹 Visualizing the initial circuit
+circuit.visualize("Initial Circuit Representation")
+```
+</details>
+
+![alt text](image-1.png)
+
+**Nodes (A, B, C, D):** Circuit junctions.
+
+**Edges with weights:** Represent resistors with given resistance values.
+
+**Graph Layout:** The spring layout is used for better visualization.
+
+This graphical representation will help us simplify the circuit in the next steps, where we will iteratively reduce the network by identifying series and parallel resistors.
+
+
+
+## Detecting and Merging Series and Parallel Resistors
+
+To simplify the circuit, we apply the following rules:
+
+**Series Resistors**: If a node has exactly two connections, the resistances are summed up and the node is removed.  
+  - Formula: 
+
+    $$
+    R_{eq} = R_1 + R_2
+    $$
+
+**Parallel Resistors**: If two nodes are connected by multiple resistors, they are merged using the parallel resistance formula.  
+
+  - Formula:  
+
+    $$
+    \frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2}
+    $$
+
+By applying these transformations iteratively, the circuit is reduced to a simpler form.
+
+After detecting and merging series and parallel resistors, the simplified circuit looks like this:
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+
+class CircuitGraph:
+    def __init__(self):
+        """ Initializes an empty graph to represent the circuit. """
+        self.graph = nx.Graph()
+
+    def add_resistor(self, node1, node2, resistance):
+        """ Adds a resistor between two nodes with a given resistance value. """
+        self.graph.add_edge(node1, node2, weight=resistance)
+
+    def detect_series(self):
+        """ Detects and merges series resistances in the circuit """
+        for node in list(self.graph.nodes):
+            neighbors = list(self.graph.neighbors(node))
+            if len(neighbors) == 2:  # A node with exactly two neighbors → Series connection
+                n1, n2 = neighbors
+                if self.graph.has_edge(n1, node) and self.graph.has_edge(node, n2):
+                    r1 = self.graph[n1][node]['weight']
+                    r2 = self.graph[node][n2]['weight']
+                    new_resistance = r1 + r2  # Series formula: Req = R1 + R2
+
+                    # Merge nodes
+                    self.graph.add_edge(n1, n2, weight=new_resistance)
+                    self.graph.remove_node(node)  # Remove merged node
+
+    def detect_parallel(self):
+        """ Detects and merges parallel resistances in the circuit """
+        to_merge = []
+        for u, v, data in self.graph.edges(data=True):
+            if self.graph.number_of_edges(u, v) > 1:  # More than one edge between nodes → Parallel
+                to_merge.append((u, v))
+
+        for u, v in to_merge:
+            parallel_resistances = [
+                data['weight'] for u_, v_, data in self.graph.edges(data=True) if (u_, v_) == (u, v)
+            ]
+            new_resistance = 1 / sum(1 / r for r in parallel_resistances)  # Parallel formula: 1/Req = 1/R1 + 1/R2
+
+            # Remove all parallel edges and add the new equivalent resistance
+            self.graph.remove_edges_from([(u, v) for _ in parallel_resistances])
+            self.graph.add_edge(u, v, weight=new_resistance)
+
+    def simplify_circuit(self):
+        """ Iteratively simplifies the circuit by detecting and merging series and parallel resistances """
+        while len(self.graph.nodes) > 2:  # Keep simplifying until only two nodes remain
+            self.detect_series()
+            self.detect_parallel()
+
+    def visualize(self, title="Circuit Representation"):
+        """ Visualizes the circuit graph with nodes and edge weights. """
+        pos = nx.spring_layout(self.graph)  # Defines the layout of the graph
+        labels = nx.get_edge_attributes(self.graph, 'weight')
+
+        plt.figure(figsize=(8,6))
+        nx.draw(self.graph, pos, with_labels=True, node_color='lightblue', edge_color='black', node_size=2000, font_size=12)
+        nx.draw_networkx_edge_labels(self.graph, pos, edge_labels=labels)
+        plt.title(title)
+        plt.show()
+
+
+# 🔹 Creating a test circuit
+circuit = CircuitGraph()
+circuit.add_resistor('A', 'B', 10)
+circuit.add_resistor('B', 'C', 20)
+circuit.add_resistor('C', 'D', 30)
+circuit.add_resistor('A', 'D', 40)
+
+# 🔹 Visualizing the initial circuit
+circuit.visualize("Initial Circuit Representation")
+
+# 🔹 Simplifying the circuit
+circuit.simplify_circuit()
+
+# 🔹 Visualizing the simplified circuit
+circuit.visualize("Simplified Circuit Representation")
+```
+</details>
+
+![alt text](image-3.png)
+
+
+In this step, the circuit graph has been progressively reduced by merging equivalent resistances until only two nodes remain, representing the total equivalent resistance of the system.
+
+
 
