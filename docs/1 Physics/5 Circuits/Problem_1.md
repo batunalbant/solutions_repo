@@ -583,11 +583,51 @@ To validate our implementation, we tested different circuit configurations.
 
 <a> file:///C:/Users/batu/Desktop/Ders/2025/PHYSICS/circuits.html</a>
 
+## **Final Conclusion & Future Work**
+
 ### **Conclusion**
-This project demonstrated how graph theory can be applied to electrical circuit analysis. Using **graph-based algorithms**, we efficiently calculated equivalent resistance in **series, parallel, and mixed networks**. This approach is particularly useful in **circuit simulation software, network design, and electrical engineering applications**.
+This project successfully demonstrates the application of **graph theory in electrical circuit analysis** to compute equivalent resistance efficiently.  
 
-### **Future Improvements**
-- Optimize the algorithm for **large-scale circuits**.
-- Extend the model to handle **capacitors and inductors** in **AC circuits**.
-- Implement a **GUI-based interactive circuit solver**.
+Instead of manually solving complex resistor networks, we developed an **automated approach** using graph-based algorithms.  
 
+### **Key Achievements:**
+ **Mathematical Foundation:** Detailed explanations of series and parallel resistances, including formulas and graphical representations.  
+
+ **Graph-Based Algorithm:** Developed an iterative approach to detect and merge **series and parallel connections** systematically.  
+
+ **Full Python Implementation:** A functional script that accepts any circuit configuration and computes its **equivalent resistance**.  
+
+ **Multiple Test Cases:** Validation with different resistor networks, including **simple, nested, and complex circuits**.  
+
+ **Performance Analysis:** Assessment of computational efficiency with complexity analysis.  
+
+ **Interactive Simulation:** A **JavaScript-based circuit simulator**, allowing users to build and analyze their own circuits dynamically.
+
+This work **bridges theory and practical implementation**, making **circuit analysis more accessible, accurate, and automated**.
+
+---
+
+### **Future Work**
+Although the current implementation is robust, several enhancements can be explored:  
+
+**Handling AC Circuits:** Extend the model to support **capacitors and inductors**, introducing **complex impedance calculations**.  
+
+**Optimized Performance for Large Circuits:** Implement **matrix-based** methods like **Laplace transforms** or **admittance matrices** for highly interconnected circuits.  
+
+**GUI-Based Interactive Circuit Solver:** Develop a **drag-and-drop** interface for real-time circuit building and analysis.  
+
+**AI-Powered Circuit Optimization:** Use **machine learning** to suggest **optimal resistor placements** for minimal power loss and efficient design. 
+
+**Web-Based Deployment:** Convert the simulation into a **fully interactive web application** with **cloud storage for circuit designs**.
+
+This project **lays the foundation for intelligent circuit analysis**, with possibilities for **expansion into advanced engineering applications**.
+
+---
+
+### **Final Thoughts**
+
+Graph theory offers a **powerful and scalable** method for solving circuit problems.  
+
+By combining **theoretical knowledge with computational techniques**, this project successfully automates **equivalent resistance calculation**, paving the way for **advanced circuit analysis tools**.
+
+---
