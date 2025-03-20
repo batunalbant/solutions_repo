@@ -501,3 +501,57 @@ $$
 
 Where the \(z\)-axis component of the motion depends on the initial velocity's \(z\)-component and the strength of the magnetic field.
 
+---
+
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+
+# Constants for Larmor radius graph
+B_values = np.linspace(0.1, 2, 10)  # Magnetic field strengths (Tesla)
+v_perp = 1e6  # Perpendicular velocity (m/s)
+m = 9.11e-31  # Mass of the particle (kg)
+q = 1.6e-19  # Charge of the particle (Coulombs)
+
+# Calculate Larmor radius for each magnetic field strength
+r_L_values = (m * v_perp) / (q * B_values)
+
+# Plotting the Larmor radius vs magnetic field strength
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111)
+ax.plot(B_values, r_L_values, label='Larmor Radius')
+ax.set_xlabel('Magnetic Field Strength (B) [Tesla]')
+ax.set_ylabel('Larmor Radius (r_L) [m]')
+ax.set_title('Larmor Radius vs Magnetic Field Strength')
+ax.legend()
+plt.show()
+
+```
+</details>
+
+![alt text](image-3.png)
+
+### Larmor Radius vs Magnetic Field Strength
+
+This graph shows how the **Larmor radius** of a particle changes as the strength of the magnetic field varies. As the magnetic field strength increases, the Larmor radius decreases. This inverse relationship can be derived from the following equation:
+
+$$
+r_L = \frac{mv_{\perp}}{qB}
+$$
+
+Where:
+
+- \(m\) is the mass of the particle,
+
+- \(v_{\perp}\) is the perpendicular component of the velocity,
+
+- \(q\) is the charge of the particle,
+
+- \(B\) is the magnetic field strength.
+
+This equation shows that as \(B\) increases, the radius \(r_L\) decreases, which is reflected in the graph.
+
+---
+
+
