@@ -255,3 +255,130 @@ This simulation will be expanded to include scenarios involving electric fields 
 
 ---
 
+#### 3.1 Field Strengths (\(\vec{E}, \vec{B}\))
+- By increasing or decreasing the magnitude of the magnetic field \(\vec{B}\), the radius of the particle’s circular motion changes. From the Larmor radius formula:
+
+$$
+r_L = \frac{mv_{\perp}}{qB}
+$$
+
+**Derivation of Larmor Radius:**
+
+The centripetal force acting on the particle due to the magnetic field is:
+
+$$
+F_{centripetal} = \frac{mv_{\perp}^2}{r_L}
+$$
+
+The magnetic force acting on the charged particle is given by:
+
+$$
+F_{magnetic} = qv_{\perp}B
+$$
+
+Equating these forces:
+
+$$
+\frac{mv_{\perp}^2}{r_L} = qv_{\perp}B
+$$
+
+Solving for \(r_L\):
+
+$$
+r_L = \frac{mv_{\perp}}{qB}
+$$
+
+- The presence of an electric field \(\vec{E}\) introduces a drift motion when it is perpendicular to \(\vec{B}\). The drift velocity is given by:
+
+$$
+\vec{v_d} = \frac{\vec{E} \times \vec{B}}{B^2}
+$$
+
+**Derivation of Drift Velocity:**
+
+The drift velocity arises from the balance between the electric force and the magnetic force. When the particle reaches a steady-state motion:
+
+$$
+\vec{v_d} \times \vec{B} = \vec{E}
+$$
+
+Solving for \(\vec{v_d}\):
+
+$$
+\vec{v_d} = \frac{\vec{E} \times \vec{B}}{B^2}
+$$
+
+#### 3.2 Initial Particle Velocity (\(\vec{v}\))
+
+- The initial velocity components determine whether the motion is purely circular or helical. If there is a component parallel to \(\vec{B}\), the motion will be helical with a constant drift along the field lines.
+
+- Changing the magnitude of the initial velocity \(\vec{v}\) also affects the radius of the trajectory:
+
+$$
+r_L = \frac{mv_{\perp}}{qB}
+$$
+
+**Derivation of Radius with Initial Velocity:**
+
+The radius of curvature is derived from the balance of centripetal and magnetic forces:
+
+$$
+\frac{mv_{\perp}^2}{r_L} = qv_{\perp}B
+$$
+
+Solving for \(r_L\):
+
+$$
+r_L = \frac{mv_{\perp}}{qB}
+$$
+
+#### 3.3 Charge and Mass of the Particle (\(q, m\))
+
+- The radius of curvature is directly proportional to the mass and inversely proportional to the charge:
+
+$$
+r = \frac{mv}{qB}
+$$
+
+**Derivation of Curvature Radius:**
+
+The centripetal force is balanced by the magnetic force:
+
+$$
+\frac{mv^2}{r} = qvB
+$$
+
+Solving for \(r\):
+
+$$
+r = \frac{mv}{qB}
+$$
+
+- The cyclotron frequency is also affected:
+
+$$
+\omega = \frac{qB}{m}
+$$
+
+**Derivation of Cyclotron Frequency:**
+
+The angular velocity \(\omega\) is given by:
+
+$$
+\omega = \frac{v}{r}
+$$
+
+Using the radius of curvature formula:
+
+$$
+\omega = \frac{qB}{m}
+$$
+
+#### 3.4 Observations and Analysis
+
+- When changing the parameters, we can observe the differences in particle trajectories and compare them.
+
+- These parameter variations will be implemented in Python simulations to visualize the effects.
+
+---
+
