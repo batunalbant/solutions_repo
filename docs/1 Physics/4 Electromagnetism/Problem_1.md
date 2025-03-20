@@ -730,22 +730,22 @@ In this project, we explored the motion of charged particles under the influence
 
 #### Key Insights from the Simulations:
 
-1. **Uniform Magnetic Field (3D and 2D Motion)**:
+**Uniform Magnetic Field (3D and 2D Motion)**:
 
    - The simulation of particle motion in a **uniform magnetic field** demonstrated the characteristic **circular motion** in 2D and **helical motion** in 3D. The Larmor radius and cyclotron frequency are directly related to the particle's velocity and the magnetic field strength, providing valuable insights into the dynamics of charged particles in such fields.
    
 
-2. **Larmor Radius (Magnetic Field Effect)**:
+**Larmor Radius (Magnetic Field Effect)**:
 
    - As the magnetic field strength increases, the **Larmor radius** decreases. This inverse relationship was clearly demonstrated in the graphs, which also showed how changes in the magnetic field strength can significantly affect the particle’s trajectory. This is essential for applications like **magnetic confinement** in plasma physics and particle accelerators.
    
 
-3. **Cyclotron Frequency**:
+**Cyclotron Frequency**:
 
    - The **cyclotron frequency** was found to be directly proportional to the charge of the particle and the magnetic field strength, while it is inversely proportional to the mass. This concept is fundamental in **particle accelerators** and **mass spectrometry**, where precise control over particle motion is essential.
 
 
-4. **Drift Velocity (Effect of Electric and Magnetic Field Combination)**:
+**Drift Velocity (Effect of Electric and Magnetic Field Combination)**:
 
    - The **drift velocity** in the presence of both electric and magnetic fields was observed to increase linearly with the electric field strength. This phenomenon is important in applications such as **plasma physics** and **electric propulsion systems**, where understanding the behavior of charged particles in combined fields is crucial.
 
