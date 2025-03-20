@@ -382,3 +382,101 @@ $$
 
 ---
 
+### 4. Visualization:
+
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Constants
+q = 1.6e-19  # Charge of the particle (Coulombs)
+m = 9.11e-31  # Mass of the particle (kg)
+B = np.array([0, 0, 1])  # Magnetic field in the z-direction (Tesla)
+E = np.array([0, 0, 0])  # Electric field (V/m)
+
+# Lorentz force differential equation
+def lorentz_force(t, y):
+    v = y[3:]
+    dv_dt = (q / m) * (E + np.cross(v, B))
+    return [v[0], v[1], v[2], dv_dt[0], dv_dt[1], dv_dt[2]]
+
+# Initial conditions
+v0 = np.array([1e6, 0, 0])  # Initial velocity (m/s)
+r0 = np.array([0, 0, 0])  # Initial position (m)
+initial_conditions = np.concatenate((r0, v0))
+
+# Time span
+t_span = (0, 1e-6)
+t_eval = np.linspace(*t_span, 1000)
+
+# Solving the differential equation
+solution = solve_ivp(lorentz_force, t_span, initial_conditions, t_eval=t_eval, method='RK45')
+
+# Plotting the result - 3D path
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111, projection='3d')
+ax.plot(solution.y[0], solution.y[1], solution.y[2], label='Particle Path')
+ax.set_xlabel('X (m)')
+ax.set_ylabel('Y (m)')
+ax.set_zlabel('Z (m)')
+ax.set_title('Particle Motion in Uniform Magnetic Field (3D)')
+ax.legend()
+plt.show()
+
+# Plotting the result - 2D path
+fig2 = plt.figure(figsize=(8, 6))
+ax2 = fig2.add_subplot(111)
+ax2.plot(solution.y[0], solution.y[1], label='Particle Path (2D)')
+ax2.set_xlabel('X (m)')
+ax2.set_ylabel('Y (m)')
+ax2.set_title('Particle Motion in Uniform Magnetic Field (2D)')
+ax2.legend()
+plt.show()
+
+```
+</details>
+
+![alt text](image-1.png)
+
+#### Particle Motion in Uniform Magnetic Field (2D)
+
+This graph shows the particle motion under a uniform magnetic field in 2D. The particle follows a circular path due to the effect of the magnetic field. Only the x and y axes are considered here for the motion. The Larmor radius changes depending on the initial velocity of the particle and the strength of the magnetic field.
+
+**Mathematical Explanation:**
+
+- The equations that describe the particle's circular motion are:
+
+$$
+\vec{F} = q (\vec{v} \times \vec{B})
+$$
+
+- This force results in the particle’s circular motion. The Larmor radius is calculated as:
+
+$$
+r_L = \frac{mv_{\perp}}{qB}
+$$
+
+Where:
+
+\[v_{\perp}\] is the component of the particle's velocity perpendicular to the magnetic field,
+
+\[
+B
+\]
+is the strength of the magnetic field,
+
+\[
+m
+\]
+is the mass of the particle,
+
+\[
+q
+\]
+is the charge of the particle.
+
