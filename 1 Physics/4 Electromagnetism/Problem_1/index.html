@@ -82,6 +82,8 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#2-simulating-particle-motion">2. Simulating Particle Motion</a>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="#4-visualization">4. Visualization:</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -517,6 +519,91 @@ r = \frac{mv}{qB}
 </li>
 </ul>
 <hr/>
+<h3 id="4-visualization">4. Visualization:</h3>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python">
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Constants
+q = 1.6e-19  # Charge of the particle (Coulombs)
+m = 9.11e-31  # Mass of the particle (kg)
+B = np.array([0, 0, 1])  # Magnetic field in the z-direction (Tesla)
+E = np.array([0, 0, 0])  # Electric field (V/m)
+
+# Lorentz force differential equation
+def lorentz_force(t, y):
+    v = y[3:]
+    dv_dt = (q / m) * (E + np.cross(v, B))
+    return [v[0], v[1], v[2], dv_dt[0], dv_dt[1], dv_dt[2]]
+
+# Initial conditions
+v0 = np.array([1e6, 0, 0])  # Initial velocity (m/s)
+r0 = np.array([0, 0, 0])  # Initial position (m)
+initial_conditions = np.concatenate((r0, v0))
+
+# Time span
+t_span = (0, 1e-6)
+t_eval = np.linspace(*t_span, 1000)
+
+# Solving the differential equation
+solution = solve_ivp(lorentz_force, t_span, initial_conditions, t_eval=t_eval, method='RK45')
+
+# Plotting the result - 3D path
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111, projection='3d')
+ax.plot(solution.y[0], solution.y[1], solution.y[2], label='Particle Path')
+ax.set_xlabel('X (m)')
+ax.set_ylabel('Y (m)')
+ax.set_zlabel('Z (m)')
+ax.set_title('Particle Motion in Uniform Magnetic Field (3D)')
+ax.legend()
+plt.show()
+
+# Plotting the result - 2D path
+fig2 = plt.figure(figsize=(8, 6))
+ax2 = fig2.add_subplot(111)
+ax2.plot(solution.y[0], solution.y[1], label='Particle Path (2D)')
+ax2.set_xlabel('X (m)')
+ax2.set_ylabel('Y (m)')
+ax2.set_title('Particle Motion in Uniform Magnetic Field (2D)')
+ax2.legend()
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-1.png"/></p>
+<h4 id="particle-motion-in-uniform-magnetic-field-2d">Particle Motion in Uniform Magnetic Field (2D)</h4>
+<p>This graph shows the particle motion under a uniform magnetic field in 2D. The particle follows a circular path due to the effect of the magnetic field. Only the x and y axes are considered here for the motion. The Larmor radius changes depending on the initial velocity of the particle and the strength of the magnetic field.</p>
+<p><strong>Mathematical Explanation:</strong></p>
+<ul>
+<li>The equations that describe the particle's circular motion are:</li>
+</ul>
+<div class="arithmatex">\[
+\vec{F} = q (\vec{v} \times \vec{B})
+\]</div>
+<ul>
+<li>This force results in the particle’s circular motion. The Larmor radius is calculated as:</li>
+</ul>
+<div class="arithmatex">\[
+r_L = \frac{mv_{\perp}}{qB}
+\]</div>
+<p>Where:</p>
+<p>[v_{\perp}] is the component of the particle's velocity perpendicular to the magnetic field,</p>
+<p>[
+B
+]
+is the strength of the magnetic field,</p>
+<p>[
+m
+]
+is the mass of the particle,</p>
+<p>[
+q
+]
+is the charge of the particle.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
