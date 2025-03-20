@@ -80,23 +80,15 @@
 <ul>
 <li class="toctree-l4"><a class="reference internal" href="#1-exploration-of-applications">1. Exploration of Applications</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#breaking-down-the-formula">Breaking Down the Formula</a>
+<li class="toctree-l4"><a class="reference internal" href="#derivation-of-the-equation-of-motion">Derivation of the Equation of Motion</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#detailed-explanation-of-the-cross-product">Detailed Explanation of the Cross Product</a>
+<li class="toctree-l4"><a class="reference internal" href="#dividing-by-mass">Dividing by Mass</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#why-magnetic-force-is-perpendicular">Why Magnetic Force is Perpendicular</a>
+<li class="toctree-l4"><a class="reference internal" href="#decomposing-the-vector-equation">Decomposing the Vector Equation</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#combining-the-forces">Combining the Forces</a>
+<li class="toctree-l4"><a class="reference internal" href="#component-form-of-equations">Component Form of Equations</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#physical-interpretation-of-each-term">Physical Interpretation of Each Term</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#equation-of-motion-detailed-derivation">Equation of Motion - Detailed Derivation</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#simplification">Simplification</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#applications">Applications</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#relevance-of-fields">Relevance of Fields</a>
+<li class="toctree-l4"><a class="reference internal" href="#physical-interpretation">Physical Interpretation</a>
 </li>
 </ul>
 </li>
@@ -202,10 +194,12 @@
 <h1 id="simulating-the-effects-of-the-lorentz-force">Simulating the Effects of the Lorentz Force</h1>
 <h2 id="introduction">Introduction</h2>
 <p>The Lorentz force is a fundamental concept in electromagnetism that describes the force exerted on a charged particle moving through electric and magnetic fields. This concept is not only crucial in understanding classical electrodynamics but also serves as a cornerstone for various technological applications. It governs the motion of charged particles in environments ranging from simple laboratory settings to complex astrophysical scenarios. Its importance is most evident in areas such as plasma physics, particle accelerators, mass spectrometers, and magnetic confinement systems used for nuclear fusion.</p>
+<p>The Lorentz force equation provides a unified framework to study how particles respond to external electromagnetic fields. This principle is applied in a wide range of disciplines, including charged particle optics, magnetohydrodynamics, space physics, and even medical imaging technologies such as Magnetic Resonance Imaging (MRI). Understanding this force allows scientists and engineers to devise systems that can manipulate charged particles for various purposes, whether to accelerate them to near-light speeds in colliders or to confine them in magnetic traps for plasma research.</p>
 <p>Understanding how charged particles behave under the influence of electromagnetic fields is essential for designing and improving systems that rely on controlled particle motion. This report aims to provide a comprehensive examination of the Lorentz force by simulating the trajectories of charged particles under different field conditions. By employing numerical techniques and Python programming, we will visualize these trajectories and analyze the parameters influencing them.</p>
 <h2 id="motivation">Motivation</h2>
 <p>The Lorentz force, expressed as <span class="arithmatex">\( \mathbf{F} = q\mathbf{E} + q\mathbf{v} \times \mathbf{B} \)</span>, plays a pivotal role in understanding how charged particles interact with electric and magnetic fields. The force arises from the combination of electric forces <span class="arithmatex">\( q\mathbf{E} \)</span> and magnetic forces <span class="arithmatex">\( q\mathbf{v} \times \mathbf{B} \)</span>. Through its application, scientists and engineers can design devices that manipulate particles for various purposes, ranging from particle accelerators that push the boundaries of high-energy physics to mass spectrometers that analyze chemical compositions with precision.</p>
 <p>Moreover, the Lorentz force is instrumental in plasma confinement techniques, particularly in magnetic confinement fusion where charged particles are controlled by strong magnetic fields to facilitate nuclear fusion reactions. By focusing on simulations, we can explore how different configurations of electric and magnetic fields influence the trajectories of particles, providing valuable insights into practical systems and enhancing our theoretical understanding of the Lorentz force.</p>
+<p>Additionally, understanding the Lorentz force is crucial for developing space exploration technologies, where charged particles from the Sun interact with planetary magnetic fields. It also plays a significant role in electric propulsion systems, such as Hall effect thrusters, used in spacecraft. Mastering this concept is essential for making advancements in various scientific and technological domains.</p>
 <h2 id="task">Task</h2>
 <h3 id="1-exploration-of-applications">1. Exploration of Applications</h3>
 <h4 id="mathematical-analysis-of-lorentz-force">Mathematical Analysis of Lorentz Force</h4>
@@ -213,7 +207,7 @@
 <div class="arithmatex">\[
 \mathbf{F} = q \mathbf{E} + q \mathbf{v} \times \mathbf{B}
 \]</div>
-<p>Here:</p>
+<p><strong>Here:</strong></p>
 <ul>
 <li>
 <p><span class="arithmatex">\( \mathbf{F} \)</span> is the total force acting on the particle.</p>
@@ -231,104 +225,52 @@
 <p><span class="arithmatex">\( \mathbf{B} \)</span> is the magnetic field (<span class="arithmatex">\( \text{Tesla} \)</span>).</p>
 </li>
 </ul>
-<h3 id="breaking-down-the-formula">Breaking Down the Formula</h3>
-<p>The Lorentz force equation can be split into two parts:</p>
-<ol>
-<li><strong>Electric Force (<span class="arithmatex">\( \mathbf{F}_E \)</span>)</strong>:</li>
-</ol>
-<p>The electric force is derived from the fundamental definition of force applied to a charged particle in an electric field. It follows directly from Coulomb's law:</p>
-<div class="arithmatex">\[
-\mathbf{F}_E = q \mathbf{E}
-\]</div>
-<ul>
-<li>
-<p>The direction of this force is the same as the electric field if the charge <span class="arithmatex">\( q \)</span> is positive, and opposite if <span class="arithmatex">\( q \)</span> is negative.</p>
-</li>
-<li>
-<p>The magnitude of this force is proportional to both the charge of the particle and the strength of the electric field.</p>
-</li>
-<li>
-<p><strong>Magnetic Force (<span class="arithmatex">\( \mathbf{F}_B \)</span>)</strong>:</p>
-</li>
-</ul>
-<p>The magnetic force is more complex due to the nature of the cross product operation. The force is calculated as:</p>
-<div class="arithmatex">\[
-\mathbf{F}_B = q \mathbf{v} \times \mathbf{B}
-\]</div>
-<h3 id="detailed-explanation-of-the-cross-product">Detailed Explanation of the Cross Product</h3>
-<p>The cross product <span class="arithmatex">\( \mathbf{v} \times \mathbf{B} \)</span> produces a vector that is:</p>
-<ul>
-<li>
-<p>Perpendicular to <strong>both</strong> <span class="arithmatex">\( \mathbf{v} \)</span> and <span class="arithmatex">\( \mathbf{B} \)</span>.</p>
-</li>
-<li>
-<p>Its direction is determined by the <strong>right-hand rule</strong>.</p>
-</li>
-<li>
-<p>Its magnitude is given by:</p>
-</li>
-</ul>
-<div class="arithmatex">\[
-|\mathbf{F}_B| = qvB \sin \theta
-\]</div>
-<p><strong>Where:</strong></p>
-<ul>
-<li>
-<p><span class="arithmatex">\( v \)</span> is the speed of the particle (magnitude of <span class="arithmatex">\( \mathbf{v} \)</span>).</p>
-</li>
-<li>
-<p><span class="arithmatex">\( B \)</span> is the magnitude of the magnetic field.</p>
-</li>
-<li>
-<p><span class="arithmatex">\( \theta \)</span> is the angle between the directions of <span class="arithmatex">\( \mathbf{v} \)</span> and <span class="arithmatex">\( \mathbf{B} \)</span>.</p>
-</li>
-</ul>
-<h3 id="why-magnetic-force-is-perpendicular">Why Magnetic Force is Perpendicular</h3>
-<p>The cross product ensures that the resulting force is always perpendicular to the plane formed by <span class="arithmatex">\( \mathbf{v} \)</span> and <span class="arithmatex">\( \mathbf{B} \)</span>. This means:</p>
-<ul>
-<li>
-<p>Magnetic force <strong>cannot do work</strong> on a particle because it never changes the magnitude of <span class="arithmatex">\( \mathbf{v} \)</span>, only its direction.</p>
-</li>
-<li>
-<p>The force causes particles to <strong>move in circular or helical paths</strong>, rather than accelerating them linearly.</p>
-</li>
-</ul>
-<h3 id="combining-the-forces">Combining the Forces</h3>
-<p>The total Lorentz force is a vector sum of the electric and magnetic forces:</p>
-<div class="arithmatex">\[
-\mathbf{F} = q\mathbf{E} + q \mathbf{v} \times \mathbf{B}
-\]</div>
-<h3 id="physical-interpretation-of-each-term">Physical Interpretation of Each Term</h3>
-<ol>
-<li>
-<p><strong>The term <span class="arithmatex">\( q\mathbf{E} \)</span>:</strong> Responsible for the linear acceleration of the particle along the direction of the electric field.</p>
-</li>
-<li>
-<p><strong>The term <span class="arithmatex">\( q \mathbf{v} \times \mathbf{B} \)</span>:</strong> Responsible for the circular or helical motion depending on the angle between <span class="arithmatex">\( \mathbf{v} \)</span> and <span class="arithmatex">\( \mathbf{B} \)</span>.</p>
-</li>
-</ol>
-<h3 id="equation-of-motion-detailed-derivation">Equation of Motion - Detailed Derivation</h3>
-<p>Using <strong>Newton's Second Law of Motion</strong>:</p>
+<h3 id="derivation-of-the-equation-of-motion">Derivation of the Equation of Motion</h3>
+<p>According to <strong>Newton's Second Law of Motion</strong>, the total force acting on a particle is given by:</p>
 <div class="arithmatex">\[
 \mathbf{F} = m \frac{d\mathbf{v}}{dt}
 \]</div>
-<p>Substituting the Lorentz force:</p>
+<p>Now, substituting the Lorentz force equation into Newton’s second law:</p>
 <div class="arithmatex">\[
-m \frac{d\mathbf{v}}{dt} = q\mathbf{E} + q \mathbf{v} \times \mathbf{B}
+m \frac{d\mathbf{v}}{dt} = q \mathbf{E} + q \mathbf{v} \times \mathbf{B}
 \]</div>
-<h3 id="simplification">Simplification</h3>
-<p>Dividing both sides by the particle’s mass <span class="arithmatex">\( m \)</span>:</p>
+<h3 id="dividing-by-mass">Dividing by Mass</h3>
+<p>To isolate the derivative term, we divide the entire equation by the particle's mass <span class="arithmatex">\( m \)</span>:</p>
 <div class="arithmatex">\[
-\frac{d\mathbf{v}}{dt} = \frac{q}{m} \mathbf{E} + \frac{q}{m}(\mathbf{v} \times \mathbf{B})
+\frac{d\mathbf{v}}{dt} = \frac{q}{m} \mathbf{E} + \frac{q}{m} (\mathbf{v} \times \mathbf{B})
 \]</div>
-<p>This differential equation is fundamental in describing how a charged particle's velocity changes over time in response to the combined electric and magnetic fields. The next step involves solving this equation numerically to simulate various scenarios.</p>
-<h3 id="applications">Applications</h3>
-<p><strong>Particle Accelerators:</strong> High-speed particle acceleration using synchronized magnetic and electric fields.</p>
-<p><strong>Mass Spectrometers:</strong> Separation of ions by mass-to-charge ratio using magnetic fields.</p>
-<p><strong>Plasma Confinement:</strong> Confining hot plasma using magnetic fields in nuclear fusion reactors.</p>
-<p><strong>Cyclotrons:</strong> Devices that accelerate charged particles using perpendicular magnetic and electric fields.</p>
-<h3 id="relevance-of-fields">Relevance of Fields</h3>
-<p>Understanding how electric and magnetic fields interact with charged particles is essential for designing various technological devices and scientific experiments. Furthermore, this analysis lays the groundwork for developing simulations to visualize particle trajectories in different field configurations.</p>
+<h3 id="decomposing-the-vector-equation">Decomposing the Vector Equation</h3>
+<p>Since the Lorentz force equation is a vector differential equation, we need to break it down into its <strong>component form</strong>. Suppose the vectors are represented in Cartesian coordinates:</p>
+<ul>
+<li><span class="arithmatex">\( \mathbf{v} = (v_x, v_y, v_z) \)</span></li>
+<li><span class="arithmatex">\( \mathbf{E} = (E_x, E_y, E_z) \)</span></li>
+<li><span class="arithmatex">\( \mathbf{B} = (B_x, B_y, B_z) \)</span></li>
+</ul>
+<p>Using the definition of the <strong>cross product</strong>:</p>
+<div class="arithmatex">\[
+\mathbf{v} \times \mathbf{B} = 
+\begin{vmatrix} 
+\hat{x} &amp; \hat{y} &amp; \hat{z} \\
+v_x &amp; v_y &amp; v_z \\
+B_x &amp; B_y &amp; B_z 
+\end{vmatrix} = (v_y B_z - v_z B_y, v_z B_x - v_x B_z, v_x B_y - v_y B_x)
+\]</div>
+<h3 id="component-form-of-equations">Component Form of Equations</h3>
+<p>Now, substituting the cross product components into the Lorentz force equation, we have:</p>
+<div class="arithmatex">\[
+\frac{dv_x}{dt} = \frac{q}{m} \left( E_x + v_y B_z - v_z B_y \right)
+\]</div>
+<div class="arithmatex">\[
+\frac{dv_y}{dt} = \frac{q}{m} \left( E_y + v_z B_x - v_x B_z \right)
+\]</div>
+<div class="arithmatex">\[
+\frac{dv_z}{dt} = \frac{q}{m} \left( E_z + v_x B_y - v_y B_x \right)
+\]</div>
+<p>These three equations form a <strong>system of coupled ordinary differential equations (ODEs)</strong>. Solving these equations requires numerical methods, which will be addressed in the simulation section.</p>
+<h3 id="physical-interpretation">Physical Interpretation</h3>
+<p><strong>Electric Force Term (<span class="arithmatex">\( q\mathbf{E} \)</span>):</strong> Causes linear acceleration along the electric field's direction.</p>
+<p><strong>Magnetic Force Term (<span class="arithmatex">\( q \mathbf{v} \times \mathbf{B} \)</span>):</strong> Causes the charged particle to move in a circular or helical path depending on the angle between <span class="arithmatex">\( \mathbf{v} \)</span> and <span class="arithmatex">\( \mathbf{B} \)</span>.</p>
+<p>The above derivation provides a thorough explanation of how the Lorentz force equation is broken down into its components and how the system of differential equations is formed.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
