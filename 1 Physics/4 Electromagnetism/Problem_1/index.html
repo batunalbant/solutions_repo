@@ -84,6 +84,8 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#4-visualization">4. Visualization:</a>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="#larmor-radius-vs-magnetic-field-strength">Larmor Radius vs Magnetic Field Strength</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -622,6 +624,54 @@ r_L = \frac{mv_{\perp}}{qB}
 \omega = \frac{qB}{m}
 \]</div>
 <p>Where the <span class="arithmatex">\(z\)</span>-axis component of the motion depends on the initial velocity's <span class="arithmatex">\(z\)</span>-component and the strength of the magnetic field.</p>
+<hr/>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python">
+# Constants for Larmor radius graph
+B_values = np.linspace(0.1, 2, 10)  # Magnetic field strengths (Tesla)
+v_perp = 1e6  # Perpendicular velocity (m/s)
+m = 9.11e-31  # Mass of the particle (kg)
+q = 1.6e-19  # Charge of the particle (Coulombs)
+
+# Calculate Larmor radius for each magnetic field strength
+r_L_values = (m * v_perp) / (q * B_values)
+
+# Plotting the Larmor radius vs magnetic field strength
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111)
+ax.plot(B_values, r_L_values, label='Larmor Radius')
+ax.set_xlabel('Magnetic Field Strength (B) [Tesla]')
+ax.set_ylabel('Larmor Radius (r_L) [m]')
+ax.set_title('Larmor Radius vs Magnetic Field Strength')
+ax.legend()
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-3.png"/></p>
+<h3 id="larmor-radius-vs-magnetic-field-strength">Larmor Radius vs Magnetic Field Strength</h3>
+<p>This graph shows how the <strong>Larmor radius</strong> of a particle changes as the strength of the magnetic field varies. As the magnetic field strength increases, the Larmor radius decreases. This inverse relationship can be derived from the following equation:</p>
+<div class="arithmatex">\[
+r_L = \frac{mv_{\perp}}{qB}
+\]</div>
+<p>Where:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(m\)</span> is the mass of the particle,</p>
+</li>
+<li>
+<p><span class="arithmatex">\(v_{\perp}\)</span> is the perpendicular component of the velocity,</p>
+</li>
+<li>
+<p><span class="arithmatex">\(q\)</span> is the charge of the particle,</p>
+</li>
+<li>
+<p><span class="arithmatex">\(B\)</span> is the magnetic field strength.</p>
+</li>
+</ul>
+<p>This equation shows that as <span class="arithmatex">\(B\)</span> increases, the radius <span class="arithmatex">\(r_L\)</span> decreases, which is reflected in the graph.</p>
+<hr/>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
