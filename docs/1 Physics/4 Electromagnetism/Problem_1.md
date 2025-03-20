@@ -120,3 +120,131 @@ The Lorentz force is a fundamental concept with broad applications across variou
 
 The interaction between electric and magnetic fields allows for sophisticated control over particle motion, which is the basis for many experimental and practical setups in physics and engineering.
 
+---
+
+### 2. Simulating Particle Motion
+The motion of charged particles under electromagnetic fields is governed by the Lorentz force law. To simulate particle motion, we will solve the differential equations derived from the Lorentz force using numerical methods. We will explore the following scenarios:
+
+#### 2.1 Uniform Magnetic Field (\(\vec{E} = 0\))
+When a charged particle moves in a uniform magnetic field and no electric field is present, the Lorentz force becomes:
+
+$$
+\vec{F} = q(\vec{v} \times \vec{B})
+$$
+
+Using Newton's second law:
+
+$$
+m \frac{d\vec{v}}{dt} = q(\vec{v} \times \vec{B})
+$$
+
+#### Derivation of Equations of Motion
+
+Assume the magnetic field is along the \(z\)-axis: \(\vec{B} = [0, 0, B_z]\). Expanding the cross product:
+
+$$
+\vec{v} \times \vec{B} = 
+\begin{vmatrix} 
+\hat{i} & \hat{j} & \hat{k} \\
+ v_x & v_y & v_z \\
+ 0 & 0 & B_z 
+\end{vmatrix} = [v_y B_z, -v_x B_z, 0]
+$$
+
+Thus, the force components become:
+
+$$
+F_x = q v_y B_z, \quad F_y = -q v_x B_z, \quad F_z = 0
+$$
+
+Applying Newton’s second law:
+
+$$
+m \frac{dv_x}{dt} = qB_z v_y, \quad m \frac{dv_y}{dt} = -qB_z v_x, \quad m \frac{dv_z}{dt} = 0
+$$
+
+From the equations, we can derive:
+
+$$
+\frac{d^2 x}{dt^2} = -\omega^2 x, \quad \frac{d^2 y}{dt^2} = -\omega^2 y, \quad \frac{d^2 z}{dt^2} = 0
+$$
+
+Where:
+
+$$
+\omega = \frac{qB_z}{m}
+$$
+
+These are simple harmonic motion equations describing circular or helical motion.
+
+#### 2.2 Combined Electric and Magnetic Fields
+If an electric field is also present, the equation becomes:
+
+\[
+m \frac{d\vec{v}}{dt} = q(\vec{E} + \vec{v} \times \vec{B})
+\]
+
+#### Derivation of Drift Velocity
+
+Consider a scenario where \(\vec{E}\) and \(\vec{B}\) are perpendicular. The particle experiences a force due to both fields:
+
+$$
+\vec{F} = q(\vec{E} + \vec{v} \times \vec{B})
+$$
+
+Since the motion is complex, we look for the steady-state condition where the net force along the \(\vec{B}\) direction is zero. The drift velocity \(\vec{v_d}\) is given by:
+
+$$
+\vec{v_d} = \frac{\vec{E} \times \vec{B}}{B^2}
+$$
+
+This derivation shows that the particle undergoes a drift motion perpendicular to both the electric and magnetic fields.
+
+#### 2.3 Numerical Implementation
+The differential equations will be solved using the **Runge-Kutta method (RK45)** for high accuracy. The following Python code implements the simulation for the uniform magnetic field case.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Constants
+q = 1.6e-19  # Charge of the particle (Coulombs)
+m = 9.11e-31  # Mass of the particle (kg)
+B = np.array([0, 0, 1])  # Magnetic field in the z-direction (Tesla)
+E = np.array([0, 0, 0])  # Electric field (V/m)
+
+# Lorentz force differential equation
+def lorentz_force(t, y):
+    v = y[3:]
+    dv_dt = (q / m) * (E + np.cross(v, B))
+    return [v[0], v[1], v[2], dv_dt[0], dv_dt[1], dv_dt[2]]
+
+# Initial conditions
+v0 = np.array([1e6, 0, 0])  # Initial velocity (m/s)
+r0 = np.array([0, 0, 0])  # Initial position (m)
+initial_conditions = np.concatenate((r0, v0))
+
+# Time span
+t_span = (0, 1e-6)
+t_eval = np.linspace(*t_span, 1000)
+
+# Solving the differential equation
+solution = solve_ivp(lorentz_force, t_span, initial_conditions, t_eval=t_eval, method='RK45')
+
+# Plotting the result
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111, projection='3d')
+ax.plot(solution.y[0], solution.y[1], solution.y[2], label='Particle Path')
+ax.set_xlabel('X (m)')
+ax.set_ylabel('Y (m)')
+ax.set_zlabel('Z (m)')
+ax.set_title('Particle Motion in Uniform Magnetic Field')
+ax.legend()
+plt.show()
+```
+
+This simulation will be expanded to include scenarios involving electric fields and crossed electric and magnetic fields in the next steps.
+
+
+
