@@ -416,6 +416,107 @@ plt.show()
 <p><img alt="alt text" src="../image.png"/></p>
 <p>This simulation will be expanded to include scenarios involving electric fields and crossed electric and magnetic fields in the next steps.</p>
 <hr/>
+<h4 id="31-field-strengths-vece-vecb">3.1 Field Strengths (<span class="arithmatex">\(\vec{E}, \vec{B}\)</span>)</h4>
+<ul>
+<li>By increasing or decreasing the magnitude of the magnetic field <span class="arithmatex">\(\vec{B}\)</span>, the radius of the particle’s circular motion changes. From the Larmor radius formula:</li>
+</ul>
+<div class="arithmatex">\[
+r_L = \frac{mv_{\perp}}{qB}
+\]</div>
+<p><strong>Derivation of Larmor Radius:</strong></p>
+<p>The centripetal force acting on the particle due to the magnetic field is:</p>
+<div class="arithmatex">\[
+F_{centripetal} = \frac{mv_{\perp}^2}{r_L}
+\]</div>
+<p>The magnetic force acting on the charged particle is given by:</p>
+<div class="arithmatex">\[
+F_{magnetic} = qv_{\perp}B
+\]</div>
+<p>Equating these forces:</p>
+<div class="arithmatex">\[
+\frac{mv_{\perp}^2}{r_L} = qv_{\perp}B
+\]</div>
+<p>Solving for <span class="arithmatex">\(r_L\)</span>:</p>
+<div class="arithmatex">\[
+r_L = \frac{mv_{\perp}}{qB}
+\]</div>
+<ul>
+<li>The presence of an electric field <span class="arithmatex">\(\vec{E}\)</span> introduces a drift motion when it is perpendicular to <span class="arithmatex">\(\vec{B}\)</span>. The drift velocity is given by:</li>
+</ul>
+<div class="arithmatex">\[
+\vec{v_d} = \frac{\vec{E} \times \vec{B}}{B^2}
+\]</div>
+<p><strong>Derivation of Drift Velocity:</strong></p>
+<p>The drift velocity arises from the balance between the electric force and the magnetic force. When the particle reaches a steady-state motion:</p>
+<div class="arithmatex">\[
+\vec{v_d} \times \vec{B} = \vec{E}
+\]</div>
+<p>Solving for <span class="arithmatex">\(\vec{v_d}\)</span>:</p>
+<div class="arithmatex">\[
+\vec{v_d} = \frac{\vec{E} \times \vec{B}}{B^2}
+\]</div>
+<h4 id="32-initial-particle-velocity-vecv">3.2 Initial Particle Velocity (<span class="arithmatex">\(\vec{v}\)</span>)</h4>
+<ul>
+<li>
+<p>The initial velocity components determine whether the motion is purely circular or helical. If there is a component parallel to <span class="arithmatex">\(\vec{B}\)</span>, the motion will be helical with a constant drift along the field lines.</p>
+</li>
+<li>
+<p>Changing the magnitude of the initial velocity <span class="arithmatex">\(\vec{v}\)</span> also affects the radius of the trajectory:</p>
+</li>
+</ul>
+<div class="arithmatex">\[
+r_L = \frac{mv_{\perp}}{qB}
+\]</div>
+<p><strong>Derivation of Radius with Initial Velocity:</strong></p>
+<p>The radius of curvature is derived from the balance of centripetal and magnetic forces:</p>
+<div class="arithmatex">\[
+\frac{mv_{\perp}^2}{r_L} = qv_{\perp}B
+\]</div>
+<p>Solving for <span class="arithmatex">\(r_L\)</span>:</p>
+<div class="arithmatex">\[
+r_L = \frac{mv_{\perp}}{qB}
+\]</div>
+<h4 id="33-charge-and-mass-of-the-particle-q-m">3.3 Charge and Mass of the Particle (<span class="arithmatex">\(q, m\)</span>)</h4>
+<ul>
+<li>The radius of curvature is directly proportional to the mass and inversely proportional to the charge:</li>
+</ul>
+<div class="arithmatex">\[
+r = \frac{mv}{qB}
+\]</div>
+<p><strong>Derivation of Curvature Radius:</strong></p>
+<p>The centripetal force is balanced by the magnetic force:</p>
+<div class="arithmatex">\[
+\frac{mv^2}{r} = qvB
+\]</div>
+<p>Solving for <span class="arithmatex">\(r\)</span>:</p>
+<div class="arithmatex">\[
+r = \frac{mv}{qB}
+\]</div>
+<ul>
+<li>The cyclotron frequency is also affected:</li>
+</ul>
+<div class="arithmatex">\[
+\omega = \frac{qB}{m}
+\]</div>
+<p><strong>Derivation of Cyclotron Frequency:</strong></p>
+<p>The angular velocity <span class="arithmatex">\(\omega\)</span> is given by:</p>
+<div class="arithmatex">\[
+\omega = \frac{v}{r}
+\]</div>
+<p>Using the radius of curvature formula:</p>
+<div class="arithmatex">\[
+\omega = \frac{qB}{m}
+\]</div>
+<h4 id="34-observations-and-analysis">3.4 Observations and Analysis</h4>
+<ul>
+<li>
+<p>When changing the parameters, we can observe the differences in particle trajectories and compare them.</p>
+</li>
+<li>
+<p>These parameter variations will be implemented in Python simulations to visualize the effects.</p>
+</li>
+</ul>
+<hr/>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
