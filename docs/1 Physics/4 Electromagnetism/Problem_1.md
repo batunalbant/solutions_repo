@@ -203,6 +203,9 @@ This derivation shows that the particle undergoes a drift motion perpendicular t
 #### 2.3 Numerical Implementation
 The differential equations will be solved using the **Runge-Kutta method (RK45)** for high accuracy. The following Python code implements the simulation for the uniform magnetic field case.
 
+<details>
+  <summary>Phyton codes.</summary>
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -244,7 +247,11 @@ ax.legend()
 plt.show()
 ```
 
+</details>
+
+![alt text](image.png)
+
 This simulation will be expanded to include scenarios involving electric fields and crossed electric and magnetic fields in the next steps.
 
-
+---
 
