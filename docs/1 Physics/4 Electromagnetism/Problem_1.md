@@ -463,7 +463,7 @@ $$
 
 Where:
 
-\[ v_{\perp} \] is the component of the particle's velocity perpendicular to the magnetic field,
+\(v_{\perp}\) is the component of the particle's velocity perpendicular to the magnetic field,
 
 \[
 B
