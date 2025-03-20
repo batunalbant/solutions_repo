@@ -472,3 +472,32 @@ Where:
 
 - \(q\) is the charge of the particle.
 
+---
+
+![alt text](image-2.png)
+
+#### Particle Motion in Uniform Magnetic Field (3D)
+
+This graph shows the 3D motion of the same particle. The particle exhibits helical motion due to the combined effect of the magnetic field. In addition to the circular motion in the \(x - y\) plane, there is also a motion along the \(z\)-axis, which makes the path spiral.
+
+**Mathematical Explanation:**
+
+The particle's helical motion is described by the combination of circular motion in the plane and linear motion along the magnetic field direction. The mathematical model for this motion is:
+
+$$
+\vec{F} = q (\vec{v} \times \vec{B})
+$$
+
+The Larmor radius and the cyclotron frequency are given by:
+
+$$
+r_L = \frac{mv_{\perp}}{qB}
+$$
+
+
+$$
+\omega = \frac{qB}{m}
+$$
+
+Where the \(z\)-axis component of the motion depends on the initial velocity's \(z\)-component and the strength of the magnetic field.
+
