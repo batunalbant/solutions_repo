@@ -1,6 +1,6 @@
-# Simulating the Effects of the Lorentz Force
+## Simulating the Effects of the Lorentz Force
 
-#### Introduction
+### Introduction
 The study of charged particle motion under the influence of electromagnetic fields is a fundamental topic in classical electromagnetism and has broad applications in various scientific and technological fields. The Lorentz force law describes the force experienced by a charged particle moving through electric and magnetic fields, which can be expressed as:
 
 $$
@@ -9,7 +9,7 @@ $$
 
 This force law is essential in understanding the dynamics of charged particles in systems such as particle accelerators, magnetic confinement devices (e.g., tokamaks), mass spectrometers, and various plasma physics applications. The motion of charged particles can exhibit complex trajectories depending on the configuration and strength of the applied electric and magnetic fields. Understanding these trajectories through simulations provides valuable insights into real-world systems and their underlying physical principles.
 
-#### Motivation
+### Motivation
 
 The Lorentz force governs the motion of charged particles and plays a critical role in numerous technological and scientific domains. For example:
 
