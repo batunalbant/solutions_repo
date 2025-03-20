@@ -463,20 +463,12 @@ $$
 
 Where:
 
-\(v_{\perp}\) is the component of the particle's velocity perpendicular to the magnetic field,
+- \(v_{\perp}\) is the component of the particle's velocity perpendicular to the magnetic field,
 
-\[
-B
-\]
-is the strength of the magnetic field,
 
-\[
-m
-\]
-is the mass of the particle,
+- \(B\) is the strength of the magnetic field,
 
-\[
-q
-\]
-is the charge of the particle.
+- \(m\) is the mass of the particle,
+
+- \(q\) is the charge of the particle.
 
