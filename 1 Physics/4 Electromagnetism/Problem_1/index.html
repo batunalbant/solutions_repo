@@ -86,6 +86,12 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#larmor-radius-vs-magnetic-field-strength">Larmor Radius vs Magnetic Field Strength</a>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="#larmor-radius-vs-initial-velocity-v">Larmor Radius vs Initial Velocity (v)</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#cyclotron-frequency-vs-charge-q-and-mass-m">Cyclotron Frequency vs Charge (q) and Mass (m)</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#drift-velocity-vs-electric-field-strength">Drift Velocity vs Electric Field Strength</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -671,6 +677,153 @@ r_L = \frac{mv_{\perp}}{qB}
 </li>
 </ul>
 <p>This equation shows that as <span class="arithmatex">\(B\)</span> increases, the radius <span class="arithmatex">\(r_L\)</span> decreases, which is reflected in the graph.</p>
+<hr/>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python"># Constants for Larmor radius with different initial velocities (v)
+v_perp_values = np.linspace(1e5, 1e7, 10)  # Different initial velocities (m/s)
+
+# Calculate Larmor radius for each velocity
+r_L_velocity_values = (m * v_perp_values) / (q * B)
+
+# Plotting the Larmor radius vs initial velocity
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111)
+ax.plot(v_perp_values, r_L_velocity_values, label='Larmor Radius vs Initial Velocity (v)', color='green')
+ax.set_xlabel('Initial Velocity (v) [m/s]')
+ax.set_ylabel('Larmor Radius (r_L) [m]')
+ax.set_title('Larmor Radius vs Initial Velocity')
+ax.legend()
+plt.show()
+
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-5.png"/></p>
+<h3 id="larmor-radius-vs-initial-velocity-v">Larmor Radius vs Initial Velocity (v)</h3>
+<p>This graph shows how the <strong>Larmor radius</strong> of a particle changes with its initial velocity. As the initial velocity increases, the Larmor radius also increases linearly, indicating that faster particles experience a larger circular motion under the same magnetic field.</p>
+<h4 id="mathematical-explanation">Mathematical Explanation:</h4>
+<p>The Larmor radius is given by:</p>
+<div class="arithmatex">\[
+r_L = \frac{mv_{\perp}}{qB}
+\]</div>
+<p>Where:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(m\)</span> is the mass of the particle,</p>
+</li>
+<li>
+<p><span class="arithmatex">\(v_{\perp}\)</span> is the perpendicular component of the velocity,</p>
+</li>
+<li>
+<p><span class="arithmatex">\(q\)</span> is the charge of the particle,</p>
+</li>
+<li>
+<p><span class="arithmatex">\(B\)</span> is the magnetic field strength.</p>
+</li>
+</ul>
+<p>This equation shows that as the velocity <span class="arithmatex">\(v_{\perp}\)</span> increases, the radius <span class="arithmatex">\(r_L\)</span> increases as well, which is reflected in the graph.</p>
+<hr/>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python">
+# Constants for Cyclotron Frequency graph
+q_values = np.linspace(1e-19, 1e-18, 10)  # Charge values (Coulombs)
+m_values = np.linspace(1e-30, 1e-29, 10)  # Mass values (kg)
+
+# Cyclotron frequency equation
+def cyclotron_frequency(q, m, B):
+    return q * B / m
+
+# Magnetic field strength
+B = 1  # Tesla (constant for this plot)
+
+# Calculate cyclotron frequency for different q and m
+frequencies_q = cyclotron_frequency(q_values, m, B)
+frequencies_m = cyclotron_frequency(q, m_values, B)
+
+# Plotting the Cyclotron Frequency vs Charge (q) and Mass (m)
+fig, ax = plt.subplots(1, 2, figsize=(16, 6))
+
+# Plot for Charge (q)
+ax[0].plot(q_values, frequencies_q, label='Cyclotron Frequency vs Charge (q)', color='orange')
+ax[0].set_xlabel('Charge (q) [Coulombs]')
+ax[0].set_ylabel('Cyclotron Frequency [Hz]')
+ax[0].set_title('Cyclotron Frequency vs Charge (q)')
+ax[0].legend()
+
+# Plot for Mass (m)
+ax[1].plot(m_values, frequencies_m, label='Cyclotron Frequency vs Mass (m)', color='blue')
+ax[1].set_xlabel('Mass (m) [kg]')
+ax[1].set_ylabel('Cyclotron Frequency [Hz]')
+ax[1].set_title('Cyclotron Frequency vs Mass (m)')
+ax[1].legend()
+
+plt.tight_layout()
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-4.png"/></p>
+<h3 id="cyclotron-frequency-vs-charge-q-and-mass-m">Cyclotron Frequency vs Charge (q) and Mass (m)</h3>
+<p>This graph shows how the <strong>cyclotron frequency</strong> varies with the particle's <strong>charge (q)</strong> and <strong>mass (m)</strong>. The cyclotron frequency increases with charge, as shown in the left plot, while it decreases with mass, as shown in the right plot.</p>
+<h4 id="mathematical-explanation_1">Mathematical Explanation:</h4>
+<p>The cyclotron frequency (<span class="arithmatex">\( \omega \)</span>) is given by:</p>
+<div class="arithmatex">\[
+\omega = \frac{qB}{m}
+\]</div>
+<p>Where:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(q\)</span> is the charge of the particle,</p>
+</li>
+<li>
+<p><span class="arithmatex">\(B\)</span> is the magnetic field strength,</p>
+</li>
+<li>
+<p><span class="arithmatex">\(m\)</span> is the mass of the particle.</p>
+</li>
+</ul>
+<p>As seen in the left plot, the cyclotron frequency increases linearly with charge (<span class="arithmatex">\(q\)</span>), and in the right plot, it decreases with increasing mass (<span class="arithmatex">\(m\)</span>).</p>
+<hr/>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python"># Constants for Drift Velocity graph (Electric and Magnetic Field Combination)
+E_values = np.linspace(1e3, 1e6, 10)  # Different Electric Field strengths (V/m)
+B = 1  # Tesla (Magnetic field strength)
+
+# Drift velocity calculation: v_d = (E x B) / B^2
+v_d_values = (E_values * B) / (B**2)
+
+# Plotting the Drift velocity vs Electric field strength
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111)
+ax.plot(E_values, v_d_values, label='Drift Velocity vs Electric Field (E)', color='red')
+ax.set_xlabel('Electric Field Strength (E) [V/m]')
+ax.set_ylabel('Drift Velocity (v_d) [m/s]')
+ax.set_title('Drift Velocity vs Electric Field Strength')
+ax.legend()
+plt.show()
+
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-6.png"/></p>
+<h3 id="drift-velocity-vs-electric-field-strength">Drift Velocity vs Electric Field Strength</h3>
+<p>This graph shows how the <strong>drift velocity</strong> of a particle changes with the strength of the electric field. As the electric field strength increases, the drift velocity increases linearly. The drift velocity can be derived from the equation:</p>
+<div class="arithmatex">\[
+\vec{v_d} = \frac{\vec{E} \times \vec{B}}{B^2}
+\]</div>
+<p>Where:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\( \vec{E} \)</span> is the electric field strength,</p>
+</li>
+<li>
+<p><span class="arithmatex">\( \vec{B} \)</span> is the magnetic field strength.</p>
+</li>
+</ul>
+<p>This equation shows that the drift velocity is directly proportional to the electric field strength <span class="arithmatex">\( E \)</span>, which is reflected in the graph.</p>
 <hr/>
 </div>
 </div><footer>
