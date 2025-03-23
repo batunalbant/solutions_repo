@@ -4,42 +4,56 @@ The Central Limit Theorem (CLT) is a fundamental theorem in statistics stating t
 The CLT serves as the backbone of inferential statistics and hypothesis testing. By approximating the sampling distribution of the sample mean to a normal distribution, statistical methods such as confidence intervals, hypothesis testing, and regression analysis become valid and reliable. Without the CLT, much of modern statistics would not be applicable in real-world scenarios.
 
 The importance of CLT can be observed in various real-world applications:
-- **Quality Control:** Manufacturing industries utilize the CLT to monitor product quality by measuring sample statistics rather than examining the entire population.
-- **Predictive Modeling:** Financial analysts rely on the CLT to predict stock returns and assess risk by aggregating independent factors.
-- **Medical Research:** Estimating the effectiveness of treatments through randomized trials relies heavily on the CLT.
-- **Survey Analysis:** Population parameters such as the average income or political preferences are estimated using sample data.
-- **Engineering:** Structural and mechanical engineering use CLT-based methods for load testing and stress analysis.
-- **Machine Learning:** Many algorithms assume normally distributed errors which are justified by the CLT.
+
+- Quality Control: Manufacturing industries utilize the CLT to monitor product quality by measuring sample statistics rather than examining the entire population.
+
+- Predictive Modeling: Financial analysts rely on the CLT to predict stock returns and assess risk by aggregating independent factors.
+
+- Medical Research: Estimating the effectiveness of treatments through randomized trials relies heavily on the CLT.
+
+- Survey Analysis: Population parameters such as the average income or political preferences are estimated using sample data.
+
+- Engineering: Structural and mechanical engineering use CLT-based methods for load testing and stress analysis.
+
+- Machine Learning: Many algorithms assume normally distributed errors which are justified by the CLT.
 
 Understanding the CLT and its implications is essential for accurate statistical analysis and decision-making across various fields. Its robustness makes it one of the most powerful tools in both theoretical and applied statistics.
 
 ## Introduction
+
 The objective of this problem is to thoroughly explore the Central Limit Theorem by conducting simulations on various population distributions. By generating random samples from distinct distributions and calculating their means, we will visualize how the distribution of sample means approaches a normal distribution as the sample size increases.
 
 This study will not only demonstrate the validity of the CLT but also investigate how the convergence to normality is influenced by factors such as the original distribution’s shape, population variance, and sample size. Moreover, this experiment highlights the relationship between the population’s variance and the variance of the sampling distribution.
 
 The study will focus on three types of population distributions:
-- **Uniform Distribution**: Represents a continuous probability distribution where all intervals of the same length have equal probability.
-- **Exponential Distribution**: A continuous probability distribution often used to model waiting times between independent events that occur at a constant rate.
-- **Binomial Distribution**: A discrete probability distribution that describes the number of successes in a fixed number of independent trials with a constant probability of success.
+
+- Uniform Distribution: Represents a continuous probability distribution where all intervals of the same length have equal probability.
+
+- Exponential Distribution: A continuous probability distribution often used to model waiting times between independent events that occur at a constant rate.
+
+- Binomial Distribution: A discrete probability distribution that describes the number of successes in a fixed number of independent trials with a constant probability of success.
 
 By simulating random sampling from each of these distributions and calculating the sample means, we will demonstrate the convergence of the sampling distribution towards a normal distribution. Additionally, we will investigate how the sample size and population variance influence this convergence. The findings will be supported by visualizations, statistical comparisons, and a theoretical analysis of the results.
 
 ## Mathematical Formulation
+
 The Central Limit Theorem states:
 
 "Given a population with a mean \(\mu\) and a finite variance \(\sigma^2\), the sampling distribution of the sample mean \(\bar{X}\) approaches a normal distribution with mean \(\mu\) and variance \(\frac{\sigma^2}{n}\) as the sample size \(n\) increases, regardless of the shape of the original population distribution."
 
 ## Mathematical Formulation
-The Central Limit Theorem states:
+
+**The Central Limit Theorem states:**
 
 "Given a population with a mean \(\mu\) and a finite variance \(\sigma^2\), the sampling distribution of the sample mean \(\bar{X}\) approaches a normal distribution with mean \(\mu\) and variance \(\frac{\sigma^2}{n}\) as the sample size \(n\) increases, regardless of the shape of the original population distribution."
+
 
 This statement can be formally proven through various mathematical approaches such as the **Moment Generating Function (MGF) method** or the **Lindeberg-Levy theorem**. However, the essential idea remains the same: as the sample size increases, the influence of individual data points diminishes, resulting in a normally distributed sampling distribution of the mean.
 
 ### Key Mathematical Equations and Derivations
 
-1. **Population Mean (\(\mu\))**:
+**Population Mean (\(\mu\))**:
+
    The population mean is the average of all data points in the population.
    
    $$
@@ -52,7 +66,8 @@ This statement can be formally proven through various mathematical approaches su
 
    - \(X_i\) is each individual data point.
 
-2. **Population Variance (\(\sigma^2\))**:
+**Population Variance (\(\sigma^2\))**:
+
    The population variance measures the spread of data points around the mean.
    
    $$
@@ -67,7 +82,8 @@ This statement can be formally proven through various mathematical approaches su
 
    - Larger variance implies more spread out data points from the mean.
 
-3. **Sample Mean (\(\bar{X}\))**:
+**Sample Mean (\(\bar{X}\))**:
+
    The sample mean is the average of a subset of the population.
    
    $$
@@ -83,7 +99,8 @@ This statement can be formally proven through various mathematical approaches su
    - Summing all sample data points and dividing by the number of points gives the mean.
    - The sample mean is an unbiased estimator of the population mean.
 
-4. **Variance of the Sampling Distribution (\(\sigma_{\bar{X}}^2\))**:
+**Variance of the Sampling Distribution (\(\sigma_{\bar{X}}^2\))**:
+
    By the properties of variance for independent random variables:
    
    $$
@@ -271,7 +288,8 @@ In this section, we demonstrate the Central Limit Theorem through visualizations
 
 ### Population Distributions:
 
-1. **Uniform Distribution:**  
+
+**Uniform Distribution:**  
 
    - Represents a continuous probability distribution where all intervals of the same length have equal probability.  
 
@@ -279,7 +297,7 @@ In this section, we demonstrate the Central Limit Theorem through visualizations
 
    - Mean \( \mu = 50 \), Variance \( \sigma^2 = 833.33 \).
 
-2. **Exponential Distribution:**  
+**Exponential Distribution:**  
 
    - A continuous probability distribution commonly used to model waiting times between independent events.  
 
@@ -287,7 +305,7 @@ In this section, we demonstrate the Central Limit Theorem through visualizations
 
    - Mean \( \mu = 10 \), Variance \( \sigma^2 = 100 \).  
 
-3. **Binomial Distribution:**  
+**Binomial Distribution:**  
 
    - A discrete probability distribution describing the number of successes in a fixed number of independent trials. 
 
@@ -297,7 +315,7 @@ In this section, we demonstrate the Central Limit Theorem through visualizations
 
 ### Procedure:
 
-1. **Random Sampling and Calculation:**  
+**Random Sampling and Calculation:**  
 
    - For each distribution, random samples were drawn with sizes \( n = 5, 10, 30, 50 \).  
 
@@ -305,7 +323,7 @@ In this section, we demonstrate the Central Limit Theorem through visualizations
 
    - The mean of each sample was calculated to create the sampling distribution of the sample mean.
 
-2. **Visualization of Sampling Distributions:** 
+**Visualization of Sampling Distributions:** 
 
    - The histograms and Kernel Density Estimation (KDE) plots demonstrate the progression towards a normal distribution as the sample size increases. 
 
@@ -317,13 +335,13 @@ In this section, we demonstrate the Central Limit Theorem through visualizations
 
 According to the Central Limit Theorem, the sampling distribution of the sample mean \( \bar{X} \) approaches a normal distribution with:
 
-\[
+$$
 \mu_{\bar{X}} = \mu
-\]
+$$
 
-\[
+$$
 \sigma_{\bar{X}} = \frac{\sigma}{\sqrt{n}}
-\]
+$$
 
 Where:  
 
@@ -339,9 +357,9 @@ Where:
 
 - Larger sample sizes produce narrower distributions with smaller variances, which is consistent with the formula:  
 
-\[
+$$
 \sigma_{\bar{X}}^2 = \frac{\sigma^2}{n}
-\]
+$$
 
 - Regardless of the original population's shape (Uniform, Exponential, or Binomial), the sampling distribution of the mean demonstrates the same tendency towards normality.  
 
@@ -371,27 +389,43 @@ For each distribution, we calculated the sample means for sample sizes \(n = 5, 
 
 ## Comparison and Analysis
 The comparison of population statistics with the sampling distributions shows:
+
 - The sample mean's average value approaches the population mean as the sample size increases.
+
 - The variance of the sampling distribution decreases with larger sample sizes, which is consistent with the equation \(\sigma_{\bar{X}}^2 = \frac{\sigma^2}{n}\).
+
 - Despite differences in the population distribution shapes, all sampling distributions tend toward normality as the sample size increases.
 
 ## Practical Applications
 The Central Limit Theorem is essential in various fields, including:
-- **Survey Analysis:** Estimating population parameters using sample data, such as predicting election results from opinion polls. When a sufficient number of random samples are taken, the mean of the sample means provides an accurate estimate of the true population mean.
-- **Quality Control:** Ensuring product quality in manufacturing processes through sampling techniques. Factories regularly test samples of their products to monitor deviations from acceptable quality standards. The CLT ensures that the sample mean of these tests will approximate the population mean, even if the original data distribution is skewed.
-- **Financial Modeling:** Predicting stock returns and assessing risk through aggregation of multiple independent variables. By assuming that returns from various assets are independent, portfolio returns can be approximated by a normal distribution, simplifying risk analysis and optimization.
-- **Experimental Research:** Deriving conclusions about broader populations from smaller experimental samples. For example, clinical trials involving a limited number of patients can provide insights into drug effectiveness for the general population.
-- **Machine Learning & Data Science:** Many statistical learning algorithms rely on the assumption of normally distributed errors. Techniques such as Linear Regression, Hypothesis Testing, and Neural Network training utilize the CLT for performance evaluation and error estimation.
-- **Agricultural Science:** Estimating crop yields or livestock weights based on samples from fields or farms. The CLT enables accurate prediction models and helps make informed decisions for resource allocation.
-- **Insurance & Actuarial Science:** Assessing risks and calculating premiums based on historical claim data. The CLT allows actuaries to model potential future claims effectively.
-- **Marketing & Consumer Behavior Analysis:** Making predictions about consumer preferences and trends from limited survey samples, allowing companies to make strategic decisions based on reliable data.
+
+**Survey Analysis:** Estimating population parameters using sample data, such as predicting election results from opinion polls. When a sufficient number of random samples are taken, the mean of the sample means provides an accurate estimate of the true population mean.
+
+**Quality Control:** Ensuring product quality in manufacturing processes through sampling techniques. Factories regularly test samples of their products to monitor deviations from acceptable quality standards. The CLT ensures that the sample mean of these tests will approximate the population mean, even if the original data distribution is skewed.
+
+**Financial Modeling:** Predicting stock returns and assessing risk through aggregation of multiple independent variables. By assuming that returns from various assets are independent, portfolio returns can be approximated by a normal distribution, simplifying risk analysis and optimization.
+
+**Experimental Research:** Deriving conclusions about broader populations from smaller experimental samples. For example, clinical trials involving a limited number of patients can provide insights into drug effectiveness for the general population.
+
+**Machine Learning & Data Science:** Many statistical learning algorithms rely on the assumption of normally distributed errors. Techniques such as Linear Regression, Hypothesis Testing, and Neural Network training utilize the CLT for performance evaluation and error estimation.
+
+**Agricultural Science:** Estimating crop yields or livestock weights based on samples from fields or farms. The CLT enables accurate prediction models and helps make informed decisions for resource allocation.
+
+**Insurance & Actuarial Science:** Assessing risks and calculating premiums based on historical claim data. The CLT allows actuaries to model potential future claims effectively.
+
+**Marketing & Consumer Behavior Analysis:** Making predictions about consumer preferences and trends from limited survey samples, allowing companies to make strategic decisions based on reliable data.
 
 The simulations conducted in this problem demonstrate the robustness of the CLT, regardless of the underlying population distribution. This powerful tool allows statisticians and scientists to make accurate predictions and inferences based on sample data. Furthermore, the CLT's applicability in various domains makes it a fundamental concept in statistics, with significant implications for decision-making processes across diverse fields.
+
 The Central Limit Theorem is essential in various fields, including:
-- **Survey Analysis:** Estimating population parameters using sample data.
-- **Quality Control:** Ensuring product quality in manufacturing processes through sampling techniques.
-- **Financial Modeling:** Predicting stock returns and assessing risk through aggregation of multiple independent variables.
-- **Experimental Research:** Deriving conclusions about broader populations from smaller experimental samples.
+
+- Survey Analysis: Estimating population parameters using sample data.
+
+- Quality Control: Ensuring product quality in manufacturing processes through sampling techniques.
+
+- Financial Modeling: Predicting stock returns and assessing risk through aggregation of multiple independent variables.
+
+- Experimental Research: Deriving conclusions about broader populations from smaller experimental samples.
 
 The simulations conducted in this problem demonstrate the robustness of the CLT, regardless of the underlying population distribution. This powerful tool allows statisticians and scientists to make accurate predictions and inferences based on sample data.
 
