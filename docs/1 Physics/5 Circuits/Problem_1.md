@@ -409,6 +409,9 @@ This code uses the `CircuitGraph` class to create a graphical representation of 
   <summary>Phyton codes.</summary>
 
 ```python
+import networkx as nx
+import matplotlib.pyplot as plt
+
 class CircuitGraph:
     def __init__(self):
         self.G = nx.Graph()
@@ -458,7 +461,7 @@ class CircuitGraph:
                 if len(neighbors) == 2:
                     R1 = self.G[node][neighbors[0]]['resistance']
                     R2 = self.G[node][neighbors[1]]['resistance']
-                    total_resistance = R1 + R2  # Series formula: R = R1 + R2
+                    total_resistance = R1 + R2  # Series formula: R_eq = R1 + R2
                     
                     self.G.add_edge(neighbors[0], neighbors[1], resistance=total_resistance)
                     nodes_to_remove.append(node)
@@ -471,19 +474,40 @@ class CircuitGraph:
         combined_edges = {}
 
         for u, v, data in self.G.edges(data=True):
-            if (v, u) in combined_edges:
-                combined_edges[(v, u)].append(data['resistance'])
-            elif (u, v) in combined_edges:
-                combined_edges[(u, v)].append(data['resistance'])
-            else:
+            if (u, v) not in combined_edges:
                 combined_edges[(u, v)] = [data['resistance']]
+            else:
+                combined_edges[(u, v)].append(data['resistance'])
 
         for (u, v), resistances in combined_edges.items():
             if len(resistances) > 1:
-                total_resistance = 1 / sum(1 / r for r in resistances)  # Parallel formula: 1/R = 1/R1 + 1/R2 + ...
+                total_resistance = 1 / sum(1 / r for r in resistances)  # Parallel formula: 1/R_eq = 1/R1 + 1/R2 + ...
                 self.G[u][v]['resistance'] = total_resistance
 
         self.visualize("After Parallel Simplification")
+    
+    def simplify_circuit(self):
+        """Fully simplifies the circuit by repeatedly applying series and parallel simplifications."""
+        changed = True
+        
+        while changed:
+            changed = False
+            
+            # Apply series simplification
+            initial_node_count = len(self.G.nodes)
+            self.simplify_series()
+            if len(self.G.nodes) < initial_node_count:
+                changed = True
+            
+            # Apply parallel simplification
+            initial_edge_count = len(self.G.edges)
+            self.simplify_parallel()
+            if len(self.G.edges) < initial_edge_count:
+                changed = True
+            
+            # Visualize the graph at each step
+            self.visualize("Simplifying Circuit")
+
 
 ```
 </details>
@@ -602,5 +626,70 @@ def simplify_series(self):
 
 ```
 </details>
+
+#  Explanation of Iterative Simplification Process
+
+### **Purpose of the Code:**
+This code extends the `CircuitGraph` class to apply the series and parallel simplification functions repeatedly until the entire circuit is reduced to a single equivalent resistance between the input and output nodes.
+
+---
+
+## **Mathematical & Physical Context:**
+
+The iterative simplification process relies on continuously applying the following principles until the graph is fully simplified:
+
+### **Series Simplification (Ohm’s Law):**
+
+\[
+R_{eq} = R_1 + R_2 + \ldots + R_n
+\]
+
+### **Parallel Simplification (Kirchhoff’s Laws):**
+
+\[
+\frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + \ldots + \frac{1}{R_n}
+\]
+
+---
+
+## **Implementation of the Iterative Process:**
+
+The following function is added to the `CircuitGraph` class:
+
+---
+
+### **Complete Simplification Process:**
+
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+def simplify_circuit(self):
+    """Fully simplifies the circuit by repeatedly applying series and parallel simplifications."""
+    changed = True
+    
+    while changed:
+        changed = False
+        
+        # Apply series simplification
+        initial_node_count = len(self.G.nodes)
+        self.simplify_series()
+        if len(self.G.nodes) < initial_node_count:
+            changed = True
+        
+        # Apply parallel simplification
+        initial_edge_count = len(self.G.edges)
+        self.simplify_parallel()
+        if len(self.G.edges) < initial_edge_count:
+            changed = True
+        
+        # Visualize the graph at each step
+        self.visualize("Simplifying Circuit")
+```
+</details>
+
+![alt text](image-12.png)
+
+
 
 
