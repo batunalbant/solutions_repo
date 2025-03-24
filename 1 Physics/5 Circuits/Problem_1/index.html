@@ -576,7 +576,10 @@ circuit.visualize("Circuit Graph with Path", path=path)
 <hr/>
 <details>
 <summary>Phyton codes.</summary>
-<pre><code class="language-python">class CircuitGraph:
+<pre><code class="language-python">import networkx as nx
+import matplotlib.pyplot as plt
+
+class CircuitGraph:
     def __init__(self):
         self.G = nx.Graph()
         self.input_node = None
@@ -625,7 +628,7 @@ circuit.visualize("Circuit Graph with Path", path=path)
                 if len(neighbors) == 2:
                     R1 = self.G[node][neighbors[0]]['resistance']
                     R2 = self.G[node][neighbors[1]]['resistance']
-                    total_resistance = R1 + R2  # Series formula: R = R1 + R2
+                    total_resistance = R1 + R2  # Series formula: R_eq = R1 + R2
 
                     self.G.add_edge(neighbors[0], neighbors[1], resistance=total_resistance)
                     nodes_to_remove.append(node)
@@ -638,19 +641,40 @@ circuit.visualize("Circuit Graph with Path", path=path)
         combined_edges = {}
 
         for u, v, data in self.G.edges(data=True):
-            if (v, u) in combined_edges:
-                combined_edges[(v, u)].append(data['resistance'])
-            elif (u, v) in combined_edges:
-                combined_edges[(u, v)].append(data['resistance'])
-            else:
+            if (u, v) not in combined_edges:
                 combined_edges[(u, v)] = [data['resistance']]
+            else:
+                combined_edges[(u, v)].append(data['resistance'])
 
         for (u, v), resistances in combined_edges.items():
             if len(resistances) &gt; 1:
-                total_resistance = 1 / sum(1 / r for r in resistances)  # Parallel formula: 1/R = 1/R1 + 1/R2 + ...
+                total_resistance = 1 / sum(1 / r for r in resistances)  # Parallel formula: 1/R_eq = 1/R1 + 1/R2 + ...
                 self.G[u][v]['resistance'] = total_resistance
 
         self.visualize("After Parallel Simplification")
+
+    def simplify_circuit(self):
+        """Fully simplifies the circuit by repeatedly applying series and parallel simplifications."""
+        changed = True
+
+        while changed:
+            changed = False
+
+            # Apply series simplification
+            initial_node_count = len(self.G.nodes)
+            self.simplify_series()
+            if len(self.G.nodes) &lt; initial_node_count:
+                changed = True
+
+            # Apply parallel simplification
+            initial_edge_count = len(self.G.edges)
+            self.simplify_parallel()
+            if len(self.G.edges) &lt; initial_edge_count:
+                changed = True
+
+            # Visualize the graph at each step
+            self.visualize("Simplifying Circuit")
+
 
 </code></pre>
 </details>
@@ -765,6 +789,51 @@ R_{eq} = R_1 + R_2 + \ldots + R_n
 
 </code></pre>
 </details>
+<h1 id="explanation-of-iterative-simplification-process">Explanation of Iterative Simplification Process</h1>
+<h3 id="purpose-of-the-code_1"><strong>Purpose of the Code:</strong></h3>
+<p>This code extends the <code>CircuitGraph</code> class to apply the series and parallel simplification functions repeatedly until the entire circuit is reduced to a single equivalent resistance between the input and output nodes.</p>
+<hr/>
+<h2 id="mathematical-physical-context_1"><strong>Mathematical &amp; Physical Context:</strong></h2>
+<p>The iterative simplification process relies on continuously applying the following principles until the graph is fully simplified:</p>
+<h3 id="series-simplification-ohms-law"><strong>Series Simplification (Ohm’s Law):</strong></h3>
+<div class="arithmatex">\[
+R_{eq} = R_1 + R_2 + \ldots + R_n
+\]</div>
+<h3 id="parallel-simplification-kirchhoffs-laws"><strong>Parallel Simplification (Kirchhoff’s Laws):</strong></h3>
+<div class="arithmatex">\[
+\frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + \ldots + \frac{1}{R_n}
+\]</div>
+<hr/>
+<h2 id="implementation-of-the-iterative-process"><strong>Implementation of the Iterative Process:</strong></h2>
+<p>The following function is added to the <code>CircuitGraph</code> class:</p>
+<hr/>
+<h3 id="complete-simplification-process"><strong>Complete Simplification Process:</strong></h3>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python">def simplify_circuit(self):
+    """Fully simplifies the circuit by repeatedly applying series and parallel simplifications."""
+    changed = True
+
+    while changed:
+        changed = False
+
+        # Apply series simplification
+        initial_node_count = len(self.G.nodes)
+        self.simplify_series()
+        if len(self.G.nodes) &lt; initial_node_count:
+            changed = True
+
+        # Apply parallel simplification
+        initial_edge_count = len(self.G.edges)
+        self.simplify_parallel()
+        if len(self.G.edges) &lt; initial_edge_count:
+            changed = True
+
+        # Visualize the graph at each step
+        self.visualize("Simplifying Circuit")
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-12.png"/></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
