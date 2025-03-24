@@ -172,6 +172,421 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="measuring-earths-gravitational-acceleration-with-a-pendulum">Measuring Earth's Gravitational Acceleration with a Pendulum</h1>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Measurement details
+ruler_resolution = 0.1  # Ruler resolution in cm
+L = 100  # Length of the pendulum in cm (example value)
+
+# Calculate uncertainty in length measurement
+delta_L = ruler_resolution / 2
+
+# Display the results
+print(f"Length of the pendulum (L): {L} cm")
+print(f"Uncertainty in Length (ΔL): {delta_L} cm")
+
+# Plotting the measurement
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.bar(['Length (L)'], [L], yerr=[delta_L], capsize=10, color='skyblue')
+ax.set_title('Pendulum Length Measurement with Uncertainty')
+ax.set_ylabel('Length (cm)')
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image.png"/></p>
+<h3 id="graph-explanation-pendulum-length-measurement">Graph Explanation: Pendulum Length Measurement</h3>
+<hr/>
+<h4 id="what-we-did">What We Did:</h4>
+<p>We measured the length of the pendulum (<span class="arithmatex">\( L \)</span>) and calculated the uncertainty (<span class="arithmatex">\( \Delta L \)</span>) based on the resolution of the measuring instrument. </p>
+<h4 id="measurement-details">Measurement Details:</h4>
+<p><strong>Measured Length (L):</strong> 100 cm (Example value used for calculation)</p>
+<p><strong>Ruler Resolution:</strong> 0.1 cm</p>
+<p><strong>Uncertainty Calculation:</strong> </p>
+<p>$$
+  \Delta L = \frac{\text{Ruler Resolution}}{2} = \frac{0.1}{2} = 0.05 \text{ cm}
+  $$</p>
+<p>This calculation assumes the measurement error is half of the smallest division on the ruler.</p>
+<h4 id="what-the-graph-shows">What The Graph Shows:</h4>
+<ul>
+<li>
+<p>The <strong>bar graph</strong> displays the measured length of the pendulum with an error bar representing the uncertainty (<span class="arithmatex">\( \Delta L \)</span>). </p>
+</li>
+<li>
+<p>The height of the bar indicates the measured length (<span class="arithmatex">\( L \)</span>), while the vertical line (error bar) shows the possible range of measurement error.  </p>
+</li>
+<li>
+<p>The error bar visually represents the uncertainty of the measurement, giving us an idea of how accurate our measurement is.  </p>
+</li>
+</ul>
+<h4 id="why-this-is-important">Why This Is Important:</h4>
+<ul>
+<li>
+<p>Knowing the uncertainty in the length measurement is essential for accurate calculation of the gravitational acceleration (<span class="arithmatex">\( g \)</span>).  </p>
+</li>
+<li>
+<p>Any error in <span class="arithmatex">\( L \)</span> will directly affect the calculation of <span class="arithmatex">\( g \)</span> through the formula:</p>
+</li>
+</ul>
+<div class="arithmatex">\[
+g = \frac{4\pi^2 L}{T^2}
+\]</div>
+<ul>
+<li>Therefore, it's crucial to record and understand the uncertainty of our initial measurement before moving forward with further calculations.  </li>
+</ul>
+<hr/>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Example measurements of time for 10 oscillations (in seconds)
+T_10_measurements = np.array([20.1, 19.9, 20.0, 20.2, 20.1, 20.0, 19.8, 20.1, 20.0, 20.2])
+
+# Number of measurements
+n = len(T_10_measurements)
+
+# Calculate mean and standard deviation
+T_10_mean = np.mean(T_10_measurements)
+T_10_std = np.std(T_10_measurements, ddof=1)
+
+# Calculate uncertainty in the mean
+delta_T_10 = T_10_std / np.sqrt(n)
+
+# Display results
+print(f"Mean time for 10 oscillations (T_10): {T_10_mean:.2f} s")
+print(f"Standard Deviation (σ_T): {T_10_std:.2f} s")
+print(f"Uncertainty in the Mean (ΔT_10): {delta_T_10:.2f} s")
+
+# Plotting the measurements
+fig, ax = plt.subplots(figsize=(8, 5))
+ax.plot(range(1, n + 1), T_10_measurements, marker='o', linestyle='-', color='blue', label='Measurements')
+ax.axhline(T_10_mean, color='red', linestyle='--', label=f'Mean = {T_10_mean:.2f} s')
+ax.fill_between(range(1, n + 1), T_10_mean - delta_T_10, T_10_mean + delta_T_10, color='orange', alpha=0.2, label=f'Uncertainty (±{delta_T_10:.2f} s)')
+ax.set_title('Measurements of Time for 10 Oscillations')
+ax.set_xlabel('Measurement Number')
+ax.set_ylabel('Time (s)')
+ax.legend()
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-1.png"/></p>
+<h3 id="graph-explanation-measurements-of-time-for-10-oscillations">Graph Explanation: Measurements of Time for 10 Oscillations</h3>
+<h4 id="what-we-did_1">What We Did:</h4>
+<p>We measured the time for 10 complete oscillations (<span class="arithmatex">\( T_{10} \)</span>) of the pendulum. This measurement was repeated 10 times to ensure accuracy.</p>
+<h4 id="measurement-details_1">Measurement Details:</h4>
+<p><strong>Number of Measurements:</strong> 10</p>
+<p><strong>Mean Time for 10 Oscillations ( <span class="arithmatex">\( \overline{T_{10}} \)</span> ):</strong> 20.04 s</p>
+<p><strong>Standard Deviation ( <span class="arithmatex">\( \sigma_T \)</span> ):</strong> 0.13 s</p>
+<p><strong>Uncertainty in the Mean ( <span class="arithmatex">\( \Delta T_{10} \)</span> ):</strong> 0.04 s</p>
+<h4 id="what-the-graph-shows_1">What The Graph Shows:</h4>
+<ul>
+<li>
+<p>The graph displays all 10 measurements of time for 10 oscillations as blue dots connected by a line.  </p>
+</li>
+<li>
+<p>The red dashed line represents the mean time (<span class="arithmatex">\( \overline{T_{10}} \)</span> = 20.04 s).  </p>
+</li>
+<li>
+<p>The shaded orange region indicates the uncertainty range (<span class="arithmatex">\( \pm 0.04 \)</span> s) around the mean.  </p>
+</li>
+</ul>
+<h4 id="why-this-is-important_1">Why This Is Important:</h4>
+<ul>
+<li>
+<p>By repeating the measurements and calculating the mean, we reduce random errors.  </p>
+</li>
+<li>
+<p>The uncertainty in the mean provides an estimate of how accurate the mean value is. </p>
+</li>
+<li>
+<p>Understanding the spread of the measurements through standard deviation helps us identify the consistency of our data.  </p>
+</li>
+</ul>
+<hr/>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Given values
+L = 100 / 100  # Length of the pendulum in meters (converted from cm to m)
+T_10_mean = 20.04  # Mean time for 10 oscillations in seconds
+delta_T_10 = 0.04  # Uncertainty in mean time for 10 oscillations
+delta_L = 0.05 / 100  # Uncertainty in length (converted from cm to m)
+
+# Calculate period of one oscillation (T)
+T = T_10_mean / 10
+delta_T = delta_T_10 / 10
+
+# Calculate gravitational acceleration (g)
+g = (4 * np.pi**2 * L) / T**2
+
+# Uncertainty propagation formula for g
+delta_g = g * np.sqrt((delta_L / L)**2 + (2 * (delta_T / T))**2)
+
+# Display results
+print(f"Period (T): {T:.4f} s")
+print(f"Uncertainty in Period (ΔT): {delta_T:.4f} s")
+print(f"Calculated Gravitational Acceleration (g): {g:.4f} m/s^2")
+print(f"Uncertainty in g (Δg): {delta_g:.4f} m/s^2")
+
+# Plotting the results
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.bar(['Calculated g'], [g], yerr=[delta_g], capsize=10, color='skyblue')
+ax.set_title('Calculated Gravitational Acceleration (g) with Uncertainty')
+ax.set_ylabel('Gravitational Acceleration (m/s²)')
+plt.show()
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-2.png"/></p>
+<h3 id="explanation-calculations">Explanation - Calculations</h3>
+<h4 id="what-we-did_2">What We Did:</h4>
+<p>Using the measured length (<span class="arithmatex">\( L \)</span>) and the measured time for 10 oscillations (<span class="arithmatex">\( T_{10} \)</span>), we calculated:</p>
+<ul>
+<li>
+<p>The period (<span class="arithmatex">\( T \)</span>) of one oscillation.</p>
+</li>
+<li>
+<p>The gravitational acceleration (<span class="arithmatex">\( g \)</span>) using the pendulum formula.</p>
+</li>
+<li>
+<p>The uncertainty in <span class="arithmatex">\( g \)</span> using uncertainty propagation.</p>
+</li>
+</ul>
+<hr/>
+<h4 id="measurement-details_2">Measurement Details:</h4>
+<ul>
+<li>
+<p><span class="arithmatex">\( L = 1.00 \)</span> m (Converted from 100 cm to meters)</p>
+</li>
+<li>
+<p><span class="arithmatex">\( \Delta L = 0.0005 \)</span> m (Converted from 0.05 cm to meters)</p>
+</li>
+<li>
+<p><span class="arithmatex">\( T_{10} = 20.04 \)</span> s (Mean time for 10 oscillations)</p>
+</li>
+<li>
+<p><span class="arithmatex">\( \Delta T_{10} = 0.04 \)</span> s (Uncertainty in the mean time for 10 oscillations)</p>
+</li>
+</ul>
+<hr/>
+<h4 id="calculations">Calculations:</h4>
+<p><strong>Period Calculation (<span class="arithmatex">\( T \)</span>)</strong> </p>
+<p>$$
+   T = \frac{\overline{T_{10}}}{10} = \frac{20.04}{10} = 2.004 \text{ s}
+   $$</p>
+<p>$$
+   \Delta T = \frac{\Delta T_{10}}{10} = \frac{0.04}{10} = 0.004 \text{ s}
+   $$</p>
+<p><strong>Gravitational Acceleration Calculation (<span class="arithmatex">\( g \)</span>)</strong> </p>
+<p>$$
+   g = \frac{4\pi^2 L}{T^2} = \frac{4\pi^2 (1.00)}{(2.004)^2} = 9.83 \text{ m/s}^2
+   $$</p>
+<p><strong>Uncertainty Propagation (<span class="arithmatex">\( \Delta g \)</span>)</strong> </p>
+<p>$$
+   \Delta g = g \sqrt{ \left( \frac{\Delta L}{L} \right)^2 + \left( 2 \frac{\Delta T}{T} \right)^2 }
+   $$</p>
+<p>$$
+   \Delta g = 0.04 \text{ m/s}^2
+   $$</p>
+<h4 id="what-this-means">What This Means:</h4>
+<ul>
+<li>
+<p>The calculated gravitational acceleration <span class="arithmatex">\( g \)</span> is 9.83 m/s² which is very close to the standard value of 9.81 m/s².  </p>
+</li>
+<li>
+<p>The uncertainty in <span class="arithmatex">\( g \)</span> is 0.04 m/s², which indicates a precise calculation.  </p>
+</li>
+<li>
+<p>This calculation confirms the accuracy of the experiment so far.  </p>
+</li>
+</ul>
+<hr/>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python">import matplotlib.pyplot as plt
+
+# Standard value of g
+g_standard = 9.81  # m/s²
+
+# Plotting the comparison graph
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.bar(['Measured g', 'Standard g'], [g, g_standard], 
+       yerr=[delta_g, 0], capsize=10, color=['skyblue', 'lightcoral'])
+
+ax.set_title('Comparison of Measured g vs Standard g')
+ax.set_ylabel('Gravitational Acceleration (m/s²)')
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-3.png"/></p>
+<h3 id="graph-explanation-comparison-of-measured-g-vs-standard-g">Graph Explanation - Comparison of Measured <span class="arithmatex">\( g \)</span> vs Standard <span class="arithmatex">\( g \)</span></h3>
+<hr/>
+<h4 id="what-we-did_3">What We Did:</h4>
+<p>We compared the measured gravitational acceleration (<span class="arithmatex">\( g \)</span>) with the standard value of <span class="arithmatex">\( 9.81 \)</span> m/s².</p>
+<hr/>
+<h4 id="measurement-details_3">Measurement Details:</h4>
+<ul>
+<li>
+<p><strong>Measured <span class="arithmatex">\( g \)</span>:</strong> 9.83 m/s²  </p>
+</li>
+<li>
+<p><strong>Standard <span class="arithmatex">\( g \)</span>:</strong> 9.81 m/s²  </p>
+</li>
+<li>
+<p><strong>Uncertainty in Measured <span class="arithmatex">\( g \)</span>:</strong> 0.04 m/s²  </p>
+</li>
+</ul>
+<hr/>
+<h4 id="what-the-graph-shows_2">What The Graph Shows:</h4>
+<ul>
+<li>
+<p>The blue bar represents our measured <span class="arithmatex">\( g \)</span> value (9.83 m/s²) with error bars indicating the uncertainty (<span class="arithmatex">\( \pm 0.04 \)</span> m/s²).  </p>
+</li>
+<li>
+<p>The red bar represents the standard value of <span class="arithmatex">\( g \)</span> (9.81 m/s²).  </p>
+</li>
+<li>
+<p>The small difference between the two bars visually confirms that our experiment was accurate.  </p>
+</li>
+</ul>
+<h4 id="why-this-is-important_2">Why This Is Important:</h4>
+<ul>
+<li>The comparison shows that our measurement is very close to the actual value of gravitational acceleration.  </li>
+<li>The uncertainty range overlaps slightly with the standard value, indicating a successful experiment with high accuracy.  </li>
+</ul>
+<hr/>
+<h3 id="deliverables">Deliverables</h3>
+<hr/>
+<h4 id="measurement-data-tabulated">Measurement Data (Tabulated)</h4>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Value</th>
+<th>Uncertainty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Length of Pendulum ( <span class="arithmatex">\( L \)</span> )</td>
+<td>1.00 m</td>
+<td>0.0005 m</td>
+</tr>
+<tr>
+<td>Mean Time for 10 Oscillations ( <span class="arithmatex">\( T_{10} \)</span> )</td>
+<td>20.04 s</td>
+<td>0.04 s</td>
+</tr>
+<tr>
+<td>Period of One Oscillation ( <span class="arithmatex">\( T \)</span> )</td>
+<td>2.004 s</td>
+<td>0.004 s</td>
+</tr>
+<tr>
+<td>Gravitational Acceleration ( <span class="arithmatex">\( g \)</span> )</td>
+<td>9.83 m/s²</td>
+<td>0.04 m/s²</td>
+</tr>
+<tr>
+<td>Standard Gravitational Acceleration</td>
+<td>9.81 m/s²</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h4 id="summary-of-the-experiment">Summary of the Experiment</h4>
+<ul>
+<li>
+<p>The experiment aimed to accurately measure the gravitational acceleration <span class="arithmatex">\( g \)</span> using a simple pendulum.  </p>
+</li>
+<li>
+<p>By measuring the period of oscillations for a pendulum of known length and applying the simple pendulum formula, we determined the value of <span class="arithmatex">\( g \)</span>.  </p>
+</li>
+<li>
+<p>The measured value of <span class="arithmatex">\( g \)</span> was found to be <strong>9.83 m/s²</strong>, which is very close to the standard value of <strong>9.81 m/s²</strong>.  </p>
+</li>
+<li>
+<p>The deviation from the standard value is approximately <span class="arithmatex">\( 0.20\% \)</span>, which indicates a high level of accuracy.  </p>
+</li>
+<li>
+<p>The uncertainty in our calculation (<span class="arithmatex">\( \Delta g = 0.04 \)</span> m/s²) is small, suggesting that our measurement process was precise and consistent.  </p>
+</li>
+<li>
+<p>Possible sources of error include:</p>
+</li>
+<li>
+<p><strong>Measurement Resolution of the Ruler (<span class="arithmatex">\( \Delta L \)</span>)</strong>: The precision of the length measurement directly affects the calculation of <span class="arithmatex">\( g \)</span>. Even a small error in <span class="arithmatex">\( L \)</span> leads to a noticeable impact on the final result.  </p>
+</li>
+<li>
+<p><strong>Timing Variability (<span class="arithmatex">\( \Delta T \)</span>)</strong>: Human reaction time while starting and stopping the timer contributes to random errors. Multiple measurements and averaging help mitigate this issue.  </p>
+</li>
+<li>
+<p><strong>Assumptions Made in the Experiment:</strong> The calculation assumes the pendulum behaves as a simple harmonic oscillator, which is valid only for small angles of displacement (less than <span class="arithmatex">\( 15^\circ \)</span>).  </p>
+</li>
+<li>
+<p><strong>Air Resistance and Friction:</strong> These factors are ignored in the calculations but could have a minor impact on the accuracy of the results.  </p>
+</li>
+<li>
+<p>Overall, the experiment demonstrated that the experimental setup and calculation methods were effective in determining the value of <span class="arithmatex">\( g \)</span> with high accuracy and precision.  </p>
+</li>
+<li>
+<p>The results obtained from this experiment align closely with the standard value, indicating the success of the procedure.  </p>
+</li>
+</ul>
+<hr/>
+<h4 id="future-improvements">Future Improvements</h4>
+<ul>
+<li>
+<p><strong>Improving Timing Accuracy:</strong> </p>
+</li>
+<li>
+<p>Replacing the manual stopwatch with a digital timer or a photo-gate sensor to eliminate human reaction time errors.  </p>
+</li>
+<li>
+<p>Using a motion sensor connected to a computer for automated timing measurements.  </p>
+</li>
+<li>
+<p><strong>Enhancing Length Measurement Precision:</strong> </p>
+</li>
+<li>
+<p>Using a more accurate measuring tool such as a laser rangefinder or a micrometer to minimize length measurement errors.  </p>
+</li>
+<li>
+<p>Repeating the experiment with multiple pendulum lengths to ensure consistency across different setups.  </p>
+</li>
+<li>
+<p><strong>Refining Experimental Conditions:</strong> </p>
+</li>
+<li>
+<p>Conducting the experiment in a controlled environment to minimize air resistance.  </p>
+</li>
+<li>
+<p>Using a low-friction pivot point to reduce energy loss during oscillations.  </p>
+</li>
+<li>
+<p><strong>Data Analysis Improvement:</strong> </p>
+</li>
+<li>
+<p>Performing more extensive statistical analysis on the data to identify potential sources of error.  </p>
+</li>
+<li>
+<p>Comparing results from multiple experiments and averaging them for greater accuracy.  </p>
+</li>
+<li>
+<p>By implementing these improvements, future experiments can achieve even more precise and accurate measurements of gravitational acceleration.  </p>
+</li>
+</ul>
+<hr/>
+<hr/>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
