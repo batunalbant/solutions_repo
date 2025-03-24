@@ -69,30 +69,6 @@ $$
 \pi \approx 4 \times \frac{\text{Number of points inside circle}}{\text{Total number of points}}
 $$
 
-### Simulation
-
-1. Generate random points `(x, y)` where both `x` and `y` are uniformly distributed between `-1` and `1`.
-
-2. Count the number of points that fall inside the unit circle by checking if:
-
-$$
-x^2 + y^2 \leq 1
-$$
-
-3. Estimate π using the formula derived above.
-
-### 4. Analysis
-
-- As the number of points increases, the estimate of \( \pi \) becomes more accurate.
-
-- The convergence rate follows the law of large numbers and is proportional to:
-
-  $$
-  	\text{Estimation Error} \approx \frac{1}{\sqrt{N}}
-  $$
-
-  Where `N` is the total number of random points.
-
 
 ---
 
@@ -130,7 +106,10 @@ $$
 \pi \approx \frac{2L}{dP}
 $$
 
-### 2. Simulation
+---
+
+
+## Simulations
 
 <details>
   <summary>Phyton codes.</summary>
@@ -159,7 +138,6 @@ plt.show()
 #### What This Graph Represents:
 The graph shows the randomly generated points used to estimate the value of \( \pi \) through the Monte Carlo Method. This method compares the number of points that fall inside a unit circle to the total number of points generated within a bounding square.
 
----
 
 #### Key Points to Understand:
 
@@ -213,9 +191,9 @@ The graph shows the randomly generated points used to estimate the value of \( \
      \pi \approx 4 \times \frac{\text{Number of points inside the circle}}{\text{Total number of points}}
      $$
 
----
 
 #### Interpretation of the Graph:
+
 - As shown in the graph, the **blue points** are those that lie within the circular region, while the **red points** are those outside the circle but within the square.
 
 - The approximation of \( \pi \) is based on the ratio of blue points to the total points.
@@ -281,7 +259,6 @@ plt.show()
 #### What This Graph Represents:
 The graph illustrates how the estimated value of \( \pi \) changes as the number of randomly generated points (\( N \)) increases. This graph visually demonstrates the **convergence property of the Monte Carlo Method**.
 
----
 
 #### Key Points to Understand:
 
@@ -321,8 +298,6 @@ The graph illustrates how the estimated value of \( \pi \) changes as the number
    - As \( N \) increases, the estimate becomes more consistent and approaches the true value of \( \pi \).
 
    - The method provides a clear visualization of how randomness and probability can be harnessed to make accurate estimations over time.
-
----
 
 #### Purpose of the Graph:
 
@@ -415,7 +390,6 @@ plt.show()
 #### What This Graph Represents:
 The graph above displays the simulation of **Buffon's Needle Problem**, where randomly dropped needles are used to estimate the value of \( \pi \) based on probability theory.
 
----
 
 #### Key Points to Understand:
 
@@ -464,7 +438,6 @@ The graph above displays the simulation of **Buffon's Needle Problem**, where ra
 
    - The estimated value of \( \pi \) from this simulation: **3.24675** (Not very accurate, more needles required for better estimation).
 
----
 
 #### Purpose of the Graph:
 
@@ -536,7 +509,6 @@ plt.show()
 
 This graph illustrates how the estimated value of \( \pi \) changes as the number of randomly dropped needles (\( N \)) increases. The purpose is to visualize the convergence of the estimated \( \pi \) value towards the true value of \( \pi \) as more samples are used in the simulation.
 
----
 
 #### Key Points to Understand:
 
@@ -586,7 +558,6 @@ This graph illustrates how the estimated value of \( \pi \) changes as the numbe
 
    - The fluctuation decreases over time, resulting in more accurate approximations of \( \pi \).
 
----
 
 #### Purpose of the Graph:
 
@@ -653,7 +624,6 @@ The graph compares the convergence behavior of two different Monte Carlo methods
      \pi \approx \frac{2L \times \text{Number of Needles}}{d \times \text{Number of Crossings}}
      $$
 
----
 
 #### Key Observations:
 
@@ -679,7 +649,6 @@ The graph compares the convergence behavior of two different Monte Carlo methods
 
 - The noise in the data is higher because this method relies on a probability-based crossing condition which requires more samples for accuracy.
   
----
 
 #### Why This Graph is Important:
 
@@ -687,7 +656,6 @@ The graph compares the convergence behavior of two different Monte Carlo methods
 
 - It also demonstrates how the **Circle Method is much more efficient** than Buffon's Needle Method, particularly for a smaller number of samples.
 
----
 
 #### Conclusion:
 - The Circle Method provides a faster and more reliable estimation of \( \pi \) due to its direct geometric approach.
@@ -741,8 +709,6 @@ plt.show()
 #### What This Graph Represents:
 This graph compares the **Estimation Errors** of two different Monte Carlo methods for estimating \( \pi \) as the number of samples (\( N \)) increases. The comparison shows how efficiently each method converges to the true value of \( \pi \).
 
----
-
 #### Key Points to Understand:
 
 **Circle Method (Green Line):**  
@@ -775,8 +741,6 @@ This graph compares the **Estimation Errors** of two different Monte Carlo metho
 
    - This scale helps visualize the higher accuracy of the Circle Method compared to Buffon's Needle Method.
 
----
-
 #### Why This Graph is Important:
 
 - It clearly shows the efficiency difference between **Circle Method and Buffon's Needle Method** in terms of estimation error.
@@ -793,55 +757,64 @@ This graph compares the **Estimation Errors** of two different Monte Carlo metho
 
 - Buffon's Needle Method, although interesting, is not practical for high-accuracy estimations of \( \pi \) unless an extremely large number of samples is used.
 
+---
 
+### **Final Analysis and Conclusion**
 
+The simulations conducted in this problem provided valuable insights into estimating \( \pi \) using two distinct Monte Carlo methods: the Circle-Based Monte Carlo Method and Buffon's Needle Problem. Each method has its advantages and limitations, which were explored and visualized through various graphical representations.
 
-### Analysis
+### **Circle-Based Monte Carlo Method:**
 
-The analysis of both the Circle Method and Buffon's Needle Method reveals significant differences in their efficiency, accuracy, and convergence rates. Here are the key findings:
+- This method uses geometric probability by randomly generating points within a square and counting how many fall inside a unit circle inscribed within the square.
 
-#### Circle Method (Scatter Plot & Convergence Graph)
-
-- As the number of random points increases, the estimate of \( \pi \) becomes progressively more accurate. 
-
-- The Circle Method shows a fast convergence rate due to the direct geometric probability approach.
-
-- Estimation error decreases rapidly following the relation:
-
+- The ratio of points inside the circle to the total points approximates \( \pi \) using the formula:
+  
   $$
-  \text{Estimation Error} \approx \frac{1}{\sqrt{N}}
+  \pi \approx 4 \times \frac{\text{Number of points inside the circle}}{\text{Total number of points}}
   $$
 
-  Where \( N \) is the total number of random points.
+- The accuracy of this method improves significantly as the number of random points increases, demonstrating the Law of Large Numbers.
 
-- The method achieves accurate results even with relatively fewer points, making it highly efficient for practical computation.
+- Computational efficiency is higher in this method due to its simplicity in determining whether a point falls within the circle.
 
-#### Buffon's Needle Method (Simulation & Convergence Graph)
+### **Buffon's Needle Method:**
 
-- As the number of needle drops increases, the estimate of \( \pi \) becomes more accurate, but the convergence rate is much slower compared to the Circle Method.
+- Buffon's Needle problem estimates \( \pi \) based on the probability of a randomly dropped needle crossing parallel lines on a plane.
 
-- Estimation error decreases more gradually and requires a larger sample size to achieve similar accuracy.
+- The probability of a needle crossing a line is related to \( \pi \) by the formula:
+  
+  $$
+  P = \frac{2L}{\pi d}
+  $$
 
-- The probabilistic nature of the method contributes to higher fluctuations in the estimated values of \( \pi \).
+  Where:
 
-- The method is inefficient for practical computation, especially for high accuracy requirements.
+  - \( L \) is the length of the needle.
 
-#### Comparison of Methods (Comparison Graphs & Error Analysis)
+  - \( d \) is the distance between the parallel lines.
 
-- The Circle Method consistently outperforms Buffon's Needle Method in terms of accuracy and convergence speed.
+- By rearranging the formula, we estimate \( \pi \) as:
+  
+  $$
+  \pi \approx \frac{2L}{dP}
+  $$
 
-- The Comparison of Convergence Rates graph shows how the Circle Method approaches the true value of \( \pi \) much faster than Buffon's Needle Method.
+- The method's accuracy improves with an increasing number of needle drops. However, its convergence rate is significantly slower compared to the Circle-Based Method.
 
-- The Comparison of Estimation Errors graph highlights that Buffon's Needle Method has significantly larger errors even with high sample sizes.
+- Due to the probabilistic nature of this method, it requires a larger number of trials to produce accurate results.
 
-- For practical applications, the Circle Method is a clear winner, as it provides more accurate estimates with fewer samples.
+### **Comparison:**
 
-#### Overall Conclusion
+- **Accuracy:** The Circle-Based Monte Carlo Method reaches acceptable accuracy faster than Buffon's Needle Method.
 
-- While Buffon's Needle Method is interesting from a probabilistic standpoint, it is not efficient for accurate estimation of \( \pi \).
+- **Computational Efficiency:** The Circle-Based Method is computationally efficient as it only requires evaluating whether a point lies within a circle.
 
-- The Circle Method, on the other hand, is a simple yet powerful approach for estimating \( \pi \) due to its direct relation to geometric probability.
+- **Convergence Rate:** Buffon's Needle Method has a slower convergence rate and requires a much higher number of iterations to achieve a similar level of accuracy as the Circle-Based Method.
 
-- The error analysis and comparison graphs clearly demonstrate the superiority of the Circle Method in terms of efficiency and computational practicality.
+- **Practicality:** The Circle-Based Method is preferred for numerical estimation of \( \pi \) due to its simplicity and better convergence rate.
 
+### **Conclusion:**
 
+In conclusion, the Monte Carlo approach offers a versatile and intuitive way to estimate \( \pi \) through geometric probability. While the Circle-Based Monte Carlo Method is more efficient and reliable, Buffon's Needle Method remains a fascinating probabilistic approach with historical significance. These methods demonstrate the power of randomness in solving complex problems, providing a deeper understanding of convergence rates and computational efficiency. Further improvements can be achieved by increasing the number of iterations and optimizing simulation techniques.
+
+---
