@@ -20,9 +20,9 @@ Furthermore, the use of Monte Carlo methods in estimating π showcases the broad
 
 ---
 
-## Part 1: Estimating π Using a Circle
+## Estimating π Using a Circle
 
-### 1. Theoretical Foundation
+### Theoretical Foundation
 
 The Monte Carlo method for estimating π is based on the area ratio between a circle and the square that bounds it. This method utilizes geometric probability to achieve a numerical approximation of π through random sampling.
 
@@ -69,7 +69,7 @@ $$
 \pi \approx 4 \times \frac{\text{Number of points inside circle}}{\text{Total number of points}}
 $$
 
-### 2. Simulation
+### Simulation
 
 1. Generate random points `(x, y)` where both `x` and `y` are uniformly distributed between `-1` and `1`.
 
@@ -96,9 +96,9 @@ $$
 
 ---
 
-## Part 2: Estimating π Using Buffon’s Needle
+## Estimating π Using Buffon’s Needle
 
-### 1. Theoretical Foundation
+### Theoretical Foundation
 
 Buffon’s Needle problem is a classic Monte Carlo simulation used to estimate \( \pi \) based on probability.
 
@@ -163,7 +163,7 @@ The graph shows the randomly generated points used to estimate the value of \( \
 
 #### Key Points to Understand:
 
-1. **Square and Circle Definition:**  
+**Square and Circle Definition:**  
 
    - The **square** has its sides ranging from \( -1 \) to \( 1 \) along both the \( x \)-axis and \( y \)-axis.
 
@@ -796,12 +796,52 @@ This graph compares the **Estimation Errors** of two different Monte Carlo metho
 
 
 
-### 4. Analysis
+### Analysis
 
-- As the number of needle drops increases, the estimate of \( \pi \) becomes more accurate.
+The analysis of both the Circle Method and Buffon's Needle Method reveals significant differences in their efficiency, accuracy, and convergence rates. Here are the key findings:
 
-- The convergence rate is slower compared to the circle-based Monte Carlo method, making it less efficient for practical computation.
+#### Circle Method (Scatter Plot & Convergence Graph)
 
----
+- As the number of random points increases, the estimate of \( \pi \) becomes progressively more accurate. 
+
+- The Circle Method shows a fast convergence rate due to the direct geometric probability approach.
+
+- Estimation error decreases rapidly following the relation:
+
+  $$
+  \text{Estimation Error} \approx \frac{1}{\sqrt{N}}
+  $$
+
+  Where \( N \) is the total number of random points.
+
+- The method achieves accurate results even with relatively fewer points, making it highly efficient for practical computation.
+
+#### Buffon's Needle Method (Simulation & Convergence Graph)
+
+- As the number of needle drops increases, the estimate of \( \pi \) becomes more accurate, but the convergence rate is much slower compared to the Circle Method.
+
+- Estimation error decreases more gradually and requires a larger sample size to achieve similar accuracy.
+
+- The probabilistic nature of the method contributes to higher fluctuations in the estimated values of \( \pi \).
+
+- The method is inefficient for practical computation, especially for high accuracy requirements.
+
+#### Comparison of Methods (Comparison Graphs & Error Analysis)
+
+- The Circle Method consistently outperforms Buffon's Needle Method in terms of accuracy and convergence speed.
+
+- The Comparison of Convergence Rates graph shows how the Circle Method approaches the true value of \( \pi \) much faster than Buffon's Needle Method.
+
+- The Comparison of Estimation Errors graph highlights that Buffon's Needle Method has significantly larger errors even with high sample sizes.
+
+- For practical applications, the Circle Method is a clear winner, as it provides more accurate estimates with fewer samples.
+
+#### Overall Conclusion
+
+- While Buffon's Needle Method is interesting from a probabilistic standpoint, it is not efficient for accurate estimation of \( \pi \).
+
+- The Circle Method, on the other hand, is a simple yet powerful approach for estimating \( \pi \) due to its direct relation to geometric probability.
+
+- The error analysis and comparison graphs clearly demonstrate the superiority of the Circle Method in terms of efficiency and computational practicality.
 
 
