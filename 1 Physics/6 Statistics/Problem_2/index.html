@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 2 - Physics and Mathematics</title>
+<title>Problem 2: Estimating Pi using Monte Carlo Methods - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 2";
+        var mkdocs_page_name = "Problem 2: Estimating Pi using Monte Carlo Methods";
         var mkdocs_page_input_path = "1 Physics/6 Statistics/Problem_2.md";
         var mkdocs_page_url = null;
       </script>
@@ -84,8 +84,34 @@
 <ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Problem_1/">Problem 1</a>
 </li>
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2: Estimating Pi using Monte Carlo Methods</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#motivation">Motivation</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#part-1-estimating-using-a-circle">Part 1: Estimating π Using a Circle</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#1-theoretical-foundation">1. Theoretical Foundation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#2-simulation">2. Simulation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#4-analysis">4. Analysis</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#part-2-estimating-using-buffons-needle">Part 2: Estimating π Using Buffon’s Needle</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#1-theoretical-foundation_1">1. Theoretical Foundation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#2-simulation_1">2. Simulation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#4-analysis_1">4. Analysis</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#deliverables">Deliverables</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -163,7 +189,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">6 Statistics</li>
-<li class="breadcrumb-item active">Problem 2</li>
+<li class="breadcrumb-item active">Problem 2: Estimating Pi using Monte Carlo Methods</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -171,7 +197,140 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-2">Problem 2</h1>
+<h1 id="problem-2-estimating-pi-using-monte-carlo-methods">Problem 2: Estimating Pi using Monte Carlo Methods</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Monte Carlo methods are a class of computational algorithms that rely on random sampling to obtain numerical results. The method is particularly useful when dealing with problems that are difficult or impossible to solve analytically. One of the most famous applications of Monte Carlo methods is estimating the value of π. By employing randomness and probability, we can estimate π through simulations involving geometric probability.</p>
+<p>The most common Monte Carlo approach to estimate π involves generating random points within a square and determining how many of them fall inside a circle inscribed within that square. This method, despite its simplicity, effectively demonstrates the power of random sampling in solving complex problems. Another interesting technique for estimating π is Buffon’s Needle problem, which uses probability theory to approximate π by analyzing how often a randomly dropped needle crosses parallel lines.</p>
+<p>Monte Carlo methods are particularly useful because they allow for estimating values through repeated random sampling, which often provides an accurate approximation even when the exact solution is difficult to determine. As the number of samples increases, the accuracy of the approximation improves, illustrating a fundamental property of statistical convergence.</p>
+<p>This problem provides insights into the fundamentals of probability, numerical computation, and statistical convergence. Through these exercises, we can better understand the efficiency and accuracy of Monte Carlo methods in approximating important mathematical constants like π. Additionally, understanding these concepts allows us to apply similar methods to a wide range of problems beyond mathematics, including physics, finance, and various fields of engineering.</p>
+<hr/>
+<h2 id="motivation">Motivation</h2>
+<p>Monte Carlo simulations are a powerful class of computational techniques that use randomness to solve problems or estimate values. One of the most elegant applications of Monte Carlo methods is estimating the value of π through geometric probability. By randomly generating points and analyzing their positions relative to a geometric shape, we can approximate π in an intuitive and visually engaging way.</p>
+<p>This problem connects fundamental concepts of probability, geometry, and numerical computation. It also provides a gateway to understanding how randomness can be harnessed to solve complex problems in physics, finance, and computer science. The Monte Carlo approach to π estimation highlights the versatility and simplicity of this method while offering practical insights into convergence rates and computational efficiency.</p>
+<p>Furthermore, the use of Monte Carlo methods in estimating π showcases the broader applicability of these techniques, particularly in scenarios where deterministic approaches may be too complex or computationally expensive to implement. The accuracy of the approximation increases as the number of random points or needle drops increases, providing a valuable example of how statistical methods converge towards true values.</p>
+<hr/>
+<h2 id="part-1-estimating-using-a-circle">Part 1: Estimating π Using a Circle</h2>
+<h3 id="1-theoretical-foundation">1. Theoretical Foundation</h3>
+<p>The Monte Carlo method for estimating π is based on the area ratio between a circle and the square that bounds it. This method utilizes geometric probability to achieve a numerical approximation of π through random sampling.</p>
+<h4 id="explanation-and-derivation">Explanation and Derivation</h4>
+<p>Consider a <strong>unit circle</strong> centered at the origin <code>(0, 0)</code> and enclosed within a square of side length <code>2</code> (spanning from <code>-1</code> to <code>1</code> along both axes).</p>
+<ul>
+<li>The area of the square is calculated as the square of its side length:</li>
+</ul>
+<p>$$
+  A_{square} = (2)^2 = 4
+  $$</p>
+<ul>
+<li>
+<p>The area of the circle is given by the formula for the area of a circle:
+  $$
+  A_{circle} = \pi r^2 = \pi (1)^2 = \pi
+  $$</p>
+</li>
+<li>
+<p>Therefore, the ratio of the area of the circle to the area of the square is: 
+  $$
+    \text{Ratio} = \frac{A_{circle}}{A_{square}} = \frac{\pi}{4}
+  $$</p>
+</li>
+</ul>
+<p>Now, we can use <strong>Geometric Probability</strong> to relate this ratio to a simulation:
+- We randomly generate points <code>(x, y)</code> within the square with coordinates satisfying:</p>
+<p>$$
+  -1 \leq x \leq 1, \quad -1 \leq y \leq 1
+  $$</p>
+<ul>
+<li>The probability that a randomly generated point falls inside the circle is equal to the ratio of the circle’s area to the square’s area.</li>
+</ul>
+<p>According to the probability definition:</p>
+<div class="arithmatex">\[
+    \text{Probability} = \frac{\text{Number of points inside circle}}{\text{Total number of points}} = \frac{\pi}{4}
+\]</div>
+<p>By rearranging, we can estimate <span class="arithmatex">\( \pi \)</span> as follows:</p>
+<div class="arithmatex">\[
+\pi \approx 4 \times \frac{\text{Number of points inside circle}}{\text{Total number of points}}
+\]</div>
+<h3 id="2-simulation">2. Simulation</h3>
+<ol>
+<li>
+<p>Generate random points <code>(x, y)</code> where both <code>x</code> and <code>y</code> are uniformly distributed between <code>-1</code> and <code>1</code>.</p>
+</li>
+<li>
+<p>Count the number of points that fall inside the unit circle by checking if:</p>
+</li>
+</ol>
+<div class="arithmatex">\[
+x^2 + y^2 \leq 1
+\]</div>
+<ol>
+<li>Estimate π using the formula derived above.</li>
+</ol>
+<h3 id="4-analysis">4. Analysis</h3>
+<ul>
+<li>
+<p>As the number of points increases, the estimate of <span class="arithmatex">\( \pi \)</span> becomes more accurate.</p>
+</li>
+<li>
+<p>The convergence rate follows the law of large numbers and is proportional to:</p>
+</li>
+</ul>
+<p>$$
+    \text{Estimation Error} \approx \frac{1}{\sqrt{N}}
+  $$</p>
+<p>Where <code>N</code> is the total number of random points.</p>
+<hr/>
+<h2 id="part-2-estimating-using-buffons-needle">Part 2: Estimating π Using Buffon’s Needle</h2>
+<h3 id="1-theoretical-foundation_1">1. Theoretical Foundation</h3>
+<p>Buffon’s Needle problem is a classic Monte Carlo simulation used to estimate <span class="arithmatex">\( \pi \)</span> based on probability.</p>
+<h4 id="description-and-derivation">Description and Derivation</h4>
+<p>Consider a floor with equally spaced parallel lines separated by a distance <code>d</code>. A needle of length <code>L</code> is randomly dropped onto this plane. We want to determine the probability that the needle crosses one of the lines.</p>
+<p>If <span class="arithmatex">\( L \leq d \)</span>, the probability of crossing a line depends on two random variables:</p>
+<p><strong>θ:</strong> The acute angle between the needle and the parallel lines, which is uniformly distributed between <span class="arithmatex">\( 0 \)</span> and <span class="arithmatex">\(\frac{\pi}{2}\)</span></p>
+<p><strong>x:</strong> The distance from the midpoint of the needle to the nearest line, uniformly distributed between <span class="arithmatex">\( 0 \)</span> and <span class="arithmatex">\(\frac{d}{2}\)</span>.</p>
+<p>The needle crosses the line if:</p>
+<div class="arithmatex">\[
+x \leq \frac{L}{2} \sin(\theta)
+\]</div>
+<p>Calculating the probability involves integrating over all possible values of <span class="arithmatex">\(     heta \)</span>:</p>
+<div class="arithmatex">\[
+P = \frac{2}{\pi} \int_{0}^{\frac{\pi}{2}} \frac{L}{d} \sin(\theta) d\theta = \frac{2L}{\pi d}
+\]</div>
+<p>Rearranging to solve for <span class="arithmatex">\( \pi \)</span>:</p>
+<div class="arithmatex">\[
+\pi \approx \frac{2L}{dP}
+\]</div>
+<h3 id="2-simulation_1">2. Simulation</h3>
+<ul>
+<li>
+<p>Randomly drop a needle onto the plane.</p>
+</li>
+<li>
+<p>Check if the needle crosses a line based on its midpoint and orientation.</p>
+</li>
+<li>
+<p>Repeat for many iterations to calculate the probability.</p>
+</li>
+<li>
+<p>Estimate <span class="arithmatex">\( \pi \)</span> using the derived formula.</p>
+</li>
+</ul>
+<h3 id="4-analysis_1">4. Analysis</h3>
+<ul>
+<li>
+<p>As the number of needle drops increases, the estimate of <span class="arithmatex">\( \pi \)</span> becomes more accurate.</p>
+</li>
+<li>
+<p>The convergence rate is slower compared to the circle-based Monte Carlo method, making it less efficient for practical computation.</p>
+</li>
+</ul>
+<hr/>
+<h2 id="deliverables">Deliverables</h2>
+<ol>
+<li>A detailed Markdown document with explanations and mathematical derivations.</li>
+<li>Python code for implementing both methods (To be done).</li>
+<li>Graphical outputs and visualizations (To be done).</li>
+<li>Analysis comparing the two methods in terms of accuracy and computational efficiency.</li>
+</ol>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
