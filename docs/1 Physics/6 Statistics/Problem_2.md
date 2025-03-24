@@ -287,9 +287,7 @@ The graph illustrates how the estimated value of \( \pi \) changes as the number
 
 
      $$
-
      \pi \approx 3.14159
-
      $$
 
 
@@ -449,15 +447,14 @@ The graph above displays the simulation of **Buffon's Needle Problem**, where ra
      \pi \approx \frac{2L \times \text{Number of Needles}}{d \times \text{Number of Crossings}}
      $$
 
-4. **Interpretation of the Graph:**  
+**Interpretation of the Graph:**  
 
    - This graph visually shows how the needles interact with the parallel lines.
 
    - The estimated value of \( \pi \) is calculated based on the ratio of crossed needles to the total number of needles.
 
    - More needles produce a more accurate estimation of \( \pi \).
-
-5. **Estimation Result:**  
+**Estimation Result:**  
 
    - The estimated value of \( \pi \) from this simulation: **3.24675** (Not very accurate, more needles required for better estimation).
 
@@ -466,15 +463,123 @@ The graph above displays the simulation of **Buffon's Needle Problem**, where ra
 #### Purpose of the Graph:
 
 - To demonstrate how randomness and probability can be used to estimate \( \pi \).
+
 - To visualize the crossing condition of needles with the parallel lines and how it contributes to the estimation process.
-
-
 
 - Check if the needle crosses a line based on its midpoint and orientation.
 
 - Repeat for many iterations to calculate the probability.
 
 - Estimate \( \pi \) using the derived formula.
+
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+# Function to estimate Pi using Buffon's Needle Method over multiple iterations
+def buffons_needle_convergence(max_needles, step_size, L, d):
+    """
+    Estimate Pi using Buffon's Needle method over multiple iterations and store the results for plotting a convergence graph.
+
+    Args:
+        max_needles (int): The maximum number of needles to drop.
+        step_size (int): The step size for increasing the number of needles.
+        L (float): Length of the needle.
+        d (float): Distance between parallel lines.
+
+    Returns:
+        list: A list of needle counts.
+        list: A list of corresponding Pi estimates.
+    """
+    needles_counts = []
+    pi_estimates = []
+
+    for num_needles in range(step_size, max_needles + 1, step_size):
+        pi_estimate, _, _, _ = buffons_needle_simulation(num_needles, L, d)
+        needles_counts.append(num_needles)
+        pi_estimates.append(pi_estimate)
+
+    return needles_counts, pi_estimates
+
+# Generate data for the convergence graph
+max_needles = 100000
+step_size = 1000
+needles_counts, pi_estimates = buffons_needle_convergence(max_needles, step_size, L, d)
+
+# Plotting the Convergence Graph (Buffon's Needle Method)
+plt.figure(figsize=(10, 6))
+plt.plot(needles_counts, pi_estimates, color='blue', label="Estimated Pi Value")
+plt.axhline(y=np.pi, color='red', linestyle='--', label='True Pi Value (3.14159...)')
+plt.title("Convergence of Pi Estimation (Buffon's Needle Method)")
+plt.xlabel("Number of Needles (N)")
+plt.ylabel("Estimated Pi Value")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+```
+</details>
+
+![alt text](image-8.png)
+
+### Convergence Graph (Buffon's Needle Method) - Explanation and Interpretation
+
+#### What This Graph Represents:
+
+This graph illustrates how the estimated value of \( \pi \) changes as the number of randomly dropped needles (\( N \)) increases. The purpose is to visualize the convergence of the estimated \( \pi \) value towards the true value of \( \pi \) as more samples are used in the simulation.
+
+---
+
+#### Key Points to Understand:
+
+**True Pi Value (Red Dashed Line):**  
+
+   - The horizontal red dashed line indicates the true value of \( \pi \) which is approximately:
+
+     $$
+     pi \approx 3.14159
+     $$
+
+   - It serves as a reference for evaluating the accuracy of the simulation.
+
+2. **Estimated Pi Value (Blue Line):**  
+   - The blue line shows the estimated value of \( \pi \) calculated from the Buffon's Needle simulation as the number of needles increases.
+   - At smaller values of \( N \), the estimate fluctuates significantly.
+   - As \( N \) increases, the estimate approaches the true value of \( \pi \).
+
+3. **Mathematical Basis for Estimation:**  
+   - The probability of a needle crossing a line is:
+    $$
+     P = \frac{2L}{\pi d}
+    $$
+   - Therefore, the estimated value of \( \pi \) is:
+
+     $$
+     \pi \approx \frac{2L \times \text{Number of Needles}}{d \times \text{Number of Crossings}}
+     $$
+
+   - Where:
+
+     - \( L \): Length of the needle.
+
+     - \( d \): Distance between the parallel lines.
+
+     - Number of Crossings: The number of needles that intersect with the parallel lines.
+
+4. **Convergence Principle:**  
+
+   - According to statistical theory, the estimation error decreases as the number of samples increases.
+
+   - The fluctuation decreases over time, resulting in more accurate approximations of \( \pi \).
+
+---
+
+#### Purpose of the Graph:
+
+- To demonstrate how increasing the number of needles used in the simulation improves the accuracy of the estimated value of \( \pi \).
+
+- To visualize the random fluctuation and convergence behavior of the Monte Carlo Method applied to Buffon's Needle problem.
+
 
 ### 4. Analysis
 
@@ -485,8 +590,12 @@ The graph above displays the simulation of **Buffon's Needle Problem**, where ra
 ---
 
 ## Deliverables
+
 1. A detailed Markdown document with explanations and mathematical derivations.
+
 2. Python code for implementing both methods (To be done).
+
 3. Graphical outputs and visualizations (To be done).
+
 4. Analysis comparing the two methods in terms of accuracy and computational efficiency.
 
