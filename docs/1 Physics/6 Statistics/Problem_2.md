@@ -1,4 +1,6 @@
-# Problem 2: Estimating Pi using Monte Carlo Methods
+# Problem 2
+
+# Estimating Pi using Monte Carlo Methods
 
 ## Introduction
 Monte Carlo methods are a class of computational algorithms that rely on random sampling to obtain numerical results. The method is particularly useful when dealing with problems that are difficult or impossible to solve analytically. One of the most famous applications of Monte Carlo methods is estimating the value of π. By employing randomness and probability, we can estimate π through simulations involving geometric probability.

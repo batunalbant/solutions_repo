@@ -1,3 +1,7 @@
+# Problem 1
+
+# Exploring the Central Limit Theorem through simulations
+
 ## Motivation
 The Central Limit Theorem (CLT) is a fundamental theorem in statistics stating that when independent random variables are added, their normalized sum tends towards a normal distribution, even if the original variables themselves are not normally distributed. This theorem is particularly powerful because it allows statisticians to make inferences about population parameters using sample data, even when the population distribution is unknown or non-normal.
 
