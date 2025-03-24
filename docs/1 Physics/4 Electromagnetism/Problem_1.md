@@ -1,4 +1,6 @@
-## Simulating the Effects of the Lorentz Force
+# Problem 1
+
+# Simulating the Effects of the Lorentz Force
 
 ### Introduction
 The study of charged particle motion under the influence of electromagnetic fields is a fundamental topic in classical electromagnetism and has broad applications in various scientific and technological fields. The Lorentz force law describes the force experienced by a charged particle moving through electric and magnetic fields, which can be expressed as:
