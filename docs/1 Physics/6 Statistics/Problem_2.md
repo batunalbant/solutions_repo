@@ -536,22 +536,28 @@ This graph illustrates how the estimated value of \( \pi \) changes as the numbe
 
    - The horizontal red dashed line indicates the true value of \( \pi \) which is approximately:
 
-     $$
+     \(
      pi \approx 3.14159
-     $$
+     \)
 
    - It serves as a reference for evaluating the accuracy of the simulation.
 
-2. **Estimated Pi Value (Blue Line):**  
+**Estimated Pi Value (Blue Line):**  
+
    - The blue line shows the estimated value of \( \pi \) calculated from the Buffon's Needle simulation as the number of needles increases.
+
    - At smaller values of \( N \), the estimate fluctuates significantly.
+
    - As \( N \) increases, the estimate approaches the true value of \( \pi \).
 
-3. **Mathematical Basis for Estimation:**  
+**Mathematical Basis for Estimation:**  
+
    - The probability of a needle crossing a line is:
-    $$
+
+    \(
      P = \frac{2L}{\pi d}
-    $$
+    \)
+    
    - Therefore, the estimated value of \( \pi \) is:
 
      $$
@@ -566,7 +572,7 @@ This graph illustrates how the estimated value of \( \pi \) changes as the numbe
 
      - Number of Crossings: The number of needles that intersect with the parallel lines.
 
-4. **Convergence Principle:**  
+**Convergence Principle:**  
 
    - According to statistical theory, the estimation error decreases as the number of samples increases.
 
