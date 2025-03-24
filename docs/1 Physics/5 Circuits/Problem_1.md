@@ -688,7 +688,8 @@ def simplify_circuit(self):
 ```
 </details>
 
-![alt text](image-12.png)
+![Circuit Simplification](https://github.com/batunalbant/solutions_repo/blob/main/docs/1%20Physics/5%20Circuits/simplfication.gif)
+
 
 
 
