@@ -178,12 +178,13 @@ The graph shows the randomly generated points used to estimate the value of \( \
 
    - **Red Points (Outside Circle):** Points that do not satisfy the above condition.
 
-**Mathematical Basis for Estimation:**  
+**Mathematical Basis for Estimation:** 
+
    - The area of the square is calculated by:
 
-     \(
+     $$
      A_{\text{square}} = (2)^2 = 4
-     \)
+     $$
 
    - The area of the circle is given by:
 
@@ -435,6 +436,7 @@ The graph above displays the simulation of **Buffon's Needle Problem**, where ra
      $$
      P = \frac{2L}{\pi d}
      $$
+
    - Where:
 
      - \( L \): Length of the needle.
@@ -585,6 +587,8 @@ This graph illustrates how the estimated value of \( \pi \) changes as the numbe
 - To demonstrate how increasing the number of needles used in the simulation improves the accuracy of the estimated value of \( \pi \).
 
 - To visualize the random fluctuation and convergence behavior of the Monte Carlo Method applied to Buffon's Needle problem.
+
+
 
 
 ### 4. Analysis
