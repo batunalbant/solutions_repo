@@ -162,6 +162,7 @@ The graph shows the randomly generated points used to estimate the value of \( \
 ---
 
 #### Key Points to Understand:
+
 1. **Square and Circle Definition:**  
 
    - The **square** has its sides ranging from \( -1 \) to \( 1 \) along both the \( x \)-axis and \( y \)-axis.
@@ -225,6 +226,8 @@ The graph shows the randomly generated points used to estimate the value of \( \
 
 <details>
   <summary>Phyton codes.</summary>
+
+---
 
 ```python
 # Generating data for the Convergence Graph (Circle Method)
@@ -327,6 +330,7 @@ The graph illustrates how the estimated value of \( \pi \) changes as the number
 
 - To visualize the convergence behavior of the estimated value of \( \pi \) towards the actual value.
 
+---
 
 <details>
   <summary>Phyton codes.</summary>
@@ -474,6 +478,8 @@ The graph above displays the simulation of **Buffon's Needle Problem**, where ra
 
 - Estimate \( \pi \) using the derived formula.
 
+---
+
 <details>
   <summary>Phyton codes.</summary>
 
@@ -591,6 +597,8 @@ This graph illustrates how the estimated value of \( \pi \) changes as the numbe
 <details>
   <summary>Phyton codes.</summary>
 
+---
+
 ```python
 # Generating data for Circle Method Convergence (Again for Comparison)
 circle_points_counts, circle_pi_estimates = estimate_pi_convergence(max_points, step_size)
@@ -615,13 +623,17 @@ plt.show()
 ###  Comparison of Convergence Rates - Circle Method vs. Buffon's Needle Method
 
 #### What This Graph Represents:
+
 The graph compares the convergence behavior of two different Monte Carlo methods for estimating \( \pi \):
 
 **Circle Method (Green Line):**  
 
+
    - Uses randomly generated points within a square and counts how many fall inside an inscribed circle.
 
+
    - Formula for estimation:
+
 
      $$
      \pi \approx 4 \times \frac{\text{Number of points inside circle}}{\text{Total number of points}}
@@ -631,7 +643,9 @@ The graph compares the convergence behavior of two different Monte Carlo methods
  
    - Uses randomly dropped needles on a plane with parallel lines.
 
+
    - Estimates \( \pi \) based on the probability of a needle crossing a line.
+
 
    - Formula for estimation:
 
@@ -643,18 +657,27 @@ The graph compares the convergence behavior of two different Monte Carlo methods
 
 #### Key Observations:
 
+
 - The **red dashed line** represents the true value of \( \pi \) (\( \approx 3.14159 \)).
+
+
 
 - The **Circle Method (Green Line)**:
 
-  - Exhibits smaller fluctuations and more consistent convergence towards the true value of \( \pi \).
 
-  - Shows higher accuracy and stability compared to Buffon's Needle Method.
+
+- Exhibits smaller fluctuations and more consistent convergence towards the true value of \( \pi \).
+
+- Shows higher accuracy and stability compared to Buffon's Needle Method.
+
+
 - The **Buffon's Needle Method (Blue Line)**:
 
-  - Shows larger fluctuations and slower convergence, especially for smaller sample sizes.
 
-  - The noise in the data is higher because this method relies on a probability-based crossing condition which requires more samples for accuracy.
+- Shows larger fluctuations and slower convergence, especially for smaller sample sizes.
+
+
+- The noise in the data is higher because this method relies on a probability-based crossing condition which requires more samples for accuracy.
   
 ---
 
@@ -671,6 +694,7 @@ The graph compares the convergence behavior of two different Monte Carlo methods
 
 - Buffon's Needle Method, while interesting from a probabilistic standpoint, requires significantly more samples to achieve similar accuracy.
 
+---
 
 <details>
   <summary>Phyton codes.</summary>
@@ -780,13 +804,4 @@ This graph compares the **Estimation Errors** of two different Monte Carlo metho
 
 ---
 
-## Deliverables
-
-1. A detailed Markdown document with explanations and mathematical derivations.
-
-2. Python code for implementing both methods (To be done).
-
-3. Graphical outputs and visualizations (To be done).
-
-4. Analysis comparing the two methods in terms of accuracy and computational efficiency.
 
