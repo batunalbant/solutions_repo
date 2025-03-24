@@ -90,21 +90,21 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#motivation">Motivation</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#part-1-estimating-using-a-circle">Part 1: Estimating π Using a Circle</a>
+<li class="toctree-l3"><a class="reference internal" href="#estimating-using-a-circle">Estimating π Using a Circle</a>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#1-theoretical-foundation">1. Theoretical Foundation</a>
+<li class="toctree-l4"><a class="reference internal" href="#theoretical-foundation">Theoretical Foundation</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#2-simulation">2. Simulation</a>
+<li class="toctree-l4"><a class="reference internal" href="#simulation">Simulation</a>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#4-analysis">4. Analysis</a>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#part-2-estimating-using-buffons-needle">Part 2: Estimating π Using Buffon’s Needle</a>
+<li class="toctree-l3"><a class="reference internal" href="#estimating-using-buffons-needle">Estimating π Using Buffon’s Needle</a>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#1-theoretical-foundation_1">1. Theoretical Foundation</a>
+<li class="toctree-l4"><a class="reference internal" href="#theoretical-foundation_1">Theoretical Foundation</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#2-simulation_1">2. Simulation</a>
+<li class="toctree-l4"><a class="reference internal" href="#2-simulation">2. Simulation</a>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#scatter-plot-circle-method-explanation-and-interpretation">Scatter Plot (Circle Method) - Explanation and Interpretation</a>
 </li>
@@ -118,7 +118,7 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#comparison-of-estimation-errors-circle-method-vs-buffons-needle-method">Comparison of Estimation Errors - Circle Method vs. Buffon's Needle Method</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#4-analysis_1">4. Analysis</a>
+<li class="toctree-l4"><a class="reference internal" href="#analysis">Analysis</a>
 </li>
 </ul>
 </li>
@@ -219,8 +219,8 @@
 <p>This problem connects fundamental concepts of probability, geometry, and numerical computation. It also provides a gateway to understanding how randomness can be harnessed to solve complex problems in physics, finance, and computer science. The Monte Carlo approach to π estimation highlights the versatility and simplicity of this method while offering practical insights into convergence rates and computational efficiency.</p>
 <p>Furthermore, the use of Monte Carlo methods in estimating π showcases the broader applicability of these techniques, particularly in scenarios where deterministic approaches may be too complex or computationally expensive to implement. The accuracy of the approximation increases as the number of random points or needle drops increases, providing a valuable example of how statistical methods converge towards true values.</p>
 <hr/>
-<h2 id="part-1-estimating-using-a-circle">Part 1: Estimating π Using a Circle</h2>
-<h3 id="1-theoretical-foundation">1. Theoretical Foundation</h3>
+<h2 id="estimating-using-a-circle">Estimating π Using a Circle</h2>
+<h3 id="theoretical-foundation">Theoretical Foundation</h3>
 <p>The Monte Carlo method for estimating π is based on the area ratio between a circle and the square that bounds it. This method utilizes geometric probability to achieve a numerical approximation of π through random sampling.</p>
 <h4 id="explanation-and-derivation">Explanation and Derivation</h4>
 <p>Consider a <strong>unit circle</strong> centered at the origin <code>(0, 0)</code> and enclosed within a square of side length <code>2</code> (spanning from <code>-1</code> to <code>1</code> along both axes).</p>
@@ -260,7 +260,7 @@
 <div class="arithmatex">\[
 \pi \approx 4 \times \frac{\text{Number of points inside circle}}{\text{Total number of points}}
 \]</div>
-<h3 id="2-simulation">2. Simulation</h3>
+<h3 id="simulation">Simulation</h3>
 <ol>
 <li>
 <p>Generate random points <code>(x, y)</code> where both <code>x</code> and <code>y</code> are uniformly distributed between <code>-1</code> and <code>1</code>.</p>
@@ -289,8 +289,8 @@ x^2 + y^2 \leq 1
   $$</p>
 <p>Where <code>N</code> is the total number of random points.</p>
 <hr/>
-<h2 id="part-2-estimating-using-buffons-needle">Part 2: Estimating π Using Buffon’s Needle</h2>
-<h3 id="1-theoretical-foundation_1">1. Theoretical Foundation</h3>
+<h2 id="estimating-using-buffons-needle">Estimating π Using Buffon’s Needle</h2>
+<h3 id="theoretical-foundation_1">Theoretical Foundation</h3>
 <p>Buffon’s Needle problem is a classic Monte Carlo simulation used to estimate <span class="arithmatex">\( \pi \)</span> based on probability.</p>
 <h4 id="description-and-derivation">Description and Derivation</h4>
 <p>Consider a floor with equally spaced parallel lines separated by a distance <code>d</code>. A needle of length <code>L</code> is randomly dropped onto this plane. We want to determine the probability that the needle crosses one of the lines.</p>
@@ -309,7 +309,7 @@ P = \frac{2}{\pi} \int_{0}^{\frac{\pi}{2}} \frac{L}{d} \sin(\theta) d\theta = \f
 <div class="arithmatex">\[
 \pi \approx \frac{2L}{dP}
 \]</div>
-<h3 id="2-simulation_1">2. Simulation</h3>
+<h3 id="2-simulation">2. Simulation</h3>
 <details>
 <summary>Phyton codes.</summary>
 <pre><code class="language-python"># Plotting the Scatter Plot (Circle Method) again with clearer styling for presentation
@@ -333,17 +333,15 @@ plt.show()
 <p>The graph shows the randomly generated points used to estimate the value of <span class="arithmatex">\( \pi \)</span> through the Monte Carlo Method. This method compares the number of points that fall inside a unit circle to the total number of points generated within a bounding square.</p>
 <hr/>
 <h4 id="key-points-to-understand">Key Points to Understand:</h4>
-<ol>
-<li>
 <p><strong>Square and Circle Definition:</strong> </p>
-</li>
+<ul>
 <li>
 <p>The <strong>square</strong> has its sides ranging from <span class="arithmatex">\( -1 \)</span> to <span class="arithmatex">\( 1 \)</span> along both the <span class="arithmatex">\( x \)</span>-axis and <span class="arithmatex">\( y \)</span>-axis.</p>
 </li>
 <li>
 <p>The <strong>circle</strong> is a unit circle centered at the origin <span class="arithmatex">\((0,0)\)</span> with a radius of <span class="arithmatex">\( r = 1 \)</span>.</p>
 </li>
-</ol>
+</ul>
 <p><strong>Point Classification:</strong> </p>
 <ul>
 <li>
@@ -1009,16 +1007,69 @@ plt.show()
 <p>Buffon's Needle Method, although interesting, is not practical for high-accuracy estimations of <span class="arithmatex">\( \pi \)</span> unless an extremely large number of samples is used.</p>
 </li>
 </ul>
-<h3 id="4-analysis_1">4. Analysis</h3>
+<h3 id="analysis">Analysis</h3>
+<p>The analysis of both the Circle Method and Buffon's Needle Method reveals significant differences in their efficiency, accuracy, and convergence rates. Here are the key findings:</p>
+<h4 id="circle-method-scatter-plot-convergence-graph">Circle Method (Scatter Plot &amp; Convergence Graph)</h4>
 <ul>
 <li>
-<p>As the number of needle drops increases, the estimate of <span class="arithmatex">\( \pi \)</span> becomes more accurate.</p>
+<p>As the number of random points increases, the estimate of <span class="arithmatex">\( \pi \)</span> becomes progressively more accurate. </p>
 </li>
 <li>
-<p>The convergence rate is slower compared to the circle-based Monte Carlo method, making it less efficient for practical computation.</p>
+<p>The Circle Method shows a fast convergence rate due to the direct geometric probability approach.</p>
+</li>
+<li>
+<p>Estimation error decreases rapidly following the relation:</p>
 </li>
 </ul>
-<hr/>
+<p>$$
+  \text{Estimation Error} \approx \frac{1}{\sqrt{N}}
+  $$</p>
+<p>Where <span class="arithmatex">\( N \)</span> is the total number of random points.</p>
+<ul>
+<li>The method achieves accurate results even with relatively fewer points, making it highly efficient for practical computation.</li>
+</ul>
+<h4 id="buffons-needle-method-simulation-convergence-graph">Buffon's Needle Method (Simulation &amp; Convergence Graph)</h4>
+<ul>
+<li>
+<p>As the number of needle drops increases, the estimate of <span class="arithmatex">\( \pi \)</span> becomes more accurate, but the convergence rate is much slower compared to the Circle Method.</p>
+</li>
+<li>
+<p>Estimation error decreases more gradually and requires a larger sample size to achieve similar accuracy.</p>
+</li>
+<li>
+<p>The probabilistic nature of the method contributes to higher fluctuations in the estimated values of <span class="arithmatex">\( \pi \)</span>.</p>
+</li>
+<li>
+<p>The method is inefficient for practical computation, especially for high accuracy requirements.</p>
+</li>
+</ul>
+<h4 id="comparison-of-methods-comparison-graphs-error-analysis">Comparison of Methods (Comparison Graphs &amp; Error Analysis)</h4>
+<ul>
+<li>
+<p>The Circle Method consistently outperforms Buffon's Needle Method in terms of accuracy and convergence speed.</p>
+</li>
+<li>
+<p>The Comparison of Convergence Rates graph shows how the Circle Method approaches the true value of <span class="arithmatex">\( \pi \)</span> much faster than Buffon's Needle Method.</p>
+</li>
+<li>
+<p>The Comparison of Estimation Errors graph highlights that Buffon's Needle Method has significantly larger errors even with high sample sizes.</p>
+</li>
+<li>
+<p>For practical applications, the Circle Method is a clear winner, as it provides more accurate estimates with fewer samples.</p>
+</li>
+</ul>
+<h4 id="overall-conclusion">Overall Conclusion</h4>
+<ul>
+<li>
+<p>While Buffon's Needle Method is interesting from a probabilistic standpoint, it is not efficient for accurate estimation of <span class="arithmatex">\( \pi \)</span>.</p>
+</li>
+<li>
+<p>The Circle Method, on the other hand, is a simple yet powerful approach for estimating <span class="arithmatex">\( \pi \)</span> due to its direct relation to geometric probability.</p>
+</li>
+<li>
+<p>The error analysis and comparison graphs clearly demonstrate the superiority of the Circle Method in terms of efficiency and computational practicality.</p>
+</li>
+</ul>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
