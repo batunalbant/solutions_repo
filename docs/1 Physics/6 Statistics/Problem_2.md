@@ -588,6 +588,187 @@ This graph illustrates how the estimated value of \( \pi \) changes as the numbe
 
 - To visualize the random fluctuation and convergence behavior of the Monte Carlo Method applied to Buffon's Needle problem.
 
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+# Generating data for Circle Method Convergence (Again for Comparison)
+circle_points_counts, circle_pi_estimates = estimate_pi_convergence(max_points, step_size)
+
+# Plotting the Comparison Graph
+plt.figure(figsize=(12, 6))
+plt.plot(circle_points_counts, circle_pi_estimates, color='green', label="Circle Method - Estimated Pi")
+plt.plot(needles_counts, pi_estimates, color='blue', label="Buffon's Needle Method - Estimated Pi")
+plt.axhline(y=np.pi, color='red', linestyle='--', label='True Pi Value (3.14159...)')
+plt.title("Comparison of Convergence Rates - Circle Method vs. Buffon's Needle Method")
+plt.xlabel("Number of Samples (N)")
+plt.ylabel("Estimated Pi Value")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+```
+</details>
+
+![alt text](image-9.png)
+
+###  Comparison of Convergence Rates - Circle Method vs. Buffon's Needle Method
+
+#### What This Graph Represents:
+The graph compares the convergence behavior of two different Monte Carlo methods for estimating \( \pi \):
+
+**Circle Method (Green Line):**  
+
+   - Uses randomly generated points within a square and counts how many fall inside an inscribed circle.
+
+   - Formula for estimation:
+
+     $$
+     \pi \approx 4 \times \frac{\text{Number of points inside circle}}{\text{Total number of points}}
+     $$
+
+**Buffon's Needle Method (Blue Line):** 
+ 
+   - Uses randomly dropped needles on a plane with parallel lines.
+
+   - Estimates \( \pi \) based on the probability of a needle crossing a line.
+
+   - Formula for estimation:
+
+     $$
+     \pi \approx \frac{2L \times \text{Number of Needles}}{d \times \text{Number of Crossings}}
+     $$
+
+---
+
+#### Key Observations:
+
+- The **red dashed line** represents the true value of \( \pi \) (\( \approx 3.14159 \)).
+
+- The **Circle Method (Green Line)**:
+
+  - Exhibits smaller fluctuations and more consistent convergence towards the true value of \( \pi \).
+
+  - Shows higher accuracy and stability compared to Buffon's Needle Method.
+- The **Buffon's Needle Method (Blue Line)**:
+
+  - Shows larger fluctuations and slower convergence, especially for smaller sample sizes.
+
+  - The noise in the data is higher because this method relies on a probability-based crossing condition which requires more samples for accuracy.
+  
+---
+
+#### Why This Graph is Important:
+
+- This comparison highlights the **difference in convergence rates** and **accuracy** between two Monte Carlo-based methods for estimating \( \pi \).
+
+- It also demonstrates how the **Circle Method is much more efficient** than Buffon's Needle Method, particularly for a smaller number of samples.
+
+---
+
+#### Conclusion:
+- The Circle Method provides a faster and more reliable estimation of \( \pi \) due to its direct geometric approach.
+
+- Buffon's Needle Method, while interesting from a probabilistic standpoint, requires significantly more samples to achieve similar accuracy.
+
+
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+# Function to calculate estimation errors for both methods
+def calculate_errors(true_value, estimates):
+    """
+    Calculate the absolute errors for a list of estimated values compared to the true value.
+
+    Args:
+        true_value (float): The true value of Pi to compare against.
+        estimates (list): A list of estimated Pi values.
+
+    Returns:
+        list: A list of absolute errors.
+    """
+    return [abs(true_value - estimate) for estimate in estimates]
+
+# Calculating errors for both methods
+true_pi = np.pi
+circle_errors = calculate_errors(true_pi, circle_pi_estimates)
+buffon_errors = calculate_errors(true_pi, pi_estimates)
+
+# Plotting the Comparison of Estimation Errors
+plt.figure(figsize=(12, 6))
+plt.plot(circle_points_counts, circle_errors, color='green', label="Circle Method - Estimation Error")
+plt.plot(needles_counts, buffon_errors, color='blue', label="Buffon's Needle Method - Estimation Error")
+plt.title("Comparison of Estimation Errors - Circle Method vs. Buffon's Needle Method")
+plt.xlabel("Number of Samples (N)")
+plt.ylabel("Estimation Error")
+plt.yscale('log')  # Using logarithmic scale for better visualization of errors
+plt.legend()
+plt.grid(True)
+plt.show()
+
+```
+</details>
+
+![alt text](image-10.png)
+
+###  Comparison of Estimation Errors - Circle Method vs. Buffon's Needle Method
+
+#### What This Graph Represents:
+This graph compares the **Estimation Errors** of two different Monte Carlo methods for estimating \( \pi \) as the number of samples (\( N \)) increases. The comparison shows how efficiently each method converges to the true value of \( \pi \).
+
+---
+
+#### Key Points to Understand:
+
+**Circle Method (Green Line):**  
+
+   - The estimation error is calculated as the absolute difference between the estimated value and the true value of \( \pi \):
+
+     $$
+     \text{Error} = \left| \pi_{\text{True}} - \pi_{\text{Estimated}} \right|
+     $$
+
+   - The Circle Method demonstrates a much lower error rate across all sample sizes.
+
+   - Converges quickly and stabilizes around the true value of \( \pi \).
+
+**Buffon's Needle Method (Blue Line):**  
+
+   - The estimation error for this method is also calculated using the same formula:
+
+     $$
+     \text{Error} = \left| \pi_{\text{True}} - \pi_{\text{Estimated}} \right|
+     $$
+
+   - Exhibits larger fluctuations, especially at smaller sample sizes.
+
+   - The error rate decreases much slower compared to the Circle Method.
+
+**Logarithmic Scale:** 
+
+   - The \( y \)-axis is represented on a logarithmic scale to clearly show differences in error magnitudes.
+
+   - This scale helps visualize the higher accuracy of the Circle Method compared to Buffon's Needle Method.
+
+---
+
+#### Why This Graph is Important:
+
+- It clearly shows the efficiency difference between **Circle Method and Buffon's Needle Method** in terms of estimation error.
+
+- The Circle Method is consistently more accurate, requiring far fewer samples to achieve low error values.
+
+- Buffon's Needle Method requires significantly more samples to achieve similar accuracy.
+
+---
+
+#### Conclusion:
+
+- The Circle Method is superior in terms of efficiency, accuracy, and convergence speed.
+
+- Buffon's Needle Method, although interesting, is not practical for high-accuracy estimations of \( \pi \) unless an extremely large number of samples is used.
+
 
 
 
