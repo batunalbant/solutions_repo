@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 2: Estimating Pi using Monte Carlo Methods - Physics and Mathematics</title>
+<title>Problem 2 - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 2: Estimating Pi using Monte Carlo Methods";
+        var mkdocs_page_name = "Problem 2";
         var mkdocs_page_input_path = "1 Physics/6 Statistics/Problem_2.md";
         var mkdocs_page_url = null;
       </script>
@@ -84,50 +84,8 @@
 <ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Problem_1/">Problem 1</a>
 </li>
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2: Estimating Pi using Monte Carlo Methods</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2</a>
 <ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#motivation">Motivation</a>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#estimating-using-a-circle">Estimating π Using a Circle</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#theoretical-foundation">Theoretical Foundation</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#estimating-using-buffons-needle">Estimating π Using Buffon’s Needle</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#theoretical-foundation_1">Theoretical Foundation</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#simulations">Simulations</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#scatter-plot-circle-method-explanation-and-interpretation">Scatter Plot (Circle Method) - Explanation and Interpretation</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#convergence-graph-circle-method-explanation-and-interpretation">Convergence Graph (Circle Method) - Explanation and Interpretation</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#buffons-needle-simulation-explanation-and-interpretation">Buffon's Needle Simulation - Explanation and Interpretation</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#convergence-graph-buffons-needle-method-explanation-and-interpretation">Convergence Graph (Buffon's Needle Method) - Explanation and Interpretation</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#comparison-of-convergence-rates-circle-method-vs-buffons-needle-method">Comparison of Convergence Rates - Circle Method vs. Buffon's Needle Method</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#comparison-of-estimation-errors-circle-method-vs-buffons-needle-method">Comparison of Estimation Errors - Circle Method vs. Buffon's Needle Method</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#final-analysis-and-conclusion">Final Analysis and Conclusion</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#circle-based-monte-carlo-method">Circle-Based Monte Carlo Method:</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#buffons-needle-method">Buffon's Needle Method:</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#comparison">Comparison:</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#conclusion_2">Conclusion:</a>
-</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -205,7 +163,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">6 Statistics</li>
-<li class="breadcrumb-item active">Problem 2: Estimating Pi using Monte Carlo Methods</li>
+<li class="breadcrumb-item active">Problem 2</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -213,7 +171,8 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-2-estimating-pi-using-monte-carlo-methods">Problem 2: Estimating Pi using Monte Carlo Methods</h1>
+<h1 id="problem-2">Problem 2</h1>
+<h1 id="estimating-pi-using-monte-carlo-methods">Estimating Pi using Monte Carlo Methods</h1>
 <h2 id="introduction">Introduction</h2>
 <p>Monte Carlo methods are a class of computational algorithms that rely on random sampling to obtain numerical results. The method is particularly useful when dealing with problems that are difficult or impossible to solve analytically. One of the most famous applications of Monte Carlo methods is estimating the value of π. By employing randomness and probability, we can estimate π through simulations involving geometric probability.</p>
 <p>The most common Monte Carlo approach to estimate π involves generating random points within a square and determining how many of them fall inside a circle inscribed within that square. This method, despite its simplicity, effectively demonstrates the power of random sampling in solving complex problems. Another interesting technique for estimating π is Buffon’s Needle problem, which uses probability theory to approximate π by analyzing how often a randomly dropped needle crosses parallel lines.</p>
@@ -963,7 +922,6 @@ plt.show()
 <p>Buffon's Needle Method requires significantly more samples to achieve similar accuracy.</p>
 </li>
 </ul>
-<hr/>
 <h4 id="conclusion_1">Conclusion:</h4>
 <ul>
 <li>
