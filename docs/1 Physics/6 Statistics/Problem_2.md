@@ -749,7 +749,6 @@ This graph compares the **Estimation Errors** of two different Monte Carlo metho
 
 - Buffon's Needle Method requires significantly more samples to achieve similar accuracy.
 
----
 
 #### Conclusion:
 
