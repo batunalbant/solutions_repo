@@ -282,11 +282,17 @@ The graph illustrates how the estimated value of \( \pi \) changes as the number
 #### Key Points to Understand:
 
 **True Pi Value (Red Dashed Line):**  
+
    - The horizontal red dashed line indicates the true value of \( \pi \) which is approximately:
 
+
      $$
+
      \pi \approx 3.14159
+
      $$
+
+
 
    - This serves as a reference to evaluate how well the estimation process is performing.
 
