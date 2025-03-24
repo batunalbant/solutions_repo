@@ -112,6 +112,8 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#buffons-needle-simulation-explanation-and-interpretation">Buffon's Needle Simulation - Explanation and Interpretation</a>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="#convergence-graph-buffons-needle-method-explanation-and-interpretation">Convergence Graph (Buffon's Needle Method) - Explanation and Interpretation</a>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="#4-analysis_1">4. Analysis</a>
 </li>
 </ul>
@@ -458,9 +460,9 @@ plt.show()
 <ul>
 <li>
 <p>The horizontal red dashed line indicates the true value of <span class="arithmatex">\( \pi \)</span> which is approximately:</p>
-<p>$$</p>
-<p>\pi \approx 3.14159</p>
-<p>$$</p>
+<p>$$
+ \pi \approx 3.14159
+ $$</p>
 </li>
 <li>
 <p>This serves as a reference to evaluate how well the estimation process is performing.</p>
@@ -632,9 +634,9 @@ plt.show()
  \pi \approx \frac{2L \times \text{Number of Needles}}{d \times \text{Number of Crossings}}
  $$</p>
 </li>
-<li>
+</ul>
 <p><strong>Interpretation of the Graph:</strong> </p>
-</li>
+<ul>
 <li>
 <p>This graph visually shows how the needles interact with the parallel lines.</p>
 </li>
@@ -642,10 +644,8 @@ plt.show()
 <p>The estimated value of <span class="arithmatex">\( \pi \)</span> is calculated based on the ratio of crossed needles to the total number of needles.</p>
 </li>
 <li>
-<p>More needles produce a more accurate estimation of <span class="arithmatex">\( \pi \)</span>.</p>
-</li>
-<li>
-<p><strong>Estimation Result:</strong> </p>
+<p>More needles produce a more accurate estimation of <span class="arithmatex">\( \pi \)</span>.
+<strong>Estimation Result:</strong> </p>
 </li>
 <li>
 <p>The estimated value of <span class="arithmatex">\( \pi \)</span> from this simulation: <strong>3.24675</strong> (Not very accurate, more needles required for better estimation).</p>
@@ -654,7 +654,9 @@ plt.show()
 <hr/>
 <h4 id="purpose-of-the-graph_1">Purpose of the Graph:</h4>
 <ul>
-<li>To demonstrate how randomness and probability can be used to estimate <span class="arithmatex">\( \pi \)</span>.</li>
+<li>
+<p>To demonstrate how randomness and probability can be used to estimate <span class="arithmatex">\( \pi \)</span>.</p>
+</li>
 <li>
 <p>To visualize the crossing condition of needles with the parallel lines and how it contributes to the estimation process.</p>
 </li>
@@ -666,6 +668,123 @@ plt.show()
 </li>
 <li>
 <p>Estimate <span class="arithmatex">\( \pi \)</span> using the derived formula.</p>
+</li>
+</ul>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python"># Function to estimate Pi using Buffon's Needle Method over multiple iterations
+def buffons_needle_convergence(max_needles, step_size, L, d):
+    """
+    Estimate Pi using Buffon's Needle method over multiple iterations and store the results for plotting a convergence graph.
+
+    Args:
+        max_needles (int): The maximum number of needles to drop.
+        step_size (int): The step size for increasing the number of needles.
+        L (float): Length of the needle.
+        d (float): Distance between parallel lines.
+
+    Returns:
+        list: A list of needle counts.
+        list: A list of corresponding Pi estimates.
+    """
+    needles_counts = []
+    pi_estimates = []
+
+    for num_needles in range(step_size, max_needles + 1, step_size):
+        pi_estimate, _, _, _ = buffons_needle_simulation(num_needles, L, d)
+        needles_counts.append(num_needles)
+        pi_estimates.append(pi_estimate)
+
+    return needles_counts, pi_estimates
+
+# Generate data for the convergence graph
+max_needles = 100000
+step_size = 1000
+needles_counts, pi_estimates = buffons_needle_convergence(max_needles, step_size, L, d)
+
+# Plotting the Convergence Graph (Buffon's Needle Method)
+plt.figure(figsize=(10, 6))
+plt.plot(needles_counts, pi_estimates, color='blue', label="Estimated Pi Value")
+plt.axhline(y=np.pi, color='red', linestyle='--', label='True Pi Value (3.14159...)')
+plt.title("Convergence of Pi Estimation (Buffon's Needle Method)")
+plt.xlabel("Number of Needles (N)")
+plt.ylabel("Estimated Pi Value")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-8.png"/></p>
+<h3 id="convergence-graph-buffons-needle-method-explanation-and-interpretation">Convergence Graph (Buffon's Needle Method) - Explanation and Interpretation</h3>
+<h4 id="what-this-graph-represents_3">What This Graph Represents:</h4>
+<p>This graph illustrates how the estimated value of <span class="arithmatex">\( \pi \)</span> changes as the number of randomly dropped needles (<span class="arithmatex">\( N \)</span>) increases. The purpose is to visualize the convergence of the estimated <span class="arithmatex">\( \pi \)</span> value towards the true value of <span class="arithmatex">\( \pi \)</span> as more samples are used in the simulation.</p>
+<hr/>
+<h4 id="key-points-to-understand_3">Key Points to Understand:</h4>
+<p><strong>True Pi Value (Red Dashed Line):</strong> </p>
+<ul>
+<li>
+<p>The horizontal red dashed line indicates the true value of <span class="arithmatex">\( \pi \)</span> which is approximately:</p>
+<p>$$
+ pi \approx 3.14159
+ $$</p>
+</li>
+<li>
+<p>It serves as a reference for evaluating the accuracy of the simulation.</p>
+</li>
+<li>
+<p><strong>Estimated Pi Value (Blue Line):</strong> </p>
+</li>
+<li>The blue line shows the estimated value of <span class="arithmatex">\( \pi \)</span> calculated from the Buffon's Needle simulation as the number of needles increases.</li>
+<li>At smaller values of <span class="arithmatex">\( N \)</span>, the estimate fluctuates significantly.</li>
+<li>
+<p>As <span class="arithmatex">\( N \)</span> increases, the estimate approaches the true value of <span class="arithmatex">\( \pi \)</span>.</p>
+</li>
+<li>
+<p><strong>Mathematical Basis for Estimation:</strong> </p>
+</li>
+<li>The probability of a needle crossing a line is:
+    $$
+     P = \frac{2L}{\pi d}
+    $$</li>
+<li>
+<p>Therefore, the estimated value of <span class="arithmatex">\( \pi \)</span> is:</p>
+<p>$$
+ \pi \approx \frac{2L \times \text{Number of Needles}}{d \times \text{Number of Crossings}}
+ $$</p>
+</li>
+<li>
+<p>Where:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\( L \)</span>: Length of the needle.</p>
+</li>
+<li>
+<p><span class="arithmatex">\( d \)</span>: Distance between the parallel lines.</p>
+</li>
+<li>
+<p>Number of Crossings: The number of needles that intersect with the parallel lines.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Convergence Principle:</strong> </p>
+</li>
+<li>
+<p>According to statistical theory, the estimation error decreases as the number of samples increases.</p>
+</li>
+<li>
+<p>The fluctuation decreases over time, resulting in more accurate approximations of <span class="arithmatex">\( \pi \)</span>.</p>
+</li>
+</ul>
+<hr/>
+<h4 id="purpose-of-the-graph_2">Purpose of the Graph:</h4>
+<ul>
+<li>
+<p>To demonstrate how increasing the number of needles used in the simulation improves the accuracy of the estimated value of <span class="arithmatex">\( \pi \)</span>.</p>
+</li>
+<li>
+<p>To visualize the random fluctuation and convergence behavior of the Monte Carlo Method applied to Buffon's Needle problem.</p>
 </li>
 </ul>
 <h3 id="4-analysis_1">4. Analysis</h3>
@@ -680,10 +799,18 @@ plt.show()
 <hr/>
 <h2 id="deliverables">Deliverables</h2>
 <ol>
-<li>A detailed Markdown document with explanations and mathematical derivations.</li>
-<li>Python code for implementing both methods (To be done).</li>
-<li>Graphical outputs and visualizations (To be done).</li>
-<li>Analysis comparing the two methods in terms of accuracy and computational efficiency.</li>
+<li>
+<p>A detailed Markdown document with explanations and mathematical derivations.</p>
+</li>
+<li>
+<p>Python code for implementing both methods (To be done).</p>
+</li>
+<li>
+<p>Graphical outputs and visualizations (To be done).</p>
+</li>
+<li>
+<p>Analysis comparing the two methods in terms of accuracy and computational efficiency.</p>
+</li>
 </ol>
 </div>
 </div><footer>
