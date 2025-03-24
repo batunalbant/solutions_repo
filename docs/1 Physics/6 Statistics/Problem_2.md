@@ -181,9 +181,9 @@ The graph shows the randomly generated points used to estimate the value of \( \
 **Mathematical Basis for Estimation:**  
    - The area of the square is calculated by:
 
-     $$
+     \(
      A_{\text{square}} = (2)^2 = 4
-     $$
+     \)
 
    - The area of the circle is given by:
 
