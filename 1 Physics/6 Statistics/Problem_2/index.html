@@ -106,6 +106,12 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#2-simulation_1">2. Simulation</a>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="#scatter-plot-circle-method-explanation-and-interpretation">Scatter Plot (Circle Method) - Explanation and Interpretation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#convergence-graph-circle-method-explanation-and-interpretation">Convergence Graph (Circle Method) - Explanation and Interpretation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#buffons-needle-simulation-explanation-and-interpretation">Buffon's Needle Simulation - Explanation and Interpretation</a>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="#4-analysis_1">4. Analysis</a>
 </li>
 </ul>
@@ -300,9 +306,354 @@ P = \frac{2}{\pi} \int_{0}^{\frac{\pi}{2}} \frac{L}{d} \sin(\theta) d\theta = \f
 \pi \approx \frac{2L}{dP}
 \]</div>
 <h3 id="2-simulation_1">2. Simulation</h3>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python"># Plotting the Scatter Plot (Circle Method) again with clearer styling for presentation
+
+plt.figure(figsize=(6, 6))
+plt.scatter(x[inside_circle], y[inside_circle], color='blue', s=1, label='Inside Circle')
+plt.scatter(x[~inside_circle], y[~inside_circle], color='red', s=1, label='Outside Circle')
+plt.title('Random Points Distribution - Estimating Pi (Circle Method)')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.axis('equal')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-5.png"/></p>
+<h3 id="scatter-plot-circle-method-explanation-and-interpretation">Scatter Plot (Circle Method) - Explanation and Interpretation</h3>
+<h4 id="what-this-graph-represents">What This Graph Represents:</h4>
+<p>The graph shows the randomly generated points used to estimate the value of <span class="arithmatex">\( \pi \)</span> through the Monte Carlo Method. This method compares the number of points that fall inside a unit circle to the total number of points generated within a bounding square.</p>
+<hr/>
+<h4 id="key-points-to-understand">Key Points to Understand:</h4>
+<ol>
+<li>
+<p><strong>Square and Circle Definition:</strong> </p>
+</li>
+<li>
+<p>The <strong>square</strong> has its sides ranging from <span class="arithmatex">\( -1 \)</span> to <span class="arithmatex">\( 1 \)</span> along both the <span class="arithmatex">\( x \)</span>-axis and <span class="arithmatex">\( y \)</span>-axis.</p>
+</li>
+<li>
+<p>The <strong>circle</strong> is a unit circle centered at the origin <span class="arithmatex">\((0,0)\)</span> with a radius of <span class="arithmatex">\( r = 1 \)</span>.</p>
+</li>
+</ol>
+<p><strong>Point Classification:</strong> </p>
 <ul>
 <li>
-<p>Randomly drop a needle onto the plane.</p>
+<p><strong>Blue Points (Inside Circle):</strong> Points satisfying the condition:</p>
+<p>$$
+ x^2 + y^2 \leq 1
+ $$</p>
+</li>
+<li>
+<p><strong>Red Points (Outside Circle):</strong> Points that do not satisfy the above condition.</p>
+</li>
+</ul>
+<p><strong>Mathematical Basis for Estimation:</strong><br/>
+   - The area of the square is calculated by:</p>
+<pre><code> $$
+ A_{\text{square}} = (2)^2 = 4
+ $$
+</code></pre>
+<ul>
+<li>The area of the circle is given by:</li>
+</ul>
+<p>$$
+     A_{\text{circle}} = \pi r^2 = \pi (1)^2 = \pi
+   $$</p>
+<ul>
+<li>
+<p>The ratio of the area of the circle to the area of the square is:</p>
+<p>$$
+ \text{Ratio} = \frac{A_{\text{circle}}}{A_{\text{square}}} = \frac{\pi}{4}
+ $$</p>
+</li>
+</ul>
+<p><strong>Estimation Formula:</strong> </p>
+<ul>
+<li>
+<p>Using the ratio derived above, the probability of a randomly generated point falling inside the circle is:</p>
+<p>$$
+ \text{Probability} = \frac{\text{Number of points inside circle}}{\text{Total number of points}} = \frac{\pi}{4}
+ $$</p>
+</li>
+<li>
+<p>Rearranging the formula to solve for <span class="arithmatex">\( \pi \)</span>:</p>
+<p>$$
+ \pi \approx 4 \times \frac{\text{Number of points inside the circle}}{\text{Total number of points}}
+ $$</p>
+</li>
+</ul>
+<hr/>
+<h4 id="interpretation-of-the-graph">Interpretation of the Graph:</h4>
+<ul>
+<li>
+<p>As shown in the graph, the <strong>blue points</strong> are those that lie within the circular region, while the <strong>red points</strong> are those outside the circle but within the square.</p>
+</li>
+<li>
+<p>The approximation of <span class="arithmatex">\( \pi \)</span> is based on the ratio of blue points to the total points.</p>
+</li>
+<li>
+<p>The more points we generate, the closer our estimate of <span class="arithmatex">\( \pi \)</span> will be to the actual value <span class="arithmatex">\( \approx 3.14159 \)</span>.</p>
+</li>
+<li>
+<p>This method demonstrates how randomness can be harnessed to make accurate estimations through probability.</p>
+</li>
+</ul>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python"># Generating data for the Convergence Graph (Circle Method)
+max_points = 100000  # Maximum number of points to generate
+step_size = 1000     # Step size for increasing the number of points
+
+# Function to estimate Pi over multiple iterations for the Convergence Graph
+def estimate_pi_convergence(max_points, step_size):
+    """
+    Estimate Pi over multiple iterations and store the results for plotting a convergence graph.
+
+    Args:
+        max_points (int): The maximum number of points to generate.
+        step_size (int): The step size for generating points (e.g., 100, 1000).
+
+    Returns:
+        list: A list of point counts.
+        list: A list of corresponding Pi estimates.
+    """
+    points_counts = []
+    pi_estimates = []
+
+    for num_points in range(step_size, max_points + 1, step_size):
+        pi_estimate, _, _, _ = estimate_pi_circle(num_points)
+        points_counts.append(num_points)
+        pi_estimates.append(pi_estimate)
+
+    return points_counts, pi_estimates
+
+# Generate convergence data
+points_counts, pi_estimates = estimate_pi_convergence(max_points, step_size)
+
+# Plotting the Convergence Graph
+plt.figure(figsize=(10, 6))
+plt.plot(points_counts, pi_estimates, color='blue', label='Estimated Pi Value')
+plt.axhline(y=np.pi, color='red', linestyle='--', label='True Pi Value (3.14159...)')
+plt.title('Convergence of Pi Estimation with Increasing Number of Points')
+plt.xlabel('Number of Points (N)')
+plt.ylabel('Estimated Pi Value')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-6.png"/></p>
+<h3 id="convergence-graph-circle-method-explanation-and-interpretation">Convergence Graph (Circle Method) - Explanation and Interpretation</h3>
+<h4 id="what-this-graph-represents_1">What This Graph Represents:</h4>
+<p>The graph illustrates how the estimated value of <span class="arithmatex">\( \pi \)</span> changes as the number of randomly generated points (<span class="arithmatex">\( N \)</span>) increases. This graph visually demonstrates the <strong>convergence property of the Monte Carlo Method</strong>.</p>
+<hr/>
+<h4 id="key-points-to-understand_1">Key Points to Understand:</h4>
+<p><strong>True Pi Value (Red Dashed Line):</strong><br/>
+   - The horizontal red dashed line indicates the true value of <span class="arithmatex">\( \pi \)</span> which is approximately:</p>
+<pre><code> $$
+ \pi \approx 3.14159
+ $$
+</code></pre>
+<ul>
+<li>This serves as a reference to evaluate how well the estimation process is performing.</li>
+</ul>
+<p><strong>Estimated Pi Value (Blue Line):</strong> </p>
+<ul>
+<li>
+<p>The blue line represents the estimated value of <span class="arithmatex">\( \pi \)</span> as the number of points increases.</p>
+</li>
+<li>
+<p>There is significant fluctuation at the beginning, but as the number of points increases, the estimate approaches the true value of <span class="arithmatex">\( \pi \)</span>.</p>
+</li>
+</ul>
+<p><strong>Law of Large Numbers:</strong> </p>
+<ul>
+<li>
+<p>According to statistical theory, the <strong>Estimation Error</strong> decreases proportionally to the inverse of the square root of the number of points <span class="arithmatex">\( N \)</span>:</p>
+<p>$$
+ \text{Estimation Error} \approx \frac{1}{\sqrt{N}}
+ $$</p>
+</li>
+<li>
+<p>This explains why the fluctuations decrease as <span class="arithmatex">\( N \)</span> increases, resulting in a more accurate estimation.</p>
+</li>
+</ul>
+<p><strong>Interpretation of the Graph:</strong> </p>
+<ul>
+<li>
+<p>At smaller values of <span class="arithmatex">\( N \)</span>, the estimate of <span class="arithmatex">\( \pi \)</span> is unstable and may differ significantly from the true value.</p>
+</li>
+<li>
+<p>As <span class="arithmatex">\( N \)</span> increases, the estimate becomes more consistent and approaches the true value of <span class="arithmatex">\( \pi \)</span>.</p>
+</li>
+<li>
+<p>The method provides a clear visualization of how randomness and probability can be harnessed to make accurate estimations over time.</p>
+</li>
+</ul>
+<hr/>
+<h4 id="purpose-of-the-graph">Purpose of the Graph:</h4>
+<ul>
+<li>
+<p>To demonstrate how the <strong>Monte Carlo Method's accuracy improves with more sampling points</strong>.</p>
+</li>
+<li>
+<p>To visualize the convergence behavior of the estimated value of <span class="arithmatex">\( \pi \)</span> towards the actual value.</p>
+</li>
+</ul>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python"># Importing required libraries
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Function to simulate Buffon's Needle Method
+
+def buffons_needle_simulation(num_needles, L, d):
+    """
+    Simulate Buffon's Needle problem to estimate Pi.
+
+    Args:
+        num_needles (int): The number of needles to drop.
+        L (float): Length of the needle.
+        d (float): Distance between parallel lines.
+
+    Returns:
+        float: Estimated value of Pi.
+        np.array: X-coordinates of the needle midpoints.
+        np.array: Angles of the needles.
+        np.array: Boolean array indicating whether each needle crosses a line.
+    """
+    # Generate random midpoints and angles
+    x_midpoints = np.random.uniform(0, d / 2, num_needles)
+    angles = np.random.uniform(0, np.pi / 2, num_needles)
+
+    # Check if the needle crosses a line
+    crosses_line = x_midpoints &lt;= (L / 2) * np.sin(angles)
+
+    # Count the number of crossings
+    num_crosses = np.sum(crosses_line)
+
+    # Estimate Pi using the formula
+    pi_estimate = (2 * L * num_needles) / (d * num_crosses) if num_crosses &gt; 0 else np.inf
+
+    return pi_estimate, x_midpoints, angles, crosses_line
+
+
+# Simulation parameters
+num_needles = 1000
+L = 1.0
+d = 2.0
+
+# Perform the simulation
+pi_estimate, x_midpoints, angles, crosses_line = buffons_needle_simulation(num_needles, L, d)
+
+# Plotting the needles
+plt.figure(figsize=(10, 6))
+for i in range(num_needles):
+    x0 = x_midpoints[i]
+    y0 = np.random.uniform(0, 10)  # Random position on the plane
+    x1 = x0 + (L / 2) * np.cos(angles[i])
+    x2 = x0 - (L / 2) * np.cos(angles[i])
+
+    if crosses_line[i]:
+        plt.plot([x1, x2], [y0, y0], color='red')  # Crossed needles
+    else:
+        plt.plot([x1, x2], [y0, y0], color='blue')  # Non-crossed needles
+
+# Drawing parallel lines
+for i in range(0, 10):
+    plt.axvline(x=i * d / 2, color='black', linestyle='--')
+
+plt.title(f"Buffon's Needle Simulation - Estimated Pi: {pi_estimate}")
+plt.xlabel("X Position")
+plt.ylabel("Y Position")
+plt.xlim(0, d * 5)
+plt.ylim(0, 10)
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-7.png"/></p>
+<h3 id="buffons-needle-simulation-explanation-and-interpretation">Buffon's Needle Simulation - Explanation and Interpretation</h3>
+<h4 id="what-this-graph-represents_2">What This Graph Represents:</h4>
+<p>The graph above displays the simulation of <strong>Buffon's Needle Problem</strong>, where randomly dropped needles are used to estimate the value of <span class="arithmatex">\( \pi \)</span> based on probability theory.</p>
+<hr/>
+<h4 id="key-points-to-understand_2">Key Points to Understand:</h4>
+<p><strong>Parallel Lines:</strong> </p>
+<ul>
+<li>
+<p>The parallel lines are represented by the <strong>black dashed lines</strong>, spaced equally apart by a distance <span class="arithmatex">\( d = 2 \)</span>.</p>
+</li>
+<li>
+<p>The lines are evenly spaced along the <span class="arithmatex">\( x \)</span>-axis.</p>
+</li>
+</ul>
+<p><strong>Needle Drops:</strong> </p>
+<ul>
+<li>
+<p>The <strong>blue lines</strong> represent needles that <strong>do not cross any line</strong>.</p>
+</li>
+<li>
+<p>The <strong>red lines</strong> represent needles that <strong>cross at least one line</strong>.</p>
+</li>
+<li>
+<p>Each needle is generated with a random midpoint position and a random angle between <span class="arithmatex">\( 0 \)</span> and <span class="arithmatex">\( \frac{\pi}{2} \)</span>.</p>
+</li>
+</ul>
+<p><strong>Mathematical Basis for Estimation:</strong> </p>
+<ul>
+<li>
+<p>The probability of a needle crossing a line is given by:</p>
+<p>$$
+ P = \frac{2L}{\pi d}
+ $$
+   - Where:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\( L \)</span>: Length of the needle.</p>
+</li>
+<li>
+<p><span class="arithmatex">\( d \)</span>: Distance between the parallel lines.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Rearranging to estimate <span class="arithmatex">\( \pi \)</span>:</p>
+<p>$$
+ \pi \approx \frac{2L \times \text{Number of Needles}}{d \times \text{Number of Crossings}}
+ $$</p>
+</li>
+<li>
+<p><strong>Interpretation of the Graph:</strong> </p>
+</li>
+<li>
+<p>This graph visually shows how the needles interact with the parallel lines.</p>
+</li>
+<li>
+<p>The estimated value of <span class="arithmatex">\( \pi \)</span> is calculated based on the ratio of crossed needles to the total number of needles.</p>
+</li>
+<li>
+<p>More needles produce a more accurate estimation of <span class="arithmatex">\( \pi \)</span>.</p>
+</li>
+<li>
+<p><strong>Estimation Result:</strong> </p>
+</li>
+<li>
+<p>The estimated value of <span class="arithmatex">\( \pi \)</span> from this simulation: <strong>3.24675</strong> (Not very accurate, more needles required for better estimation).</p>
+</li>
+</ul>
+<hr/>
+<h4 id="purpose-of-the-graph_1">Purpose of the Graph:</h4>
+<ul>
+<li>To demonstrate how randomness and probability can be used to estimate <span class="arithmatex">\( \pi \)</span>.</li>
+<li>
+<p>To visualize the crossing condition of needles with the parallel lines and how it contributes to the estimation process.</p>
 </li>
 <li>
 <p>Check if the needle crosses a line based on its midpoint and orientation.</p>
