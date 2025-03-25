@@ -581,33 +581,229 @@ The graph below represents a **3x3 Grid Network**, commonly used to demonstrate 
 
 ---
 
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+# Creating a simple graph for matrix inversion demonstration
+G_inversion = nx.Graph()
+
+# Adding edges with weights (resistances) between nodes
+edges_inversion = [
+    ("A", "B", 4),
+    ("A", "C", 6),
+    ("B", "C", 8),
+    ("C", "D", 10),
+    ("B", "D", 12)
+]
+G_inversion.add_weighted_edges_from(edges_inversion)
+
+# Plotting the graph
+plt.figure(figsize=(8, 6))
+pos_inversion = nx.spring_layout(G_inversion, seed=42)
+nx.draw(G_inversion, pos_inversion, with_labels=True, node_color='lightpink', node_size=1000, font_size=12)
+edge_labels_inversion = nx.get_edge_attributes(G_inversion, 'weight')
+nx.draw_networkx_edge_labels(G_inversion, pos_inversion, edge_labels={edge: f"{weight} Ω" for edge, weight in edge_labels_inversion.items()})
+plt.title("Graph Representation for Matrix Inversion Analysis")
+plt.show()
+
+# Calculating the Laplacian matrix
+L_inversion = nx.laplacian_matrix(G_inversion).todense()
+
+# Calculating the inverse of the Laplacian matrix
+try:
+    L_inverse = np.linalg.inv(L_inversion)
+except np.linalg.LinAlgError:
+    L_inverse = None
+
+L_inverse  # Display the inverse matrix if possible
+
+
+```
+</details>
+
+![alt text](image-19.png)
+
+## Matrix Inversion and Impedance Calculation
+
+Matrix inversion is a powerful technique used for calculating the equivalent impedance of complex networks. By representing the network as a graph and constructing its **Laplacian matrix**, we can apply matrix inversion methods to obtain important network characteristics.
+
+
+### Graph Representation for Matrix Inversion
+
+The graph below represents a network of resistors connected between four nodes: **A**, **B**, **C**, and **D**.
+
+#### Graph Features:
+
+- **Nodes:** A, B, C, D
+
+- **Edges (with resistance values):**  
+
+  - A - B (4 Ω)  
+  - A - C (6 Ω)  
+  - B - C (8 Ω)  
+  - C - D (10 Ω)  
+  - B - D (12 Ω)  
+
+---
+
+### Laplacian Matrix Definition
+
+The Laplacian matrix \( L \) for an undirected graph is calculated using:
+
+$$
+L_{ij} = \begin{cases} 
+\sum_{k} R_k & \text{if } i = j \text{ (Sum of all resistances connected to node } i) \\
+-R_k & \text{if there is a resistor } R_k \text{ between nodes } i \text{ and } j \\
+0 & \text{if nodes } i \text{ and } j \text{ are not connected}
+\end{cases}
+$$
+
+---
+
+### Inverse of Laplacian Matrix
+
+The inverse of the Laplacian matrix \( L^{-1} \) is used to determine the **equivalent impedance** between nodes. The calculation involves:
+
+$$
+Z_{eq} = L^{-1}
+$$
+
+This matrix inversion technique allows us to:
+
+- Efficiently calculate equivalent resistance or impedance.
+
+- Analyze large and complex networks without manually simplifying the network.
+
+- Extend the calculation to AC circuits where impedances are complex numbers.
+
+---
+
 ### Graph Theory Advantage
 
-Using numerical methods with graph theory allows:
+Using matrix inversion in graph theory provides:
 
-- Efficient handling of large networks where direct methods are impractical.
+- A systematic approach to solving complex networks.
 
-- Application of **sparse matrix techniques** to reduce computation time.
+- The ability to incorporate frequency-dependent elements (e.g., inductors and capacitors).
 
-- Flexibility to handle time-varying systems and frequency-dependent analysis.
+- Robust mathematical tools for handling large-scale systems.
+
+---
+
+<details>
+  <summary>Phyton codes.</summary>
+
+```python
+def find_parallel_connections(graph, node1, node2):
+    """Detect and reduce parallel connections between two nodes."""
+    if graph.has_edge(node1, node2):  # Check if an edge exists
+        edges = list(graph.get_edge_data(node1, node2).items())
+        if len(edges) > 1:  # If there are multiple edges (parallel connection)
+            resistances = [edge[1]['weight'] for edge in edges]
+            r_eq_inv = sum(1 / r for r in resistances)
+            r_eq = 1 / r_eq_inv if r_eq_inv != 0 else float('inf')
+            
+            # Remove all parallel edges and add a single equivalent edge
+            graph.remove_edges_from([(node1, node2)] * len(resistances))
+            graph.add_edge(node1, node2, weight=r_eq)
+
+# Apply series reduction
+find_series_connections(G_reduction)
+
+# Apply parallel reduction (Checking for parallel edges before calling the function)
+if G_reduction.number_of_edges("A", "C") > 1:
+    find_parallel_connections(G_reduction, "A", "C")
+
+if G_reduction.number_of_edges("B", "D") > 1:
+    find_parallel_connections(G_reduction, "B", "D")
+
+# Plotting the reduced graph
+plt.figure(figsize=(8, 6))
+pos_reduced = nx.spring_layout(G_reduction, seed=42)
+nx.draw(G_reduction, pos_reduced, with_labels=True, node_color='lightcoral', node_size=1000, font_size=12)
+edge_labels_reduced = nx.get_edge_attributes(G_reduction, 'weight')
+nx.draw_networkx_edge_labels(G_reduction, pos_reduced, edge_labels={edge: f"{weight:.2f} Ω" for edge, weight in edge_labels_reduced.items()})
+plt.title("Reduced Graph Representation After Series & Parallel Detection")
+plt.show()
+
+
+
+```
+</details>
+
+![alt text](image-21.png)
+
+## Graph Reduction Technique and Automated Detection
+
+Graph reduction is a fundamental technique used to simplify complex networks by systematically identifying and merging series and parallel connections. This process greatly improves the efficiency of equivalent resistance calculation and network analysis.
+
+---
+
+### Graph Representation Before Reduction
+
+The original graph contained the following connections:
+
+- **Nodes:** A, B, C, D
+
+- **Edges (with resistance values):**
+
+  - A - B (5 Ω)
+  - B - C (10 Ω)
+  - C - D (15 Ω)
+  - A - C (8 Ω)
+  - B - D (6 Ω)
+
+---
+
+### Reduction Process
+
+The reduction algorithm automatically detects series and parallel connections and simplifies them accordingly:
+
+#### Series Connection Detection:
+
+- Identifies nodes with only two connections.
+
+- Merges them by **adding the resistances** according to the series formula:
+
+$$
+R_{eq} = R_1 + R_2
+$$
+
+#### Parallel Connection Detection:
+
+- Checks if there are multiple edges between two nodes.
+
+- Applies the **parallel resistance formula**:
+
+$$
+\frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + \ldots
+$$
+
+- Replaces all parallel connections with a single edge representing the equivalent resistance.
+
+---
+
+### Graph Representation After Reduction
+
+The reduced graph shows how the network was simplified using the automatic detection algorithm. Series and parallel connections have been successfully identified and reduced to a simpler structure.
+
+---
+
+### Graph Theory Advantage
+
+Using graph reduction techniques allows:
+
+- Faster analysis of complex networks.
+
+- Reduced computational effort for large systems.
+
+- Easier visualization of how the network is structured.
 
 ---
 
 
 
----
-
-### Graph Theory Advantage:
-
-Using graph theory for impedance analysis allows:
-
-- Efficient representation of complex networks.
-
-- Visualization of different components and their connections.
-
-- Simplification using Laplacian matrices and matrix inversion techniques.
-
-- Enhanced analysis for frequency-dependent systems.
 
 
 
