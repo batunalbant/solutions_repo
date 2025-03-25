@@ -119,9 +119,10 @@ For example, if a circuit consists of three resistors \( R_1, R_2, R_3 \) arrang
 
 Using advanced mathematical techniques such as **matrix representation of circuits** and **Laplace transformations**, we can generalize the problem for complex networks. The impedance matrix \( Z \) of the network can be derived using Kirchhoff’s laws and then reduced using determinant-based transformations.
 
-# Equivalent Resistance Using Graph Theory
+---
 
 ## Introduction
+
 Understanding and analyzing electrical circuits is a fundamental aspect of electrical engineering and physics. One of the essential tasks in circuit analysis is determining the equivalent resistance between two points. Traditional methods rely on step-by-step application of series and parallel resistor combinations, which can become impractical for large and complex circuits. The need for a more systematic and scalable approach arises in applications such as circuit simulation, network analysis, and embedded system design.
 
 Graph theory provides an alternative and efficient approach by representing the circuit as a weighted graph, where:
@@ -186,61 +187,112 @@ This matrix formulation allows us to solve complex networks using **matrix inver
 
 ### Goal
 
-To calculate the equivalent resistance between two points in an electrical network represented as a graph.
+To calculate the equivalent resistance between two points in an electrical network represented as a graph. This approach uses graph theory principles to simplify complex networks by identifying series and parallel connections, reducing them iteratively until only the desired nodes remain. This method is particularly valuable for complex networks that cannot be easily reduced using traditional circuit analysis methods.
 
 ### Algorithm Steps
 
-**Input:** A graph representing the circuit, with nodes as junctions and edges as resistors with weights.
+**Input:**
 
-**Initialize:** Mark the starting node A and ending node B.
+   - A graph representing the circuit, where:
+
+     - Nodes correspond to junctions.
+
+     - Edges represent resistors with weights indicating their resistance values.
+
+     - The graph may include various configurations of resistors, including series, parallel, and nested combinations.
+
+**Initialize:**
+
+   - Mark the starting node \( A \) and ending node \( B \).
+
+   - Store the initial graph configuration for reference.
+
+   - Identify all edges and nodes within the graph to create an adjacency matrix or list representation for efficient processing.
 
 **Identify Series Connections:**
 
-   - If a node has only two connections, merge them by adding their resistances.
+   - For each node with exactly two connections, combine the resistors using the formula:
+     
+     $$
+     R_{eq} = R_1 + R_2
+     $$
+
+   - Remove the intermediate node and replace it with a single edge representing the equivalent resistance.
+
+   - Continue this process iteratively until all series connections are reduced.
 
 **Identify Parallel Connections:**
 
-   - If two nodes are connected by multiple resistors, replace them by a single resistor calculated using the formula:
+   - For nodes connected by multiple resistors, calculate the equivalent resistance using:
      
-$$
-\frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + ... + \frac{1}{R_n}
-$$
+     $$
+     \frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + \ldots + \frac{1}{R_n}
+     $$
+
+   - Replace the parallel edges with a single edge representing the combined resistance.
+
+   - Perform this operation for all parallel connections found within the graph.
 
 **Simplify the Graph:**
 
-   - Iteratively apply series and parallel reductions until only nodes A and B remain.
+   - Continuously apply series and parallel reductions until the graph is reduced to a single edge between nodes \( A \) and \( B \).
 
-**Output:** The equivalent resistance between A and B.
+   - Utilize matrix-based techniques such as Laplacian matrix inversion when the network becomes too complex for direct reduction.
+
+   - Visualize the reduction process through graphical representation to ensure accuracy.
+
+**Output:**
+
+   - The equivalent resistance between nodes \( A \) and \( B \). The result is a single numerical value representing the total resistance.
+
+   - Provide the final graph structure if visualization is required.
 
 ---
 
 ## Example Calculation
 
-Consider a simple circuit:
+Consider a simple circuit consisting of three resistors:
 
-- Resistors: \( R_1 = 5 \Omega \), \( R_2 = 10 \Omega \), \( R_3 = 20 \Omega \).
+- \( R_1 = 5 \Omega \)
+
+- \( R_2 = 10 \Omega \)
+
+- \( R_3 = 20 \Omega \)
+
+
+Configuration:
 
 - \( R_1 \) and \( R_2 \) are connected in parallel.
 
-- \( R_3 \) is in series with the parallel combination.
+- The parallel combination is connected in series with \( R_3 \).
 
-Steps:
+### Steps of Calculation
 
-- Calculate parallel resistance:
+**Calculate Parallel Resistance:**
    
-$$
-\frac{1}{R_{eq}} = \frac{1}{5} + \frac{1}{10} = \frac{2}{10} + \frac{1}{10} = \frac{3}{10}
-$$
+   $$
+   \frac{1}{R_{eq}} = \frac{1}{5} + \frac{1}{10} = \frac{2}{10} + \frac{1}{10} = \frac{3}{10}
+   $$
 
-$$
-R_{eq} = \frac{10}{3} \approx 3.33 \Omega
-$$
+   $$
+   R_{eq} = \frac{10}{3} \approx 3.33 \Omega
+   $$
 
-- Calculate total resistance with series connection:
+**Calculate Total Resistance (Series Connection):**
    
-$$
-R_{total} = 3.33 + 20 = 23.33 \Omega
-$$
+   $$
+   R_{total} = 3.33 + 20 = 23.33 \Omega
+   $$
+
+ **Interpretation:**
+
+   - The circuit is reduced to a single resistor with a resistance of approximately **23.33 Ω**.
+
+   - The process can be applied recursively for larger and more complex networks.
+
+   - The approach is robust enough to handle various network configurations including nested parallel and series elements.
+
+
 
 ---
 
