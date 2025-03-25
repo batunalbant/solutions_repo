@@ -15,77 +15,120 @@ Understanding the dependencies in projectile motion enables precise predictions 
 
 ### Theoretical Foundation
 
-#### Newton's Laws and Equations of Motion
+# Theoretical Foundation
+
+## Newton's Laws and Equations of Motion
 
 To understand projectile motion, we begin with Newton’s Second Law of Motion:
 
+### Newton's Second Law of Motion
+According to Newton’s Second Law:
+
 $$
-\mathbf{F} = m \mathbf{a}
+F = ma
 $$
 
-For a projectile moving under the influence of gravity alone, the only force acting is the gravitational force:
+Where:
+
+- \(F\) is the force applied on an object (in Newtons, \(N\)).
+
+- \(m\) is the mass of the object (in kilograms, \(kg\)).
+
+- \(a\) is the acceleration produced (in meters per second squared, \(m/s^2\)).
+
+If we consider the force due to gravity acting on a projectile, we replace \(a\) with the gravitational acceleration \(g\):
 
 $$
 F = mg
 $$
 
+This force only acts in the vertical direction (downward).
+
+### Applying Newton’s Law to Motion
+
 Since force is the product of mass and acceleration, we write the equations of motion separately for horizontal and vertical components:
 
-1. **Horizontal Motion:**
-   - There is no acceleration in the horizontal direction (assuming no air resistance), meaning velocity remains constant:
-   
-   $$
-   x(t) = v_0 \cos \theta \cdot t
-   $$
-   
-2. **Vertical Motion:**
-   - The only force acting is gravity, leading to constant acceleration in the downward direction:
-   
-   $$
-   y(t) = v_0 \sin \theta \cdot t - \frac{1}{2} g t^2
-   $$
+### Horizontal Motion:
 
-#### Deriving the Time of Flight
-The projectile reaches the ground when \( y = 0 \), solving for time:
+- The horizontal position \(x(t)\) is determined by the horizontal component of the initial velocity \(v_0 \cos \theta\):
+
+$$
+x(t) = v_0 \cos \theta \cdot t
+$$
+
+Since there is no horizontal acceleration (assuming no air resistance), the velocity remains constant, making the derivative of position with respect to time:
+
+$$
+\frac{dx(t)}{dt} = v_0 \cos \theta
+$$
+
+###  Vertical Motion:
+
+- The vertical position \(y(t)\) is influenced by both the initial vertical velocity \(v_0 \sin \theta\) and the downward acceleration due to gravity:
+
+$$
+y(t) = v_0 \sin \theta \cdot t - \frac{1}{2} g t^2
+$$
+
+Taking the derivative of \(y(t)\) with respect to time gives us the vertical velocity:
+
+$$
+\frac{dy(t)}{dt} = v_0 \sin \theta - gt
+$$
+
+## Deriving the Time of Flight
+
+The projectile reaches the ground when \(y = 0\). Setting the position function to zero and solving for \(t\):
 
 $$
 0 = v_0 \sin \theta \cdot t - \frac{1}{2} g t^2
 $$
 
-Factoring out \( t \):
+Factor out \(t\):
 
 $$
- t ( v_0 \sin \theta - \frac{1}{2} g t ) = 0
+t \left( v_0 \sin \theta - \frac{1}{2} gt \right) = 0
 $$
 
-Ignoring the trivial solution \( t = 0 \), we solve for \( t_f \):
+Solving for \(t\):
+
+- \(t = 0\) (Initial launch)
+
+- \(t_f = \frac{2v_0 \sin \theta}{g}\) (Total time of flight)
+
+## Deriving the Range Equation
+
+The range \(R\) is the horizontal distance traveled during \(t_f\):
 
 $$
- t_f = \frac{2 v_0 \sin \theta}{g}
+R = v_0 \cos \theta \cdot t_f
 $$
 
-#### Deriving the Range Equation
-The range \( R \) is the horizontal distance traveled during \( t_f \):
+Substitute \(t_f\) from the previous result:
 
 $$
- R = v_0 \cos \theta \cdot t_f
+R = v_0 \cos \theta \cdot \frac{2v_0 \sin \theta}{g}
 $$
 
-Substituting \( t_f \):
+Using the trigonometric identity \(2 \sin \theta \cos \theta = \sin 2\theta\):
 
 $$
- R = v_0 \cos \theta \cdot \frac{2 v_0 \sin \theta}{g}
+R = \frac{v_0^2 \sin 2\theta}{g}
 $$
 
-Using the identity \( 2 \sin \theta \cos \theta = \sin 2\theta \):
+## Effect of Initial Conditions
 
-$$
- R = \frac{v_0^2 \sin 2\theta}{g}
-$$
+- Increasing \(v_0\) leads to a proportionally larger range.
 
--This equation reveals that the range depends on the square of the initial velocity and the sine of twice the launch angle. The maximum range occurs when \( \sin 2\theta \) is maximized, which happens at \( \theta = 45^\circ \).
+- Smaller launch angles produce short, flat trajectories; larger angles produce steep, high trajectories with shorter ranges.
+
+- Maximum range occurs at \(\theta = 45^\circ\), which is derived from maximizing \(\sin 2\theta\).
+
+This derivation forms the theoretical basis for studying projectile motion and optimizing real-world applications.
+
 
 #### Effect of Initial Conditions
+
 Variations in initial conditions, such as changes in \( v_0 \) or \( \theta \), lead to different trajectories. For instance:
 
 - Increasing \( v_0 \) results in a proportionally larger range.
