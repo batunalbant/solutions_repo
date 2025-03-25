@@ -181,58 +181,100 @@
 <p>Understanding the dependencies in projectile motion enables precise predictions and optimizations, making it a cornerstone of both academic inquiry and technological advancements.</p>
 <hr/>
 <h3 id="theoretical-foundation">Theoretical Foundation</h3>
-<h4 id="newtons-laws-and-equations-of-motion">Newton's Laws and Equations of Motion</h4>
+<h1 id="theoretical-foundation_1">Theoretical Foundation</h1>
+<h2 id="newtons-laws-and-equations-of-motion">Newton's Laws and Equations of Motion</h2>
 <p>To understand projectile motion, we begin with Newton’s Second Law of Motion:</p>
+<h3 id="newtons-second-law-of-motion">Newton's Second Law of Motion</h3>
+<p>According to Newton’s Second Law:</p>
 <div class="arithmatex">\[
-\mathbf{F} = m \mathbf{a}
+F = ma
 \]</div>
-<p>For a projectile moving under the influence of gravity alone, the only force acting is the gravitational force:</p>
+<p>Where:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(F\)</span> is the force applied on an object (in Newtons, <span class="arithmatex">\(N\)</span>).</p>
+</li>
+<li>
+<p><span class="arithmatex">\(m\)</span> is the mass of the object (in kilograms, <span class="arithmatex">\(kg\)</span>).</p>
+</li>
+<li>
+<p><span class="arithmatex">\(a\)</span> is the acceleration produced (in meters per second squared, <span class="arithmatex">\(m/s^2\)</span>).</p>
+</li>
+</ul>
+<p>If we consider the force due to gravity acting on a projectile, we replace <span class="arithmatex">\(a\)</span> with the gravitational acceleration <span class="arithmatex">\(g\)</span>:</p>
 <div class="arithmatex">\[
 F = mg
 \]</div>
+<p>This force only acts in the vertical direction (downward).</p>
+<h3 id="applying-newtons-law-to-motion">Applying Newton’s Law to Motion</h3>
 <p>Since force is the product of mass and acceleration, we write the equations of motion separately for horizontal and vertical components:</p>
-<ol>
-<li><strong>Horizontal Motion:</strong></li>
-<li>There is no acceleration in the horizontal direction (assuming no air resistance), meaning velocity remains constant:</li>
-</ol>
-<p>$$
-   x(t) = v_0 \cos \theta \cdot t
-   $$</p>
-<ol>
-<li><strong>Vertical Motion:</strong></li>
-<li>The only force acting is gravity, leading to constant acceleration in the downward direction:</li>
-</ol>
-<p>$$
-   y(t) = v_0 \sin \theta \cdot t - \frac{1}{2} g t^2
-   $$</p>
-<h4 id="deriving-the-time-of-flight">Deriving the Time of Flight</h4>
-<p>The projectile reaches the ground when <span class="arithmatex">\( y = 0 \)</span>, solving for time:</p>
+<h3 id="horizontal-motion">Horizontal Motion:</h3>
+<ul>
+<li>The horizontal position <span class="arithmatex">\(x(t)\)</span> is determined by the horizontal component of the initial velocity <span class="arithmatex">\(v_0 \cos \theta\)</span>:</li>
+</ul>
+<div class="arithmatex">\[
+x(t) = v_0 \cos \theta \cdot t
+\]</div>
+<p>Since there is no horizontal acceleration (assuming no air resistance), the velocity remains constant, making the derivative of position with respect to time:</p>
+<div class="arithmatex">\[
+\frac{dx(t)}{dt} = v_0 \cos \theta
+\]</div>
+<h3 id="vertical-motion">Vertical Motion:</h3>
+<ul>
+<li>The vertical position <span class="arithmatex">\(y(t)\)</span> is influenced by both the initial vertical velocity <span class="arithmatex">\(v_0 \sin \theta\)</span> and the downward acceleration due to gravity:</li>
+</ul>
+<div class="arithmatex">\[
+y(t) = v_0 \sin \theta \cdot t - \frac{1}{2} g t^2
+\]</div>
+<p>Taking the derivative of <span class="arithmatex">\(y(t)\)</span> with respect to time gives us the vertical velocity:</p>
+<div class="arithmatex">\[
+\frac{dy(t)}{dt} = v_0 \sin \theta - gt
+\]</div>
+<h2 id="deriving-the-time-of-flight">Deriving the Time of Flight</h2>
+<p>The projectile reaches the ground when <span class="arithmatex">\(y = 0\)</span>. Setting the position function to zero and solving for <span class="arithmatex">\(t\)</span>:</p>
 <div class="arithmatex">\[
 0 = v_0 \sin \theta \cdot t - \frac{1}{2} g t^2
 \]</div>
-<p>Factoring out <span class="arithmatex">\( t \)</span>:</p>
+<p>Factor out <span class="arithmatex">\(t\)</span>:</p>
 <div class="arithmatex">\[
- t ( v_0 \sin \theta - \frac{1}{2} g t ) = 0
+t \left( v_0 \sin \theta - \frac{1}{2} gt \right) = 0
 \]</div>
-<p>Ignoring the trivial solution <span class="arithmatex">\( t = 0 \)</span>, we solve for <span class="arithmatex">\( t_f \)</span>:</p>
+<p>Solving for <span class="arithmatex">\(t\)</span>:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(t = 0\)</span> (Initial launch)</p>
+</li>
+<li>
+<p><span class="arithmatex">\(t_f = \frac{2v_0 \sin \theta}{g}\)</span> (Total time of flight)</p>
+</li>
+</ul>
+<h2 id="deriving-the-range-equation">Deriving the Range Equation</h2>
+<p>The range <span class="arithmatex">\(R\)</span> is the horizontal distance traveled during <span class="arithmatex">\(t_f\)</span>:</p>
 <div class="arithmatex">\[
- t_f = \frac{2 v_0 \sin \theta}{g}
+R = v_0 \cos \theta \cdot t_f
 \]</div>
-<h4 id="deriving-the-range-equation">Deriving the Range Equation</h4>
-<p>The range <span class="arithmatex">\( R \)</span> is the horizontal distance traveled during <span class="arithmatex">\( t_f \)</span>:</p>
+<p>Substitute <span class="arithmatex">\(t_f\)</span> from the previous result:</p>
 <div class="arithmatex">\[
- R = v_0 \cos \theta \cdot t_f
+R = v_0 \cos \theta \cdot \frac{2v_0 \sin \theta}{g}
 \]</div>
-<p>Substituting <span class="arithmatex">\( t_f \)</span>:</p>
+<p>Using the trigonometric identity <span class="arithmatex">\(2 \sin \theta \cos \theta = \sin 2\theta\)</span>:</p>
 <div class="arithmatex">\[
- R = v_0 \cos \theta \cdot \frac{2 v_0 \sin \theta}{g}
+R = \frac{v_0^2 \sin 2\theta}{g}
 \]</div>
-<p>Using the identity <span class="arithmatex">\( 2 \sin \theta \cos \theta = \sin 2\theta \)</span>:</p>
-<div class="arithmatex">\[
- R = \frac{v_0^2 \sin 2\theta}{g}
-\]</div>
-<p>-This equation reveals that the range depends on the square of the initial velocity and the sine of twice the launch angle. The maximum range occurs when <span class="arithmatex">\( \sin 2\theta \)</span> is maximized, which happens at <span class="arithmatex">\( \theta = 45^\circ \)</span>.</p>
-<h4 id="effect-of-initial-conditions">Effect of Initial Conditions</h4>
+<h2 id="effect-of-initial-conditions">Effect of Initial Conditions</h2>
+<ul>
+<li>
+<p>Increasing <span class="arithmatex">\(v_0\)</span> leads to a proportionally larger range.</p>
+</li>
+<li>
+<p>Smaller launch angles produce short, flat trajectories; larger angles produce steep, high trajectories with shorter ranges.</p>
+</li>
+<li>
+<p>Maximum range occurs at <span class="arithmatex">\(\theta = 45^\circ\)</span>, which is derived from maximizing <span class="arithmatex">\(\sin 2\theta\)</span>.</p>
+</li>
+</ul>
+<p>This derivation forms the theoretical basis for studying projectile motion and optimizing real-world applications.</p>
+<h4 id="effect-of-initial-conditions_1">Effect of Initial Conditions</h4>
 <p>Variations in initial conditions, such as changes in <span class="arithmatex">\( v_0 \)</span> or <span class="arithmatex">\( \theta \)</span>, lead to different trajectories. For instance:</p>
 <ul>
 <li>
