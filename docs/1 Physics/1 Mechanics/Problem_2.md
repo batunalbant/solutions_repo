@@ -12,105 +12,157 @@ When an external periodic force is introduced, new parameters such as amplitude 
 ---
 
 #### Theoretical Foundation
-- Begin with the governing differential equation of the forced damped pendulum:
+
+## Governing Differential Equation of the Forced Damped Pendulum
+
+The general equation describing the motion of a forced damped pendulum is given by:
+
 $$
-\ddot{\theta} + \beta \dot{\theta} + \omega_0^2 \sin(\theta) = A \cos(\omega t) 
- $$
-
-**where:**
-  - \( \theta \) is the angular displacement,
-
-  - \( \beta \) is the damping coefficient,
-
-  - \( \omega_0 \) is the natural frequency,
-
-  - \( A \) is the amplitude of the driving force,
-
-  - \( \omega \) is the driving frequency.
-
-- For small-angle approximations, use \( \sin(\theta) \approx \theta \), reducing the equation to: 
+\ddot{\theta} + \beta \dot{\theta} + \omega_0^2 \sin(\theta) = A \cos(\omega t)
 $$
-\ddot{\theta} + \beta \dot{\theta} + \omega_0^2\theta = A \cos(\omega t) 
+
+### Where:
+
+- \( \theta \) is the angular displacement,
+
+- \( \beta \) is the damping coefficient,
+
+- \( \omega_0 \) is the natural frequency,
+
+- \( A \) is the amplitude of the driving force,
+
+- \( \omega \) is the driving frequency.
+
+---
+## Small-Angle Approximation
+
+For small-angle approximations, we can use the approximation:
+
 $$
-which resembles a driven damped harmonic oscillator.
-
-- The general solution of the homogeneous equation:
+\sin(\theta) \approx \theta
 $$
-  \theta_h(t) = C_1 e^{-\beta t} \cos(\omega_0 t) + C_2 e^{-\beta t} \sin(\omega_0 t)
- $$ 
 
-**where \( C_1 \) and \( C_2 \) are constants determined by initial conditions.**
+Therefore, the equation becomes:
 
-
-- The steady-state solution can be found using the method of undetermined coefficients:
 $$
-\theta_p(t) = \frac{A}{\sqrt{(\omega_0^2 - \omega^2)^2 + (2\beta\omega)^2}} \cos(\omega t - \delta)
+\ddot{\theta} + \beta \dot{\theta} + \omega_0^2\theta = A \cos(\omega t)
 $$
-**where \( \delta \) is the phase lag given by:**
+
+This resembles a driven damped harmonic oscillator.
+
+---
+## General Solution of the Homogeneous Equation
+
+To find the general solution of the homogeneous equation, we set the right-hand side to zero:
+
 $$
-  \tan(\delta) = \frac{2 \beta \omega}{\omega_0^2 - \omega^2}
-$$  
-
-
-- Analyze resonance conditions and their impact on the system's energy, where resonance occurs at:
+\ddot{\theta} + \beta \dot{\theta} + \omega_0^2\theta = 0
 $$
- \omega_{res} = \sqrt{\omega_0^2 - 2\beta^2}
-$$ 
 
+The characteristic equation associated with this differential equation is:
 
-- Investigate stability criteria and **fixed points**, evaluating equilibrium solutions and their stability through **linear stability analysis** by examining the Jacobian matrix.
+$$
+r^2 + \beta r + \omega_0^2 = 0
+$$
 
+Solving this using the quadratic formula:
 
+$$
+r = \frac{-\beta \pm \sqrt{\beta^2 - 4\omega_0^2}}{2}
+$$
 
-#### Practical Applications
+### Cases:
 
-The forced damped pendulum has wide applications in science and engineering due to its ability to model complex oscillatory and chaotic systems. Below are some key applications along with their corresponding mathematical models:
+- **Overdamped (\( \beta^2 > 4\omega_0^2 \))**: Two real and distinct roots.
 
-**Energy Harvesting Devices**
+- **Critically Damped (\( \beta^2 = 4\omega_0^2 \))**: Two real and equal roots.
 
+-  **Underdamped (\( \beta^2 < 4\omega_0^2 \))**: Two complex conjugate roots, \( r = -\frac{\beta}{2} \pm i\omega_d \), where:
+
+$$
+\omega_d = \sqrt{\omega_0^2 - \frac{\beta^2}{4}}
+$$
+
+The general solution for the underdamped case is:
+
+$$
+\theta_h(t) = e^{-\frac{\beta}{2}t} \left( C_1 \cos(\omega_d t) + C_2 \sin(\omega_d t) \right)
+$$
+
+Where \( C_1 \) and \( C_2 \) are constants determined by initial conditions.
+
+---
+## Steady-State Solution (Particular Solution)
+
+For the particular solution, we consider a solution of the form:
+
+$$
+\theta_p(t) = B \cos(\omega t - \delta)
+$$
+
+Substituting this into the original equation:
+
+$$
+-\omega^2 B \cos(\omega t - \delta) + \beta \omega B \sin(\omega t - \delta) + \omega_0^2 B \cos(\omega t - \delta) = A \cos(\omega t)
+$$
+
+By comparing coefficients, we find:
+
+$$
+B = \frac{A}{\sqrt{(\omega_0^2 - \omega^2)^2 + (2\beta\omega)^2}}
+$$
+
+### Phase Lag
+
+The phase lag \( \delta \) is given by:
+
+$$
+\tan(\delta) = \frac{2 \beta \omega}{\omega_0^2 - \omega^2}
+$$
+
+---
+## Resonance Condition
+
+Resonance occurs when the driving frequency matches the natural frequency of the damped system. The condition for resonance is:
+
+$$
+\omega_{res} = \sqrt{\omega_0^2 - 2\beta^2}
+$$
+
+---
+## Stability Analysis
+
+Analyzing stability involves examining equilibrium solutions and their stability through linear stability analysis by examining the Jacobian matrix.
+
+---
+## Practical Applications
+
+### Energy Harvesting Devices
 - Controlled resonance conditions can be used to extract electrical energy from mechanical oscillations.
-
 - The power harvested from an oscillatory motion is given by:
-$$
-P=12CV2ωP = \frac{1}{2} C V^2 \omega 
-$$
-- where \( C \) is capacitance, \( V \) is voltage, and  is the frequency of oscillation.
+  $$ P = \frac{1}{2} C V^2 \omega $$
+  Where \( C \) is capacitance, \( V \) is voltage, and \( \omega \) is the frequency of oscillation.
 
-**Suspension Bridges and Structural Vibrations**
-
+### Suspension Bridges and Structural Vibrations
 - Bridges and tall buildings experience forced oscillations due to wind and external loads.
-
 - The governing equation for structural oscillations is:
-$$
- mx¨+cx˙+kx=F0cos⁡(ωt)m \ddot{x} + c \dot{x} + kx = F_0 \cos(\omega t) 
-$$
-where \( m \) is mass, \( c \) is damping, \( k \) is stiffness, and \( F_0 \) is the external force.
+  $$ m \ddot{x} + c \dot{x} + kx = F_0 \cos(\omega t) $$
+  Where \( m \) is mass, \( c \) is damping, \( k \) is stiffness, and \( F_0 \) is the external force.
 
-**Electrical Circuits (RLC Circuits)**
-
+### Electrical Circuits (RLC Circuits)
 - The forced damped pendulum has an electrical analogue in RLC circuits:
-$$
-Ld2Qdt2+RdQdt+QC=E0cos⁡(ωt)L \frac{d^2 Q}{dt^2} + R \frac{dQ}{dt} + \frac{Q}{C} = E_0 \cos(\omega t)
-$$
-- which resembles the form of a forced oscillation equation.
+  $$ L \frac{d^2 Q}{dt^2} + R \frac{dQ}{dt} + \frac{Q}{C} = E_0 \cos(\omega t) $$
 
-**Planetary Motion and Orbital Perturbations**
+### Planetary Motion and Orbital Perturbations
+- The forced damped pendulum provides a framework for understanding orbital resonance and perturbations:
+  $$ \frac{d^2 r}{dt^2} - \frac{h^2}{r^3} + \frac{GM}{r^2} = F_{perturb} $$
 
-- he forced damped pendulum provides a framework for understanding orbital resonance and perturbations:
-$$
-d2rdt2−h2r3+GMr2=Fperturb\frac{d^2 r}{dt^2} - \frac{h^2}{r^3} + \frac{GM}{r^2} = F_{perturb} 
-$$
--where \( r \) is the radial distance, \( h \) is angular momentum, and \( GM \) is the gravitational parameter.
-
-**Biological Oscillations**
-
+### Biological Oscillations
 - Heart rhythms, circadian cycles, and neural oscillations exhibit periodic and chaotic behaviors similar to a forced pendulum.
-
 - A general nonlinear model for biological oscillations is:
-$$
-d2xdt2+f(x,x˙)=Acos⁡(ωt)\frac{d^2 x}{dt^2} + f(x, \dot{x}) = A \cos(\omega t) where f(x,x˙)f(x, \dot{x})
-$$
-- where \( f(x, \dot{x}) \) represents nonlinear feedback mechanisms. in biological systems.
+  $$ \frac{d^2 x}{dt^2} + f(x, \dot{x}) = A \cos(\omega t) $$
+  Where \( f(x, \dot{x}) \) represents nonlinear feedback mechanisms in biological systems.
+
 
 ---
 

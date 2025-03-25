@@ -399,7 +399,7 @@ $$
 
 ---
 
-### 4. Visualization:
+### Visualization:
 
 <details>
   <summary>Phyton codes.</summary>
