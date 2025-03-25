@@ -27,12 +27,13 @@ By focusing on simulations, we can visualize and analyze various scenarios, incl
 
 ## Task
 
-### 1. Exploration of Applications
+### Exploration of Applications
 The Lorentz force is a fundamental concept with broad applications across various scientific and technological fields. To better understand its significance, we will identify specific systems where this force plays a crucial role and discuss how electric and magnetic fields influence the motion of charged particles.
 
-#### 1.1 Systems Involving Lorentz Force
+#### Systems Involving Lorentz Force
 
-- **Particle Accelerators**:
+**Particle Accelerators**:
+
   - Particle accelerators, such as synchrotrons and cyclotrons, rely heavily on the Lorentz force to manipulate and accelerate charged particles. Magnetic fields are used to bend particle paths, while electric fields accelerate them.
   - In synchrotrons, a circular magnetic field keeps particles moving in a closed orbit while radio-frequency electric fields boost their speed.
 
@@ -61,73 +62,85 @@ The Lorentz force is a fundamental concept with broad applications across variou
       \omega = \frac{qB}{m}
       $$
 
-- **Mass Spectrometers**:
+**Mass Spectrometers**:
+
   - Mass spectrometry is a technique used to determine the mass-to-charge ratio of ions. Charged particles are accelerated by electric fields and then deflected by magnetic fields. The degree of deflection depends on the particle's mass and charge.
 
-  - **Derivation of Mass-to-Charge Ratio**:
-    - When a charged particle moves through a region with only a magnetic field:
+ **Derivation of Mass-to-Charge Ratio**:
+
+  - When a charged particle moves through a region with only a magnetic field:
       
       $$
       F = qvB = \frac{mv^2}{r}
       $$
 
-    - Solving for the radius of curvature:
+   - Solving for the radius of curvature:
       
       $$
       r = \frac{mv}{qB}
       $$
 
-    - Rearranging to find the mass-to-charge ratio:
+   - Rearranging to find the mass-to-charge ratio:
       
       $$
       \frac{m}{q} = \frac{rB}{v}
       $$
 
-- **Plasma Confinement (Tokamaks and Stellarators)**:
+**Plasma Confinement (Tokamaks and Stellarators)**:
+
   - Devices such as tokamaks and stellarators are designed to confine hot plasma for nuclear fusion. Magnetic fields are used to trap charged particles, preventing them from escaping and achieving high temperatures needed for fusion.
 
-  - **Derivation of Larmor Radius**:
-    - When a charged particle moves perpendicular to a uniform magnetic field, it undergoes circular motion. The Lorentz force acts as a centripetal force:
-      
-      $$
-      F = qv_{\perp} B = \frac{mv_{\perp}^2}{r_L}
-      $$
+**Derivation of Larmor Radius**:
 
-    - Solving for the Larmor radius \(r_L\):
+  - When a charged particle moves perpendicular to a uniform magnetic field, it undergoes circular motion. The Lorentz force acts as a centripetal force:
       
-      $$
-      r_L = \frac{mv_{\perp}}{qB}
-      $$
+     $$
+     F = qv_{\perp} B = \frac{mv_{\perp}^2}{r_L}
+     $$
 
-    - The cyclotron frequency (\(\omega\)) is similarly derived:
+  - Solving for the Larmor radius \(r_L\):
       
-      $$
-      \omega = \frac{qB}{m}
-      $$
+     $$
+    r_L = \frac{mv_{\perp}}{qB}
+     $$
 
-- **Astrophysical Phenomena**:
+   - The cyclotron frequency (\(\omega\)) is similarly derived:
+      
+     $$
+     \omega = \frac{qB}{m}
+     $$
+
+**Astrophysical Phenomena**:
+
   - In cosmic environments, charged particles are influenced by planetary magnetic fields, solar winds, and interstellar magnetic fields. Understanding these interactions helps explain phenomena like auroras and cosmic ray propagation.
 
-  - **Derivation in Astrophysical Contexts**:
-    - The same derivations apply for motion in magnetic fields with varying geometries, but may require numerical techniques to solve when the fields are non-uniform or complex.
+**Derivation in Astrophysical Contexts**:
 
-#### 1.2 Relevance of Electric and Magnetic Fields
-- **Electric Fields (\(\vec{E}\))**:
+  - The same derivations apply for motion in magnetic fields with varying geometries, but may require numerical techniques to solve when the fields are non-uniform or complex.
+
+#### Relevance of Electric and Magnetic Fields
+
+**Electric Fields (\(\vec{E}\))**:
+
   - Directly accelerates or decelerates charged particles based on their charge sign.
   - Can cause particles to gain kinetic energy and alter their velocities.
 
-- **Magnetic Fields (\(\vec{B}\))**:
+**Magnetic Fields (\(\vec{B}\))**:
+
   - Only affects the direction of a charged particle’s motion, causing it to move in circular or helical paths without changing its speed.
+
   - Essential for guiding particles along specific paths in applications such as mass spectrometers and particle accelerators.
 
 The interaction between electric and magnetic fields allows for sophisticated control over particle motion, which is the basis for many experimental and practical setups in physics and engineering.
 
 ---
 
-### 2. Simulating Particle Motion
+### Simulating Particle Motion
+
 The motion of charged particles under electromagnetic fields is governed by the Lorentz force law. To simulate particle motion, we will solve the differential equations derived from the Lorentz force using numerical methods. We will explore the following scenarios:
 
-#### 2.1 Uniform Magnetic Field (\(\vec{E} = 0\))
+#### Uniform Magnetic Field (\(\vec{E} = 0\))
+
 When a charged particle moves in a uniform magnetic field and no electric field is present, the Lorentz force becomes:
 
 $$
@@ -179,7 +192,8 @@ $$
 
 These are simple harmonic motion equations describing circular or helical motion.
 
-#### 2.2 Combined Electric and Magnetic Fields
+#### Combined Electric and Magnetic Fields
+
 If an electric field is also present, the equation becomes:
 
 \[
@@ -202,7 +216,8 @@ $$
 
 This derivation shows that the particle undergoes a drift motion perpendicular to both the electric and magnetic fields.
 
-#### 2.3 Numerical Implementation
+#### Numerical Implementation
+
 The differential equations will be solved using the **Runge-Kutta method (RK45)** for high accuracy. The following Python code implements the simulation for the uniform magnetic field case.
 
 <details>
@@ -257,7 +272,7 @@ This simulation will be expanded to include scenarios involving electric fields 
 
 ---
 
-#### 3.1 Field Strengths (\(\vec{E}, \vec{B}\))
+####  Field Strengths (\(\vec{E}, \vec{B}\))
 - By increasing or decreasing the magnitude of the magnetic field \(\vec{B}\), the radius of the particle’s circular motion changes. From the Larmor radius formula:
 
 $$
@@ -310,7 +325,7 @@ $$
 \vec{v_d} = \frac{\vec{E} \times \vec{B}}{B^2}
 $$
 
-#### 3.2 Initial Particle Velocity (\(\vec{v}\))
+#### Initial Particle Velocity (\(\vec{v}\))
 
 - The initial velocity components determine whether the motion is purely circular or helical. If there is a component parallel to \(\vec{B}\), the motion will be helical with a constant drift along the field lines.
 
@@ -334,7 +349,7 @@ $$
 r_L = \frac{mv_{\perp}}{qB}
 $$
 
-#### 3.3 Charge and Mass of the Particle (\(q, m\))
+#### Charge and Mass of the Particle (\(q, m\))
 
 - The radius of curvature is directly proportional to the mass and inversely proportional to the charge:
 
@@ -376,7 +391,7 @@ $$
 \omega = \frac{qB}{m}
 $$
 
-#### 3.4 Observations and Analysis
+#### Observations and Analysis
 
 - When changing the parameters, we can observe the differences in particle trajectories and compare them.
 
