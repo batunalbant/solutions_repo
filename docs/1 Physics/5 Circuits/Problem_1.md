@@ -119,576 +119,360 @@ For example, if a circuit consists of three resistors \( R_1, R_2, R_3 \) arrang
 
 Using advanced mathematical techniques such as **matrix representation of circuits** and **Laplace transformations**, we can generalize the problem for complex networks. The impedance matrix \( Z \) of the network can be derived using Kirchhoff’s laws and then reduced using determinant-based transformations.
 
-## Algorithmic Approach
+# Equivalent Resistance Using Graph Theory
 
-To find the equivalent resistance between two nodes:
+## Introduction
+Understanding and analyzing electrical circuits is a fundamental aspect of electrical engineering and physics. One of the essential tasks in circuit analysis is determining the equivalent resistance between two points. Traditional methods rely on step-by-step application of series and parallel resistor combinations, which can become impractical for large and complex circuits. The need for a more systematic and scalable approach arises in applications such as circuit simulation, network analysis, and embedded system design.
 
-**Construct the Graph**: Parse circuit components into a graph data structure.
+Graph theory provides an alternative and efficient approach by representing the circuit as a weighted graph, where:
+- **Nodes** correspond to junctions.
+- **Edges** correspond to resistors with resistance values as weights.
 
-**Identify Series and Parallel Components**: Use graph traversal techniques such as Depth-First Search (DFS) or Breadth-First Search (BFS).
-
-**Iteratively Reduce the Graph**:
-
-   - Replace series connections with their equivalent resistance.
-
-   - Merge parallel connections into a single equivalent resistor.
-
-**Repeat Until Simplification is Complete**: Continue reducing until only two nodes remain (input and output terminals).
-
-**Output the Equivalent Resistance**: The final edge weight represents the total equivalent resistance.
+By systematically simplifying this representation using graph algorithms, we can compute the equivalent resistance efficiently. This approach is particularly useful in modern circuit analysis tools, simulation software, and optimization techniques used in electronic circuit design. It also provides an automated way to handle complex networks, making the process faster and less prone to human errors.
 
 ---
 
-## Algorithm Implementation
+## Graph Reduction Technique
 
-### Pseudocode: Equivalent Resistance Calculation Using Graph Theory
+This technique involves reducing a complex circuit graph to a simpler graph by:
 
-<details>
-  <summary>Pseudocode </summary>
+**Series Reduction:** Replacing series resistors with their equivalent resistance.
 
-```python
+**Parallel Reduction:** Replacing parallel resistors with their equivalent resistance.
 
-1. INPUT & INITIALIZATION
-    INPUT: 
-        - A graph G representing the circuit.
-        - Nodes N = {n1, n2, n3, ...} representing junctions in the circuit.
-        - Edges E = {(n1, n2, R), (n2, n3, R), ...} where each edge is a tuple:
-            (Start_Node, End_Node, Resistance)
-        - Define INPUT_NODE and OUTPUT_NODE representing the start and end points of the circuit.
+**Recursive Simplification:** Continuously applying reduction rules until only the desired nodes remain.
 
-    INITIALIZE:
-        - Create a Graph G with NetworkX or similar library.
-        - Mark INPUT_NODE and OUTPUT_NODE in G.
-        - Visualize the initial graph (G) for reference.
+---
 
-2. DEFINE HELPER FUNCTIONS
+## Differential Analysis of Graphs
 
-    FUNCTION: Detect_Series_Connection(G)
-        FOR each Node N in G:
-            IF Node N has exactly TWO connections (degree = 2) AND NOT (N is INPUT_NODE or OUTPUT_NODE):
-                Identify the two edges: (N, A, R1) and (N, B, R2)
-                COMPUTE: Combined Resistance R = R1 + R2
-                REPLACE edges (N, A) and (N, B) with a single edge (A, B, R)
-                REMOVE Node N from G
-                RETURN Updated Graph G
+In more complex circuits involving non-linear resistances or time-varying signals, the analysis requires differentiating network functions.
 
-    FUNCTION: Detect_Parallel_Connection(G)
-        FOR each pair of Nodes (A, B) in G:
-            IF Multiple edges exist between A and B (Parallel Connection):
-                LET R1, R2, ... Rn be the resistances of these edges
-                COMPUTE: Combined Resistance R = 1 / (1/R1 + 1/R2 + ... + 1/Rn)
-                REMOVE all edges between A and B
-                ADD new edge (A, B, R)
-                RETURN Updated Graph G
+### Ohm’s Law and Differential Formulation
 
-3. ALGORITHM (Main Procedure)
-    WHILE (Number of Edges in G > 1):
-        STEP 1: Display Current Graph G for Visualization
-        
-        STEP 2: Apply Detect_Series_Connection(G)
-            - Identify and simplify all series connections in G.
-            - Visualize the updated graph after this step.
-            
-        STEP 3: Apply Detect_Parallel_Connection(G)
-            - Identify and simplify all parallel connections in G.
-            - Visualize the updated graph after this step.
-            
-        STEP 4: If no changes were made by Detect_Series_Connection or Detect_Parallel_Connection:
-            - Terminate the loop as the graph cannot be further simplified.
-        
-        STEP 5: Repeat the process until G contains only a single edge between INPUT_NODE and OUTPUT_NODE.
+Using Ohm’s law, the relationship between current, voltage, and resistance can be written as:
 
-4. OUTPUT & VISUALIZATION
-    IF (Single Edge exists between INPUT_NODE and OUTPUT_NODE):
-        - OUTPUT: Equivalent Resistance of the Circuit is the weight of that single edge.
-    ELSE:
-        - ERROR: Graph could not be fully reduced. Check for topological errors.
+$$ V = IR $$
 
-    DISPLAY:
-        - Show the original graph and all intermediate steps as the graph is simplified.
+If the resistance is a function of time or position, we can write:
 
-5. GRAPH VALIDATION (Optional Step)
-    FUNCTION: Validate_Graph_Topology(G)
-        IF (INPUT_NODE or OUTPUT_NODE is missing):
-            RETURN Error: "Starting or Ending node is missing."
-            
-        IF (INPUT_NODE is isolated or OUTPUT_NODE is isolated):
-            RETURN Error: "Invalid topology. Ensure connections are properly established."
-            
-        RETURN "Graph Topology is Valid."
+$$ V(t) = I(t) R(t) $$
 
-```
-</details>
+The rate of change of voltage with respect to time can be given by:
 
-### Implementation Plan
+$$ \frac{dV}{dt} = \frac{d}{dt}(IR) = I \frac{dR}{dt} + R \frac{dI}{dt} $$
+
+This can be useful when analyzing circuits with inductive or capacitive components where resistance may vary with frequency.
+
+### Matrix Representation of Circuits
+
+For complex circuits, the impedance matrix \( Z \) can be used to describe the system:
+
+$$ V = ZI $$
+
+Where \( Z \) is an \( n \times n \) matrix representing the impedances between nodes.
+
+The individual elements of the matrix are calculated using the Laplacian matrix of the graph, where:
+
+$$ Z_{ij} = \sum_{k} R_k \quad \text{if } i = j $$
+
+$$ Z_{ij} = -R_k \quad \text{if there is an edge between } i \text{ and } j $$
+
+This matrix formulation allows us to solve complex networks using **matrix inversion techniques** or numerical methods.
+
+---
+
+## Algorithm Description
+
+### Goal
+
+To calculate the equivalent resistance between two points in an electrical network represented as a graph.
+
+### Algorithm Steps
+
+**Input:** A graph representing the circuit, with nodes as junctions and edges as resistors with weights.
+
+**Initialize:** Mark the starting node A and ending node B.
+
+**Identify Series Connections:**
+
+   - If a node has only two connections, merge them by adding their resistances.
+
+**Identify Parallel Connections:**
+
+   - If two nodes are connected by multiple resistors, replace them by a single resistor calculated using the formula:
+     
+$$
+\frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + ... + \frac{1}{R_n}
+$$
+
+**Simplify the Graph:**
+
+   - Iteratively apply series and parallel reductions until only nodes A and B remain.
+
+**Output:** The equivalent resistance between A and B.
+
+---
+
+## Example Calculation
+
+Consider a simple circuit:
+
+- Resistors: \( R_1 = 5 \Omega \), \( R_2 = 10 \Omega \), \( R_3 = 20 \Omega \).
+
+- \( R_1 \) and \( R_2 \) are connected in parallel.
+
+- \( R_3 \) is in series with the parallel combination.
+
+Steps:
+
+- Calculate parallel resistance:
+   
+$$
+\frac{1}{R_{eq}} = \frac{1}{5} + \frac{1}{10} = \frac{2}{10} + \frac{1}{10} = \frac{3}{10}
+$$
+
+$$
+R_{eq} = \frac{10}{3} \approx 3.33 \Omega
+$$
+
+- Calculate total resistance with series connection:
+   
+$$
+R_{total} = 3.33 + 20 = 23.33 \Omega
+$$
+
+---
 
 <details>
   <summary>Phyton codes.</summary>
 
 ```python
-import networkx as nx
 import matplotlib.pyplot as plt
-
-class CircuitGraph:
-    def __init__(self):
-        self.G = nx.Graph()  # Create a new graph
-        self.input_node = None  # Define the input node
-        self.output_node = None  # Define the output node
-    
-    def add_resistor(self, node1, node2, resistance):
-        """Adds a resistor (edge) between two nodes with a given resistance."""
-        self.G.add_edge(node1, node2, resistance=resistance)
-    
-    def set_input_output(self, input_node, output_node):
-        """Sets the input and output nodes."""
-        self.input_node = input_node
-        self.output_node = output_node
-    
-    def visualize(self, title="Circuit Graph", path=None):
-        """Visualizes the current state of the circuit graph."""
-        pos = nx.spring_layout(self.G, seed=42)
-        labels = nx.get_edge_attributes(self.G, 'resistance')
-        
-        plt.figure(figsize=(8, 6))
-        nx.draw(self.G, pos, with_labels=True, node_size=700, node_color='skyblue', font_size=12, font_color='black')
-        nx.draw_networkx_edge_labels(self.G, pos, edge_labels=labels)
-        
-        # Highlight the input and output nodes
-        nx.draw_networkx_nodes(self.G, pos, nodelist=[self.input_node], node_color='green', label='Input Node')
-        nx.draw_networkx_nodes(self.G, pos, nodelist=[self.output_node], node_color='red', label='Output Node')
-        
-        # Highlight the path from input to output if provided
-        if path:
-            edge_list = [(path[i], path[i+1]) for i in range(len(path)-1)]
-            nx.draw_networkx_edges(self.G, pos, edgelist=edge_list, edge_color='orange', width=2)
-        
-        plt.title(title)
-        plt.show()
-    
-    def find_path(self):
-        """Finds a path from input node to output node."""
-        if self.input_node and self.output_node:
-            try:
-                # Find the shortest path between input and output nodes
-                path = nx.shortest_path(self.G, source=self.input_node, target=self.output_node)
-                return path
-            except nx.NetworkXNoPath:
-                print("No path found between input and output nodes.")
-                return None
-        else:
-            print("Input or Output node is not defined.")
-            return None
-
-```
-</details>
-
-
-# Explanation of CircuitGraph Class
-
-This code defines a Python Class (`CircuitGraph`) that represents an electrical circuit as a graph. The purpose of this code is to:
-
-
-- Model an electrical circuit using the `NetworkX` library where nodes represent junctions and edges represent resistors.
-
-- Add resistors between nodes by creating edges with resistance attributes.
-
-- Define the starting and ending points of the circuit (Input and Output nodes).
-
-- Visualize the graph using `Matplotlib`, displaying nodes, edges, and paths between input and output nodes.
-
-## Why This Code Is Written?
-
-The purpose of writing this code is to create a system that can:
-
-- Model a complex electrical circuit as a graph.
-
-- Identify connections between nodes and simplify the circuit using graph theory techniques.
-
-- Visualize the entire graph and the identified path between input and output nodes, making the process of simplification clearer.
-
-## Components of This Code
-
-- `__init__()` Method: Initializes an empty graph and placeholders for input and output nodes.
-
-- `add_resistor()` Method: Adds resistors as edges with resistance values between nodes.
-
-- `set_input_output()` Method: Sets the starting and ending points of the circuit.
-
-- `visualize()` Method: Displays the graph, marking the input and output nodes and optionally showing the path between them.
-
-- `find_path()` Method: Finds the shortest path from the input node to the output node using NetworkX's shortest path function.
-
-This code is the foundation for building the circuit graph. Now, we will focus on finding and simplifying series and parallel connections using
-
-
----
-
-<details>
-  <summary>Phyton codes.</summary>
-
-```python
-# Create a new circuit graph
-circuit = CircuitGraph()
-
-# Add resistors
-circuit.add_resistor('A', 'B', 10)
-circuit.add_resistor('B', 'C', 20)
-circuit.add_resistor('C', 'D', 30)
-circuit.add_resistor('D', 'A', 8)
-circuit.add_resistor('A', 'C', 15)
-
-# Set the input and output nodes
-circuit.set_input_output('A', 'D')
-
-# Find the path from input to output
-path = circuit.find_path()
-
-# Visualize the circuit graph with highlighted path
-circuit.visualize("Circuit Graph with Path", path=path)
-
-```
-</details>
-
-![alt text](image-10.png)
-
-#  Explanation of CircuitGraph Usage
-
-This code uses the `CircuitGraph` class to create a graphical representation of an electrical circuit. It demonstrates how to:
-
-- Initialize a new graph.
-- Add resistors between nodes to form connections.
-- Define the input and output nodes.
-- Visualize the graph and highlight the path from input to output.
-
----
-
-## What Does the Graph Show?
-
-**Nodes (A, B, C, D):**  
-
-   - These are the points where the connections (resistors) meet.
-
-   - In a real circuit, nodes are junctions where wires or components connect.  
-
-   - Each node is represented as a circle with a label.
-
-**Edges (Connections Between Nodes):**  
-
-   - The lines connecting the nodes are called edges. 
-
-   - Each edge represents a **resistor** with a specific resistance value (in ohms).  
-
-   - The resistance values are labeled on the edges. 
-
-**Input and Output Nodes (Green and Red):**  
-
-   - The **Green Node (A)** is the **Input Node**, which is where the current starts.  
-
-   - The **Red Node (D)** is the **Output Node**, which is where the current exits the circuit.  
-
-   - The `set_input_output()` function is used to define these nodes.  
-
-**Orange Path (Highlighted Connection):**  
-
-   - The orange line represents the **shortest path between the Input Node (A) and the Output Node (D)**. 
-
-   - It is calculated using NetworkX’s `shortest_path()` function.  
-
-   - The shortest path only indicates the most direct connection, not necessarily the correct calculation of the overall resistance.  
-
-**Resistance Values (Numbers on Edges):**  
-
-   - The numbers (e.g., 10, 20, 30, 8, 15) represent the resistance values in ohms.  
-
-   - Each resistance is assigned when creating an edge using the `add_resistor()` function.  
-
-   - Example: `circuit.add_resistor('A', 'B', 10)` means there is a resistor of 10 ohms between nodes A and B.
-
----
-<details>
-  <summary>Phyton codes.</summary>
-
-```python
 import networkx as nx
-import matplotlib.pyplot as plt
 
-class CircuitGraph:
-    def __init__(self):
-        self.G = nx.Graph()
-        self.input_node = None
-        self.output_node = None
+# Create a series connection graph
+series_graph = nx.Graph()
+series_graph.add_edge("A", "B", weight=5)
+series_graph.add_edge("B", "C", weight=10)
 
-    def add_resistor(self, node1, node2, resistance):
-        self.G.add_edge(node1, node2, resistance=resistance)
+# Create a parallel connection graph using MultiGraph to allow multiple edges
+parallel_graph = nx.MultiGraph()
+parallel_graph.add_edge("X", "Y", weight=5, key='R1')
+parallel_graph.add_edge("X", "Y", weight=10, key='R2')
 
-    def set_input_output(self, input_node, output_node):
-        self.input_node = input_node
-        self.output_node = output_node
+# Plotting the series connection graph
+plt.figure(figsize=(12, 6))
 
-    def find_path(self):
-        if self.input_node and self.output_node:
-            try:
-                path = nx.shortest_path(self.G, source=self.input_node, target=self.output_node)
-                return path
-            except nx.NetworkXNoPath:
-                return None
+plt.subplot(1, 2, 1)
+pos_series = nx.spring_layout(series_graph)
+nx.draw(series_graph, pos_series, with_labels=True, node_color='skyblue', node_size=1000, font_size=12)
+edge_labels_series = nx.get_edge_attributes(series_graph, 'weight')
+nx.draw_networkx_edge_labels(series_graph, pos_series, edge_labels=edge_labels_series)
+plt.title("Series Circuit Graph")
 
-    def visualize(self, title="Circuit Graph", path=None):
-        pos = nx.spring_layout(self.G, seed=42)
-        labels = nx.get_edge_attributes(self.G, 'resistance')
+# Plotting the parallel connection graph
+plt.subplot(1, 2, 2)
+pos_parallel = nx.spring_layout(parallel_graph)
+nx.draw(parallel_graph, pos_parallel, with_labels=True, node_color='lightgreen', node_size=1000, font_size=12)
+edge_labels_parallel = {(u, v): f"{d['weight']} Ω" for u, v, d in parallel_graph.edges(data=True)}
+nx.draw_networkx_edge_labels(parallel_graph, pos_parallel, edge_labels=edge_labels_parallel)
+plt.title("Parallel Circuit Graph")
 
-        plt.figure(figsize=(8, 6))
-        nx.draw(self.G, pos, with_labels=True, node_size=700, node_color='skyblue', font_size=12, font_color='black')
-        nx.draw_networkx_edge_labels(self.G, pos, edge_labels=labels)
-
-        nx.draw_networkx_nodes(self.G, pos, nodelist=[self.input_node], node_color='green')
-        nx.draw_networkx_nodes(self.G, pos, nodelist=[self.output_node], node_color='red')
-
-        if path:
-            edge_list = [(path[i], path[i+1]) for i in range(len(path)-1)]
-            nx.draw_networkx_edges(self.G, pos, edgelist=edge_list, edge_color='orange', width=2)
-
-        plt.title(title)
-        plt.show()
-    
-    def simplify_series(self):
-        nodes_to_remove = []
-        
-        for node in list(self.G.nodes):
-            if node not in [self.input_node, self.output_node] and self.G.degree(node) == 2:
-                neighbors = list(self.G.neighbors(node))
-                
-                if len(neighbors) == 2:
-                    R1 = self.G[node][neighbors[0]]['resistance']
-                    R2 = self.G[node][neighbors[1]]['resistance']
-                    total_resistance = R1 + R2  # Series formula: R_eq = R1 + R2
-                    
-                    self.G.add_edge(neighbors[0], neighbors[1], resistance=total_resistance)
-                    nodes_to_remove.append(node)
-        
-        self.G.remove_nodes_from(nodes_to_remove)
-        self.visualize("After Series Simplification")
-
-    def simplify_parallel(self):
-        edges_to_remove = []
-        combined_edges = {}
-
-        for u, v, data in self.G.edges(data=True):
-            if (u, v) not in combined_edges:
-                combined_edges[(u, v)] = [data['resistance']]
-            else:
-                combined_edges[(u, v)].append(data['resistance'])
-
-        for (u, v), resistances in combined_edges.items():
-            if len(resistances) > 1:
-                total_resistance = 1 / sum(1 / r for r in resistances)  # Parallel formula: 1/R_eq = 1/R1 + 1/R2 + ...
-                self.G[u][v]['resistance'] = total_resistance
-
-        self.visualize("After Parallel Simplification")
-    
-    def simplify_circuit(self):
-        """Fully simplifies the circuit by repeatedly applying series and parallel simplifications."""
-        changed = True
-        
-        while changed:
-            changed = False
-            
-            # Apply series simplification
-            initial_node_count = len(self.G.nodes)
-            self.simplify_series()
-            if len(self.G.nodes) < initial_node_count:
-                changed = True
-            
-            # Apply parallel simplification
-            initial_edge_count = len(self.G.edges)
-            self.simplify_parallel()
-            if len(self.G.edges) < initial_edge_count:
-                changed = True
-            
-            # Visualize the graph at each step
-            self.visualize("Simplifying Circuit")
-
+# Display the graphs
+plt.tight_layout()
+plt.show()
 
 ```
 </details>
 
-# Explanation of CircuitGraph Class (Mathematical & Physical Context)
+![alt text](image-15.png)
 
-### **Purpose of the Code:**
+## Circuit Graph Representations
 
-The purpose of this code is to model an electrical circuit using Graph Theory. The electrical circuit is represented as a graph where:
+In electrical circuits, the graphical representation of series and parallel connections plays a crucial role in understanding the overall resistance and network structure. Below are visual representations of both series and parallel circuits using graph theory.
 
+### Series Circuit Graph
 
-- **Nodes:** Represent points of connection (junctions) in the circuit. For example, junctions where resistors meet.
-
-- **Edges:** Represent resistors between nodes with specific resistance values (in Ohms).
-
-- **Input Node:** The starting point of the circuit where the current enters.
-
-- **Output Node:** The ending point of the circuit where the current exits.
-
-### **Mathematical & Physical Representation:**
-
-- The circuit is treated as an **undirected graph** \( G = (V, E) \) where:
-
-  - \( V \) is the set of vertices (nodes).
-
-  - \( E \) is the set of edges (resistors) between nodes.
-
-- The resistance between two nodes \( A \) and \( B \) is represented by an edge \( (A, B) \) with an attribute `resistance`.
-
-### **Series and Parallel Connections (Fundamental Physics Laws):**
-
-- **Series Connection:** When two or more resistors are connected end-to-end between two nodes.
-
-  - The total resistance \( R_{eq} \) is the sum of individual resistances:
-
-    $$
-    R_{eq} = R_1 + R_2 + \ldots + R_n
-    $$
-
-- **Parallel Connection:** When two or more resistors are connected between the same two nodes.
-
-  - The total resistance \( R_{eq} \) is calculated using the reciprocal sum formula:
-
-    $$
-    \frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + \ldots + \frac{1}{R_n}
-    $$
-
-
----
-
-#  Explanation of Simplification Functions (Series & Parallel Connections)
-
-
-## **Mathematical & Physical Context:**
-
-The simplification process is based on the fundamental physics rules of series and parallel resistances.
-
----
-
-### **Series Connections (Physics Law):**
-
-- When resistors are connected in a sequence, the total resistance is simply the sum of all resistances in the path.
-
-- The total resistance for a series connection between two points is calculated as:
+The **Series Circuit Graph** demonstrates the connection of two resistors (5 Ω and 10 Ω) in series. In a series configuration:
+- Resistors are connected end-to-end, forming a single path for current flow.
+- The equivalent resistance is the sum of individual resistances:
 
   $$
-  R_{eq} = R_1 + R_2 + \ldots + R_n
+  R_{eq} = R_1 + R_2 = 5 + 10 = 15 \Omega
   $$
 
-- This is a direct application of **Ohm’s Law** and **Kirchhoff’s Voltage Law (KVL)** which states that the sum of potential differences around any closed loop must be zero.
+#### Features of the Series Graph:
 
+- **Nodes (A, B, C)** represent junctions.
+- **Edges** represent resistors labeled with their resistance values.
+- The graph layout is structured to show a linear connection, reflecting the series nature.
 
 ---
 
+### Parallel Circuit Graph
 
-### **Parallel Connections (Physics Law):**
+The **Parallel Circuit Graph** demonstrates the connection of two resistors (5 Ω and 10 Ω) in parallel. In a parallel configuration:
 
-- When resistors are connected across the same two points, the total resistance is calculated using the reciprocal sum formula:
+- Resistors share the same voltage across them.
+
+- The equivalent resistance is given by:
 
   $$
-  \frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + \ldots + \frac{1}{R_n}
+  \frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} = \frac{1}{5} + \frac{1}{10} = \frac{3}{10}
   $$
 
-- This relation comes from **Kirchhoff’s Current Law (KCL)** which states that the total current entering a junction is equal to the total current leaving it.
+  $$
+  R_{eq} = \frac{10}{3} \approx 3.33 \Omega
+  $$
+
+#### Features of the Parallel Graph:
+
+**Nodes (X, Y)** represent connection points where the voltage is shared.
+
+**Edges** represent multiple resistors connecting the same pair of nodes.
+
+Parallel connections are visualized by multiple edges between the same nodes.
 
 ---
-
-## **Implementation of Simplification Functions:**
-The code adds two functions to the `CircuitGraph` class:
-
----
-
-### ** Detecting and Simplifying Series Connections:**
 
 <details>
   <summary>Phyton codes.</summary>
 
 ```python
-def simplify_series(self):
-    nodes_to_remove = []
-    
-    for node in list(self.G.nodes):
-        if node not in [self.input_node, self.output_node] and self.G.degree(node) == 2:
-            neighbors = list(self.G.neighbors(node))
-            
-            if len(neighbors) == 2:
-                R1 = self.G[node][neighbors[0]]['resistance']
-                R2 = self.G[node][neighbors[1]]['resistance']
-                total_resistance = R1 + R2  # Series formula: R_eq = R1 + R2
-                
-                self.G.add_edge(neighbors[0], neighbors[1], resistance=total_resistance)
-                nodes_to_remove.append(node)
-    
-    self.G.remove_nodes_from(nodes_to_remove)
-    self.visualize("After Series Simplification")
+# Creating a graph for Laplacian Matrix demonstration
+G_laplacian = nx.Graph()
+
+# Adding edges with weights (resistors) between nodes
+edges = [
+    ("A", "B", 5),
+    ("A", "C", 10),
+    ("B", "C", 15),
+    ("C", "D", 20),
+    ("B", "D", 25)
+]
+G_laplacian.add_weighted_edges_from(edges)
+
+# Plotting the graph
+plt.figure(figsize=(8, 6))
+pos_laplacian = nx.spring_layout(G_laplacian, seed=42)
+nx.draw(G_laplacian, pos_laplacian, with_labels=True, node_color='lightblue', node_size=1000, font_size=12)
+edge_labels_laplacian = nx.get_edge_attributes(G_laplacian, 'weight')
+nx.draw_networkx_edge_labels(G_laplacian, pos_laplacian, edge_labels={(u, v): f"{d} Ω" for u, v, d in G_laplacian.edges(data='weight')})
+plt.title("Graph Representation for Laplacian Matrix Analysis")
+plt.show()
+
+# Calculating the Laplacian matrix
+Laplacian_matrix = nx.laplacian_matrix(G_laplacian).todense()
+Laplacian_matrix
 
 ```
 </details>
 
-#  Explanation of Iterative Simplification Process
+![alt text](image-16.png)
 
-### **Purpose of the Code:**
-This code extends the `CircuitGraph` class to apply the series and parallel simplification functions repeatedly until the entire circuit is reduced to a single equivalent resistance between the input and output nodes.
 
----
+## Laplacian Matrix and Graph Analysis
 
-## **Mathematical & Physical Context:**
+In graph theory, the **Laplacian Matrix** is a powerful tool used to describe the connections between nodes in a circuit graph. The matrix representation allows us to perform efficient computations and solve complex networks using linear algebra techniques.
 
-The iterative simplification process relies on continuously applying the following principles until the graph is fully simplified:
+### Graph Representation for Laplacian Matrix Analysis
+The graph below represents a network of resistors connected between four nodes: **A**, **B**, **C**, and **D**.
 
-### **Series Simplification (Ohm’s Law):**
+#### Graph Features:
 
-\[
-R_{eq} = R_1 + R_2 + \ldots + R_n
-\]
+**Nodes:** A, B, C, D
 
-### **Parallel Simplification (Kirchhoff’s Laws):**
+**Edges (with resistance values):**  
 
-\[
-\frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + \ldots + \frac{1}{R_n}
-\]
-
----
-
-## **Implementation of the Iterative Process:**
-
-The following function is added to the `CircuitGraph` class:
+  - A - B (5 Ω)  
+  - A - C (10 Ω)  
+  - B - C (15 Ω)  
+  - C - D (20 Ω)  
+  - B - D (25 Ω)  
 
 ---
 
-### **Complete Simplification Process:**
+### Laplacian Matrix Definition
 
-<details>
-  <summary>Phyton codes.</summary>
+The Laplacian matrix \( L \) for an undirected graph is defined as:
 
-```python
-def simplify_circuit(self):
-    """Fully simplifies the circuit by repeatedly applying series and parallel simplifications."""
-    changed = True
-    
-    while changed:
-        changed = False
-        
-        # Apply series simplification
-        initial_node_count = len(self.G.nodes)
-        self.simplify_series()
-        if len(self.G.nodes) < initial_node_count:
-            changed = True
-        
-        # Apply parallel simplification
-        initial_edge_count = len(self.G.edges)
-        self.simplify_parallel()
-        if len(self.G.edges) < initial_edge_count:
-            changed = True
-        
-        # Visualize the graph at each step
-        self.visualize("Simplifying Circuit")
-```
-</details>
+$$
+L_{ij} = \begin{cases} 
+\sum_{k} R_k & \text{if } i = j \text{ (Sum of resistances connected to node } i) \\
+-R_k & \text{if there is a resistor } R_k \text{ between nodes } i \text{ and } j \\
+0 & \text{if nodes } i \text{ and } j \text{ are not directly connected}
+\end{cases}
+$$
 
-![Circuit Simplification](https://github.com/batunalbant/solutions_repo/blob/main/docs/1%20Physics/5%20Circuits/simplfication.gif)
+---
+
+### Calculated Laplacian Matrix
+
+Using the above definition, the Laplacian matrix for our graph is:
+
+$$
+L = \begin{bmatrix} 
+15 & -5 & -10 & 0 \\
+-5 & 45 & -15 & -25 \\
+-10 & -15 & 45 & -20 \\
+0 & -25 & -20 & 45 
+\end{bmatrix}
+$$
+
+---
+
+### Graph Theory Advantage
+
+The Laplacian matrix provides a robust way to:
+
+- Identify node connections and how resistors are distributed in the network.
+
+- Solve networks by applying **matrix inversion techniques**.
+
+- Efficiently calculate **equivalent resistance** by transforming the problem into a system of linear equations.
+
+---
+
+
+
+---
+
+### Graph Theory Advantage:
+
+Using graph theory to represent electrical circuits simplifies the visualization and analysis of both series and parallel configurations. These graphical representations make it easier to understand how equivalent resistance is computed and how complex circuits can be reduced step by step.
+
+By employing graph reduction techniques, these complex networks can be simplified systematically, providing efficient ways to calculate equivalent resistance and optimize circuit designs.
+
+
+---
+
+## Potential Improvements
+
+- Automating detection of complex series and parallel combinations.
+
+- Using data structures like adjacency matrices or lists for better efficiency.
+
+- Applying matrix operations for solving larger networks.
+
+---
+
+## Conclusion
+
+- The algorithm described here provides a structured approach for calculating the equivalent resistance of any circuit using graph theory. It allows for systematic simplification of even complex networks. This method is foundational for further development of automated circuit analysis tools.
+
+- Furthermore, the integration of matrix analysis techniques such as the Laplacian Matrix provides a rigorous mathematical framework that can be applied to complex networks of arbitrary size. The application of differential analysis also makes this approach suitable for time-varying and AC circuits, enhancing its applicability to real-world systems.
+
+- Future advancements in this approach could involve developing more efficient algorithms for identifying series and parallel connections automatically. Additionally, incorporating numerical solvers such as the Jacobi or Gauss-Seidel methods could significantly enhance computational efficiency, especially when dealing with large-scale networks.
+
+- Overall, graph theory provides a powerful and versatile tool for understanding and analyzing electrical circuits. Its application extends beyond basic resistance calculations to include complex network analysis, transient behavior, and impedance calculations in AC circuits. As circuit analysis continues to evolve, the role of graph theory will likely expand, providing deeper insights and more efficient computational methods.
+
+- The algorithm described here provides a structured approach for calculating the equivalent resistance of any circuit using graph theory. It allows for systematic simplification of even complex networks. This method is foundational for further development of automated circuit analysis tools.
+---
+
+
+
+
 
 
 
