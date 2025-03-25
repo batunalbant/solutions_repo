@@ -121,18 +121,6 @@ Using advanced mathematical techniques such as **matrix representation of circui
 
 ---
 
-## Introduction
-
-Understanding and analyzing electrical circuits is a fundamental aspect of electrical engineering and physics. One of the essential tasks in circuit analysis is determining the equivalent resistance between two points. Traditional methods rely on step-by-step application of series and parallel resistor combinations, which can become impractical for large and complex circuits. The need for a more systematic and scalable approach arises in applications such as circuit simulation, network analysis, and embedded system design.
-
-Graph theory provides an alternative and efficient approach by representing the circuit as a weighted graph, where:
-- **Nodes** correspond to junctions.
-- **Edges** correspond to resistors with resistance values as weights.
-
-By systematically simplifying this representation using graph algorithms, we can compute the equivalent resistance efficiently. This approach is particularly useful in modern circuit analysis tools, simulation software, and optimization techniques used in electronic circuit design. It also provides an automated way to handle complex networks, making the process faster and less prone to human errors.
-
----
-
 ## Graph Reduction Technique
 
 This technique involves reducing a complex circuit graph to a simpler graph by:
@@ -184,6 +172,34 @@ This matrix formulation allows us to solve complex networks using **matrix inver
 ---
 
 ## Algorithm Description
+
+### Pseudocode
+
+
+```python
+function calculate_equivalent_resistance(graph, node_A, node_B):
+    while graph has more than 2 nodes:
+        // Series Reduction
+        for each node in graph.nodes():
+            if degree(node) == 2:
+                R1 = graph.edges[node][neighbor1].weight
+                R2 = graph.edges[node][neighbor2].weight
+                R_eq = R1 + R2
+                graph.remove_node(node)
+                graph.add_edge(neighbor1, neighbor2, weight=R_eq)
+        
+        // Parallel Reduction
+        for each edge_pair in graph.edges():
+            u, v = edge_pair
+            if graph.number_of_edges(u, v) > 1:
+                resistors = [graph[u][v][key]['weight'] for key in graph[u][v]]
+                R_eq = 1 / sum(1/R for R in resistors)
+                graph.remove_edges_between(u, v)
+                graph.add_edge(u, v, weight=R_eq)
+    
+    return graph[node_A][node_B]['weight']
+```
+
 
 ### Goal
 
