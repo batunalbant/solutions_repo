@@ -524,10 +524,182 @@ L = \begin{bmatrix}
 </li>
 </ul>
 <hr/>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python"># Create a new graph for AC impedance analysis with labels as text
+G_impedance_text = nx.Graph()
+
+# Adding edges with text-based impedance labels
+G_impedance_text.add_edge("A", "B", weight="5 Ω (Resistor)")
+G_impedance_text.add_edge("B", "C", weight="10j Ω (Inductor)")
+G_impedance_text.add_edge("C", "D", weight="-20j Ω (Capacitor)")
+G_impedance_text.add_edge("A", "D", weight="15 Ω (Resistor)")
+
+# Plotting the graph
+plt.figure(figsize=(8, 6))
+pos_impedance_text = nx.spring_layout(G_impedance_text, seed=42)
+nx.draw(G_impedance_text, pos_impedance_text, with_labels=True, node_color='lightcoral', node_size=1000, font_size=12)
+
+# Prepare edge labels
+edge_labels_text = nx.get_edge_attributes(G_impedance_text, 'weight')
+nx.draw_networkx_edge_labels(G_impedance_text, pos_impedance_text, edge_labels=edge_labels_text)
+
+plt.title("Graph Representation for Impedance Analysis (AC Circuits)")
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-17.png"/></p>
+<h2 id="impedance-analysis-in-ac-circuits">Impedance Analysis in AC Circuits</h2>
+<p>Analyzing AC circuits using graph theory requires incorporating <strong>complex impedances</strong> for components like resistors, inductors, and capacitors. The graph representation below demonstrates how these elements can be visualized and analyzed within a network.</p>
 <hr/>
-<h3 id="graph-theory-advantage_1">Graph Theory Advantage:</h3>
-<p>Using graph theory to represent electrical circuits simplifies the visualization and analysis of both series and parallel configurations. These graphical representations make it easier to understand how equivalent resistance is computed and how complex circuits can be reduced step by step.</p>
-<p>By employing graph reduction techniques, these complex networks can be simplified systematically, providing efficient ways to calculate equivalent resistance and optimize circuit designs.</p>
+<h3 id="graph-representation-for-impedance-analysis">Graph Representation for Impedance Analysis</h3>
+<p>The graph consists of four nodes (<strong>A, B, C, D</strong>) connected by various impedances representing different electrical components.</p>
+<h4 id="graph-features_1">Graph Features:</h4>
+<p><strong>Nodes:</strong> A, B, C, D</p>
+<p><strong>Edges (with impedance values):</strong></p>
+<ul>
+<li><strong>A - B:</strong> 5 Ω (Resistor)</li>
+<li><strong>B - C:</strong> 10j Ω (Inductor)</li>
+<li><strong>C - D:</strong> -20j Ω (Capacitor)</li>
+<li><strong>A - D:</strong> 15 Ω (Resistor)</li>
+</ul>
+<hr/>
+<h3 id="impedance-calculations">Impedance Calculations</h3>
+<p>The impedances are represented as complex numbers:</p>
+<ul>
+<li>
+<p><strong>Resistor:</strong> Purely real impedance (e.g., 5 Ω)</p>
+</li>
+<li>
+<p><strong>Inductor:</strong> Positive imaginary impedance (e.g., <span class="arithmatex">\(10j\)</span> Ω)</p>
+</li>
+<li>
+<p><strong>Capacitor:</strong> Negative imaginary impedance (e.g., <span class="arithmatex">\(-20j\)</span> Ω)</p>
+</li>
+</ul>
+<p>In AC circuits, the equivalent impedance between any two nodes can be calculated using techniques similar to those for resistances:</p>
+<ul>
+<li>
+<p>Series combination: <span class="arithmatex">\( Z_{eq} = Z_1 + Z_2 \)</span></p>
+</li>
+<li>
+<p>Parallel combination: <span class="arithmatex">\( \frac{1}{Z_{eq}} = \frac{1}{Z_1} + \frac{1}{Z_2} \)</span></p>
+</li>
+</ul>
+<hr/>
+<details>
+<summary>Phyton codes.</summary>
+<pre><code class="language-python"># Creating a simple grid graph to represent a large network for iterative solving
+G_numerical = nx.grid_2d_graph(3, 3)  # 3x3 grid
+
+# Adding weights (resistances) to the edges
+for (u, v) in G_numerical.edges():
+    G_numerical[u][v]['weight'] = 5  # Assigning all resistances as 5 Ohms for simplicity
+
+# Plotting the numerical method graph
+plt.figure(figsize=(8, 6))
+pos_numerical = {(x, y): (y, -x) for x, y in G_numerical.nodes()}  # Positioning in a grid layout
+nx.draw(G_numerical, pos_numerical, with_labels=True, node_color='lightblue', node_size=800, font_size=10)
+edge_labels_numerical = nx.get_edge_attributes(G_numerical, 'weight')
+nx.draw_networkx_edge_labels(G_numerical, pos_numerical, edge_labels=edge_labels_numerical)
+plt.title("Graph Representation for Numerical Methods (Jacobi &amp; Gauss-Seidel)")
+plt.show()
+
+</code></pre>
+</details>
+<p><img alt="alt text" src="../image-18.png"/></p>
+<h2 id="numerical-methods-for-graph-analysis">Numerical Methods for Graph Analysis</h2>
+<p>In large networks, direct calculation of equivalent resistance or impedance can be computationally expensive. Instead, <strong>iterative numerical methods</strong> such as the <strong>Jacobi Method</strong> and <strong>Gauss-Seidel Method</strong> are often employed to find approximate solutions.</p>
+<hr/>
+<h3 id="graph-representation-for-numerical-methods">Graph Representation for Numerical Methods</h3>
+<p>The graph below represents a <strong>3x3 Grid Network</strong>, commonly used to demonstrate iterative solving techniques.</p>
+<h4 id="graph-features_2">Graph Features:</h4>
+<ul>
+<li>
+<p><strong>Graph Type:</strong> 3x3 Grid Graph.</p>
+</li>
+<li>
+<p><strong>Nodes:</strong> Represent connection points (junctions).</p>
+</li>
+<li>
+<p><strong>Edges:</strong> Represent resistors, all assigned a value of 5 Ω for simplicity.</p>
+</li>
+<li>
+<p><strong>Purpose:</strong> Demonstrates the use of numerical methods for solving large networks.</p>
+</li>
+</ul>
+<hr/>
+<h3 id="numerical-methods-used">Numerical Methods Used</h3>
+<p><strong>Jacobi Method:</strong> </p>
+<ul>
+<li>
+<p>Updates the voltage of each node independently based on the previous iteration.</p>
+</li>
+<li>
+<p>Typically slower but simpler to implement.</p>
+</li>
+</ul>
+<p><strong>Gauss-Seidel Method:</strong> </p>
+<ul>
+<li>
+<p>Updates the voltage of each node immediately after calculation.</p>
+</li>
+<li>
+<p>Faster convergence than the Jacobi method, especially for diagonally dominant matrices.</p>
+</li>
+</ul>
+<hr/>
+<h3 id="application-to-graph-theory">Application to Graph Theory</h3>
+<ul>
+<li>
+<p>By representing the circuit as a graph, iterative methods can be applied directly to solve <strong>Kirchhoff's Current Law (KCL)</strong> equations.</p>
+</li>
+<li>
+<p>The system of equations is transformed into a matrix form <span class="arithmatex">\( AX = B \)</span>, where:</p>
+</li>
+<li>
+<p><span class="arithmatex">\( A \)</span> is the coefficient matrix (Laplacian Matrix).</p>
+</li>
+<li>
+<p><span class="arithmatex">\( X \)</span> is the vector of unknown voltages.</p>
+</li>
+<li>
+<p><span class="arithmatex">\( B \)</span> is the vector of input currents.</p>
+</li>
+</ul>
+<hr/>
+<h3 id="graph-theory-advantage_1">Graph Theory Advantage</h3>
+<p>Using numerical methods with graph theory allows:</p>
+<ul>
+<li>
+<p>Efficient handling of large networks where direct methods are impractical.</p>
+</li>
+<li>
+<p>Application of <strong>sparse matrix techniques</strong> to reduce computation time.</p>
+</li>
+<li>
+<p>Flexibility to handle time-varying systems and frequency-dependent analysis.</p>
+</li>
+</ul>
+<hr/>
+<hr/>
+<h3 id="graph-theory-advantage_2">Graph Theory Advantage:</h3>
+<p>Using graph theory for impedance analysis allows:</p>
+<ul>
+<li>
+<p>Efficient representation of complex networks.</p>
+</li>
+<li>
+<p>Visualization of different components and their connections.</p>
+</li>
+<li>
+<p>Simplification using Laplacian matrices and matrix inversion techniques.</p>
+</li>
+<li>
+<p>Enhanced analysis for frequency-dependent systems.</p>
+</li>
+</ul>
 <hr/>
 <h2 id="potential-improvements">Potential Improvements</h2>
 <ul>
@@ -556,8 +728,11 @@ L = \begin{bmatrix}
 <li>
 <p>Overall, graph theory provides a powerful and versatile tool for understanding and analyzing electrical circuits. Its application extends beyond basic resistance calculations to include complex network analysis, transient behavior, and impedance calculations in AC circuits. As circuit analysis continues to evolve, the role of graph theory will likely expand, providing deeper insights and more efficient computational methods.</p>
 </li>
+<li>
+<p>The algorithm described here provides a structured approach for calculating the equivalent resistance of any circuit using graph theory. It allows for systematic simplification of even complex networks. This method is foundational for further development of automated circuit analysis tools.</p>
+</li>
 </ul>
-<h2 id="-the-algorithm-described-here-provides-a-structured-approach-for-calculating-the-equivalent-resistance-of-any-circuit-using-graph-theory-it-allows-for-systematic-simplification-of-even-complex-networks-this-method-is-foundational-for-further-development-of-automated-circuit-analysis-tools">- The algorithm described here provides a structured approach for calculating the equivalent resistance of any circuit using graph theory. It allows for systematic simplification of even complex networks. This method is foundational for further development of automated circuit analysis tools.</h2>
+<hr/>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
