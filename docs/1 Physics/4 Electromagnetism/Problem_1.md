@@ -437,6 +437,17 @@ t_eval = np.linspace(*t_span, 1000)
 # Solving the differential equation
 solution = solve_ivp(lorentz_force, t_span, initial_conditions, t_eval=t_eval, method='RK45')
 
+# Plotting the result - 3D path
+fig = plt.figure(figsize=(6, 6))
+ax = fig.add_subplot(111, projection='3d')
+ax.plot(solution.y[0], solution.y[1], solution.y[2], label='Particle Path')
+ax.set_xlabel('X (m)')
+ax.set_ylabel('Y (m)')
+ax.set_zlabel('Z (m)')
+ax.set_title('Particle Motion in Uniform Magnetic Field (3D)')
+ax.legend()
+plt.show()
+
 # Plotting the result - 2D path
 fig2 = plt.figure(figsize=(8, 6))
 ax2 = fig2.add_subplot(111)
@@ -485,7 +496,7 @@ Where:
 
 ---
 
-![alt text](image-2.png)
+![alt text](image-8.png)
 
 #### Particle Motion in Uniform Magnetic Field (3D)
 
