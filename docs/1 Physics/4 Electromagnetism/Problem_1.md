@@ -419,31 +419,23 @@ E = np.array([0, 0, 0])  # Electric field (V/m)
 # Lorentz force differential equation
 def lorentz_force(t, y):
     v = y[3:]
-    dv_dt = (q / m) * (E + np.cross(v, B))
+    dv_dt = (q / m) * np.cross(v, B)  # Only consider magnetic force for circular motion
     return [v[0], v[1], v[2], dv_dt[0], dv_dt[1], dv_dt[2]]
 
 # Initial conditions
-v0 = np.array([1e6, 0, 0])  # Initial velocity (m/s)
+v0 = np.array([0, 1e6, 0])  # Initial velocity (m/s) orthogonal to B-field
 r0 = np.array([0, 0, 0])  # Initial position (m)
 initial_conditions = np.concatenate((r0, v0))
 
 # Time span
-t_span = (0, 1e-6)
+T = 2 * np.pi * m / (q * B[2])  # Period of circular motion
+n_cycles = 2  # Number of cycles to simulate
+
+t_span = (0, n_cycles * T)
 t_eval = np.linspace(*t_span, 1000)
 
 # Solving the differential equation
 solution = solve_ivp(lorentz_force, t_span, initial_conditions, t_eval=t_eval, method='RK45')
-
-# Plotting the result - 3D path
-fig = plt.figure(figsize=(8, 6))
-ax = fig.add_subplot(111, projection='3d')
-ax.plot(solution.y[0], solution.y[1], solution.y[2], label='Particle Path')
-ax.set_xlabel('X (m)')
-ax.set_ylabel('Y (m)')
-ax.set_zlabel('Z (m)')
-ax.set_title('Particle Motion in Uniform Magnetic Field (3D)')
-ax.legend()
-plt.show()
 
 # Plotting the result - 2D path
 fig2 = plt.figure(figsize=(8, 6))
@@ -453,12 +445,14 @@ ax2.set_xlabel('X (m)')
 ax2.set_ylabel('Y (m)')
 ax2.set_title('Particle Motion in Uniform Magnetic Field (2D)')
 ax2.legend()
+plt.axis('equal')  # Ensures equal scaling for x and y axis
 plt.show()
+
 
 ```
 </details>
 
-![alt text](image-1.png)
+![alt text](image-7.png)
 
 #### Particle Motion in Uniform Magnetic Field (2D)
 
