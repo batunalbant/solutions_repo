@@ -177,27 +177,61 @@ This matrix formulation allows us to solve complex networks using **matrix inver
 
 
 ```python
-function calculate_equivalent_resistance(graph, node_A, node_B):
-    while graph has more than 2 nodes:
-        // Series Reduction
-        for each node in graph.nodes():
-            if degree(node) == 2:
-                R1 = graph.edges[node][neighbor1].weight
-                R2 = graph.edges[node][neighbor2].weight
-                R_eq = R1 + R2
-                graph.remove_node(node)
-                graph.add_edge(neighbor1, neighbor2, weight=R_eq)
-        
-        // Parallel Reduction
-        for each edge_pair in graph.edges():
-            u, v = edge_pair
-            if graph.number_of_edges(u, v) > 1:
-                resistors = [graph[u][v][key]['weight'] for key in graph[u][v]]
-                R_eq = 1 / sum(1/R for R in resistors)
-                graph.remove_edges_between(u, v)
-                graph.add_edge(u, v, weight=R_eq)
+def CalculateEquivalentResistance(graph, node_A, node_B):
     
+    # While the graph has more than just the two target nodes
+    while len(graph.nodes) > 2:
+
+        # --- SERIES REDUCTION STEP ---
+        for node in list(graph.nodes):
+            # If a node has exactly two connections (degree 2), and is not node_A or node_B
+            if graph.degree(node) == 2 and node not in (node_A, node_B):
+                neighbors = list(graph.neighbors(node))  # Get the two neighbors
+                u, v = neighbors[0], neighbors[1]
+
+                # Retrieve the resistance values between the node and its two neighbors
+                R1 = graph[node][u]['weight']
+                R2 = graph[node][v]['weight']
+
+                # Combine them using the series formula: R_eq = R1 + R2
+                R_eq = R1 + R2
+
+                # Remove the intermediate node and its edges
+                graph.remove_node(node)
+
+                # Add a new edge directly between u and v with the equivalent resistance
+                graph.add_edge(u, v, weight=R_eq)
+
+        # --- PARALLEL REDUCTION STEP ---
+        visited_pairs = set()  # To avoid repeating the same pair
+
+        for u, v in list(graph.edges):
+            if (u, v) in visited_pairs or (v, u) in visited_pairs:
+                continue  # Skip already processed pairs
+
+            # Collect all resistance values between u and v (parallel resistors)
+            if graph.has_edge(u, v):
+                edge_data = graph.get_edge_data(u, v)
+
+                # If there are multiple edges (i.e. parallel), get all weights
+                if isinstance(edge_data, dict) and len(edge_data) > 1:
+                    resistors = [edge_data[key]['weight'] for key in edge_data]
+
+                    # Apply the parallel formula: 1 / R_eq = sum(1 / R_i)
+                    R_eq = 1 / sum(1 / R for R in resistors)
+
+                    # Remove all current edges between u and v
+                    graph.remove_edges_from([(u, v)] * len(resistors))
+
+                    # Add a new single edge with the equivalent resistance
+                    graph.add_edge(u, v, weight=R_eq)
+
+            # Mark this pair as visited
+            visited_pairs.add((u, v))
+
+    # After simplification, return the resistance between the two remaining nodes
     return graph[node_A][node_B]['weight']
+
 ```
 
 
