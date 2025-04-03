@@ -33,9 +33,9 @@ The trajectory of a payload released near Earth is governed by fundamental princ
 
 ##### **Newton’s Law of Universal Gravitation**: The gravitational force between two bodies is given by:
   
-  \(
+  $$
   F = \frac{GMm}{r^2}
-  \)
+  $$
   
   **where:**
 
